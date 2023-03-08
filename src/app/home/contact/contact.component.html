@@ -5,9 +5,9 @@
     <div class="row py-5">
         <div class="col-12 pt-lg-5 mt-lg-5 text-center">
             <h1 class="display-4 text-white animated zoomIn">Contact Us</h1>
-            <a href="" class="h5 text-white">Home</a>
+            <a href="" [routerLink]="['']" class="h5 text-white">Home</a>
             <i class="far fa-circle text-white px-2"></i>
-            <a href="" class="h5 text-white">Contact</a>
+            <a href="" [routerLink]="['/ContactUs']" class="h5 text-white">Contact</a>
         </div>
     </div>
 </div>
@@ -66,7 +66,7 @@
                             <input type="email" class="form-control border-0 bg-light px-4" placeholder="Your Email" style="height: 55px;">
                         </div>
                         <div class="col-12">
-                            <input type="text" class="form-control border-0 bg-light px-4" placeholder="Subject" style="height: 55px;">
+                            <input type="number" class="form-control border-0 bg-light px-4" maxlength="10" placeholder="Your Phone Number" style="height: 55px;">
                         </div>
                         <div class="col-12">
                             <textarea class="form-control border-0 bg-light px-4 py-3" rows="4" placeholder="Message"></textarea>
