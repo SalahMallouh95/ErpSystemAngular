@@ -40,20 +40,17 @@
 
               <mat-form-field class="example-full-width">
                 <mat-label>Password</mat-label>
-                <input type="email" matInput formControlName="password" >
+                <input type="password" matInput formControlName="password" >
                 <mat-error *ngIf="loginForm.controls['password'].hasError('minlength') && !loginForm.controls['password'].hasError('required')">
-                  Please enter a valid email address
+                  Password must be at least 6 character
                 </mat-error>
                 <mat-error *ngIf="loginForm.controls['password'].hasError('required')">
-                  password is <strong>required</strong>
-                </mat-error>
-                <mat-error *ngIf="loginForm.controls['password'].hasError('minlength')">
-                  password must be at least 6 character
-                </mat-error>
+                  Password is <strong>required</strong>
+                </mat-error>               
               </mat-form-field>
-              <button type="submit" class="btn btn-primary btn-block mb-4">
-                Login
-              </button> 
+              <div class="example-button-row">                
+                <button (click)="GetDate()" mat-raised-button color="primary" [disabled]="loginForm.invalid">Login</button>                
+              </div>               
             </form>            
           </div>
         </div>

@@ -5,6 +5,8 @@ import { HomeFooterComponent } from './home-footer/home-footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatInputModule} from '@angular/material/input'
 import { RouterModule } from '@angular/router';
+import {MatButtonModule} from '@angular/material/button';
+
 
 
 
@@ -23,7 +25,8 @@ import { RouterModule } from '@angular/router';
     HomeHeaderComponent,
     ReactiveFormsModule,
     MatInputModule,
-    FormsModule
+    FormsModule,
+    MatButtonModule
   ]
 })
 export class SharedModule { }
