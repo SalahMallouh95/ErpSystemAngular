@@ -1,5 +1,6 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ContactComponent } from './contact/contact.component';
 import { MainComponent } from './main/main.component';
 
 const routes: Routes = [
@@ -7,6 +8,10 @@ const routes: Routes = [
     path:'',
     component:MainComponent
  
+  },
+  {
+    path:"ContactUs",
+    component:ContactComponent
   }
 ];
 
