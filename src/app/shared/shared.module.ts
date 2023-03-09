@@ -34,7 +34,8 @@ import { HrSidebarComponent } from './hr-sidebar/hr-sidebar.component';
     FormsModule,
     MatButtonModule,
     DashHeaderComponent,
-    ManagerSideBarComponent
+    ManagerSideBarComponent,
+    HrSidebarComponent
   ]
 })
 export class SharedModule { }
