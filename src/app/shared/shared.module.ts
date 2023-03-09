@@ -5,12 +5,6 @@ import { HomeFooterComponent } from './home-footer/home-footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatInputModule} from '@angular/material/input'
 import { RouterModule } from '@angular/router';
-<<<<<<< HEAD
-import { DashHeaderComponent } from './dash-header/dash-header.component';
-=======
-import {MatButtonModule} from '@angular/material/button';
-
->>>>>>> 749f8a1fccda1c707ac14e7fade4dd4a5cd01bc8
 
 
 
@@ -19,8 +13,7 @@ import {MatButtonModule} from '@angular/material/button';
   declarations: [
     HomeHeaderComponent,
     HomeFooterComponent,
-    DashHeaderComponent
-  ],
+      ],
   imports: [
     CommonModule,
     RouterModule
