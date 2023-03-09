@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 import { ManagerSideBarComponent } from './manager-side-bar/manager-side-bar.component';
 import { DashHeaderComponent } from './dash-header/dash-header.component';
 import {MatButtonModule} from '@angular/material/button';
+import { HrSidebarComponent } from './hr-sidebar/hr-sidebar.component';
 
 
 
@@ -18,7 +19,8 @@ import {MatButtonModule} from '@angular/material/button';
     HomeHeaderComponent,
     HomeFooterComponent,
     ManagerSideBarComponent,
-    DashHeaderComponent
+    DashHeaderComponent,
+    HrSidebarComponent
       ],
   imports: [
     CommonModule,
