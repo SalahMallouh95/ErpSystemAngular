@@ -10,6 +10,9 @@ const routes: Routes = [
     path:'Auth'
     ,loadChildren:()=>import('./auth/auth.module').then(x=>x.AuthModule)
   }
+  ,{path:'Employee',
+  loadChildren:()=>import('./employee/employee.module').then(x=>x.EmployeeModule)
+}
 ];
 
 @NgModule({
