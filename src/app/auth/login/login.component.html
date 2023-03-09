@@ -22,7 +22,7 @@
         <div id="radius-shape-2" class="position-absolute shadow-5-strong"></div>
 
         <div class="card bg-glass  ">
-          <div class="card-body px-4 py-5 px-md-5">
+          <div class="card-body px-4 py-5 px-md-5">           
             <form [formGroup]="loginForm" class="example-form">
               <mat-form-field class="example-full-width">
                 <mat-label>Email</mat-label>
@@ -51,7 +51,8 @@
               <div class="example-button-row">                
                 <button (click)="GetDate()" mat-raised-button color="primary" [disabled]="loginForm.invalid">Login</button>                
               </div>               
-            </form>            
+            </form>   
+                     
           </div>
         </div>
       </div>
