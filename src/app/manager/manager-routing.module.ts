@@ -1,7 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ManagerSideBarComponent } from '../shared/manager-side-bar/manager-side-bar.component';
+import { MainComponent } from './main/main.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: '',
+    component: MainComponent
+  }
+ ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

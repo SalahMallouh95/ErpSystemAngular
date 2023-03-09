@@ -2,12 +2,15 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ManagerRoutingModule } from './manager-routing.module';
-import { LeftSideComponent } from './left-side/left-side.component';
+import { MainComponent } from './main/main.component';
+
 
 
 @NgModule({
   declarations: [
-    LeftSideComponent
+    
+  
+    MainComponent
   ],
   imports: [
     CommonModule,
