@@ -5,6 +5,7 @@ import { HomeFooterComponent } from './home-footer/home-footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatInputModule} from '@angular/material/input'
 import { RouterModule } from '@angular/router';
+import { ManagerSideBarComponent } from './manager-side-bar/manager-side-bar.component';
 
 
 
@@ -13,6 +14,7 @@ import { RouterModule } from '@angular/router';
   declarations: [
     HomeHeaderComponent,
     HomeFooterComponent,
+    ManagerSideBarComponent,
       ],
   imports: [
     CommonModule,
