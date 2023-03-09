@@ -5,6 +5,7 @@ import { HomeFooterComponent } from './home-footer/home-footer.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatInputModule} from '@angular/material/input'
 import { RouterModule } from '@angular/router';
+import { DashHeaderComponent } from './dash-header/dash-header.component';
 
 
 
@@ -12,7 +13,8 @@ import { RouterModule } from '@angular/router';
 @NgModule({
   declarations: [
     HomeHeaderComponent,
-    HomeFooterComponent
+    HomeFooterComponent,
+    DashHeaderComponent
   ],
   imports: [
     CommonModule,
