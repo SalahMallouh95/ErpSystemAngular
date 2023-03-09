@@ -6,6 +6,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatInputModule} from '@angular/material/input'
 import { RouterModule } from '@angular/router';
 import { ManagerSideBarComponent } from './manager-side-bar/manager-side-bar.component';
+import { DashHeaderComponent } from './dash-header/dash-header.component';
+import {MatButtonModule} from '@angular/material/button';
+
 
 
 
@@ -15,6 +18,7 @@ import { ManagerSideBarComponent } from './manager-side-bar/manager-side-bar.com
     HomeHeaderComponent,
     HomeFooterComponent,
     ManagerSideBarComponent,
+    DashHeaderComponent
       ],
   imports: [
     CommonModule,
@@ -26,7 +30,7 @@ import { ManagerSideBarComponent } from './manager-side-bar/manager-side-bar.com
     ReactiveFormsModule,
     MatInputModule,
     FormsModule,
-    MatButtonModule
+    MatButtonModule,
   ]
 })
 export class SharedModule { }
