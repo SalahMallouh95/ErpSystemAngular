@@ -31,11 +31,11 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto py-0">
-                <a href="" class="nav-item nav-link active">Home</a>
-                <a href="" class="nav-item nav-link"[routerLink]="['/AboutUs']" routerLinkActive="router-link-active">About</a>
-                <a href=""  class="nav-item nav-link" [routerLink]="['/ContactUs']" routerLinkActive="router-link-active" >Contact</a>
+                <a class="nav-item nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" >Home</a>
+                <a class="nav-item nav-link" [routerLink]="['/AboutUs']" routerLinkActive="active">About</a>
+                <a class="nav-item nav-link" [routerLink]="['/ContactUs']" routerLinkActive="active" >Contact</a>
             </div>
-            <a href="" class="btn btn-primary py-2 px-4 ms-3">Login</a>
+            <a class="btn btn-primary py-2 px-4 ms-3" [routerLink]="['/Auth']">Login</a>
         </div>
     </nav>
         </div>
