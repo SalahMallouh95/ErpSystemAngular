@@ -16,6 +16,10 @@ const routes: Routes = [
   {
     path:'Manager',
     loadChildren:()=>import('./manager/manager.module').then(x=>x.ManagerModule)
+  },
+  {
+    path:'Hr',
+    loadChildren:()=>import('./hr/hr.module').then(x=>x.HrModule)
   }
 ];
 
