@@ -5,8 +5,6 @@ import { HomeFooterComponent } from './home-footer/home-footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatInputModule} from '@angular/material/input'
 import { RouterModule } from '@angular/router';
-import {MatButtonModule} from '@angular/material/button';
-
 
 
 
@@ -14,8 +12,8 @@ import {MatButtonModule} from '@angular/material/button';
 @NgModule({
   declarations: [
     HomeHeaderComponent,
-    HomeFooterComponent
-  ],
+    HomeFooterComponent,
+      ],
   imports: [
     CommonModule,
     RouterModule
