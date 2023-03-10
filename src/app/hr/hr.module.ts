@@ -5,12 +5,14 @@ import { HrRoutingModule } from './hr-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { MainComponent } from './main/main.component';
 import { AllEmpLeavesComponent } from './all-emp-leaves/all-emp-leaves.component';
+import { LeaveDetailsComponent } from './leave-details/leave-details.component';
 
 
 @NgModule({
   declarations: [
     MainComponent,
-    AllEmpLeavesComponent
+    AllEmpLeavesComponent,
+    LeaveDetailsComponent
   ],
   imports: [
     CommonModule,
