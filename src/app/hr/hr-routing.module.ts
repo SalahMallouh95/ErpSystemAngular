@@ -14,7 +14,7 @@ const routes: Routes = [
     component:AllEmpLeavesComponent
   },
   {
-    path:"LeaveDetails",
+    path:"LeaveDetails/:id",
     component:LeaveDetailsComponent
   }
 ];

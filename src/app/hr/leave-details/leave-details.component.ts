@@ -8,11 +8,13 @@ import { HrService } from 'src/app/hr.service';
   styleUrls: ['./leave-details.component.css']
 })
 export class LeaveDetailsComponent implements OnInit {
-  constructor(hrservice:HrService,private route:ActivatedRoute){
+  constructor(public hrservice:HrService,private route:ActivatedRoute){
   }
   id:number|undefined
+  leaveInfo:any|{}
 
   ngOnInit(): void {
     this.id=this.route.snapshot.params['id'];
+    this.leaveInfo=this.hrservice.allLeaves.filter((lev)=>lev.leaveid==this.id)
   }
 }

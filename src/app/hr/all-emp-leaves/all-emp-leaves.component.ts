@@ -21,7 +21,7 @@ export class AllEmpLeavesComponent implements OnInit {
     
   }
   GetValues(id :any){
-    this.router.navigate([''],id);
+    this.router.navigate(['Hr/LeaveDetails',id]);
   }
   
 
