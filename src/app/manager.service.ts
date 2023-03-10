@@ -48,4 +48,13 @@ export class ManagerService {
     { "leaveid": 2, "startDate": "2222","endDate":"2222","Message":"tet2","State":0,"documentFileName":"ss2","leaveType":"lev2","fName":"mohamde","LName":"ma2"},
     { "leaveid": 3, "startDate": "2222","endDate":"2222","Message":"tet3","State":1,"documentFileName":"ss3","leaveType":"lev3","fName":"Moyeed","LName":"ma3"}
   ];
+
+
+  myLeaves = [
+    { "leaveid": 1, "startDate": "2222","endDate":"2222","State":1},
+    { "leaveid": 1, "startDate": "2222","endDate":"2222","State":0},
+    { "leaveid": 1, "startDate": "2222","endDate":"2222","State":2},
+    { "leaveid": 1, "startDate": "2222","endDate":"2222","State":0},
+    { "leaveid": 1, "startDate": "2222","endDate":"2222","State":1}
+  ];
 }
