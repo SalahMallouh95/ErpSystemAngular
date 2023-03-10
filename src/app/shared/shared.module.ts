@@ -10,6 +10,8 @@ import { DashHeaderComponent } from './dash-header/dash-header.component';
 import {MatButtonModule} from '@angular/material/button';
 import { HrSidebarComponent } from './hr-sidebar/hr-sidebar.component';
 import { RawAllEmpLeaveComponent } from './raw-all-emp-leave/raw-all-emp-leave.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
+
 
 
 
@@ -38,7 +40,8 @@ import { RawAllEmpLeaveComponent } from './raw-all-emp-leave/raw-all-emp-leave.c
     DashHeaderComponent,
     ManagerSideBarComponent,
     HrSidebarComponent,
-    RawAllEmpLeaveComponent
+    RawAllEmpLeaveComponent,
+    NgxSpinnerModule
   ]
 })
 export class SharedModule { }
