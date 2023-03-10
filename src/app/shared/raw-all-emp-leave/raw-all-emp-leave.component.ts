@@ -19,6 +19,5 @@ export class RawAllEmpLeaveComponent {
 SendSelecterEmpId()
 {
   this.SendValues.emit(this.leaveid)
-  console.log(this.leaveid)
 }
 }

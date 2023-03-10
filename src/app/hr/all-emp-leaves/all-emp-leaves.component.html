@@ -22,7 +22,7 @@
                   </tr>
                 </thead>
                 <tbody class="table-border-bottom-0"> 
-                    <tr app-raw-all-emp-leave [leaveid]="item.leaveid"  [fName]="item.fName" [LName]="item.LName" [startDate]="item.startDate" [endDate]="item.endDate" [State]="item.State" *ngFor="let item of allLeavesList "style="cursor: pointer;">                    
+                    <tr (SendValues)="GetValues($event)" app-raw-all-emp-leave [leaveid]="item.leaveid"  [fName]="item.fName" [LName]="item.LName" [startDate]="item.startDate" [endDate]="item.endDate" [State]="item.State" *ngFor="let item of allLeavesList">                    
                     </tr>            
                
                </tbody>
