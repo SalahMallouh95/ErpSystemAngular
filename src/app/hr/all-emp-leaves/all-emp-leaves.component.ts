@@ -16,12 +16,12 @@ export class AllEmpLeavesComponent implements OnInit {
 
   s=this.hrService.mesage
   allLeavesList :any []=this.hrService.allLeaves
+
   ngOnInit(): void {
     
   }
   GetValues(id :any){
     this.router.navigate([''],id);
-    console.log(id)
   }
   
 
