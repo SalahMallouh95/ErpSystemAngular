@@ -18,10 +18,11 @@
                     <th>Start Date</th>
                     <th>End Date</th>
                     <th>state</th>
+                    <th></th>
                   </tr>
                 </thead>
                 <tbody class="table-border-bottom-0"> 
-                    <tr app-raw-all-emp-leave [fName]="item.fName" [LName]="item.LName" [startDate]="item.startDate" [endDate]="item.endDate" [State]="item.State" *ngFor="let item of allLeavesList "style="cursor: pointer;">                    
+                    <tr app-raw-all-emp-leave [leaveid]="item.leaveid"  [fName]="item.fName" [LName]="item.LName" [startDate]="item.startDate" [endDate]="item.endDate" [State]="item.State" *ngFor="let item of allLeavesList "style="cursor: pointer;">                    
                     </tr>            
                
                </tbody>

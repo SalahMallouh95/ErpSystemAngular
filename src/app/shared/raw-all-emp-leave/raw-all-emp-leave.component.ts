@@ -1,4 +1,4 @@
-import { Component,Input,OnInit } from '@angular/core';
+import { Component,EventEmitter,Input,OnInit, Output } from '@angular/core';
 
 
 @Component({
@@ -12,4 +12,13 @@ export class RawAllEmpLeaveComponent {
 @Input() startDate:string|undefined
 @Input() endDate:string|undefined
 @Input() State:number|undefined
+@Input() leaveid:number|undefined
+
+@Output() SendValues = new EventEmitter()
+
+SendSelecterEmpId()
+{
+  this.SendValues.emit(this.leaveid)
+  console.log(this.leaveid)
+}
 }
