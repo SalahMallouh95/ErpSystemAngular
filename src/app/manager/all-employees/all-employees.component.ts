@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ManagerService } from 'src/app/manager.service';
 
 @Component({
   selector: 'app-all-employees',
@@ -7,39 +8,10 @@ import { Component } from '@angular/core';
 })
 export class AllEmployeesComponent {
 
-  employees : any= [
-    {
-      fName: 'Ahmad',
-      lName: 'Ali',
-      email: 'aa@aa.com',
-      ssn: 10001,
-      status: 'Absent'
+  constructor( public managerService : ManagerService ){
 
-    },
-    {
-      fName: 'Salah',
-      lName: 'Mallouh',
-      email: 'ss@mm.com',
-      ssn: 10002,
-      status: 'Active'
+  }
 
-    },
-    {
-      fName: 'Moayad',
-      lName: 'Khateeb',
-      email: 'mm@kk.com',
-      ssn: 10003,
-      status: 'Active'
-
-    },
-    {
-      fName: 'Mohammad',
-      lName: 'Mashtooli',
-      email: 'mm@mm.com',
-      ssn: 10004,
-      status: 'Absent'
-
-    }
-  ]
+  empList = this.managerService.employees;
 
 }

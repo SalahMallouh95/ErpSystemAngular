@@ -25,14 +25,25 @@
                                 </tr>
                             </thead>
                             <tbody class="table-border-bottom-0">
-                                <tr *ngFor="let emp of employees">
+                                <tr *ngFor="let emp of empList">
                                     <td>{{emp.fName}}</td>
                                     <td>{{emp.lName}}</td>
                                     <td>{{emp.email}}</td>
                                     <td>{{emp.ssn}}</td>
-                                    <td><strong>{{emp.status}}</strong></td>
+                                   
+                                    
                                     <td>
+                                        <div [ngSwitch]="emp.status">
+                                                <div *ngSwitchCase="1">
+                                                    <span class="badge bg-label-success me-1">Online</span>
+                                                </div>
+
+                                                <div *ngSwitchCase="0">
+                                                    <span class="badge bg-label-danger me-1">Offline</span>
+                                                </div>
+                                        </div>
                                     </td>
+
                                 </tr>
                             </tbody>
                         </table>
