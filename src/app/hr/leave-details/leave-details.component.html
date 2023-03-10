@@ -9,13 +9,22 @@
        <app-dash-header>
         </app-dash-header>
 
+        <div class="container-xxl flex-grow-1 container-p-y">
 
-
-       <p>{{leaveInfo[0].LName}}</p> 
-        {{id}}
-
-
-
+        <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">{{leaveInfo[0].fName}} {{leaveInfo[0].LName}}</h4>
+              <p class="card-text">
+              <b>Start Date:</b>  {{leaveInfo[0].startDate}}<br>
+              <b>End Date:</b>  {{leaveInfo[0].endDate}}<br>
+              <b>Leave Type</b>  {{leaveInfo[0].leaveType}}<br>
+              <b>Message:</b>  {{leaveInfo[0].Message}}<br>
+              <b>Document:</b>  {{leaveInfo[0].documentFileName}}<br>
+              </p>
+              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+          </div>
+          </div>    
     </div>
     </div>
     </div>
