@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { HrService } from 'src/app/hr.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { HrService } from 'src/app/hr.service';
 })
 export class AllEmpLeavesComponent implements OnInit {
   
-  constructor(public hrService:HrService)
+  constructor(private router:Router,public hrService:HrService)
   {
 
   }
@@ -18,8 +19,9 @@ export class AllEmpLeavesComponent implements OnInit {
   ngOnInit(): void {
     
   }
-  GetDate(){
-    console.log("x")
+  GetValues(id :any){
+    this.router.navigate([''],id);
+    console.log(id)
   }
   
 
