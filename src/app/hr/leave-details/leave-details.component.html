@@ -18,10 +18,28 @@
               <b>Start Date:</b>  {{leaveInfo[0].startDate}}<br>
               <b>End Date:</b>  {{leaveInfo[0].endDate}}<br>
               <b>Leave Type</b>  {{leaveInfo[0].leaveType}}<br>
-              <b>Message:</b>  {{leaveInfo[0].Message}}<br>
+              <b>Message:</b>  {{leaveInfo[0].Message}} <br>
               <b>Document:</b>  {{leaveInfo[0].documentFileName}}<br>
-              </p>             
+               </p>
+              <b>States: </b>
+              <div [ngSwitch]="leaveInfo[0].State" style="display: inline;">
+                <div *ngSwitchCase="2" style="display: inline;">
+              <span class="badge bg-label-warning me-1 ">Pending</span>
+                </div>
+                <div *ngSwitchCase="1" style="display: inline;"> 
+                    <span class="badge bg-label-success me-1">Accepted</span>
+                </div>
+                      <div *ngSwitchCase="0" style="display: inline;">
+                        <span class="badge bg-label-danger me-1">Rejected</span>
+                    </div>
             </div>
+            <br>
+            <div class="demo-inline-spacing"> 
+            <button type="button" class="btn rounded-pill btn-outline-success mr-1">Accept</button>
+            <button type="button" class="btn rounded-pill btn-outline-danger">Reject</button>
+            </div>
+            
+       
           </div>
           </div>    
     </div>
