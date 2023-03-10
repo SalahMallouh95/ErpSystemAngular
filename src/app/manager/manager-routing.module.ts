@@ -4,6 +4,7 @@ import { AllEmpLeavesComponent } from '../hr/all-emp-leaves/all-emp-leaves.compo
 import { ManagerSideBarComponent } from '../shared/manager-side-bar/manager-side-bar.component';
 import { AllEmployeesComponent } from './all-employees/all-employees.component';
 import { MAllEmpLeavesComponent } from './m-all-emp-leaves/m-all-emp-leaves.component';
+import { MLeavesComponent } from './m-leaves/m-leaves.component';
 import { MainComponent } from './main/main.component';
 
 const routes: Routes = [
@@ -18,6 +19,10 @@ const routes: Routes = [
   {
     path: 'mAllEmpLeaves',
     component: MAllEmpLeavesComponent
+  },
+  {
+    path: 'MyLeaves',
+    component: MLeavesComponent
   }
  ];
 
