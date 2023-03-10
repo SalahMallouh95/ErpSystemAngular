@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AllEmpLeavesComponent } from '../hr/all-emp-leaves/all-emp-leaves.component';
 import { ManagerSideBarComponent } from '../shared/manager-side-bar/manager-side-bar.component';
 import { AllEmployeesComponent } from './all-employees/all-employees.component';
+import { MAllEmpLeavesComponent } from './m-all-emp-leaves/m-all-emp-leaves.component';
 import { MainComponent } from './main/main.component';
 
 const routes: Routes = [
@@ -13,6 +14,10 @@ const routes: Routes = [
   {
     path: 'AllEmp',
     component: AllEmployeesComponent
+  },
+  {
+    path: 'mAllEmpLeaves',
+    component: MAllEmpLeavesComponent
   }
  ];
 
