@@ -9,6 +9,8 @@ import { ManagerSideBarComponent } from './manager-side-bar/manager-side-bar.com
 import { DashHeaderComponent } from './dash-header/dash-header.component';
 import {MatButtonModule} from '@angular/material/button';
 import { HrSidebarComponent } from './hr-sidebar/hr-sidebar.component';
+import { TableAllEmpLeaveComponent } from './table-all-emp-leave/table-all-emp-leave.component';
+import { RawAllEmpLeaveComponent } from './raw-all-emp-leave/raw-all-emp-leave.component';
 
 
 
@@ -20,7 +22,9 @@ import { HrSidebarComponent } from './hr-sidebar/hr-sidebar.component';
     HomeFooterComponent,
     ManagerSideBarComponent,
     DashHeaderComponent,
-    HrSidebarComponent
+    HrSidebarComponent,
+    TableAllEmpLeaveComponent,
+    RawAllEmpLeaveComponent
       ],
   imports: [
     CommonModule,
