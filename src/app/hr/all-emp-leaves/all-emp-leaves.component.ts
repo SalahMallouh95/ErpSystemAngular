@@ -20,6 +20,7 @@ export class AllEmpLeavesComponent implements OnInit {
     
   }
   GetValues(id :any){
+    this.router.navigate([''],id);
     console.log(id)
   }
   
