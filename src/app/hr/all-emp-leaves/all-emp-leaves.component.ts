@@ -18,6 +18,9 @@ export class AllEmpLeavesComponent implements OnInit {
   ngOnInit(): void {
     
   }
+  GetDate(){
+    console.log("x")
+  }
   
 
 }

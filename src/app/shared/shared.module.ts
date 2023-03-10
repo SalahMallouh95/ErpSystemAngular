@@ -39,7 +39,9 @@ import { RawAllEmpLeaveComponent } from './raw-all-emp-leave/raw-all-emp-leave.c
     MatButtonModule,
     DashHeaderComponent,
     ManagerSideBarComponent,
-    HrSidebarComponent
+    HrSidebarComponent,
+    RawAllEmpLeaveComponent,
+    TableAllEmpLeaveComponent
   ]
 })
 export class SharedModule { }

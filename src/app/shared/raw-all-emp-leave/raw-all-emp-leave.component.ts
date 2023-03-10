@@ -1,10 +1,15 @@
-import { Component } from '@angular/core';
+import { Component,Input,OnInit } from '@angular/core';
+
 
 @Component({
-  selector: 'app-raw-all-emp-leave',
+  selector: 'app-raw-all-emp-leave,[app-raw-all-emp-leave]',
   templateUrl: './raw-all-emp-leave.component.html',
   styleUrls: ['./raw-all-emp-leave.component.css']
 })
 export class RawAllEmpLeaveComponent {
-
+@Input() fName:string|undefined
+@Input() LName:string|undefined
+@Input() startDate:string|undefined
+@Input() endDate:string|undefined
+@Input() State:number|undefined
 }

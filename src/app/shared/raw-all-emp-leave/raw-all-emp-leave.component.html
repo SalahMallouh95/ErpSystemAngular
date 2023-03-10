@@ -1,1 +1,23 @@
-<p>raw-all-emp-leave works!</p>
+
+    <td>{{fName}}</td>
+    <td> {{LName}}</td>
+    <td>
+        {{startDate}}                  
+    </td>
+    
+    <td>
+        {{endDate}}    
+    </td>
+    <td>
+        <div [ngSwitch]="State">
+            <div *ngSwitchCase="2">
+          <span class="badge bg-label-warning me-1">Pending</span>
+            </div>
+            <div *ngSwitchCase="1">
+                <span class="badge bg-label-success me-1">Accepted</span>
+            </div>
+                  <div *ngSwitchCase="0">
+                    <span class="badge bg-label-danger me-1">Rejected</span>
+                </div>
+        </div>                       
+    </td>                
