@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AllEmpLeavesComponent } from '../hr/all-emp-leaves/all-emp-leaves.component';
 import { ManagerSideBarComponent } from '../shared/manager-side-bar/manager-side-bar.component';
 import { AllEmployeesComponent } from './all-employees/all-employees.component';
+import { CreateTaskComponent } from './create-task/create-task.component';
 import { MAllEmpLeavesComponent } from './m-all-emp-leaves/m-all-emp-leaves.component';
 import { MEmpInfoComponent } from './m-emp-info/m-emp-info.component';
 import { MLeaveDetailsComponent } from './m-leave-details/m-leave-details.component';
@@ -31,8 +32,12 @@ const routes: Routes = [
     component: MLeaveDetailsComponent
   },
   {
-    path: 'EmpInfo',
+    path: 'EmpInfo/:id',
     component: MEmpInfoComponent
+  },
+  {
+    path: 'CreateTask',
+    component: CreateTaskComponent
   }
  ];
 

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Route, Router } from '@angular/router';
 import { ManagerService } from 'src/app/manager.service';
 
 @Component({
@@ -8,10 +9,16 @@ import { ManagerService } from 'src/app/manager.service';
 })
 export class AllEmployeesComponent {
 
-  constructor( public managerService : ManagerService ){
+  constructor(private route :Router ,public managerService : ManagerService ){
 
   }
 
   empList = this.managerService.employees;
 
+  GetValues(id:any){
+    this.route.navigate(['Manager/EmpInfo',id]);
+
+    console.log(id);
+    
+  }
 }

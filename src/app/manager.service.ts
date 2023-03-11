@@ -9,6 +9,7 @@ export class ManagerService {
 
   employees : any= [
     {
+      userid: 1,
       fName: 'Ahmad',
       lName: 'Ali',
       email: 'aa@aa.com',
@@ -17,6 +18,7 @@ export class ManagerService {
 
     },
     {
+      userid: 2,
       fName: 'Salah',
       lName: 'Mallouh',
       email: 'ss@mm.com',
@@ -25,6 +27,7 @@ export class ManagerService {
 
     },
     {
+      userid: 3,
       fName: 'Moayad',
       lName: 'Khateeb',
       email: 'mm@kk.com',
@@ -33,6 +36,7 @@ export class ManagerService {
 
     },
     {
+      userid: 4,
       fName: 'Mohammad',
       lName: 'Mashtooli',
       email: 'mm@mm.com',
@@ -60,8 +64,8 @@ export class ManagerService {
 
 
 
-  empInfo : any= [
-    {
+  empInfo = [
+    { userid: 1,
       fName: 'Ahmad',
       lName: 'Ali',
       email: 'aa@aa.com',
@@ -70,6 +74,7 @@ export class ManagerService {
 
     },
     {
+      userid: 2,
       fName: 'Salah',
       lName: 'Mallouh',
       email: 'ss@mm.com',
@@ -78,6 +83,7 @@ export class ManagerService {
 
     },
     {
+      userid: 3,
       fName: 'Moayad',
       lName: 'Khateeb',
       email: 'mm@kk.com',
@@ -86,6 +92,7 @@ export class ManagerService {
 
     },
     {
+      userid: 4,
       fName: 'Mohammad',
       lName: 'Mashtooli',
       email: 'mm@mm.com',
@@ -94,4 +101,45 @@ export class ManagerService {
 
     }
   ];
+
+
+
+
+
+
+
+
+
+
+
+  tasks = [
+    {
+       userid: 1,
+      name : 'ali ahmad'
+    },
+    {
+      userid: 2,
+      name: 'Salah Mallouh'
+    },
+    {
+      userid: 3,
+      name: 'Moayad Khateeb'
+
+    },
+    {
+      userid: 4,
+      name: 'Mohammad Mashtooli'
+
+    }
+  ];
 }
+
+
+
+
+
+
+
+
+
+

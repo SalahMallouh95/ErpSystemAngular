@@ -32,7 +32,8 @@ import { EmployeeSidbarComponent } from './employee-sidbar/employee-sidbar.compo
       ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    FormsModule
   ],
   exports:[
     HomeFooterComponent,
@@ -46,8 +47,7 @@ import { EmployeeSidbarComponent } from './employee-sidbar/employee-sidbar.compo
     HrSidebarComponent,
     RawAllEmpLeaveComponent,
     NgxSpinnerModule,
-    PersonCardComponent,
-    EmployeeSidbarComponent
+    PersonCardComponent
   ]
 })
 export class SharedModule { }
