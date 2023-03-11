@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { AllEmpLeavesComponent } from './all-emp-leaves/all-emp-leaves.component';
 import { EmployeeDetailsComponent } from './employee-details/employee-details.component';
@@ -30,7 +31,10 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [
+    RouterModule.forChild(routes),
+    FormsModule
+  ],
   exports: [RouterModule]
 })
 export class HrRoutingModule { }
