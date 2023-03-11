@@ -57,4 +57,41 @@ export class ManagerService {
     { "leaveid": 4, "startDate": "2222","endDate":"2222","State":0},
     { "leaveid": 5, "startDate": "2222","endDate":"2222","State":1}
   ];
+
+
+
+  empInfo : any= [
+    {
+      fName: 'Ahmad',
+      lName: 'Ali',
+      email: 'aa@aa.com',
+      ssn: 10001,
+      address: 'irbid'
+
+    },
+    {
+      fName: 'Salah',
+      lName: 'Mallouh',
+      email: 'ss@mm.com',
+      ssn: 10002,
+      address: 'irbid'
+
+    },
+    {
+      fName: 'Moayad',
+      lName: 'Khateeb',
+      email: 'mm@kk.com',
+      ssn: 10003,
+      address: 'amman'
+
+    },
+    {
+      fName: 'Mohammad',
+      lName: 'Mashtooli',
+      email: 'mm@mm.com',
+      ssn: 10004,
+      address: 'amman'
+
+    }
+  ];
 }

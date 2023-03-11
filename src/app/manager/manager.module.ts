@@ -8,6 +8,8 @@ import { AllEmployeesComponent } from './all-employees/all-employees.component';
 import { MAllEmpLeavesComponent } from './m-all-emp-leaves/m-all-emp-leaves.component';
 import { MLeavesComponent } from './m-leaves/m-leaves.component';
 import { MLeaveDetailsComponent } from './m-leave-details/m-leave-details.component';
+import { MEmpInfoComponent } from './m-emp-info/m-emp-info.component';
+import { CreateTaskComponent } from './create-task/create-task.component';
 
 
 
@@ -19,7 +21,9 @@ import { MLeaveDetailsComponent } from './m-leave-details/m-leave-details.compon
               AllEmployeesComponent,
               MAllEmpLeavesComponent,
               MLeavesComponent,
-              MLeaveDetailsComponent
+              MLeaveDetailsComponent,
+              MEmpInfoComponent,
+              CreateTaskComponent
   ],
   imports: [
     CommonModule,
