@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ManagerService } from 'src/app/manager.service';
 
 @Component({
@@ -6,12 +7,21 @@ import { ManagerService } from 'src/app/manager.service';
   templateUrl: './m-emp-info.component.html',
   styleUrls: ['./m-emp-info.component.css']
 })
-export class MEmpInfoComponent {
+export class MEmpInfoComponent implements OnInit {
 
-    constructor(public man: ManagerService){
+    constructor(private route: ActivatedRoute ,public man: ManagerService){
 
     }
 
-    info = this.man.empInfo
+    id : number| undefined
+    emp : any | {}
+
+  ngOnInit(): void {
+   
+    this.id = this.route.snapshot.params['id'];
+    this.emp = this.man.empInfo.filter(  (ex) => ex.userid == this.id )
+  }
+
+    
 
 }
