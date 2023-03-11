@@ -43,7 +43,8 @@ import { PersonCardComponent } from './person-card/person-card.component';
     ManagerSideBarComponent,
     HrSidebarComponent,
     RawAllEmpLeaveComponent,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    PersonCardComponent
   ]
 })
 export class SharedModule { }
