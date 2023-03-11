@@ -5,7 +5,8 @@ import { Injectable } from '@angular/core';
 })
 export class HrService {
 
-  constructor() { }
+  constructor() 
+  { }
    mesage:string="test"
  
  
