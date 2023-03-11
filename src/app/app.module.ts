@@ -4,6 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxSpinnerModule } from "ngx-spinner";
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -14,7 +15,11 @@ import { NgxSpinnerModule } from "ngx-spinner";
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    FormsModule
+  ],
+  exports:[
+    FormsModule
   ],
   schemas:[
     CUSTOM_ELEMENTS_SCHEMA

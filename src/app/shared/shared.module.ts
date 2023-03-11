@@ -30,7 +30,8 @@ import { PersonCardComponent } from './person-card/person-card.component';
       ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    FormsModule
   ],
   exports:[
     HomeFooterComponent,
@@ -44,7 +45,8 @@ import { PersonCardComponent } from './person-card/person-card.component';
     HrSidebarComponent,
     RawAllEmpLeaveComponent,
     NgxSpinnerModule,
-    PersonCardComponent
+    PersonCardComponent,
+    FormsModule
   ]
 })
 export class SharedModule { }
