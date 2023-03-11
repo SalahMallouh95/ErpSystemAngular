@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ManagerService } from 'src/app/manager.service';
 
 @Component({
@@ -6,13 +7,23 @@ import { ManagerService } from 'src/app/manager.service';
   templateUrl: './m-all-emp-leaves.component.html',
   styleUrls: ['./m-all-emp-leaves.component.css']
 })
-export class MAllEmpLeavesComponent {
+export class MAllEmpLeavesComponent implements OnInit {
 
-  constructor( public managerService : ManagerService ){
+  constructor( private router:Router, public managerService : ManagerService ){
 
 
 
   }
 
-  mAllLeaves = this.managerService.allLeaves
+  mAllLeaves :any[] = this.managerService.allLeaves
+
+  ngOnInit(): void {
+    
+  }
+  GetValues(id :any){
+    this.router.navigate(['Manager/LeaveDetails',id]);
+    console.log(id);
+    
+  }
+
 }
