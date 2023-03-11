@@ -14,7 +14,6 @@ export class AllEmpLeavesComponent implements OnInit {
 
   }
 
-  s=this.hrService.mesage
   allLeavesList :any []=this.hrService.allLeaves
 
   ngOnInit(): void {

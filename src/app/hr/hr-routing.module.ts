@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AllEmpLeavesComponent } from './all-emp-leaves/all-emp-leaves.component';
+import { EmployeeListComponent } from './employee-list/employee-list.component';
 import { LeaveDetailsComponent } from './leave-details/leave-details.component';
 import { MainComponent } from './main/main.component';
 
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path:"LeaveDetails/:id",
     component:LeaveDetailsComponent
+  },
+  {
+    path:"EmpList",
+    component:EmployeeListComponent
   }
 ];
 

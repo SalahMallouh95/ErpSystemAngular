@@ -6,13 +6,15 @@ import { SharedModule } from '../shared/shared.module';
 import { MainComponent } from './main/main.component';
 import { AllEmpLeavesComponent } from './all-emp-leaves/all-emp-leaves.component';
 import { LeaveDetailsComponent } from './leave-details/leave-details.component';
+import { EmployeeListComponent } from './employee-list/employee-list.component';
 
 
 @NgModule({
   declarations: [
     MainComponent,
     AllEmpLeavesComponent,
-    LeaveDetailsComponent
+    LeaveDetailsComponent,
+    EmployeeListComponent
   ],
   imports: [
     CommonModule,

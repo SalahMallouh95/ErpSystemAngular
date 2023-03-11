@@ -11,6 +11,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { HrSidebarComponent } from './hr-sidebar/hr-sidebar.component';
 import { RawAllEmpLeaveComponent } from './raw-all-emp-leave/raw-all-emp-leave.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { PersonCardComponent } from './person-card/person-card.component';
 
 
 
@@ -24,7 +25,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     ManagerSideBarComponent,
     DashHeaderComponent,
     HrSidebarComponent,
-    RawAllEmpLeaveComponent
+    RawAllEmpLeaveComponent,
+    PersonCardComponent
       ],
   imports: [
     CommonModule,
@@ -41,7 +43,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     ManagerSideBarComponent,
     HrSidebarComponent,
     RawAllEmpLeaveComponent,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    PersonCardComponent
   ]
 })
 export class SharedModule { }
