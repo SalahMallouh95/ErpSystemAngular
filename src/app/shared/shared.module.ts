@@ -47,7 +47,9 @@ import { EmployeeSidbarComponent } from './employee-sidbar/employee-sidbar.compo
     HrSidebarComponent,
     RawAllEmpLeaveComponent,
     NgxSpinnerModule,
-    PersonCardComponent
+    PersonCardComponent,
+    EmployeeSidbarComponent,
+    FormsModule
   ]
 })
 export class SharedModule { }
