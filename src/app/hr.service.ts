@@ -17,8 +17,8 @@ export class HrService {
 
   allEmp=
   [
-    {"userid":1,"fName":"salah","lName":"mallouh","salary":1000,"role":"Manager","Department":"IT","phoneNumber":"1234567890","address":"asda","Imagefilename":null,"ssn":123456789,"state":0},
+    {"userid":1,"fName":"salah","lName":"mallouh","salary":1000,"role":"Manager","Department":"IT","phoneNumber":"1234567890","address":"asda","Imagefilename":'t.png',"ssn":123456789,"state":0},
     {"userid":2,"fName":"moyeed","lName":"mallouh","salary":1000,"role":"employee","Department":"Hr","phoneNumber":"1234567890","address":"asda","Imagefilename":null,"ssn":123456789,"state":1},
-    {"userid":3,"fName":"mohamed","lName":"mallouh","salary":1000,"role":"Hr","Department":"IT","phoneNumber":"1234567890","address":"asda","Imagefilename":null,"ssn":123456789,"state":1}
+    {"userid":3,"fName":"mohamed","lName":"mallouh","salary":1000,"role":"Hr","Department":"IT","phoneNumber":"1234567890","address":"asda","Imagefilename":"xx.png","ssn":123456789,"state":1}
   ]
 }
