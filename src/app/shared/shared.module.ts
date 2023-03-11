@@ -12,6 +12,7 @@ import { HrSidebarComponent } from './hr-sidebar/hr-sidebar.component';
 import { RawAllEmpLeaveComponent } from './raw-all-emp-leave/raw-all-emp-leave.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { PersonCardComponent } from './person-card/person-card.component';
+import { EmployeeSidbarComponent } from './employee-sidbar/employee-sidbar.component';
 
 
 
@@ -26,7 +27,8 @@ import { PersonCardComponent } from './person-card/person-card.component';
     DashHeaderComponent,
     HrSidebarComponent,
     RawAllEmpLeaveComponent,
-    PersonCardComponent
+    PersonCardComponent,
+    EmployeeSidbarComponent
       ],
   imports: [
     CommonModule,
@@ -44,7 +46,8 @@ import { PersonCardComponent } from './person-card/person-card.component';
     HrSidebarComponent,
     RawAllEmpLeaveComponent,
     NgxSpinnerModule,
-    PersonCardComponent
+    PersonCardComponent,
+    EmployeeSidbarComponent
   ]
 })
 export class SharedModule { }
