@@ -13,7 +13,7 @@ export class ManagerService {
       lName: 'Ali',
       email: 'aa@aa.com',
       ssn: 10001,
-      status: 0
+      state: 0
 
     },
     {
@@ -21,7 +21,7 @@ export class ManagerService {
       lName: 'Mallouh',
       email: 'ss@mm.com',
       ssn: 10002,
-      status: 0
+      state: 0
 
     },
     {
@@ -29,7 +29,7 @@ export class ManagerService {
       lName: 'Khateeb',
       email: 'mm@kk.com',
       ssn: 10003,
-      status: 1
+      state: 1
 
     },
     {
@@ -37,7 +37,7 @@ export class ManagerService {
       lName: 'Mashtooli',
       email: 'mm@mm.com',
       ssn: 10004,
-      status: 1
+      state: 1
 
     }
   ];
