@@ -13,6 +13,5 @@ export class PersonCardComponent {
   SendSelecterEmpId(id:any)
   {
     this.SendValues.emit(id)
-    console.log(id)
   }
 }
