@@ -27,8 +27,18 @@
                         <h4 _ngcontent-fnq-c20="" class="text-primary">{{item.fName}} {{item.lName}}</h4>
                         <p _ngcontent-fnq-c20="" class="text-uppercase m-0">{{item.ssn}}</p>
                         <p _ngcontent-fnq-c20="" class="text-uppercase m-0">{{item.role}}</p>
-                        <p _ngcontent-fnq-c20="" class="text-uppercase m-0">{{item.department}}</p>
-                        <p _ngcontent-fnq-c20="" class="text-uppercase m-0">{{item.state}}</p>
+                        <p _ngcontent-fnq-c20="" class="text-uppercase m-0">{{item.department}}</p>                     
+                      <div [ngSwitch]="item.state">
+                            <div *ngSwitchCase="2">
+                          <span class="badge bg-label-warning me-1">Pending</span>
+                            </div>
+                            <div *ngSwitchCase="1">
+                                <span class="badge bg-label-success me-1">Online</span>
+                            </div>
+                                  <div *ngSwitchCase="0">
+                                    <span class="badge bg-label-danger me-1">Offline</span>
+                                </div>
+                        </div>   
                     </div>
                 </div>
 
