@@ -17,4 +17,7 @@ allEmp:any[]=this.hrService.allEmp;
   ngOnInit(): void {
     
   }
+  GetValues(id:any){
+   this.router.navigate(['Hr/EmpDetails',id]);
+  }
 }

@@ -7,6 +7,7 @@ import { MainComponent } from './main/main.component';
 import { AllEmpLeavesComponent } from './all-emp-leaves/all-emp-leaves.component';
 import { LeaveDetailsComponent } from './leave-details/leave-details.component';
 import { EmployeeListComponent } from './employee-list/employee-list.component';
+import { EmployeeDetailsComponent } from './employee-details/employee-details.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { EmployeeListComponent } from './employee-list/employee-list.component';
     MainComponent,
     AllEmpLeavesComponent,
     LeaveDetailsComponent,
-    EmployeeListComponent
+    EmployeeListComponent,
+    EmployeeDetailsComponent
   ],
   imports: [
     CommonModule,
