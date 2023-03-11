@@ -52,9 +52,9 @@ export class ManagerService {
 
   myLeaves = [
     { "leaveid": 1, "startDate": "2222","endDate":"2222","State":1},
-    { "leaveid": 1, "startDate": "2222","endDate":"2222","State":0},
-    { "leaveid": 1, "startDate": "2222","endDate":"2222","State":2},
-    { "leaveid": 1, "startDate": "2222","endDate":"2222","State":0},
-    { "leaveid": 1, "startDate": "2222","endDate":"2222","State":1}
+    { "leaveid": 2, "startDate": "2222","endDate":"2222","State":0},
+    { "leaveid": 3, "startDate": "2222","endDate":"2222","State":2},
+    { "leaveid": 4, "startDate": "2222","endDate":"2222","State":0},
+    { "leaveid": 5, "startDate": "2222","endDate":"2222","State":1}
   ];
 }

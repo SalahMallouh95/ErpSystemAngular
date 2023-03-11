@@ -7,6 +7,7 @@ import { SharedModule } from '../shared/shared.module';
 import { AllEmployeesComponent } from './all-employees/all-employees.component';
 import { MAllEmpLeavesComponent } from './m-all-emp-leaves/m-all-emp-leaves.component';
 import { MLeavesComponent } from './m-leaves/m-leaves.component';
+import { MLeaveDetailsComponent } from './m-leave-details/m-leave-details.component';
 
 
 
@@ -17,7 +18,8 @@ import { MLeavesComponent } from './m-leaves/m-leaves.component';
     MainComponent,
               AllEmployeesComponent,
               MAllEmpLeavesComponent,
-              MLeavesComponent
+              MLeavesComponent,
+              MLeaveDetailsComponent
   ],
   imports: [
     CommonModule,
