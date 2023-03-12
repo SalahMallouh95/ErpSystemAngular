@@ -1,0 +1,75 @@
+    <!-- Layout wrapper -->
+    <div class="layout-wrapper layout-content-navbar">
+        <div class="layout-container">
+          <!-- Menu -->
+          <app-employee-sidbar></app-employee-sidbar>
+         <!-- / Menu -->
+          <!-- Layout container -->
+          <div class="layout-page">
+            <!-- Navbar -->
+            <app-dash-header></app-dash-header>
+            <!-- / Navbar -->
+            <!-- Content wrapper -->
+            <div class="content-wrapper">
+              <!-- Content -->
+              <div class="container-xxl flex-grow-1 container-p-y">
+                <!-- Basic Bootstrap Table -->
+                <div class="card wow fadeInUp"  style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+                   <h5 class="card-header">Table Of Solution</h5>
+                   <div class="table-responsive text-nowrap">
+                     <table class="table table-hover wow slideInUp"
+                     style="visibility: visible; animation-delay: 0.3s; animation-name: slideInUp;">
+                       <thead>
+                         <tr style="background-color: #696cff66;">
+                           <th>Date</th>
+                           <th>FeedBAck</th>
+                           <th>state</th>
+                           <th></th>
+                         </tr>
+                       </thead>
+                       <tbody class="table-border-bottom-0"> 
+                           <tr *ngFor="let item of allSolutionList">   
+                            
+    <td>{{item.uploadDate}}</td>
+    <td>
+        {{item.feedMessage}}                  
+    </td>
+       <td>
+        <div [ngSwitch]="item.State">
+            <div *ngSwitchCase="2">
+          <span class="badge bg-label-warning me-1">Pending</span>
+            </div>
+            <div *ngSwitchCase="1">
+                <span class="badge bg-label-success me-1">Accepted</span>
+            </div>
+                  <div *ngSwitchCase="0">
+                    <span class="badge bg-label-danger me-1">Rejected</span>
+                </div>
+        </div>                       
+    </td>     
+    <td>
+        <a (click)="GetValues(item.solutionid)" class="btn btn-outline-info">More Info</a>
+    </td>           
+                 
+                           </tr>            
+                      
+                      </tbody>
+                     </table>
+                   </div>
+                 </div>
+               </div>
+                 <!--/ Basic Bootstrap Table -->
+              <!-- / Content -->
+              <!-- Footer -->
+              <!-- / Footer -->
+              <div class="content-backdrop fade"></div>
+            </div>
+            <!-- Content wrapper -->
+          </div>
+          <!-- / Layout page -->
+        </div>
+  
+        <!-- Overlay -->
+        <div class="layout-overlay layout-menu-toggle"></div>
+      </div>
+      <!-- / Layout wrapper -->
