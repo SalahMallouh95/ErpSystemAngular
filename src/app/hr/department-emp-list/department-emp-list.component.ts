@@ -3,20 +3,20 @@ import { Router } from '@angular/router';
 import { HrService } from 'src/app/hr.service';
 
 @Component({
-  selector: 'app-employee-list',
-  templateUrl: './employee-list.component.html',
-  styleUrls: ['./employee-list.component.css']
+  selector: 'app-department-emp-list',
+  templateUrl: './department-emp-list.component.html',
+  styleUrls: ['./department-emp-list.component.css']
 })
-export class EmployeeListComponent implements OnInit{
+export class DepartmentEmpListComponent implements OnInit{
 
-  allEmp:any[]=this.hrService.allEmp;
+  allEmp:any[]| undefined 
 
   constructor(private router:Router,public hrService:HrService)
   {
 
   }
   ngOnInit(): void {
-    
+    this.allEmp=this.hrService.allEmp.filter(emp=>emp.Department=="IT");
   }
   GetValues(id:any){
    this.router.navigate(['Hr/EmpDetails',id]);

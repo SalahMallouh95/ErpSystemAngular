@@ -1,0 +1,53 @@
+    <!-- Layout wrapper -->
+    <div class="layout-wrapper layout-content-navbar">
+        <div class="layout-container">
+          <!-- Menu -->
+          <app-employee-sidbar></app-employee-sidbar>
+         <!-- / Menu -->
+          <!-- Layout container -->
+          <div class="layout-page">
+            <!-- Navbar -->
+            <app-dash-header></app-dash-header>
+            <!-- / Navbar -->
+            <!-- Content wrapper -->
+            <div class="content-wrapper">
+              <!-- Content -->
+              <div class="container-xxl flex-grow-1 container-p-y">
+                <!-- Basic Bootstrap Table -->
+                    <h2 class="pb-1 mb-4">Leave info</h2> 
+                    <div class="row mb-5">
+                      <div class="col-md-6 col-xl-4">
+                        <div class="card mb-3">
+                          <div class="card-body">
+                            <h5 class="card-title">leave Type: {{leaveInfo[0].leaveType}}</h5>
+                            <p class="card-text">
+                              {{leaveInfo[0].message}}
+                            </p>
+                            <p class="card-text">
+                              <small class="text-muted">Start Date: {{leaveInfo[0].startDate}}</small>
+                            </p>
+                            <p class="card-text">
+                                <small class="text-muted">End Date: {{leaveInfo[0].endDate}}</small>
+                              </p>
+                              <p class="card-text">
+                                <small class="text-muted">Document: {{leaveInfo[0].documentFileName}}</small>
+                              </p>
+                          </div>
+                        </div>
+                      </div>
+                     </div>
+                 <!--/ Basic Bootstrap Table -->
+              <!-- / Content -->
+              <!-- Footer -->
+              <!-- / Footer -->
+              <div class="content-backdrop fade"></div>
+            </div>
+            <!-- Content wrapper -->
+          </div>
+          <!-- / Layout page -->
+        </div>
+  
+        <!-- Overlay -->
+        <div class="layout-overlay layout-menu-toggle"></div>
+      </div>
+      <!-- / Layout wrapper -->
