@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { EmployeeService } from 'src/app/employee.service';
 @Component({
@@ -6,12 +6,18 @@ import { EmployeeService } from 'src/app/employee.service';
   templateUrl: './grtleaves.component.html',
   styleUrls: ['./grtleaves.component.css']
 })
-export class GrtleavesComponent {
+
+export class GrtleavesComponent implements OnInit{
 constructor(public employeeService:EmployeeService,private router:Router){
 
 }
+allLeavesList :any []|undefined
+  
+ngOnInit(): void {
+    this.allLeavesList=this.employeeService.allLeaves.filter(l=>l.userid==1)
+  }
 
-allLeavesList :any []=this.employeeService.allLeaves
+
 
 GetValues(id :any){
   this.router.navigate(['Employee/leavedetail',id]);

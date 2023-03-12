@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-department-create',
@@ -6,5 +8,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./department-create.component.css']
 })
 export class DepartmentCreateComponent {
+  constructor(private toastr: ToastrService) {}
 
+  showSuccess() {
+    this.toastr.success('Hello world!', 'Toastr fun!');
+    console.log("Xx")
+  }
 }

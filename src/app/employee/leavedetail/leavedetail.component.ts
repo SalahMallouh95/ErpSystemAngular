@@ -14,9 +14,11 @@ constructor(private route:ActivatedRoute,public employeeService:EmployeeService)
   id:number|undefined
   leaveInfo:any|{}  
 
+  leavetype1:any|{}
   ngOnInit(): void {
     this.id=this.route.snapshot.params['id'];
     this.leaveInfo=this.employeeService.allLeaves.filter((lev)=>lev.leaveid==this.id )
+    this.leavetype1=this.employeeService.leavetype1
   }
 
 }
