@@ -11,6 +11,7 @@ import { MLeaveDetailsComponent } from './m-leave-details/m-leave-details.compon
 import { MEmpInfoComponent } from './m-emp-info/m-emp-info.component';
 import { CreateTaskComponent } from './create-task/create-task.component';
 import { TasksComponent } from './tasks/tasks.component';
+import { TasksDetailesComponent } from './tasks-detailes/tasks-detailes.component';
 
 
 
@@ -25,7 +26,8 @@ import { TasksComponent } from './tasks/tasks.component';
               MLeaveDetailsComponent,
               MEmpInfoComponent,
               CreateTaskComponent,
-              TasksComponent
+              TasksComponent,
+              TasksDetailesComponent
   ],
   imports: [
     CommonModule,

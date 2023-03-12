@@ -7,11 +7,18 @@
             </app-dash-header>
 
             <div class="container-xxl flex-grow-1 container-p-y">
-                <!-- Basic Bootstrap Table -->
+                
+                
+                
+
                 <div class="card wow fadeInUp"
                     style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
-                    <h5 class="card-header">Table Basic</h5>
+                    <br><br><br><br><br><br>
                     <div class="table-responsive text-nowrap">
+
+                        <div class="demo-inline-spacing">
+                            <button style="position: absolute; top: 0px; right:100px;" type="button" class="btn rounded-pill btn-success"  [routerLink]="['/Manager/CreateTask']">Create New Task</button>                      
+                                         </div>
                         <table class="table table-hover wow slideInUp"
                             style="visibility: visible; animation-delay: 0.3s; animation-name: slideInUp;">
                             <thead>
@@ -24,6 +31,11 @@
                                 </tr>
                             </thead>
                             <tbody class="table-border-bottom-0">
+
+
+
+
+                                
 
                                 <tr *ngFor="let t of tas">
                                     <td>{{t.name}}</td>
@@ -45,6 +57,10 @@
 
                                     </td>
 
+                                    <td>
+                                        <a (click)="SendSelecterTaskId(t.tid)"  class="btn btn-outline-info">More Info</a>
+                                    </td>
+
                                 </tr>
 
 
@@ -53,7 +69,7 @@
                     </div>
                 </div>
             </div>
-            <!--/ Basic Bootstrap Table -->
+           
         </div>
     </div>
 </div>
