@@ -18,6 +18,6 @@ export class MLeaveDetailsComponent  implements OnInit {
   ngOnInit(): void {
     this.id=this.route.snapshot.params['id'];
     this.leaveInfo=this.managerService.allLeaves.filter((lev)=>lev.leaveid==this.id )
-    console.log(this.leaveInfo)
+    
   }
 }

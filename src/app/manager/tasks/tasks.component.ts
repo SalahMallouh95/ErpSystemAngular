@@ -25,6 +25,12 @@ SendSelecterTaskId(id :any){
 }
 
 
+SendSelecterSolutionId(id :any){
+  this.route.navigate(['Manager/TaskSolution',id]);
+  
+  
+}
+
 
 
 }

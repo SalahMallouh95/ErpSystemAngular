@@ -14,6 +14,7 @@ import { TasksComponent } from './tasks/tasks.component';
 import { TasksDetailesComponent } from './tasks-detailes/tasks-detailes.component';
 import { MMyLeaveDetailsComponent } from './m-my-leave-details/m-my-leave-details.component';
 import { EditTaskComponent } from './edit-task/edit-task.component';
+import { MSolutionComponent } from './m-solution/m-solution.component';
 
 
 
@@ -31,7 +32,8 @@ import { EditTaskComponent } from './edit-task/edit-task.component';
               TasksComponent,
               TasksDetailesComponent,
               MMyLeaveDetailsComponent,
-              EditTaskComponent
+              EditTaskComponent,
+              MSolutionComponent
   ],
   imports: [
     CommonModule,

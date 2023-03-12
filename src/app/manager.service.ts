@@ -193,6 +193,46 @@ export class ManagerService {
 
     }
   ];
+
+
+
+  
+
+  sloutions =[
+
+    {
+      sid: 1,
+      tid: 1,
+      state: 1,
+      uploudDate: new Date(2022,3,1),
+      feedBack: 'good job',
+      docFileName: 'sdfsdfsdfs'
+    },{
+      sid: 2,
+      tid: 1,
+      state: 1,
+      uploudDate: new Date(2022,3,1),
+      feedBack: 'good job',
+      docFileName: 'sdfsdfsdfs'
+    },{
+      sid: 1,
+      tid: 2,
+      state: 1,
+      uploudDate: new Date(2022,3,1),
+      feedBack: 'good job',
+      docFileName: 'sdfsdfsdfs'
+    },
+    {
+      sid: 2,
+      tid: 2,
+      state: 1,
+      uploudDate: new Date(2022,3,1),
+      feedBack: 'good job',
+      docFileName: 'sdfsdfsdfs'
+    },
+  ]
+
+
 }
 
 

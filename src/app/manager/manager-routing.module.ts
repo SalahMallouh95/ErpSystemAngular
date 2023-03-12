@@ -10,6 +10,7 @@ import { MEmpInfoComponent } from './m-emp-info/m-emp-info.component';
 import { MLeaveDetailsComponent } from './m-leave-details/m-leave-details.component';
 import { MLeavesComponent } from './m-leaves/m-leaves.component';
 import { MMyLeaveDetailsComponent } from './m-my-leave-details/m-my-leave-details.component';
+import { MSolutionComponent } from './m-solution/m-solution.component';
 import { MainComponent } from './main/main.component';
 import { TasksDetailesComponent } from './tasks-detailes/tasks-detailes.component';
 import { TasksComponent } from './tasks/tasks.component';
@@ -58,6 +59,10 @@ const routes: Routes = [
   {
     path: 'TaskDetails/:id',
     component: TasksDetailesComponent
+  },
+  {
+    path: 'TaskSolution/:id',
+    component: MSolutionComponent
   }
  ];
 
