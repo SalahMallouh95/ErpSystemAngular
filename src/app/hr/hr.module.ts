@@ -11,6 +11,9 @@ import { EmployeeDetailsComponent } from './employee-details/employee-details.co
 import { LeaveTypesComponent } from './leave-types/leave-types.component';
 import { LeaveTypesEditComponent } from './leave-types-edit/leave-types-edit.component';
 import { LeaveTypesCreateComponent } from './leave-types-create/leave-types-create.component';
+import { DepartmentComponent } from './department/department.component';
+import { DepartmentCreateComponent } from './department-create/department-create.component';
+import { DepartmentEditComponent } from './department-edit/department-edit.component';
 
 
 @NgModule({
@@ -22,7 +25,10 @@ import { LeaveTypesCreateComponent } from './leave-types-create/leave-types-crea
     EmployeeDetailsComponent,
     LeaveTypesComponent,
     LeaveTypesEditComponent,
-    LeaveTypesCreateComponent
+    LeaveTypesCreateComponent,
+    DepartmentComponent,
+    DepartmentCreateComponent,
+    DepartmentEditComponent
   ],
   imports: [
     CommonModule,
