@@ -10,7 +10,8 @@
         </app-dash-header>
   
         <div class="container-xxl flex-grow-1 container-p-y">
-  
+
+          
           <div class="card">
             <div class="card-body">
               <h4 class="card-title">{{taskInfo[0].tName}} </h4>
@@ -41,6 +42,13 @@
                   routerLinkActive="active" class="btn rounded-pill btn-info">Back</button>
               </div>
             </div>
+            <div class="demo-inline-spacing">
+              <button (click)="SendSelectorEditTaskId(taskInfo[0].tid)" style="position: absolute; top: 0px; right:100px;" type="button"
+                  class="btn rounded-pill btn-success" [routerLink]="['/Manager/EditTask']">Edit
+                  Task</button>
+          </div>
+    
+          
           </div>
         </div>
       </div>

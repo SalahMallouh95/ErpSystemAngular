@@ -1,47 +1,49 @@
 <div class="layout-wrapper layout-content-navbar">
-    <div class="layout-container">
-  
-      <app-manager-side-bar></app-manager-side-bar>
-  
-  
-      <div class="layout-page">
-  
-        <app-dash-header>
-        </app-dash-header>
-  
-        <div class="container-xxl flex-grow-1 container-p-y">
-  
-          <div class="card">
-            <div class="card-body">
-              <h4 class="card-title">{{leaveInfo[0].fName}} {{leaveInfo[0].LName}}</h4>
-              <p class="card-text">
-                <b>Start Date:</b> {{leaveInfo[0].startDate}}<br>
-                <b>End Date:</b> {{leaveInfo[0].endDate}}<br>
-                <b>Leave Type</b> {{leaveInfo[0].leaveType}}<br>
-                <b>Message:</b> {{leaveInfo[0].Message}} <br>
-                <b>Document:</b> {{leaveInfo[0].documentFileName}}<br>
-              </p>
-              <b>States: </b>
-              <div [ngSwitch]="leaveInfo[0].State" style="display: inline;">
-                <div *ngSwitchCase="2" style="display: inline;">
-                  <span class="badge bg-label-warning me-1 ">Pending</span>
-                </div>
-                <div *ngSwitchCase="1" style="display: inline;">
-                  <span class="badge bg-label-success me-1">Accepted</span>
-                </div>
-                <div *ngSwitchCase="0" style="display: inline;">
-                  <span class="badge bg-label-danger me-1">Rejected</span>
-                </div>
+  <div class="layout-container">
+
+    <app-manager-side-bar></app-manager-side-bar>
+
+
+    <div class="layout-page">
+
+      <app-dash-header>
+      </app-dash-header>
+
+      <div class="container-xxl flex-grow-1 container-p-y">
+
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">{{leaveInfo[0].fName}} {{leaveInfo[0].LName}}</h4>
+            <p class="card-text">
+              <b>Start Date:</b> {{leaveInfo[0].startDate}}<br>
+              <b>End Date:</b> {{leaveInfo[0].endDate}}<br>
+              <b>Leave Type</b> {{leaveInfo[0].leaveType}}<br>
+              <b>Message:</b> {{leaveInfo[0].Message}} <br>
+              <b>Document:</b> {{leaveInfo[0].documentFileName}}<br>
+            </p>
+            <b>States: </b>
+            <div [ngSwitch]="leaveInfo[0].State" style="display: inline;">
+              <div *ngSwitchCase="2" style="display: inline;">
+                <span class="badge bg-label-warning me-1 ">Pending</span>
               </div>
-              <br>
-              <div class="demo-inline-spacing">
-                <button type="button" class="btn rounded-pill btn-success">Accept</button>
-                <button type="button" class="btn rounded-pill btn-danger">Reject</button>
-                <button style="position: absolute; top: 0px; right:0px;" type="button" [routerLink]="['/Manager/mAllEmpLeaves']"
-                  routerLinkActive="active" class="btn rounded-pill btn-info">Back</button>
+              <div *ngSwitchCase="1" style="display: inline;">
+                <span class="badge bg-label-success me-1">Accepted</span>
               </div>
+              <div *ngSwitchCase="0" style="display: inline;">
+                <span class="badge bg-label-danger me-1">Rejected</span>
+              </div>
+            </div>
+            <br>
+            <div class="demo-inline-spacing">
+              <button type="button" class="btn rounded-pill btn-success">Accept</button>
+              <button type="button" class="btn rounded-pill btn-danger">Reject</button>
+              <button style="position: absolute; top: 0px; right:0px;" type="button"
+                [routerLink]="['/Manager/mAllEmpLeaves']" routerLinkActive="active"
+                class="btn rounded-pill btn-info">Back</button>
             </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
+</div>

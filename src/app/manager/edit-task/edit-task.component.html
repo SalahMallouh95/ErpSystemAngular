@@ -15,15 +15,12 @@
 
 
                 <div class="container-xxl flex-grow-1 container-p-y">
-                    <h3 class="fw-bold py-3 mb-4"> Create Task</h3>
+                    <h3 class="fw-bold py-3 mb-4"> Edit Task</h3>
 
                     <!-- Basic Layout -->
                     <div class="row">
                         <div class="col-xl">
                             <div class="card mb-4">
-
-
-                                
 
                                 <div class="card-body">
                                     <form>
@@ -33,25 +30,25 @@
                                         <div class="mb-3 col-md-6">
                                             <label class="form-label" for="basic-default-fullname">Task Name</label>
                                             <input type="text" class="form-control" id="basic-default-fullname"
-                                                placeholder="John Doe" />
+                                                placeholder="John Doe" [value]="tas[0].tName" />
                                         </div>
 
                                         <div class="mb-3 col-md-6">
                                             <label class="form-label" for="basic-default-phone">Upload Task</label>
                                             <input type="file" id="basic-default-phone" class="form-control phone-mask"
-                                                placeholder="10001" />
+                                                placeholder="10001" [value]="tas.docFileName" />
                                         </div>
 
                                         <div class="mb-3 col-md-6">
                                             <label class="form-label" for="basic-default-phone">Start Date</label>
                                             <input type="datetime-local" id="basic-default-phone"
-                                                class="form-control phone-mask" placeholder="10001" />
+                                                class="form-control phone-mask" placeholder="10001" [value]="tas.startDate" />
                                         </div>
 
                                         <div class="mb-3 col-md-6">
                                             <label class="form-label" for="basic-default-phone">End Date</label>
                                             <input type="datetime-local" id="basic-default-phone"
-                                                class="form-control phone-mask" placeholder="10001" />
+                                                class="form-control phone-mask" placeholder="10001" [value]="tas.endDate"/>
                                         </div>
 
                                         <div class="mb-3 col-md-6">
@@ -71,7 +68,7 @@
                                         <div class="demo-inline-spacing">
 
                                             <button style="position: absolute; top: 0px; right:0px;" type="button"
-                                                [routerLink]="['/Manager/AllTasks']" routerLinkActive="active"
+                                                onclick="history.back(-1)" 
                                                 class="btn rounded-pill btn-info">Back</button>
                                         </div>
 
