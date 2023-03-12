@@ -13,8 +13,7 @@ import { RawAllEmpLeaveComponent } from './raw-all-emp-leave/raw-all-emp-leave.c
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { PersonCardComponent } from './person-card/person-card.component';
 import { EmployeeSidbarComponent } from './employee-sidbar/employee-sidbar.component';
-
-
+import { ToastrModule } from 'ngx-toastr';
 
 
 
@@ -33,7 +32,8 @@ import { EmployeeSidbarComponent } from './employee-sidbar/employee-sidbar.compo
   imports: [
     CommonModule,
     RouterModule,
-    FormsModule
+    FormsModule,
+    ToastrModule.forRoot()
   ],
   exports:[
     HomeFooterComponent,
@@ -49,7 +49,8 @@ import { EmployeeSidbarComponent } from './employee-sidbar/employee-sidbar.compo
     NgxSpinnerModule,
     PersonCardComponent,
     EmployeeSidbarComponent,
-    FormsModule
+    FormsModule,
+    ToastrModule
   ]
 })
 export class SharedModule { }
