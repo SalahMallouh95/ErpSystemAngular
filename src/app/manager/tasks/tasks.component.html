@@ -1,0 +1,75 @@
+<div class="layout-wrapper layout-content-navbar">
+    <div class="layout-container">
+
+        <app-manager-side-bar></app-manager-side-bar>
+        <div class="layout-page">
+            <app-dash-header>
+            </app-dash-header>
+
+            <div class="container-xxl flex-grow-1 container-p-y">
+                
+                
+                
+
+                <div class="card wow fadeInUp"
+                    style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+                    <br><br><br><br><br><br>
+                    <div class="table-responsive text-nowrap">
+
+                        <div class="demo-inline-spacing">
+                            <button style="position: absolute; top: 0px; right:100px;" type="button" class="btn rounded-pill btn-success"  [routerLink]="['/Manager/CreateTask']">Create New Task</button>                      
+                                         </div>
+                        <table class="table table-hover wow slideInUp"
+                            style="visibility: visible; animation-delay: 0.3s; animation-name: slideInUp;">
+                            <thead>
+                                <tr style="background-color: #696cff66;">
+                                    <th>Employee Name</th>
+                                    <th>Task Name</th>
+                                    <th>State </th>
+
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-border-bottom-0">
+
+
+
+
+                                
+
+                                <tr *ngFor="let t of tas">
+                                    <td>{{t.name}}</td>
+                                    <td>{{t.tName}}</td>
+                                    <td>
+                                        <div [ngSwitch]="t.state">
+                                            <div *ngSwitchCase="2">
+                                                <span class="badge bg-label-success me-1">Pending</span>
+                                            </div>
+
+                                            <div *ngSwitchCase="1">
+                                                <span class="badge bg-label-danger me-1">Accepted</span>
+                                            </div>
+
+                                            <div *ngSwitchCase="0">
+                                                <span class="badge bg-label-danger me-1">Rejected</span>
+                                            </div>
+                                        </div>
+
+                                    </td>
+
+                                    <td>
+                                        <a (click)="SendSelecterTaskId(t.tid)"  class="btn btn-outline-info">More Info</a>
+                                    </td>
+
+                                </tr>
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+    </div>
+</div>

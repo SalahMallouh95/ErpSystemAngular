@@ -9,6 +9,8 @@ import { MEmpInfoComponent } from './m-emp-info/m-emp-info.component';
 import { MLeaveDetailsComponent } from './m-leave-details/m-leave-details.component';
 import { MLeavesComponent } from './m-leaves/m-leaves.component';
 import { MainComponent } from './main/main.component';
+import { TasksDetailesComponent } from './tasks-detailes/tasks-detailes.component';
+import { TasksComponent } from './tasks/tasks.component';
 
 const routes: Routes = [
   {
@@ -38,6 +40,14 @@ const routes: Routes = [
   {
     path: 'CreateTask',
     component: CreateTaskComponent
+  },
+  {
+    path: 'AllTasks',
+    component: TasksComponent
+  },
+  {
+    path: 'TaskDetails/:id',
+    component: TasksDetailesComponent
   }
  ];
 

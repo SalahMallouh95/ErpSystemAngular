@@ -10,6 +10,8 @@ import { MLeavesComponent } from './m-leaves/m-leaves.component';
 import { MLeaveDetailsComponent } from './m-leave-details/m-leave-details.component';
 import { MEmpInfoComponent } from './m-emp-info/m-emp-info.component';
 import { CreateTaskComponent } from './create-task/create-task.component';
+import { TasksComponent } from './tasks/tasks.component';
+import { TasksDetailesComponent } from './tasks-detailes/tasks-detailes.component';
 
 
 
@@ -23,7 +25,9 @@ import { CreateTaskComponent } from './create-task/create-task.component';
               MLeavesComponent,
               MLeaveDetailsComponent,
               MEmpInfoComponent,
-              CreateTaskComponent
+              CreateTaskComponent,
+              TasksComponent,
+              TasksDetailesComponent
   ],
   imports: [
     CommonModule,

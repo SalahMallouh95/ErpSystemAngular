@@ -14,6 +14,7 @@ import { LeaveTypesCreateComponent } from './leave-types-create/leave-types-crea
 import { DepartmentComponent } from './department/department.component';
 import { DepartmentCreateComponent } from './department-create/department-create.component';
 import { DepartmentEditComponent } from './department-edit/department-edit.component';
+import { DepartmentEmpListComponent } from './department-emp-list/department-emp-list.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { DepartmentEditComponent } from './department-edit/department-edit.compo
     LeaveTypesCreateComponent,
     DepartmentComponent,
     DepartmentCreateComponent,
-    DepartmentEditComponent
+    DepartmentEditComponent,
+    DepartmentEmpListComponent
   ],
   imports: [
     CommonModule,

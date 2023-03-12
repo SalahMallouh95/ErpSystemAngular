@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AllEmpLeavesComponent } from './all-emp-leaves/all-emp-leaves.component';
 import { DepartmentCreateComponent } from './department-create/department-create.component';
 import { DepartmentEditComponent } from './department-edit/department-edit.component';
+import { DepartmentEmpListComponent } from './department-emp-list/department-emp-list.component';
 import { DepartmentComponent } from './department/department.component';
 import { EmployeeDetailsComponent } from './employee-details/employee-details.component';
 import { EmployeeListComponent } from './employee-list/employee-list.component';
@@ -59,6 +60,10 @@ const routes: Routes = [
   {
     path:"DepartmentEdit",
     component:DepartmentEditComponent
+  },
+  {
+    path:"DepartmentEmp",
+    component:DepartmentEmpListComponent
   }
 ];
 
