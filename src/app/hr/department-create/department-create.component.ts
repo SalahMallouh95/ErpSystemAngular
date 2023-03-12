@@ -12,5 +12,6 @@ export class DepartmentCreateComponent {
 
   showSuccess() {
     this.toastr.success('Hello world!', 'Toastr fun!');
+    console.log("Xx")
   }
 }
