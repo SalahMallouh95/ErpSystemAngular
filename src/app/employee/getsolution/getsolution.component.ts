@@ -12,7 +12,7 @@ export class GetsolutionComponent {
 
   }
   
-  allSolutionList :any []=this.employeeService.allsultion
+  allSolutionList :any []=this.employeeService.allsultion.filter(l=>l.taskid==1)
   
   GetValues(id :any){
     this.router.navigate(['Employee/solutiondetail',id]);
