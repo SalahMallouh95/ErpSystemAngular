@@ -12,6 +12,8 @@ import { MEmpInfoComponent } from './m-emp-info/m-emp-info.component';
 import { CreateTaskComponent } from './create-task/create-task.component';
 import { TasksComponent } from './tasks/tasks.component';
 import { TasksDetailesComponent } from './tasks-detailes/tasks-detailes.component';
+import { MMyLeaveDetailsComponent } from './m-my-leave-details/m-my-leave-details.component';
+import { EditTaskComponent } from './edit-task/edit-task.component';
 
 
 
@@ -27,7 +29,9 @@ import { TasksDetailesComponent } from './tasks-detailes/tasks-detailes.componen
               MEmpInfoComponent,
               CreateTaskComponent,
               TasksComponent,
-              TasksDetailesComponent
+              TasksDetailesComponent,
+              MMyLeaveDetailsComponent,
+              EditTaskComponent
   ],
   imports: [
     CommonModule,

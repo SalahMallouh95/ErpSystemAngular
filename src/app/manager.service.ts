@@ -55,11 +55,11 @@ export class ManagerService {
 
 
   myLeaves = [
-    { "leaveid": 1, "startDate": "2222","endDate":"2222","State":1},
-    { "leaveid": 2, "startDate": "2222","endDate":"2222","State":0},
-    { "leaveid": 3, "startDate": "2222","endDate":"2222","State":2},
-    { "leaveid": 4, "startDate": "2222","endDate":"2222","State":0},
-    { "leaveid": 5, "startDate": "2222","endDate":"2222","State":1}
+    {  userid:1,"leaveid": 1, "startDate": "2222","endDate":"2222","State":1,"Message":"tet","documentFileName":"ss","leaveType":"lev"},
+    {  userid:1,"leaveid": 2, "startDate": "2222","endDate":"2222","State":0,"Message":"tet","documentFileName":"ss","leaveType":"lev"},
+    {  userid:1,"leaveid": 3, "startDate": "2222","endDate":"2222","State":2,"Message":"tet","documentFileName":"ss","leaveType":"lev"},
+    {  userid:1,"leaveid": 4, "startDate": "2222","endDate":"2222","State":0,"Message":"tet","documentFileName":"ss","leaveType":"lev"},
+    {  userid:1,"leaveid": 5, "startDate": "2222","endDate":"2222","State":1,"Message":"tet","documentFileName":"ss","leaveType":"lev"}
   ];
 
 
@@ -147,7 +147,9 @@ export class ManagerService {
       desc:'vdsvdsdvds',
       name : 'ali ahmad',
       tName: 'task1',
-      state: 0
+      state: 0,
+      startDate: new Date(2022,1,3),
+      endDate: new Date(2022,2,3)
     },
     {
       tid: 2,
@@ -158,7 +160,9 @@ export class ManagerService {
       desc:'vdsvdsdvds',
       name: 'Salah Mallouh',
       tName: 'task2',
-      state: 2
+      state: 2,
+      startDate: '12-2-2022',
+      endDate: '3/3/2022'
     },
     {
       tid: 3,
@@ -169,7 +173,9 @@ export class ManagerService {
       desc:'vdsvdsdvds',
       name: 'Moayad Khateeb',
       tName: 'task3',
-      state: 1
+      state: 1,
+      startDate: '11-2-2022',
+      endDate: '13-2-2022'
 
     },
     {
@@ -181,7 +187,9 @@ export class ManagerService {
       desc:'vdsvdsdvds',
       name: 'Mohammad Mashtooli',
       tName: 'task4',
-      state: 1
+      state: 1,
+      startDate: '14-2-2022',
+      endDate: '30-2-2022'
 
     }
   ];

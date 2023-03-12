@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ManagerService } from 'src/app/manager.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { ManagerService } from 'src/app/manager.service';
 })
 export class TasksDetailesComponent implements OnInit{
 
-  constructor(public man:ManagerService, private route: ActivatedRoute){
+  constructor(public man:ManagerService, private route: ActivatedRoute,private rou : Router){
 
   }
 
@@ -20,6 +20,13 @@ export class TasksDetailesComponent implements OnInit{
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'] ;
     this.taskInfo = this.man.task.filter( t =>t.tid == this.id )
+  }
+
+  SendSelectorEditTaskId(id:any){
+
+    this.rou.navigate(['Manager/EditTask',id])
+
+
   }
 
 }

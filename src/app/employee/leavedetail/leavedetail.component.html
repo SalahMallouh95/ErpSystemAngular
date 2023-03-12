@@ -69,6 +69,7 @@
                           <input class="form-control" type="file" id="formFile" [(ngModel)]="leaveInfo[0].documentFileName"[ngModelOptions]="{standalone: true}"/>
                         </div>
                         <button type="submit" class="btn btn-primary">Send</button>
+                        <button type="submit" class="btn btn-primary" onclick="history.back(-1)">Back</button>
                       </form>
                     </div>
                   </div>
@@ -127,6 +128,7 @@
                               <p class="card-text">
                                 <small class="text-muted">Document: {{leaveInfo[0].documentFileName}}</small>
                               </p>
+                              <button type="submit" class="btn btn-primary" onclick="history.back(-1)">Back</button>
                           </div>
                         </div>
                       </div>

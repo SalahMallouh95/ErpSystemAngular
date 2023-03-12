@@ -8,6 +8,8 @@ import { GrtleavesComponent } from './grtleaves/grtleaves.component';
 import { LeavedetailComponent } from './leavedetail/leavedetail.component';
 import { GetsolutionComponent } from './getsolution/getsolution.component';
 import { SolutindetailComponent } from './solutindetail/solutindetail.component';
+import { CreateleaveComponent } from './createleave/createleave.component';
+import { GettaskComponent } from './gettask/gettask.component';
 
 
 @NgModule({
@@ -16,7 +18,9 @@ import { SolutindetailComponent } from './solutindetail/solutindetail.component'
     GrtleavesComponent,
     LeavedetailComponent,
     GetsolutionComponent,
-    SolutindetailComponent
+    SolutindetailComponent,
+    CreateleaveComponent,
+    GettaskComponent
   ],
   imports: [
     CommonModule,

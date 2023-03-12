@@ -19,14 +19,22 @@ export class EmployeeService {
 
   ];
   allsultion = [
-    { "solutionid": 1, "taskid": "34234","uploadDate":"32432","feedMessage":"tet","State":2,"documentFileName":"srfwes"},
-    { "solutionid": 2, "taskid": "34234","uploadDate":"32432","feedMessage":"tet","State":0,"documentFileName":"ewfss"},   
-    { "solutionid":3, "taskid": "34234","uploadDate":"32432","feedMessage":"tet","State":1,"documentFileName":"wefss"},  
+    { "solutionid": 1, "taskid": 1,"uploadDate":"32432","feedMessage":"tet","State":2,"documentFileName":"srfwes"},
+    { "solutionid": 2, "taskid": 3,"uploadDate":"32432","feedMessage":"tet","State":0,"documentFileName":"ewfss"},   
+    { "solutionid":3, "taskid": 2,"uploadDate":"32432","feedMessage":"tet","State":1,"documentFileName":"wefss"},  
   ];
   leavetype1 = [
     { "leaveid": 1, "leavetype": "ergregerg"},
     { "leaveid": 2, "leavetype": "wdewdwe"},   
     { "leaveid": 3, "leavetype": "edfwefwef"},  
     { "leaveid": 3, "leavetype": "sdsad"}
+  ];
+  alltask = [
+    { "taskid": 1,"userid":1, "managerid": 1,"uploadDate":"32432","State":2,"documentFileName":"ssdvc","taskname":"dfgdgdcdstr","taskdesc":"legfbfv"},
+    { "taskid": 2,"userid":2, "managerid": 1,"uploadDate":"32432","State":1,"documentFileName":"ssdvc","taskname":"dfgdgdcdstr","taskdesc":"legfbfv"},
+    { "taskid": 3,"userid":1, "managerid": 1,"uploadDate":"32432","State":0,"documentFileName":"ssdvc","taskname":"dfgdgdcdstr","taskdesc":"legfbfv"},
+    { "taskid": 4,"userid":1, "managerid": 1,"uploadDate":"32432","State":2,"documentFileName":"ssdvc","taskname":"dfgdgdcdstr","taskdesc":"legfbfv"},
+    { "taskid": 5,"userid":1, "managerid": 1,"uploadDate":"32432","State":1,"documentFileName":"ssdvc","taskname":"dfgdgdcdstr","taskdesc":"legfbfv"},
+    
   ];
 }
