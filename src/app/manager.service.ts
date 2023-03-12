@@ -132,6 +132,39 @@ export class ManagerService {
 
     }
   ];
+
+
+
+
+
+  task = [
+    {
+       userid: 1,
+      name : 'ali ahmad',
+      tName: 'task1',
+      state: 0
+    },
+    {
+      userid: 2,
+      name: 'Salah Mallouh',
+      tName: 'task2',
+      state: 2
+    },
+    {
+      userid: 3,
+      name: 'Moayad Khateeb',
+      tName: 'task3',
+      state: 1
+
+    },
+    {
+      userid: 4,
+      name: 'Mohammad Mashtooli',
+      tName: 'task4',
+      state: 1
+
+    }
+  ];
 }
 
 

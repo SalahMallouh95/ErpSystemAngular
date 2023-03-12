@@ -70,14 +70,14 @@
 
       <ul class="menu-inner py-1">
         <!-- Dashboard -->
-        <li class="menu-item">
-          <a [routerLink]="['/Manager']" routerLinkActive="active" class="menu-link">
+        <li class="menu-item"  routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+          <a [routerLink]="['/Manager']"  class="menu-link">
             <i class=></i>
             <div data-i18n="Analytics">Dashboard</div>
           </a>
         </li>
 
-        <li class="menu-item">
+        <li class="menu-item" routerLinkActive="active">
           <a [routerLink]="['/Manager/AllEmp']" routerLinkActive="active" class="menu-link">
             <i class=></i>
             <div data-i18n="Analytics">Employees</div>
@@ -88,14 +88,14 @@
           <span class="menu-header-text">Leaves</span>
         </li>
 
-        <li class="menu-item">
+        <li class="menu-item" routerLinkActive="active">
           <a [routerLink]="['/Manager/mAllEmpLeaves']" routerLinkActive="active" class="menu-link">
             <i ></i>
             <div data-i18n="Analytics">Employees Leaves</div>
           </a>
         </li>
 
-        <li class="menu-item">
+        <li class="menu-item" routerLinkActive="active">
           <a [routerLink]="['/Manager/MyLeaves']" routerLinkActive="active" class="menu-link">
             <i class=></i>
             <div data-i18n="Analytics">My Leaves</div>
@@ -107,15 +107,15 @@
           <span class="menu-header-text">Tasks</span>
         </li>
 
-        <li class="menu-item">
+        <li class="menu-item" routerLinkActive="active">
           <a [routerLink]="['/Manager/CreateTask']" routerLinkActive="active" class="menu-link">
             <i ></i>
             <div data-i18n="Analytics">Create Task</div>
           </a>
         </li>
 
-        <li class="menu-item">
-          <a href="index.html" class="menu-link">
+        <li class="menu-item" routerLinkActive="active">
+          <a [routerLink]="['/Manager/AllTasks']" routerLinkActive="active" class="menu-link">
             <i ></i>
             <div data-i18n="Analytics">Tasks</div>
           </a>
@@ -125,7 +125,7 @@
           <span class="menu-header-text">My profile</span>
         </li>
 
-        <li class="menu-item">
+        <li class="menu-item" routerLinkActive="active">
           <a href="index.html" class="menu-link">
             <i ></i>
             <div data-i18n="Analytics">Update Profile</div>

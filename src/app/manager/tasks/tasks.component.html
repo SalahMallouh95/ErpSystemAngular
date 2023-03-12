@@ -1,0 +1,59 @@
+<div class="layout-wrapper layout-content-navbar">
+    <div class="layout-container">
+
+        <app-manager-side-bar></app-manager-side-bar>
+        <div class="layout-page">
+            <app-dash-header>
+            </app-dash-header>
+
+            <div class="container-xxl flex-grow-1 container-p-y">
+                <!-- Basic Bootstrap Table -->
+                <div class="card wow fadeInUp"
+                    style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+                    <h5 class="card-header">Table Basic</h5>
+                    <div class="table-responsive text-nowrap">
+                        <table class="table table-hover wow slideInUp"
+                            style="visibility: visible; animation-delay: 0.3s; animation-name: slideInUp;">
+                            <thead>
+                                <tr style="background-color: #696cff66;">
+                                    <th>Employee Name</th>
+                                    <th>Task Name</th>
+                                    <th>State </th>
+
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-border-bottom-0">
+
+                                <tr *ngFor="let t of tas">
+                                    <td>{{t.name}}</td>
+                                    <td>{{t.tName}}</td>
+                                    <td>
+                                        <div [ngSwitch]="t.state">
+                                            <div *ngSwitchCase="2">
+                                                <span class="badge bg-label-success me-1">Pending</span>
+                                            </div>
+
+                                            <div *ngSwitchCase="1">
+                                                <span class="badge bg-label-danger me-1">Accepted</span>
+                                            </div>
+
+                                            <div *ngSwitchCase="0">
+                                                <span class="badge bg-label-danger me-1">Rejected</span>
+                                            </div>
+                                        </div>
+
+                                    </td>
+
+                                </tr>
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!--/ Basic Bootstrap Table -->
+        </div>
+    </div>
+</div>
