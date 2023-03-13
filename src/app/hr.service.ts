@@ -24,6 +24,7 @@ export class HrService {
  
 GetAllEmployee(){
   this.spinner.show();
+  
   this.http.get("https://localhost:44388/api/Hr/getuser").subscribe(
     {next:(res)=>{this.allEmp=res},
     error:(ee)=>{console.log(ee)}}
