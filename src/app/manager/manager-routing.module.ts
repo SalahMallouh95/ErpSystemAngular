@@ -11,6 +11,7 @@ import { MLeaveDetailsComponent } from './m-leave-details/m-leave-details.compon
 import { MLeavesComponent } from './m-leaves/m-leaves.component';
 import { MMyLeaveDetailsComponent } from './m-my-leave-details/m-my-leave-details.component';
 import { MSolutionComponent } from './m-solution/m-solution.component';
+import { MUpdateProfileComponent } from './m-update-profile/m-update-profile.component';
 import { MainComponent } from './main/main.component';
 import { TasksDetailesComponent } from './tasks-detailes/tasks-detailes.component';
 import { TasksComponent } from './tasks/tasks.component';
@@ -63,6 +64,10 @@ const routes: Routes = [
   {
     path: 'TaskSolution/:id',
     component: MSolutionComponent
+  },
+  {
+    path: 'UpdateProfile',
+    component: MUpdateProfileComponent
   }
  ];
 
