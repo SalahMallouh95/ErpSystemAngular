@@ -13,7 +13,7 @@
         <div class="col-12 col-lg-12 order-2 order-md-3 order-lg-2 mb-4">
             <div class="card wow fadeInUp"  style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;" >             
                 
-              <app-person-card (SendValues)="GetValues($event)" app-person-card [allEmp]="allEmp"></app-person-card>   
+              <app-person-card (SendValues)="GetValues($event)" app-person-card [allEmp]="this.hrService.allEmp"></app-person-card>   
 
 
             </div>
@@ -25,3 +25,4 @@
         </div>
 
 
+        <ngx-spinner type="ball-scale-multiple"></ngx-spinner>
