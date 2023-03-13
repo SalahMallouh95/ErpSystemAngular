@@ -1,6 +1,9 @@
 import { Component,OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HrService } from 'src/app/hr.service';
+import { NgxSpinnerService } from 'ngx-spinner';
+
+
 
 @Component({
   selector: 'app-department-emp-list',
@@ -16,7 +19,7 @@ export class DepartmentEmpListComponent implements OnInit{
 
   }
   ngOnInit(): void {
-    this.allEmp=this.hrService.allEmp.filter(emp=>emp.Department=="IT");
+    //this.allEmp=this.hrService.allEmp.filter(emp=>emp.Department=="IT");
   }
   GetValues(id:any){
    this.router.navigate(['Hr/EmpDetails',id]);

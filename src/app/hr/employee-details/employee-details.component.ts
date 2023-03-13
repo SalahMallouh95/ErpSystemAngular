@@ -17,7 +17,7 @@ export class EmployeeDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.id=this.route.snapshot.params['id'];
-    this.emp=this.hrservice.allEmp.filter((e)=>e.userid==this.id)    
+   // this.emp=this.hrservice.allEmp.filter((e)=>e.userid==this.id)    
   }
 
 }
