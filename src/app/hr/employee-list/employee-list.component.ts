@@ -14,10 +14,21 @@ export class EmployeeListComponent implements OnInit{
   {
 
   }
+  user:any={}
+
   ngOnInit(): void {
     this.hrService.GetAllEmployee();
+    this.hrService.GetAllDepartment();
+    this.hrService.GetAllRole();
+
+
   }
-  GetValues(id:any){
-   this.router.navigate(['Hr/EmpDetails',id]);
+  async GetValues(id:any){
+
+    this.user.userid=id
+    await this.hrService.GetEmpInfo(this.user);
+    console.log(this.hrService.empInfo);
+    
+    this.router.navigate(['Hr/EmpDetails']);
   }
 }

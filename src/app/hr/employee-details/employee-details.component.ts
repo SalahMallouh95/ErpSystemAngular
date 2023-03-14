@@ -1,5 +1,5 @@
 import { Component,OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HrService } from 'src/app/hr.service';
 
 
@@ -10,14 +10,15 @@ import { HrService } from 'src/app/hr.service';
 })
 export class EmployeeDetailsComponent implements OnInit {
 
-  constructor(public hrservice:HrService,private route:ActivatedRoute){
+  constructor(public hrservice:HrService,private aRoute:ActivatedRoute,private route:Router){
+    
   }
   id:number|undefined
   emp:any|{}
 
   ngOnInit(): void {
-    this.id=this.route.snapshot.params['id'];
-   // this.emp=this.hrservice.allEmp.filter((e)=>e.userid==this.id)    
+     
+    }
   }
 
-}
+
