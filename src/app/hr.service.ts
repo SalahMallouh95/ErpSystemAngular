@@ -145,7 +145,7 @@ export class HrService {
   {
     return new Promise<void>((resolve, reject) => {
       this.spinner.show()
-      this.http.delete("https://localhost:44388/api/Hr/deletedept/"+id).subscribe(
+      this.http.delete("https://localhost:44388/api/Hr/deletedept?id="+id).subscribe(
         {
           next: () => {
             resolve();
