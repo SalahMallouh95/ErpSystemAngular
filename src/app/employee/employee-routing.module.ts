@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LeaveDetailsComponent } from '../hr/leave-details/leave-details.component';
 import { CreateleaveComponent } from './createleave/createleave.component';
+import { CreatesolutionComponent } from './createsolution/createsolution.component';
+import { EditsolutionComponent } from './editsolution/editsolution.component';
 import { GetsolutionComponent } from './getsolution/getsolution.component';
 import { GettaskComponent } from './gettask/gettask.component';
 import { GrtleavesComponent } from './grtleaves/grtleaves.component';
@@ -35,6 +37,14 @@ const routes: Routes = [
   ,{
     path:'gettask',
     component:GettaskComponent
+  }
+  ,{
+    path:'createsolution',
+    component:CreatesolutionComponent
+  }
+  ,{
+    path:'editsolution/:id',
+    component:EditsolutionComponent
   }
 ];
 
