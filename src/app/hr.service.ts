@@ -1,14 +1,19 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class HrService {
 
-  constructor() 
-  { }
+  constructor(public http:HttpClient,private spinner: NgxSpinnerService) 
+  {
+
+   }
    mesage:string="test"
- 
+   allEmp:any =[]
  
    allLeaves = [
     { "leaveid": 1, "startDate": "2222","endDate":"2222","Message":"tet","State":2,"documentFileName":"ss","leaveType":"lev","fName":"Salah","LName":"Malouh"},
@@ -16,10 +21,18 @@ export class HrService {
     { "leaveid": 3, "startDate": "2222","endDate":"2222","Message":"tet3","State":1,"documentFileName":"ss3","leaveType":"lev3","fName":"Moyeed","LName":"ma3"}
   ];
 
-  allEmp=
-  [
-    {"userid":1,"fName":"salah","lName":"mallouh","salary":1000,"role":"Manager","Department":"IT","phoneNumber":"1234567890","address":"asda","Imagefilename":'t.png',"ssn":123456789,"state":0},
-    {"userid":2,"fName":"moyeed","lName":"mallouh","salary":1000,"role":"employee","Department":"Hr","phoneNumber":"1234567890","address":"asda","Imagefilename":null,"ssn":123456789,"state":1},
-    {"userid":3,"fName":"mohamed","lName":"mallouh","salary":1000,"role":"Hr","Department":"IT","phoneNumber":"1234567890","address":"asda","Imagefilename":"xx.png","ssn":123456789,"state":1}
-  ]
+ 
+GetAllEmployee(){
+  this.spinner.show();
+  
+  this.http.get("https://localhost:44388/api/Hr/getuser").subscribe(
+    {next:(res)=>{this.allEmp=res},
+    error:(ee)=>{console.log(ee)}}
+  )   
+  this.spinner.hide();
+
+}
+
+
+
 }

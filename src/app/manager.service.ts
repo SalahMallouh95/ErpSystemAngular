@@ -236,6 +236,16 @@ export class ManagerService {
   [
     {"userid":1,fName:"salah","lName":"mallouh","salary":1000,"role":"Manager","Department":"IT","phoneNumber":"1234567890","address":"asda","Imagefilename":'t.png',"ssn":123456789,"state":0,email:'as@as',BANKINFOID:1234}
   ]
+
+
+///////////////////////////////////////////////////////////////////////
+  SLNs = [  ]
+
+  GetAllSlns()
+  {
+    
+  }
+
 }
 
 

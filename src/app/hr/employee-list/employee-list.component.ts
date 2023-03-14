@@ -9,14 +9,13 @@ import { HrService } from 'src/app/hr.service';
 })
 export class EmployeeListComponent implements OnInit{
 
-  allEmp:any[]=this.hrService.allEmp;
 
   constructor(private router:Router,public hrService:HrService)
   {
 
   }
   ngOnInit(): void {
-    
+    this.hrService.GetAllEmployee();
   }
   GetValues(id:any){
    this.router.navigate(['Hr/EmpDetails',id]);
