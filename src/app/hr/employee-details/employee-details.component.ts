@@ -11,13 +11,14 @@ import { HrService } from 'src/app/hr.service';
 export class EmployeeDetailsComponent implements OnInit {
 
   constructor(public hrservice:HrService,private aRoute:ActivatedRoute,private route:Router){
-    
+
   }
   id:number|undefined
-  emp:any|{}
+  empInfo:any|{}
 
   ngOnInit(): void {
-     
+
+    this.empInfo=this.hrservice.empInfo; 
     }
   }
 
