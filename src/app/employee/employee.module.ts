@@ -10,6 +10,8 @@ import { GetsolutionComponent } from './getsolution/getsolution.component';
 import { SolutindetailComponent } from './solutindetail/solutindetail.component';
 import { CreateleaveComponent } from './createleave/createleave.component';
 import { GettaskComponent } from './gettask/gettask.component';
+import { CreatesolutionComponent } from './createsolution/createsolution.component';
+import { EditsolutionComponent } from './editsolution/editsolution.component';
 
 
 @NgModule({
@@ -20,7 +22,9 @@ import { GettaskComponent } from './gettask/gettask.component';
     GetsolutionComponent,
     SolutindetailComponent,
     CreateleaveComponent,
-    GettaskComponent
+    GettaskComponent,
+    CreatesolutionComponent,
+    EditsolutionComponent
   ],
   imports: [
     CommonModule,
