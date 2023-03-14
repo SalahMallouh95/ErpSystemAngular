@@ -26,16 +26,17 @@
                   </tr>
                 </thead>
                 <tbody class="table-border-bottom-0"> 
-               <tr>
+               <tr *ngFor="let item of this.hrService.allDep">
                 <td>
-                    test
+                  {{item.departmentname}}
                 </td>
                 <td>
-                    test
+                  {{item.fname}} {{item.lname}}
+
                 </td>
                 <td>
                     <div class="demo-inline-spacing">
-                        <button type="button" class="btn rounded-pill btn-info" [routerLink]="['/Hr/DepartmentEmp']">Employee List</button>
+                        <button type="button" class="btn rounded-pill btn-info" (click)="ViewEmp(item.departmentid)">Employee List</button>
                         <button type="button" class="btn rounded-pill btn-info" [routerLink]="['/Hr/DepartmentEdit']">Edit</button>
                         <button type="button" class="btn rounded-pill btn-danger" [routerLink]="['/Hr/Department']">Delete</button>                        
                         

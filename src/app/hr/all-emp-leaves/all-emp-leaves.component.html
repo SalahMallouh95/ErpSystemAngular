@@ -24,7 +24,7 @@
                   </tr>
                 </thead>
                 <tbody class="table-border-bottom-0"> 
-                    <tr (SendValues)="GetValues($event)" app-raw-all-emp-leave [leaveid]="item.leaveid"  [fName]="item.fName" [LName]="item.LName" [startDate]="item.startDate" [endDate]="item.endDate" [State]="item.State" *ngFor="let item of allLeavesList">                    
+                    <tr (SendValues)="GetValues($event)" app-raw-all-emp-leave [leaveid]="item.leaveid"  [fName]="item.fname" [LName]="item.lname" [startDate]="item.startdate" [endDate]="item.enddate" [State]="item.state" *ngFor="let item of this.hrService.allLeaves">                    
                     </tr>            
                
                </tbody>

@@ -2,6 +2,7 @@ import { Component,OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HrService } from 'src/app/hr.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { tick } from '@angular/core/testing';
 
 
 
@@ -13,15 +14,18 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class DepartmentEmpListComponent implements OnInit{
 
   allEmp:any[]| undefined 
+  user:any={}
 
   constructor(private router:Router,public hrService:HrService)
   {
 
   }
   ngOnInit(): void {
-    //this.allEmp=this.hrService.allEmp.filter(emp=>emp.Department=="IT");
+  this.allEmp=this.hrService.allEmp
   }
-  GetValues(id:any){
-   this.router.navigate(['Hr/EmpDetails',id]);
+  async GetValues(id:any){
+  this.user.userid=id
+  await this.hrService.GetEmpInfo(this.user);
+   this.router.navigate(['Hr/EmpDetails']);
   }
 }
