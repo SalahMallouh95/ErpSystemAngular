@@ -17,11 +17,8 @@ export class DepartmentComponent implements OnInit {
 
  async ViewEmp(id:any){
      await  this.hrService.GetAllEmployee()
-       console.log(this.hrService.allEmp);
        this.hrService.allEmp=this.hrService.allEmp.filter((emp: { departmentid: any; })=>emp.departmentid==id);
-       console.log(this.hrService.allEmp);       
        this.router.navigate(['Hr/DepartmentEmp']);
-
   }
  
 }
