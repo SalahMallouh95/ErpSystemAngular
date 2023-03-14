@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { HrService } from 'src/app/hr.service';
 
 
 @Component({
@@ -8,10 +10,13 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./department-create.component.css']
 })
 export class DepartmentCreateComponent {
-  constructor(private toastr: ToastrService) {}
+  constructor(public hrService:HrService, public router:Router) {}
+  depName:string|undefined
+  dep:any={}
 
-  showSuccess() {
-    this.toastr.success('Hello world!', 'Toastr fun!');
-    console.log("Xx")
+  async CreateDep() {
+   this.dep.departmentname=this.depName
+   await this.hrService.CreateDep(this.dep)
+   this.router.navigate(['Hr/Department'])
   }
 }

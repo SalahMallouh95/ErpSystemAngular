@@ -38,7 +38,7 @@
                     <div class="demo-inline-spacing">
                         <button type="button" class="btn rounded-pill btn-info" (click)="ViewEmp(item.departmentid)">Employee List</button>
                         <button type="button" class="btn rounded-pill btn-info" [routerLink]="['/Hr/DepartmentEdit']">Edit</button>
-                        <button type="button" class="btn rounded-pill btn-danger" [routerLink]="['/Hr/Department']">Delete</button>                        
+                        <button type="button" class="btn rounded-pill btn-danger" (click)="DeleteDep(item.departmentid)">Delete</button>                        
                         
                       </div>
                 </td>

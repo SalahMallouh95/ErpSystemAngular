@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Injectable({
@@ -8,7 +9,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 })
 export class HrService {
 
-  constructor(public http: HttpClient, private spinner: NgxSpinnerService) {
+  constructor(public http: HttpClient, private spinner: NgxSpinnerService,private toastr: ToastrService) {
 
   }
   mesage: string = "test"
@@ -37,6 +38,7 @@ export class HrService {
     this.spinner.hide();})
 
   }
+
   GetAllDepartment() {
     this.spinner.show();
     return new Promise<void>((resolve, reject) => {
@@ -115,5 +117,53 @@ export class HrService {
 
   }
 
+  CreateDep(dep:any)
+  {
+    return new Promise<void>((resolve, reject) => {
+      this.spinner.show()
+      this.http.post("https://localhost:44388/api/Hr/createdept", dep).subscribe(
+        {
+          next: () => {
+            resolve();
+            this.toastr.success('Department Added successfully!');
+          }
+          ,
+          error: (ee) => {
+            console.log(ee)
+            this.toastr.error('Somthing went wrong!');
+
+            reject();
+          }
+
+        }
+      )
+      this.spinner.hide();
+
+    })
+  }
+  DeleteDep(id:any)
+  {
+    return new Promise<void>((resolve, reject) => {
+      this.spinner.show()
+      this.http.delete("https://localhost:44388/api/Hr/deletedept/"+id).subscribe(
+        {
+          next: () => {
+            resolve();
+            this.toastr.success('Department deleted successfully!');
+          }
+          ,
+          error: (ee) => {
+            console.log(ee)
+            this.toastr.error('Somthing went wrong!');
+
+            reject();
+          }
+
+        }
+      )
+      this.spinner.hide();
+
+    })
+  }
 
 }

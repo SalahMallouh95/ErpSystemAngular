@@ -15,6 +15,7 @@ export class DepartmentEmpListComponent implements OnInit{
 
   allEmp:any[]| undefined 
   user:any={}
+  lengtharyy:number=0
 
   constructor(private router:Router,public hrService:HrService)
   {
@@ -22,10 +23,13 @@ export class DepartmentEmpListComponent implements OnInit{
   }
   ngOnInit(): void {
   this.allEmp=this.hrService.allEmp
+  this.lengtharyy=this.hrService.allEmp.length
   }
   async GetValues(id:any){
   this.user.userid=id
   await this.hrService.GetEmpInfo(this.user);
-   this.router.navigate(['Hr/EmpDetails']);
+  this.router.navigate(['Hr/EmpDetails']);
   }
+  
+  
 }

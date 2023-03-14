@@ -20,5 +20,9 @@ export class DepartmentComponent implements OnInit {
        this.hrService.allEmp=this.hrService.allEmp.filter((emp: { departmentid: any; })=>emp.departmentid==id);
        this.router.navigate(['Hr/DepartmentEmp']);
   }
+  async DeleteDep(id:any){
+    await this.hrService.DeleteDep(id)
+    this.ngOnInit()
+   }
  
 }
