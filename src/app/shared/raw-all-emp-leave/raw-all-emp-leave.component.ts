@@ -8,6 +8,7 @@ import { Component,EventEmitter,Input, Output } from '@angular/core';
 })
 export class RawAllEmpLeaveComponent {
 @Input() fName:string|undefined
+@Input() ssn:string|undefined
 @Input() LName:string|undefined
 @Input() startDate:string|undefined
 @Input() endDate:string|undefined
