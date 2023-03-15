@@ -73,7 +73,7 @@
                 <div class="col-12 col-lg-12 order-2 order-md-3 order-lg-2 mb-4">
                     <div class="card">
 
-                        <app-person-card (SendValues)="GetValues($event)" [allEmp]="empList"></app-person-card>
+                        <app-person-card (SendValues)="GetValues($event)" [allEmp]="this.managerService.AllEmp"></app-person-card>
 
 
                     </div>
