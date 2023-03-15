@@ -32,7 +32,8 @@ import { MatNativeDateModule } from '@angular/material/core';
   ],
   exports:[
     FormsModule,
-    ToastrModule
+    ToastrModule,
+    NgxSpinnerModule
   ],
   schemas:[
     CUSTOM_ELEMENTS_SCHEMA

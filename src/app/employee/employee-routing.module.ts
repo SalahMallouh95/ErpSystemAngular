@@ -21,7 +21,7 @@ const routes: Routes = [
   component:GrtleavesComponent
 }
 ,{
-  path:'leavedetail/:id',
+  path:'leavedetail',
   component:LeavedetailComponent
 },{
     path:'getsolution/:id',
