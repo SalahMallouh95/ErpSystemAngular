@@ -7,6 +7,9 @@ import { NgxSpinnerModule } from "ngx-spinner";
 import { FormsModule } from '@angular/forms';
 import { ToastrModule ,ToastNoAnimationModule} from 'ngx-toastr';
 import {HttpClientModule} from '@angular/common/http'
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+
 
 
 
@@ -23,7 +26,9 @@ import {HttpClientModule} from '@angular/common/http'
     FormsModule,
     ToastrModule.forRoot(),
     ToastNoAnimationModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   exports:[
     FormsModule,

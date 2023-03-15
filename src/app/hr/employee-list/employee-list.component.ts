@@ -27,8 +27,7 @@ export class EmployeeListComponent implements OnInit{
 
     this.user.userid=id
     await this.hrService.GetEmpInfo(this.user);
-    console.log(this.hrService.empInfo);
-    
+    console.log(this.hrService.empInfo);    
     this.router.navigate(['Hr/EmpDetails']);
   }
   

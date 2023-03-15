@@ -13,7 +13,8 @@ export class AllEmployeesComponent {
 
   }
 
-  empList = this.managerService.employees;
+user : any = {}
+id : number = 2
 
   GetValues(id:any){
     this.route.navigate(['Manager/EmpInfo',id]);
@@ -21,4 +22,13 @@ export class AllEmployeesComponent {
     console.log(id);
     
   }
+
+
+
+ ngOnInit(){
+  this.user.userid = this.id
+  this.managerService.GetAllEmp(this.user)
+  
+ }
+
 }

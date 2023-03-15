@@ -15,15 +15,24 @@ export class MAllEmpLeavesComponent implements OnInit {
 
   }
 
-  mAllLeaves :any[] = this.managerService.allLeaves
+  leaves : any ={}
+  id : number = 2
 
-  ngOnInit(): void {
+  ngOnInit(){
+
+    this.leaves.userid = this.id
+    this.managerService.GetAllLeaves(this.leaves)
     
   }
+
+
+
   GetValues(id :any){
     this.router.navigate(['Manager/LeaveDetails',id]);
     console.log(id);
     
   }
+
+
 
 }

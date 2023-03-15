@@ -1,12 +1,111 @@
+import { ListKeyManager } from '@angular/cdk/a11y';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ManagerService {
 
-  constructor(private http : HttpClient) { }
+  constructor(private http : HttpClient, private spinner : NgxSpinnerService, private toaster : ToastrService) { }
+
+
+    
+
+
+AllEmp: any =[]
+
+async GetAllEmp(emp : any){
+
+  return new Promise<void>((resolve,reject) => {
+
+    this.spinner.show()
+    this.http.post("https://localhost:44388/api/Manager/GetAllEmp",emp).subscribe(
+      {
+        next: (res) => {
+          this.AllEmp = res
+          resolve();
+          this.toaster.success('List Of All EMployees');
+        },
+
+        error: (err) => {
+          console.log(err);
+          this.toaster.success('Error')
+          
+          reject();
+        }
+      }
+    )
+
+    this.spinner.hide()
+
+  })
+}
+
+
+AllLeave: any = []
+
+async GetAllLeaves(lev : any){
+
+  return new Promise<void>((resolve,reject) => {
+
+    this.spinner.show()
+    this.http.post("https://localhost:44388/api/Manager/getLeaves",lev).subscribe(
+      {
+        next: (res) => {
+          this.AllLeave = res
+          resolve();
+          this.toaster.success('List Of All Leaves');
+        },
+
+        error: (err) => {
+          console.log(err);
+          this.toaster.success('Error')
+          
+          reject();
+        }
+      }
+    )
+
+    this.spinner.hide()
+
+  })
+
+}
+
+MyLeaves: any = []
+async GetMyLeaves(ml: any){
+
+    return new Promise<void>((resolve,reject) => {
+
+      this.spinner.show()
+      this.http.post('https://localhost:44388/api/Employee/GetAllLeaves',ml).subscribe({
+
+      next: (res) => {
+        this.MyLeaves = res
+        resolve()
+        this.toaster.success('List Of My Leaves')
+      },
+
+        error: (err) =>{
+          console.log(err);
+          this.toaster.success('Error')
+          
+        }
+
+      }
+      
+      )
+
+      this.spinner.hide()
+    })
+}
+
+
+///////////////////////////////////////////////////////////////////
 
   employees : any= [
     {
@@ -47,13 +146,11 @@ export class ManagerService {
     }
   ];
 
-
   allLeaves = [
     { "leaveid": 1, "startDate": "2222","endDate":"2222","Message":"tet","State":2,"documentFileName":"ss","leaveType":"lev","fName":"Salah","LName":"Malouh"},
     { "leaveid": 2, "startDate": "2222","endDate":"2222","Message":"tet2","State":0,"documentFileName":"ss2","leaveType":"lev2","fName":"mohamde","LName":"ma2"},
     { "leaveid": 3, "startDate": "2222","endDate":"2222","Message":"tet3","State":1,"documentFileName":"ss3","leaveType":"lev3","fName":"Moyeed","LName":"ma3"}
   ];
-
 
   myLeaves = [
     {  userid:1,"leaveid": 1, "startDate": "2222","endDate":"2222","State":1,"Message":"tet","documentFileName":"ss","leaveType":"lev"},
@@ -62,8 +159,6 @@ export class ManagerService {
     {  userid:1,"leaveid": 4, "startDate": "2222","endDate":"2222","State":0,"Message":"tet","documentFileName":"ss","leaveType":"lev"},
     {  userid:1,"leaveid": 5, "startDate": "2222","endDate":"2222","State":1,"Message":"tet","documentFileName":"ss","leaveType":"lev"}
   ];
-
-
 
   empInfo = [
     { userid: 1,
@@ -103,7 +198,6 @@ export class ManagerService {
     }
   ];
 
-
   tasks = [
     {
        userid: 1,
@@ -124,10 +218,6 @@ export class ManagerService {
 
     }
   ];
-
-
-
-
 
   task = [
     {
@@ -186,10 +276,6 @@ export class ManagerService {
     }
   ];
 
-
-
-  
-
   sloutions =[
 
     {
@@ -231,12 +317,9 @@ export class ManagerService {
 
 
 ///////////////////////////////////////////////////////////////////////
-  SLNs = [  ]
 
-  GetAllSlns()
-  {
-  
-  }
+
+
 
 }
 

@@ -13,10 +13,12 @@ export class MLeavesComponent {
 
   }
 
-  mLeaves : any | undefined
+  managerLeaves : any = {}
+  id : number =2
 
-  ngOnInit() : void {
-    this.mLeaves = this.managerserv.myLeaves.filter( m => m.userid ==1)
+  ngOnInit()  {
+    this.managerLeaves.userid = this.id
+    this.managerserv.GetMyLeaves(this.managerLeaves)
   }
 
   SendSelectorMyLeaveId(id : any){

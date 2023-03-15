@@ -28,13 +28,13 @@
                                 </tr>
                             </thead>
                             <tbody class="table-border-bottom-0">
-                                <tr *ngFor="let emp of mLeaves">
+                                <tr *ngFor="let emp of this.managerserv.MyLeaves">
                                     <td>{{emp.leaveid}}</td>
-                                    <td>{{emp.startDate}}</td>
-                                    <td>{{emp.endDate}}</td>
+                                    <td>{{emp.startdate}}</td>
+                                    <td>{{emp.enddate}}</td>
         
                                     <td>
-                                        <div [ngSwitch]="emp.State">
+                                        <div [ngSwitch]="emp.state">
                                                 <div *ngSwitchCase="2">
                                                     <span class="badge bg-label-success me-1">Pending</span>
                                                 </div>
