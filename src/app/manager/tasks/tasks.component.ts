@@ -13,10 +13,12 @@ export class TasksComponent {
 
   }
 
-tas :any[] | undefined 
+tas :any = {}
+id : number = 2
 
-ngOnInit(): void {
-    this.tas = this.man.task.filter(t => t.managerid == 1)
+ngOnInit() {
+    this.tas.userid = this.id
+    this.man.GetAllTasks(this.tas)
 }
 SendSelecterTaskId(id :any){
   this.route.navigate(['Manager/TaskDetails',id]);
