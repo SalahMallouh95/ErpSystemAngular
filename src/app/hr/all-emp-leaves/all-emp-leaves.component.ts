@@ -18,6 +18,7 @@ export class AllEmpLeavesComponent implements OnInit {
   range = new FormGroup({
     startdate: new FormControl<Date | null>(null),
     enddate: new FormControl<Date | null>(null),
+    ssn:new FormControl
   });
 
   ngOnInit(): void {
@@ -29,4 +30,7 @@ export class AllEmpLeavesComponent implements OnInit {
   }
   
 
+  async Search(){
+    await this.hrService.Search(this.range.value)
+  }
 }

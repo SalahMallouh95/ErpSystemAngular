@@ -172,4 +172,33 @@ export class HrService {
     })
   }
 
+  async Search(data:any)
+  {
+    console.log(data);
+
+    return new Promise<void>((resolve, reject) => {
+      this.spinner.show()
+      this.http.post("https://localhost:44388/api/Hr/searchleave", data).subscribe(
+        {
+          next: (res) => {this.allLeaves=res
+            resolve();
+            this.toastr.success('Department Added successfully!');
+            console.log(this.allLeaves)
+          }
+          ,
+          error: (ee) => {
+            console.log(ee)
+            this.toastr.error('Somthing went wrong!');
+
+            reject();
+          }
+
+        }
+      )
+      this.spinner.hide();
+
+    })
+
+  }
+
 }
