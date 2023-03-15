@@ -21,8 +21,8 @@
                 <!-- Account -->
                 <div class="card-body">
                   <div class="d-flex align-items-start align-items-sm-center gap-4">
-                    <img *ngIf="emp[0].Imagefilename==null" _ngcontent-fnq-c20="" src="/assets/Documents/UserDefaultImage.png" alt="" class="img-fluid w-100" style="max-height: 350px; max-width: 350px;">
-                    <img *ngIf="emp[0].Imagefilename!=null" _ngcontent-fnq-c20="" [src]="'/assets/Documents/'+emp[0].Imagefilename" alt="" class="img-fluid w-100" style="max-height: 350px; max-width: 350px;">
+                    <img *ngIf="empInfo.Imagefilename==null" name="img" _ngcontent-fnq-c20="" src="/assets/Documents/UserDefaultImage.png" alt="" class="img-fluid w-100" style="max-height: 350px; max-width: 350px;">
+                    <img *ngIf="empInfo.Imagefilename!=null" name="img" _ngcontent-fnq-c20="" [src]="'/assets/Documents/'+empInfo.Imagefilename" alt="" class="img-fluid w-100" style="max-height: 350px; max-width: 350px;">
                        <div class="button-wrapper">
                       <label for="upload" class="btn btn-primary me-2 mb-4" tabindex="0">
                         <span class="d-none d-sm-block">Upload new photo</span>
@@ -39,15 +39,15 @@
                     <div class="row">
                       <div class="mb-3 col-md-6">
                         <label for="firstName" class="form-label">First Name</label>
-                        <input class="form-control" type="text" id="firstName" name="firstName" [(ngModel)]="emp[0].fName" autofocus="">
+                        <input class="form-control" type="text" id="firstName" name="firstName" [(ngModel)]="empInfo.fname" autofocus="">
                       </div>
                       <div class="mb-3 col-md-6">
                         <label for="lastName" class="form-label">Last Name</label>
-                        <input class="form-control" type="text" name="lastName" id="lastName" [(ngModel)]="emp[0].lName">
+                        <input class="form-control" type="text" name="lastName" id="lastName" [(ngModel)]="empInfo.lname">
                       </div>
                       <div class="mb-3 col-md-6">
                         <label for="email" class="form-label">E-mail</label>
-                        <input class="form-control" type="text" id="email" name="email" [(ngModel)]="emp[0].email" placeholder="john.doe@example.com">
+                        <input class="form-control" type="text" id="email" name="email" [(ngModel)]="empInfo.email" placeholder="john.doe@example.com">
                       </div>
                       <div class="mb-3 col-md-6">
                         <label for="organization" class="form-label">Password</label>
@@ -57,23 +57,23 @@
                         <label class="form-label" for="phoneNumber">Phone Number</label>
                         <div class="input-group input-group-merge">
                           <span class="input-group-text">Jod (+962)</span>
-                          <input type="number" id="phoneNumber" name="phoneNumber" [(ngModel)]="emp[0].phoneNumber" class="form-control" length="9" placeholder="788253988">
+                          <input type="number" id="phoneNumber" name="phoneNumber" [(ngModel)]="empInfo.phonenumber" class="form-control" length="9" placeholder="788253988">
                         </div>
                       </div>
                       <div class="mb-3 col-md-6">
                         <label for="address" class="form-label">Address</label>
-                        <input type="text" class="form-control" id="address" [(ngModel)]="emp[0].address" name="address" placeholder="Address">
+                        <input type="text" class="form-control" id="address" [(ngModel)]="empInfo.address" name="address" placeholder="Address">
                       </div>
                       <div class="mb-3 col-md-6">
                         <label for="state" class="form-label">Salary</label>
-                        <input class="form-control" type="text" id="state" name="state" [(ngModel)]="emp[0].salary"  placeholder="California">
+                        <input class="form-control" type="text" id="state" name="state" [(ngModel)]="empInfo.salary"  placeholder="California">
                       </div>
                       <div class="mb-3 col-md-6">
                         <label for="zipCode" class="form-label">SNN number</label>
-                        <input type="text" class="form-control" id="zipCode" name="zipCode" [(ngModel)]="emp[0].ssn"  placeholder="231465" maxlength="6">
+                        <input type="text" class="form-control" id="zipCode" name="zipCode" [(ngModel)]="empInfo.ssn"  placeholder="231465" maxlength="6">
                       </div>
                       <div class="mb-3 col-md-6">
-                        <label class="form-label"  [(ngModel)]="emp[0].role" for="Role">Role</label>
+                        <label class="form-label"  [(ngModel)]="empInfo.role" for="Role">Role</label>
                         <select id="Role" class="select2 form-select">
                           <option value="">Select</option>
                           <option value="Australia">Employee</option>
@@ -91,8 +91,8 @@
                         </select>
                       </div>
                       <div class="mb-3 col-md-6">
-                        <label for="zipCode" class="form-label">Bank ID</label>
-                        <input type="text" class="form-control" id="zipCode" name="zipCode" [(ngModel)]="emp[0].BANKINFOID"  placeholder="231465" maxlength="6">
+                        <label for="Bank" class="form-label">Bank ID</label>
+                        <input type="text" class="form-control" id="Bank" name="Bank" [(ngModel)]="empInfo.bankinfoid"  placeholder="231465" maxlength="6">
                       </div>                      
                     </div>
                     <div class="mt-2">

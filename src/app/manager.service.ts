@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -5,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class ManagerService {
 
-  constructor() { }
+  constructor(private http : HttpClient) { }
 
   employees : any= [
     {
@@ -101,15 +102,6 @@ export class ManagerService {
 
     }
   ];
-
-
-
-
-
-
-
-
-
 
 
   tasks = [
@@ -210,14 +202,14 @@ export class ManagerService {
     },{
       sid: 2,
       tid: 1,
-      state: 1,
+      state: 2,
       uploudDate: new Date(2022,3,1),
       feedBack: 'good job',
       docFileName: 'sdfsdfsdfs'
     },{
       sid: 1,
       tid: 2,
-      state: 1,
+      state: 0,
       uploudDate: new Date(2022,3,1),
       feedBack: 'good job',
       docFileName: 'sdfsdfsdfs'
@@ -225,7 +217,7 @@ export class ManagerService {
     {
       sid: 2,
       tid: 2,
-      state: 1,
+      state: 2,
       uploudDate: new Date(2022,3,1),
       feedBack: 'good job',
       docFileName: 'sdfsdfsdfs'
@@ -243,7 +235,7 @@ export class ManagerService {
 
   GetAllSlns()
   {
-    
+  
   }
 
 }

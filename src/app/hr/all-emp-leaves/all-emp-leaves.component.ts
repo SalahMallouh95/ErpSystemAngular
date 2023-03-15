@@ -12,11 +12,10 @@ export class AllEmpLeavesComponent implements OnInit {
   constructor(private router:Router,public hrService:HrService)
   {
 
-  }
-
-  allLeavesList :any []=this.hrService.allLeaves
+  }  
 
   ngOnInit(): void {
+    this.hrService.GetAllLeaves();
     
   }
   GetValues(id :any){

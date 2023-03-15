@@ -37,7 +37,7 @@ const routes: Routes = [
     component:EmployeeListComponent
   },
   {
-    path:"EmpDetails/:id",
+    path:"EmpDetails",
     component:EmployeeDetailsComponent
   },
   {

@@ -15,6 +15,5 @@ export class LeaveDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.id=this.route.snapshot.params['id'];
-    this.leaveInfo=this.hrservice.allLeaves.filter((lev)=>lev.leaveid==this.id )
   }
 }

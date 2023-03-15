@@ -17,6 +17,10 @@
                       routerLinkActive="active" class="btn rounded-pill btn-info">Back</button>
                   </div>
 
+                  <div *ngIf="lengtharyy==0  ">
+                    <p>No Employees in this Department</p>
+
+                  </div>
               <app-person-card (SendValues)="GetValues($event)" app-person-card [allEmp]="allEmp"></app-person-card>   
 
             </div>

@@ -28,18 +28,9 @@
                         style="visibility: visible; animation-delay: 0.3s; animation-name: slideInUp;">
                           <div class="mb-3">
                             <label class="form-label" for="basic-default-fullname">Department Name</label>
-                            <input type="text" class="form-control" id="basic-default-fullname" placeholder="Haj leave">
-                          </div>     
-                          <div class="mb-3">
-                            <label for="exampleFormControlSelect1" class="form-label">Manager</label>
-                            <select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example">
-                              <option selected="">Open this select menu</option>
-                              <option selected value="1">Salah</option>
-                              <option  value="2">Mohmed</option>
-                              <option value="3">Moyeed</option>
-                            </select>
-                          </div>                     
-                          <button type="submit" class="btn btn-primary" (click)="showSuccess()">Add</button>
+                            <input type="text" class="form-control" [(ngModel)]="depName" name="depName" id="basic-default-fullname" placeholder="Haj leave">
+                          </div>                                               
+                          <button type="submit" class="btn btn-primary" (click)="CreateDep()">Add</button>
                         </form>
                       
                     </div>
