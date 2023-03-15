@@ -30,4 +30,5 @@ export class EmployeeListComponent implements OnInit{
     console.log(this.hrService.empInfo);    
     this.router.navigate(['Hr/EmpDetails']);
   }
+  
 }
