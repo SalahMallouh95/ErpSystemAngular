@@ -20,6 +20,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 
 
 
+
 @NgModule({
   declarations: [
     HomeHeaderComponent,
@@ -36,6 +37,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     RouterModule,
     FormsModule,
     ToastrModule.forRoot()
+    
   ],
   exports:[
     HomeFooterComponent,

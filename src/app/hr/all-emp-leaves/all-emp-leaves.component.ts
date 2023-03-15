@@ -4,6 +4,9 @@ import { HrService } from 'src/app/hr.service';
 import {FormGroup, FormControl} from '@angular/forms';
 
 
+
+
+
 @Component({
   selector: 'app-all-emp-leaves',
   templateUrl: './all-emp-leaves.component.html',
@@ -16,8 +19,8 @@ export class AllEmpLeavesComponent implements OnInit {
 
   }  
   range = new FormGroup({
-    startdate: new FormControl<Date | null>(null),
-    enddate: new FormControl<Date | null>(null),
+    dateTo: new FormControl<Date | null>(null),
+    dateFrom: new FormControl<Date | null>(null),
     ssn:new FormControl
   });
 
@@ -31,6 +34,8 @@ export class AllEmpLeavesComponent implements OnInit {
   
 
   async Search(){
+    
     await this.hrService.Search(this.range.value)
+    //if(this.range.)
   }
 }
