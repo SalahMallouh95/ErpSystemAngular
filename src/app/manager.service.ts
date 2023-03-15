@@ -12,6 +12,74 @@ export class ManagerService {
 
   constructor(private http : HttpClient, private spinner : NgxSpinnerService, private toaster : ToastrService) { }
 
+
+    
+
+
+AllEmp: any =[]
+
+async GetAllEmp(emp : any){
+
+  return new Promise<void>((resolve,reject) => {
+
+    this.spinner.show()
+    this.http.post("https://localhost:44388/api/Manager/GetAllEmp",emp).subscribe(
+      {
+        next: (res) => {
+          this.AllEmp = res
+          resolve();
+          this.toaster.success('List Of All EMployees');
+        },
+
+        error: (err) => {
+          console.log(err);
+          this.toaster.success('Error')
+          
+          reject();
+        }
+      }
+    )
+
+    this.spinner.hide()
+
+  })
+}
+
+
+AllLeave: any = []
+
+async GetAllLeaves(lev : any){
+
+  return new Promise<void>((resolve,reject) => {
+
+    this.spinner.show()
+    this.http.post("https://localhost:44388/api/Manager/getLeaves",lev).subscribe(
+      {
+        next: (res) => {
+          this.AllLeave = res
+          resolve();
+          this.toaster.success('List Of All Leaves');
+        },
+
+        error: (err) => {
+          console.log(err);
+          this.toaster.success('Error')
+          
+          reject();
+        }
+      }
+    )
+
+    this.spinner.hide()
+
+  })
+
+}
+
+
+
+///////////////////////////////////////////////////////////////////
+
   employees : any= [
     {
       userid: 1,
@@ -222,37 +290,6 @@ export class ManagerService {
 
 
 ///////////////////////////////////////////////////////////////////////
-  
-
-
-AllEmp: any =[]
-
-async GetAllEmp(emp : any){
-
-  return new Promise<void>((resolve,reject) => {
-
-    this.spinner.show()
-    this.http.post("https://localhost:44388/api/Manager/GetAllEmp",emp).subscribe(
-      {
-        next: (res) => {
-          this.AllEmp = res
-          resolve();
-          this.toaster.success('List Of All EMployees');
-        },
-
-        error: (err) => {
-          console.log(err);
-          this.toaster.success('Error')
-          
-          reject();
-        }
-      }
-    )
-
-    this.spinner.hide()
-
-  })
-}
 
 
 
