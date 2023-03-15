@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HrService } from 'src/app/hr.service';
 import {FormGroup, FormControl} from '@angular/forms';
+import { DatePipe } from '@angular/common';
+
+
+
 
 
 @Component({
@@ -11,7 +15,7 @@ import {FormGroup, FormControl} from '@angular/forms';
 })
 export class AllEmpLeavesComponent implements OnInit {
   
-  constructor(private router:Router,public hrService:HrService)
+  constructor(private router:Router,public hrService:HrService,private datePipe: DatePipe)
   {
 
   }  
@@ -31,6 +35,14 @@ export class AllEmpLeavesComponent implements OnInit {
   
 
   async Search(){
+    const startDate = this.range.get('startdate')?.value;
+    const endDate = this.range.get('enddate')?.value;
+    
+    const formattedStartDate = this.datePipe.transform(startDate, 'yyyy/MM/dd HH:mm:ss');
+    const formattedEndDate = this.datePipe.transform(endDate, 'yyyy/MM/dd HH:mm:ss');
+
+    // Use the formatted start and end dates in your search logic
+    console.log(formattedStartDate, formattedEndDate);
     await this.hrService.Search(this.range.value)
   }
 }
