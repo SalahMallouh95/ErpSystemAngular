@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { HrService } from 'src/app/hr.service';
+import { NgxSpinnerService } from 'ngx-spinner';
+
 
 
 @Component({
