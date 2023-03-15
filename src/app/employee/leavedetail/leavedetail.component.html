@@ -1,4 +1,4 @@
-<div *ngIf="leaveInfo[0].State==2">
+<div *ngIf="this.employeeService.leave.state==2">
   <!-- Layout wrapper -->
    <div class="layout-wrapper layout-content-navbar">
        <div class="layout-container">
@@ -25,14 +25,14 @@
                         <div class="mb-3 col-md-3">
                           <label for="language" class="form-label" >Leave Type</label>
                           <select id="language" class="select2 form-select" >
-                            <option *ngFor="let it of leavetype1" value="{{it.leaveid}}" >{{it.leavetype}}</option>
+                            <option *ngFor="let it of this.employeeService.leave" value="{{it.leaveid}}" >{{it.leavetype}}</option>
                           </select>
                         </div>
                         <div class="mb-3 col-md-6">
                           <label for="html5-datetime-local-input" class="col-md-2 col-form-label">Start time</label>
                         <div class="col-md-10">
                           <input
-                          [(ngModel)]="leaveInfo[0].startDate"
+                          [(ngModel)]="this.employeeService.leave.startdate"
                           [ngModelOptions]="{standalone: true}"
                             class="form-control"
                             type="datetime-local"
@@ -45,7 +45,7 @@
                             <label for="html5-datetime-local-input" class="col-md-2 col-form-label">End time</label>
                           <div class="col-md-10">
                             <input
-                            [(ngModel)]="leaveInfo[0].endDate"
+                            [(ngModel)]="this.employeeService.leave.enddate"
                             [ngModelOptions]="{standalone: true}"
                               class="form-control"
                               type="datetime-local"
@@ -57,7 +57,7 @@
                         <div class="mb-3 col-md-6">
                           <label class="form-label" for="basic-default-message">Message</label>
                           <textarea
-                          [(ngModel)]="leaveInfo[0].message"
+                          [(ngModel)]="this.employeeService.leave.message"
                           [ngModelOptions]="{standalone: true}"
                             id="basic-default-message"
                             class="form-control"
@@ -66,7 +66,7 @@
                         </div>
                         <div class="mb-3 col-md-6">
                           <label for="formFile" class="form-label">Documention</label>
-                          <input class="form-control" type="file" id="formFile" [(ngModel)]="leaveInfo[0].documentFileName"[ngModelOptions]="{standalone: true}"/>
+                          <input class="form-control" type="file" id="formFile" [(ngModel)]="this.employeeService.leave.documentfilename"[ngModelOptions]="{standalone: true}"/>
                         </div>
                         <button type="submit" class="btn btn-primary">Send</button>
                         <button type="submit" class="btn btn-primary" onclick="history.back(-1)">Back</button>
@@ -93,7 +93,7 @@
    </div>
 </div>
 
-<div *ngIf="leaveInfo[0].State!=2">
+<div *ngIf="this.employeeService.leave.state!=2">
    <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
         <div class="layout-container">
@@ -115,18 +115,18 @@
                       <div class="col-md-6 col-xl-4">
                         <div class="card mb-3">
                           <div class="card-body">
-                            <h5 class="card-title">leave Type: {{leaveInfo[0].leaveType}}</h5>
+                            <h5 class="card-title">leave Type: {{this.employeeService.leave.leavetype}}</h5>
                             <p class="card-text">
-                              {{leaveInfo[0].message}}
+                              {{this.employeeService.leave.message}}
                             </p>
                             <p class="card-text">
-                              <small class="text-muted">Start Date: {{leaveInfo[0].startDate}}</small>
+                              <small class="text-muted">Start Date: {{this.employeeService.leave.startdate}}</small>
                             </p>
                             <p class="card-text">
-                                <small class="text-muted">End Date: {{leaveInfo[0].endDate}}</small>
+                                <small class="text-muted">End Date: {{this.employeeService.leave.enddate}}</small>
                               </p>
                               <p class="card-text">
-                                <small class="text-muted">Document: {{leaveInfo[0].documentFileName}}</small>
+                                <small class="text-muted">Document: {{this.employeeService.leave.documentfilename}}</small>
                               </p>
                               <button type="submit" class="btn btn-primary" onclick="history.back(-1)">Back</button>
                           </div>

@@ -27,7 +27,8 @@ import {HttpClientModule} from '@angular/common/http'
   ],
   exports:[
     FormsModule,
-    ToastrModule
+    ToastrModule,
+    NgxSpinnerModule
   ],
   schemas:[
     CUSTOM_ELEMENTS_SCHEMA

@@ -21,9 +21,10 @@ leaves :any={}
 async GetValue(id :any){
 await this.employeeService.GetAllleave(this.leaves);
 }
-
-GetValues(id :any){
-
-  this.router.navigate(['Employee/leavedetail',id]);
+leave :any={}
+async GetValues(id :any){
+  this.leave.leaveid=id
+  await this.employeeService.GetleaveById(this.leave)
+  this.router.navigate(['Employee/leavedetail']);
 }
 }
