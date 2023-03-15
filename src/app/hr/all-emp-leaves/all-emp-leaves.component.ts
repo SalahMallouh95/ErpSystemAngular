@@ -19,8 +19,8 @@ export class AllEmpLeavesComponent implements OnInit {
 
   }  
   range = new FormGroup({
-    startdate: new FormControl<Date | null>(null),
-    enddate: new FormControl<Date | null>(null),
+    dateTo: new FormControl<Date | null>(null),
+    dateFrom: new FormControl<Date | null>(null),
     ssn:new FormControl
   });
 
