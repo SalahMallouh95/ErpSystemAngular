@@ -13,6 +13,14 @@ export class MUpdateProfileComponent {
 
   }
 
-  emp = this.man.profile
+  emp : any = {}
+  id: number =2
+
+  ngOnInit(){
+
+    this.emp.userid = this.id
+    this.man.GetManagerPrifile(this.emp)
+  }
+
 
 }

@@ -105,6 +105,49 @@ async GetMyLeaves(ml: any){
 }
 
 
+AllTasks: any =[]
+async GetAllTasks(at:any){
+  return new Promise<void>((resolve,reject) =>{
+
+    this.spinner.show()
+    this.http.post('https://localhost:44388/api/Manager/getAllTask',at).subscribe({
+
+    next : res => {
+      this.AllTasks = res
+      resolve()
+
+      this.toaster.success('List Of All Tasks')
+    },
+
+    error: err => {
+      console.log(err);
+      this.toaster.success('Error')
+      
+    }
+    })
+  } )
+}
+
+ManagerProfile: any = []
+async GetManagerPrifile(mp:any){
+
+  return new Promise<void> ((resolve,reject)=> {
+
+    this.spinner.show()
+    this.http.post('https://localhost:44388/api/User/GetProfile',mp).subscribe({
+
+    next: res =>{
+      this.ManagerProfile =res 
+      resolve()
+      
+    }
+    })
+
+    this.spinner.hide()
+  })
+}
+
+
 ///////////////////////////////////////////////////////////////////
 
   employees : any= [

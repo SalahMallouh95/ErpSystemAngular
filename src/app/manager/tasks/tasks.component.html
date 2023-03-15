@@ -40,9 +40,9 @@
 
 
 
-                                <tr *ngFor="let t of tas">
-                                    <td>{{t.name}}</td>
-                                    <td>{{t.tName}}</td>
+                                <tr *ngFor="let t of this.man.AllTasks">
+                                    <td>{{t.fname}} {{t.lname}}</td>
+                                    <td>{{t.taskname}}</td>
                                     <td>
                                         <div [ngSwitch]="t.state">
                                             <div *ngSwitchCase="2">
