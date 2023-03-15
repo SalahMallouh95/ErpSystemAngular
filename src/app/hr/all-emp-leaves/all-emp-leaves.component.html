@@ -10,11 +10,28 @@
          <!-- Basic Bootstrap Table -->
          <div class="card wow fadeInUp"  style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
             <h5 class="card-header">Table Basic</h5>
+            <mat-form-field appearance="fill">
+              <mat-label>Enter a date range</mat-label>
+              <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
+                <input matStartDate formControlName="startdate" placeholder="Start date">
+                <input matEndDate formControlName="enddate" placeholder="End date">
+              </mat-date-range-input>
+              <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-date-range-picker #picker>
+
+              </mat-date-range-picker>
+            
+              <mat-error *ngIf="range.controls.startdate.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+              <mat-error *ngIf="range.controls.enddate.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+            </mat-form-field>
+
             <div class="table-responsive text-nowrap">
               <table class="table table-hover wow slideInUp"
               style="visibility: visible; animation-delay: 0.3s; animation-name: slideInUp;">
                 <thead>
                   <tr style="background-color: #696cff66;">
+                    <th>SSN</th>
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th>Start Date</th>
@@ -24,7 +41,7 @@
                   </tr>
                 </thead>
                 <tbody class="table-border-bottom-0"> 
-                    <tr (SendValues)="GetValues($event)" app-raw-all-emp-leave [leaveid]="item.leaveid"  [fName]="item.fname" [LName]="item.lname" [startDate]="item.startdate" [endDate]="item.enddate" [State]="item.state" *ngFor="let item of this.hrService.allLeaves">                    
+                    <tr (SendValues)="GetValues($event)" app-raw-all-emp-leave [leaveid]="item.leaveid" [ssn]="item.ssn"  [fName]="item.fname" [LName]="item.lname" [startDate]="item.startdate" [endDate]="item.enddate" [State]="item.state" *ngFor="let item of this.hrService.allLeaves">                    
                     </tr>            
                
                </tbody>

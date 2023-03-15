@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HrService } from 'src/app/hr.service';
+import {FormGroup, FormControl} from '@angular/forms';
+
 
 @Component({
   selector: 'app-all-emp-leaves',
@@ -13,6 +15,10 @@ export class AllEmpLeavesComponent implements OnInit {
   {
 
   }  
+  range = new FormGroup({
+    startdate: new FormControl<Date | null>(null),
+    enddate: new FormControl<Date | null>(null),
+  });
 
   ngOnInit(): void {
     this.hrService.GetAllLeaves();

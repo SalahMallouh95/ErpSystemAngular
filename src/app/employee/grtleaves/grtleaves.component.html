@@ -31,18 +31,18 @@
                          </tr>
                        </thead>
                        <tbody class="table-border-bottom-0"> 
-                           <tr *ngFor="let item of allLeavesList">   
+                           <tr *ngFor="let item of employeeService.allleaves">   
                             
-    <td>{{item.leaveType}}</td>
+    <td>{{item.leavetypeid}}</td>
     <td>
-        {{item.startDate}}                  
+        {{item.startdate}}                  
     </td>
     
     <td>
-        {{item.endDate}}    
+        {{item.enddate}}    
     </td>
     <td>
-        <div [ngSwitch]="item.State">
+        <div [ngSwitch]="item.state">
             <div *ngSwitchCase="2">
           <span class="badge bg-label-warning me-1">Pending</span>
             </div>

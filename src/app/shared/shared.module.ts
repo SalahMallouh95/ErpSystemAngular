@@ -14,6 +14,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { PersonCardComponent } from './person-card/person-card.component';
 import { EmployeeSidbarComponent } from './employee-sidbar/employee-sidbar.component';
 import { ToastrModule } from 'ngx-toastr';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 
 
@@ -51,7 +52,8 @@ import { ToastrModule } from 'ngx-toastr';
     PersonCardComponent,
     EmployeeSidbarComponent,
     FormsModule,
-    ToastrModule
+    ToastrModule,
+    MatDatepickerModule
   ]
 })
 export class SharedModule { }
