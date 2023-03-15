@@ -20,4 +20,5 @@ export class EmployeeListComponent implements OnInit{
   GetValues(id:any){
    this.router.navigate(['Hr/EmpDetails',id]);
   }
+  
 }

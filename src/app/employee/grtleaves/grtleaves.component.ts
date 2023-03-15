@@ -11,15 +11,19 @@ export class GrtleavesComponent implements OnInit{
 constructor(public employeeService:EmployeeService,private router:Router){
 
 }
-allLeavesList :any []|undefined
   
 ngOnInit(): void {
-    this.allLeavesList=this.employeeService.allLeaves.filter(l=>l.userid==1)
-  }
-
-
+    this.leaves.userid=1;
+    this.employeeService.GetAllleave(this.leaves);
+   
+}
+leaves :any={}
+async GetValue(id :any){
+await this.employeeService.GetAllleave(this.leaves);
+}
 
 GetValues(id :any){
+
   this.router.navigate(['Employee/leavedetail',id]);
 }
 }
