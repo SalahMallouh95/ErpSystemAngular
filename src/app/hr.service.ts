@@ -9,7 +9,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class HrService {
 
-  constructor(public http: HttpClient, private spinner: NgxSpinnerService,private toastr: ToastrService) {
+  constructor(public http: HttpClient, private spinner: NgxSpinnerService, private toastr: ToastrService) {
 
   }
   mesage: string = "test"
@@ -24,37 +24,44 @@ export class HrService {
   leaveInfo: any
   depInfo: any
 
-  GetAllEmployee() {
+  async GetAllEmployee() {
     this.spinner.show();
     return new Promise<void>((resolve, reject) => {
-    this.http.get("https://localhost:44388/api/Hr/getuser").subscribe(
-      {
-        next: (res) => { this.allEmp = res
-        resolve() },
-        error: (ee) => { console.log(ee) 
-        reject()}
-      }
-    )
-    this.spinner.hide();})
+      this.http.get("https://localhost:44388/api/Hr/getuser").subscribe(
+        {
+          next: (res) => {
+            this.allEmp = res
+            resolve()
+          },
+          error: (ee) => {
+            console.log(ee)
+            reject()
+          }
+        }
+      )
+      this.spinner.hide();
+    })
 
   }
 
-  GetAllDepartment() {
+  async GetAllDepartment() {
     this.spinner.show();
     return new Promise<void>((resolve, reject) => {
-    this.http.get("https://localhost:44388/api/HR/getdept").subscribe(
-      {
-        next: (res) => {
-          this.allDep = res
-          resolve()
-                }
-        ,
-        error: (ee) => { console.log(ee)
-          reject() }
-      }
-    )
-    this.spinner.hide();
-  })
+      this.http.get("https://localhost:44388/api/HR/getdept").subscribe(
+        {
+          next: (res) => {
+            this.allDep = res
+            resolve()
+          }
+          ,
+          error: (ee) => {
+            console.log(ee)
+            reject()
+          }
+        }
+      )
+      this.spinner.hide();
+    })
 
   }
   GetAllRole() {
@@ -104,6 +111,7 @@ export class HrService {
     this.spinner.hide();
 
   }
+
   GetAllLeaveTypes() {
     this.spinner.show();
 
@@ -117,8 +125,7 @@ export class HrService {
 
   }
 
-  CreateDep(dep:any)
-  {
+  async CreateDep(dep: any) {
     return new Promise<void>((resolve, reject) => {
       this.spinner.show()
       this.http.post("https://localhost:44388/api/Hr/createdept", dep).subscribe(
@@ -141,11 +148,10 @@ export class HrService {
 
     })
   }
-  DeleteDep(id:any)
-  {
+  async DeleteDep(id: any) {
     return new Promise<void>((resolve, reject) => {
       this.spinner.show()
-      this.http.delete("https://localhost:44388/api/Hr/deletedept?id="+id).subscribe(
+      this.http.delete("https://localhost:44388/api/Hr/deletedept?id=" + id).subscribe(
         {
           next: () => {
             resolve();
