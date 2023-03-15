@@ -76,6 +76,33 @@ async GetAllLeaves(lev : any){
 
 }
 
+MyLeaves: any = []
+async GetMyLeaves(ml: any){
+
+    return new Promise<void>((resolve,reject) => {
+
+      this.spinner.show()
+      this.http.post('https://localhost:44388/api/Employee/GetAllLeaves',ml).subscribe({
+
+      next: (res) => {
+        this.MyLeaves = res
+        resolve()
+        this.toaster.success('List Of My Leaves')
+      },
+
+        error: (err) =>{
+          console.log(err);
+          this.toaster.success('Error')
+          
+        }
+
+      }
+      
+      )
+
+      this.spinner.hide()
+    })
+}
 
 
 ///////////////////////////////////////////////////////////////////
