@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
-import { Data, Router } from '@angular/router';
+import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ManagerService } from 'src/app/manager.service';
 
 @Component({
@@ -24,10 +24,19 @@ export class MAllEmpLeavesComponent implements OnInit {
     this.leaves.userid = this.id
     this.managerService.GetAllLeaves(this.leaves)
     
+    
   }
 
+  range = new FormGroup({
+   
+    dateTo: new FormControl<Date | null>(null),
+    dateFrom: new FormControl<Date | null>(null)
+  });
 
-
+  async Search(){
+    
+    await this.managerService.Searchs(this.range.value)
+  }
 
 
   GetValues(id :any){

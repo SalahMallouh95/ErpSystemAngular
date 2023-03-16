@@ -5,6 +5,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -148,7 +149,35 @@ async GetManagerPrifile(mp:any){
 }
 
 
+async Searchs(data : any){
 
+  console.log(data);
+
+  data.managerid = 2
+
+  return new Promise<void>((resolve,reject)=>{
+    this.spinner.show()
+    this.http.post("https://localhost:44388/api/Manager/searchleave",data).subscribe(
+      {
+        next: res => {
+          this.AllLeave = res
+          resolve()
+          this.toaster.success('success')
+          console.log(this.AllLeave);
+          
+        },
+
+        error: (err) =>{
+          console.log(err);
+          this.toaster.error('Error')
+          
+        }
+      }
+    )
+    this.spinner.show()
+  })
+  
+}
 
 ///////////////////////////////////////////////////////////////////
 
