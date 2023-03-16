@@ -78,8 +78,9 @@ export class HrService {
   }
 
   GetEmpInfo(user: any) {
+          this.spinner.show()
+
     return new Promise<void>((resolve, reject) => {
-      this.spinner.show()
       this.http.post("https://localhost:44388/api/User/GetProfile", user).subscribe(
         {
           next: (res) => {

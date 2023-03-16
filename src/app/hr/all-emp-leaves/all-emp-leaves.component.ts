@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HrService } from 'src/app/hr.service';
 import {FormGroup, FormControl} from '@angular/forms';
+import { NgxSpinnerService } from 'ngx-spinner';
+
 
 
 
@@ -14,7 +16,7 @@ import {FormGroup, FormControl} from '@angular/forms';
 })
 export class AllEmpLeavesComponent implements OnInit {
   
-  constructor(private router:Router,public hrService:HrService)
+  constructor(private router:Router,public hrService:HrService,private spinner: NgxSpinnerService)
   {
 
   }  
