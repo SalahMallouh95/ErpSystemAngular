@@ -148,33 +148,7 @@ async GetManagerPrifile(mp:any){
 }
 
 
-async Search(data : any){
 
-  console.log(data);
-
-  return new Promise<void>((resolve,reject)=>{
-    this.spinner.show()
-    this.http.post('https://localhost:44388/api/Manager/getLeaves',data).subscribe(
-      {
-        next: res => {
-          this.AllLeave = res
-          resolve()
-          this.toaster.success('success')
-          console.log(this.AllLeave);
-          
-        },
-
-        error: (err) =>{
-          console.log(err);
-          this.toaster.error('Error')
-          
-        }
-      }
-    )
-    this.spinner.show()
-  })
-  
-}
 
 ///////////////////////////////////////////////////////////////////
 

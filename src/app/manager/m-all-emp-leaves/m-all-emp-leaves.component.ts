@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+
 import { Data, Router } from '@angular/router';
 import { ManagerService } from 'src/app/manager.service';
 
@@ -28,16 +28,7 @@ export class MAllEmpLeavesComponent implements OnInit {
 
 
 
-  range = new FormGroup({
-    dateTo: new FormControl<Date | null>(null),
-    dateFrom: new FormControl<Date | null>(null)
-  });
 
-
-  async Search(){
-    await this.managerService.Search(this.range.value)
-    
-  }
 
   GetValues(id :any){
     this.router.navigate(['Manager/LeaveDetails',id]);
