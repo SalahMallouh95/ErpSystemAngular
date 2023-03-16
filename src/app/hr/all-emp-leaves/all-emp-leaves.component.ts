@@ -36,6 +36,5 @@ export class AllEmpLeavesComponent implements OnInit {
   async Search(){
     
     await this.hrService.Search(this.range.value)
-    //if(this.range.)
   }
 }
