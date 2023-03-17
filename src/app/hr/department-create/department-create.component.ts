@@ -19,7 +19,6 @@ export class DepartmentCreateComponent {
   async CreateDep() {
    this.dep.departmentname=this.depName
    await this.hrService.CreateDep(this.dep)
-   this.hrService.GetAllDepartment
-   this.router.navigate(['Hr/Department'])
+   this.hrService.GetAllDepartment()
   }
 }

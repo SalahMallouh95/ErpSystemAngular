@@ -10,10 +10,31 @@ import { HrService } from 'src/app/hr.service';
 export class LeaveDetailsComponent implements OnInit {
   constructor(public hrservice:HrService,private route:ActivatedRoute){
   }
-  id:number|undefined
-  leaveInfo:any|{}
-
+  
   ngOnInit(): void {
-    this.id=this.route.snapshot.params['id'];
-  }
+   
+    
+      }
+
+
+      async AcceptLeave()
+      {
+        let leave :any={}
+        leave.leaveid=this.hrservice.leaveInfo.leaveid
+        leave.state=1    
+       await this.hrservice.UpdateLeaveDetails(leave)
+       await this.hrservice.GetLeaveDetails(leave)
+
+      }
+
+      async RejectLeave()
+      {
+        let leave :any={}
+        leave.leaveid=this.hrservice.leaveInfo.leaveid
+        leave.state=0        
+        await this.hrservice.UpdateLeaveDetails(leave)
+        await this.hrservice.GetLeaveDetails(leave)
+
+ 
+      }
 }

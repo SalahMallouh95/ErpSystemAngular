@@ -126,6 +126,56 @@ export class HrService {
 
   }
 
+  async GetLeaveDetails(leave:any)
+  {    
+    this.spinner.show()
+    return new Promise<void>((resolve, reject) => {
+      this.http.post("https://localhost:44388/api/Hr/getoneleave", leave).subscribe(
+        {
+          next: (res) => {
+            this.leaveInfo = res;
+            resolve();
+          }
+          ,
+          error: (ee) => {
+            console.log(ee)
+            reject();
+          }
+
+        }
+      )
+      this.spinner.hide();
+
+    })
+
+  }
+
+  async UpdateLeaveDetails(leave:any)
+  {   
+           console.log(leave);
+           
+    return new Promise<void>((resolve, reject) => {
+      this.http.put("https://localhost:44388/api/Hr/updateleave", leave).subscribe(
+        {
+          next: () => {
+            this.toastr.success("Leave state updateded")
+            resolve();
+          }
+          ,
+          error: (ee) => {
+            console.log(ee)
+            this.toastr.success("something want wrong")
+
+            reject();
+          }
+
+        }
+      )
+      this.spinner.hide();
+
+    })
+
+  }
   async CreateDep(dep: any) {
     return new Promise<void>((resolve, reject) => {
       this.spinner.show()
@@ -182,8 +232,7 @@ export class HrService {
       this.http.post("https://localhost:44388/api/Hr/searchleave", data).subscribe(
         {
           next: (res) => {this.allLeaves=res
-            resolve();
-            this.toastr.success('Department Added successfully!');
+            resolve();           
             console.log(this.allLeaves)
           }
           ,
