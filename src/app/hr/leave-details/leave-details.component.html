@@ -13,16 +13,16 @@
 
         <div class="card">
           <div class="card-body">
-            <h4 class="card-title">{{leaveInfo[0].fName}} {{leaveInfo[0].LName}}</h4>
+            <h4 class="card-title">{{this.hrservice.leaveInfo.fName}}  {{this.hrservice.leaveInfo.LName}}</h4>
             <p class="card-text">
-              <b>Start Date:</b> {{leaveInfo[0].startDate}}<br>
-              <b>End Date:</b> {{leaveInfo[0].endDate}}<br>
-              <b>Leave Type</b> {{leaveInfo[0].leaveType}}<br>
-              <b>Message:</b> {{leaveInfo[0].Message}} <br>
-              <b>Document:</b> {{leaveInfo[0].documentFileName}}<br>
+              <b>Start Date:</b> {{this.hrservice.leaveInfo.startDate}}<br>
+              <b>End Date:</b> {{this.hrservice.leaveInfo.endDate}}<br>
+              <b>Leave Type</b> {{this.hrservice.leaveInfo.leaveType}}<br>
+              <b>Message:</b> {{this.hrservice.leaveInfo.Message}} <br>
+              <b>Document:</b> {{this.hrservice.leaveInfo.documentFileName}}<br>
             </p>
             <b>States: </b>
-            <div [ngSwitch]="leaveInfo[0].State" style="display: inline;">
+            <div [ngSwitch]="this.hrservice.leaveInfo.State" style="display: inline;">
               <div *ngSwitchCase="2" style="display: inline;">
                 <span class="badge bg-label-warning me-1 ">Pending</span>
               </div>

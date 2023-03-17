@@ -17,7 +17,7 @@ export class RawAllEmpLeaveComponent {
 
 @Output() SendValues = new EventEmitter()
 
-SendSelecterEmpId()
+SendSelecterLevId()
 {
   this.SendValues.emit(this.leaveid)
 }

@@ -10,10 +10,7 @@ import { HrService } from 'src/app/hr.service';
 export class LeaveDetailsComponent implements OnInit {
   constructor(public hrservice:HrService,private route:ActivatedRoute){
   }
-  id:number|undefined
-  leaveInfo:any|{}
-
+  
   ngOnInit(): void {
-    this.id=this.route.snapshot.params['id'];
-  }
+      }
 }

@@ -126,6 +126,15 @@ export class HrService {
 
   }
 
+  GetLeaveDetails(id:number)
+  {
+    console.log(this.allLeaves);
+    
+    this.leaveInfo=this.allLeaves.filter((lev: { leaveid: number; })=>lev.leaveid==id)
+    console.log(this.leaveInfo);
+
+  }
+
   async CreateDep(dep: any) {
     return new Promise<void>((resolve, reject) => {
       this.spinner.show()

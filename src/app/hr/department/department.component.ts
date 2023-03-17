@@ -11,6 +11,8 @@ import { DepartmentCreateComponent } from '../department-create/department-creat
 })
 export class DepartmentComponent implements OnInit {
   @ViewChild('DeleteDio') Deletedia:any
+  @ViewChild('CreateDio') Createdia:any
+
 
 
   constructor(public hrService:HrService,public router:Router,public dialog:MatDialog){}
@@ -38,6 +40,7 @@ export class DepartmentComponent implements OnInit {
 
    OpenCreateDialog(){
     this.dialog.open(DepartmentCreateComponent);
+    this.hrService.GetAllDepartment
    }
  
 }
