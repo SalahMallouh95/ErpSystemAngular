@@ -15,6 +15,8 @@ import { PersonCardComponent } from './person-card/person-card.component';
 import { EmployeeSidbarComponent } from './employee-sidbar/employee-sidbar.component';
 import { ToastrModule } from 'ngx-toastr';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatDialogModule} from '@angular/material/dialog';
+
 
 
 
@@ -36,7 +38,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     CommonModule,
     RouterModule,
     FormsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    MatDialogModule
     
   ],
   exports:[
@@ -55,7 +58,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     EmployeeSidbarComponent,
     FormsModule,
     ToastrModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatDialogModule
   ]
 })
 export class SharedModule { }
