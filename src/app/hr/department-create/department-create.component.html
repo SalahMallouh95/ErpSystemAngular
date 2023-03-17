@@ -23,7 +23,16 @@
                           <div class="mb-3">
                             <label class="form-label" for="basic-default-fullname">Department Name</label>
                             <input type="text" class="form-control" [(ngModel)]="depName" name="depName" id="basic-default-fullname" placeholder="Haj leave">
-                          </div>                                               
+                          </div>    
+                          <div class="mb-3">
+                            <label for="exampleFormControlSelect1" class="form-label">Manager</label>
+                            <select (change)="Prient()" [(ngModel)]="managerid" name="managerid"class="form-select" id="exampleFormControlSelect1" aria-label="Default select example">
+                              <option selected="">Open this select menu</option>
+                              <option  value={{1}}>Salah</option>
+                              <option  value={{2}}>Mohmed</option>
+                              <option value={{3}}>Moyeed</option>
+                            </select>
+                          </div>                                              
                           <button type="submit" class="btn btn-primary" mat-button mat-dialog-close (click)="CreateDep()">Add</button>
                         </form>
                       
