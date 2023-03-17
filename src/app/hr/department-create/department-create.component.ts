@@ -12,14 +12,13 @@ import { NgxSpinnerService } from 'ngx-spinner';
   styleUrls: ['./department-create.component.css']
 })
 export class DepartmentCreateComponent {
-  constructor(public hrService:HrService, public router:Router) {}
+  constructor(public hrService:HrService) {}
   depName:string|undefined
   dep:any={}
 
   async CreateDep() {
    this.dep.departmentname=this.depName
    await this.hrService.CreateDep(this.dep)
-   this.hrService.GetAllDepartment
-   this.router.navigate(['Hr/Department'])
+   await this.hrService.GetAllDepartment
   }
 }
