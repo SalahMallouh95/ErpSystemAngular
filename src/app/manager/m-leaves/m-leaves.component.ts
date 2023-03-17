@@ -15,7 +15,7 @@ export class MLeavesComponent {
 
   managerLeaves : any = {}
   id : number =2
-
+  
   ngOnInit()  {
     this.managerLeaves.userid = this.id
     this.managerserv.GetMyLeaves(this.managerLeaves)
