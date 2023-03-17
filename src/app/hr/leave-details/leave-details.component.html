@@ -9,9 +9,7 @@
               <b>Leave Type</b> {{this.hrservice.leaveInfo.leavetype}}<br>
               <b>Message:</b> {{this.hrservice.leaveInfo.message}} <br>
               <b>Document:</b> 
-              <a *ngIf="this.hrservice.leaveInfo.documentfilename!=null" target="_blank"  [href]="'../../../assets/Documents/'+this.hrservice.leaveInfo.documentfilename">{{this.hrservice.leaveInfo.documentfilename}} 
-
-              </a> <br>
+              <a *ngIf="this.hrservice.leaveInfo.documentfilename!=='null'" target="_blank"  [href]="'../../../assets/Documents/'+this.hrservice.leaveInfo.documentfilename">{{this.hrservice.leaveInfo.documentfilename}}</a> <br>
             </p>
             <b>States: </b>
             <div [ngSwitch]="this.hrservice.leaveInfo.state" style="display: inline;">
