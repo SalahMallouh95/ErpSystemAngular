@@ -23,7 +23,7 @@ export class LeaveDetailsComponent implements OnInit {
         leave.leaveid=this.hrservice.leaveInfo.leaveid
         leave.state=1    
        await this.hrservice.UpdateLeaveDetails(leave)
-       await this.hrservice.GetLeaveDetails(leave)
+       this.hrservice.GetLeaveDetails(leave)
 
       }
 
@@ -33,7 +33,7 @@ export class LeaveDetailsComponent implements OnInit {
         leave.leaveid=this.hrservice.leaveInfo.leaveid
         leave.state=0        
         await this.hrservice.UpdateLeaveDetails(leave)
-        await this.hrservice.GetLeaveDetails(leave)
+        this.hrservice.GetLeaveDetails(leave)
 
  
       }

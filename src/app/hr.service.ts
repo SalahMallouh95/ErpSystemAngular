@@ -46,6 +46,7 @@ export class HrService {
 
   async GetAllDepartment() {
     this.spinner.show();
+    
     return new Promise<void>((resolve, reject) => {
       this.http.get("https://localhost:44388/api/HR/getdept").subscribe(
         {
