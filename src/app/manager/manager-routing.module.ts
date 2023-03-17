@@ -43,7 +43,7 @@ const routes: Routes = [
     component: MLeaveDetailsComponent
   },
   {
-    path: 'EmpInfo/:id',
+    path: 'EmpInfo',
     component: MEmpInfoComponent
   },
   {

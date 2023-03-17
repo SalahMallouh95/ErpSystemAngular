@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ManagerService } from 'src/app/manager.service';
 
@@ -20,8 +21,23 @@ export class MEmpInfoComponent implements OnInit {
    
     this.id = this.route.snapshot.params['id'];
     this.emp = this.man.empInfo.filter(  (ex) => ex.userid == this.id )
+    this.info.patchValue(this.man.empInformation)
+    console.log(this.man.empInformation);
+    
   }
 
+  info = new FormGroup({
+
+    userid :new FormControl(),
+    managerid :new FormControl(),
+    fname :new FormControl({value: '', disabled: true}, Validators.required),
+    lname :new FormControl({value: '', disabled: true}, Validators.required),
+    ssn :new FormControl({value: '', disabled: true}, Validators.required),
+    address :new FormControl({value: '', disabled: true}, Validators.required),
+    phonenumber :new FormControl({value: '', disabled: true}, Validators.required),
+    email : new FormControl({value: '', disabled: true}, Validators.required),
+    imagefilename : new FormControl() 
+  })
     
 
 }
