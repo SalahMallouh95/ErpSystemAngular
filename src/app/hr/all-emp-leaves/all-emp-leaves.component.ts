@@ -30,9 +30,11 @@ export class AllEmpLeavesComponent implements OnInit {
     this.hrService.GetAllLeaves();
     
   }
-  GetValues(id :any){
+  async GetValues(id :any){
 
-    this.hrService.GetLeaveDetails(id)
+    let leave :any={}
+        leave.leaveid=id
+    await this.hrService.GetLeaveDetails(leave)
     this.router.navigate(['Hr/LeaveDetails']);
   }
   

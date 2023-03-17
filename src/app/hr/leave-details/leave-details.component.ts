@@ -12,5 +12,29 @@ export class LeaveDetailsComponent implements OnInit {
   }
   
   ngOnInit(): void {
+   
+    
+      }
+
+
+      async AcceptLeave()
+      {
+        let leave :any={}
+        leave.leaveid=this.hrservice.leaveInfo.leaveid
+        leave.state=1    
+       await this.hrservice.UpdateLeaveDetails(leave)
+       await this.hrservice.GetLeaveDetails(leave)
+
+      }
+
+      async RejectLeave()
+      {
+        let leave :any={}
+        leave.leaveid=this.hrservice.leaveInfo.leaveid
+        leave.state=0        
+        await this.hrservice.UpdateLeaveDetails(leave)
+        await this.hrservice.GetLeaveDetails(leave)
+
+ 
       }
 }
