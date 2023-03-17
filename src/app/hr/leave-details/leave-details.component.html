@@ -1,17 +1,16 @@
       <div class="container-xxl flex-grow-1 container-p-y">
-
-        <div class="card">
+        <div class="card mb-4">
           <div class="card-body">
-            <h4 class="card-title">{{this.hrservice.leaveInfo.fname}}  {{this.hrservice.leaveInfo.lname}}</h4>
+            <h3 class="card-title">{{this.hrservice.leaveInfo.fname}}  {{this.hrservice.leaveInfo.lname}}</h3>
+            <div class="card-subtitle text-muted mb-3">leave Requst</div>
             <p class="card-text">
               <b>Start Date:</b> {{this.hrservice.leaveInfo.startdate}}<br>
               <b>End Date:</b> {{this.hrservice.leaveInfo.enddate}}<br>
               <b>Leave Type</b> {{this.hrservice.leaveInfo.leavetype}}<br>
               <b>Message:</b> {{this.hrservice.leaveInfo.message}} <br>
               <b>Document:</b> 
-              <a *ngIf="this.hrservice.leaveInfo.documentfilename!=null" target="_blank"  [href]="'../../../assets/Documents/'+this.hrservice.leaveInfo.documentfilename">{{this.hrservice.leaveInfo.documentfilename}} 
-
-              </a> <br>
+              <a *ngIf="this.hrservice.leaveInfo.documentfilename!=='null'" class="card-link" target="_blank"  [href]="'../../../assets/Documents/'+this.hrservice.leaveInfo.documentfilename">{{this.hrservice.leaveInfo.documentfilename}}</a> <br>
+            
             </p>
             <b>States: </b>
             <div [ngSwitch]="this.hrservice.leaveInfo.state" style="display: inline;">

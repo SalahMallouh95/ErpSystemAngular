@@ -14,11 +14,18 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class DepartmentCreateComponent {
   constructor(public hrService:HrService, public router:Router) {}
   depName:string|undefined
+  managerid:number|undefined
   dep:any={}
 
   async CreateDep() {
    this.dep.departmentname=this.depName
+   this.dep.userid=this.managerid
    await this.hrService.CreateDep(this.dep)
    this.hrService.GetAllDepartment()
+  }
+
+  Prient(){
+    console.log(this.managerid);
+    
   }
 }
