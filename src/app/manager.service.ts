@@ -212,6 +212,34 @@ export class ManagerService {
     })
   }
 
+
+  attendance : any= []
+
+  async GetAttendance(at : any){
+    return new Promise<void>((resolve,reject)=> {
+
+      this.spinner.show()
+      this.http.post('https://localhost:44388/api/User/GetAttendance',at).subscribe({
+
+      next: res =>{
+        this.attendance =res
+        resolve()
+        this.toaster.success('success')
+        console.log(res);
+        
+
+      },
+
+      error: err =>{
+        console.log(err);
+        this.toaster.error('Error')
+        
+      }
+      })
+    })
+
+  }
+
   ///////////////////////////////////////////////////////////////////
 
   employees: any = [

@@ -17,12 +17,18 @@ export class MEmpInfoComponent implements OnInit {
     id : number| undefined
     emp : any | {}
 
+    idatt: number | undefined
+    att : any = {}
+
+
   ngOnInit(): void {
    
     this.id = this.route.snapshot.params['id'];
     this.emp = this.man.empInfo.filter(  (ex) => ex.userid == this.id )
     this.info.patchValue(this.man.empInformation)
     console.log(this.man.empInformation);
+
+    
     
   }
 

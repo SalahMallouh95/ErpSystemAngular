@@ -92,12 +92,66 @@
                     </div>
                   </form>
                 </div>
-                <!-- /Account -->
+                
+                
+
+
+                <h4 class="fw-bold py-3 mb-4">Attendance Of Employee</h4>
+                 <div class="card">
+          <div class="table-responsive text-nowrap">
+              <table class="table table-hover wow slideInUp"
+              style="visibility: visible; animation-delay: 0.3s; animation-name: slideInUp;">
+                  <thead >
+                      <tr style="background-color: #696cff66;">
+                          <th>Check in</th>
+                          <th>Check out</th>
+                          <th>Working hour</th>
+                          <th>Status</th>
+                          
+
+                      </tr>
+                  </thead>
+                  <tbody class="table-border-bottom-0">
+                      <tr *ngFor="let emp of this.man.attendance">
+                          <td>{{emp.checkin}}</td>
+                          <td>{{emp.checkout}}</td>
+                          <td>{{emp.workinghour}}</td>
+                          
+                          
+                          <td>
+                              <div [ngSwitch]="emp.state">
+                                      <div *ngSwitchCase="2">
+                                          <span class="badge bg-label-success me-1">Pending</span>
+                                      </div>
+
+                                      <div *ngSwitchCase="1">
+                                          <span class="badge bg-label-danger me-1">Accepted</span>
+                                      </div>
+
+                                      <div *ngSwitchCase="0">
+                                          <span class="badge bg-label-danger me-1">Rejected</span>
+                                      </div>
+                              </div>
+                          </td>
+                          
+                         
+
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+      </div>
               </div>
             </div>
           </div>
 
         </div>
+
+
+       
+
+
+        
       </div>
 
     </div>

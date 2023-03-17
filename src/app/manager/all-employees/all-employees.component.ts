@@ -16,15 +16,23 @@ export class AllEmployeesComponent {
 user : any = {}
 id : number = 2
 
+
+
   async GetValues(ide:any){
+
+    let att : any ={}
+    att.userid = ide
     console.log(ide);
     
     await this.managerService.GetEmpInfo(ide)
+    
+    await this.managerService.GetAttendance(att)
 
     this.route.navigate(['Manager/EmpInfo']);
     
 
     console.log(ide);
+
     
   }
 
