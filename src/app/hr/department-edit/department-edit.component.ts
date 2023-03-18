@@ -11,27 +11,27 @@ export class DepartmentEditComponent {
   
   dep=new FormGroup({
     departmentname:new FormControl(),
-    userid:new FormControl()
+    userid:new FormControl(),
+    departmentid:new FormControl()
   })
 
   constructor(public hrService:HrService){
     
-    this.dep.controls['userid'].setValue(this.dep.value.userid,{onlySelf:true})
   }
 
   async ngOnInit(){
     await this.hrService.GetAllEmployee()
-    this.hrService.allEmp = this.hrService.allEmp.filter((e: { roleid: number; })=>e.roleid==2)
-    console.log(this.hrService.depInfo);
+    this.hrService.allEmp = this.hrService.allEmp.filter((e: { roleid: number; })=>e.roleid==2)    
     this.dep.patchValue(this.hrService.depInfo[0]) 
-    console.log(this.dep.value);
     
     
   }
 
-  UpdateDep()
+  async UpdateDep()
   {
-
+    this.dep.value.userid=parseInt(this.dep.value.userid);
+    await this.hrService.EditDep(this.dep.value)    
+    this.hrService.GetAllDepartment()
 
   }
 

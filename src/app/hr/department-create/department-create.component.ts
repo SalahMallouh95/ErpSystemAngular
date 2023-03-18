@@ -31,9 +31,5 @@ export class DepartmentCreateComponent {
     
     this.hrService.GetAllDepartment()
   }
-
-  Prient() {
-    console.log(this.managerid);
-
-  }
+ 
 }
