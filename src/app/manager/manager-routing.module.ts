@@ -39,7 +39,7 @@ const routes: Routes = [
     component: MMyLeaveDetailsComponent
   },
   {
-    path: 'LeaveDetails/:id',
+    path: 'LeaveDetails',
     component: MLeaveDetailsComponent
   },
   {
@@ -63,7 +63,7 @@ const routes: Routes = [
     component: TasksDetailesComponent
   },
   {
-    path: 'TaskSolution/:id',
+    path: 'TaskSolution',
     component: MSolutionComponent
   },
   {

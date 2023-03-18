@@ -14,13 +14,9 @@ export class MSolutionComponent implements OnInit {
 
   }
 
-  id: number | undefined
-  tsln : any | {}
 
-  ngOnInit(): void {
-    
-    this.id = this.route.snapshot.params['id'];
-    this.tsln = this.man.sloutions.filter( s => s.sid == this.id )
+
+  ngOnInit() {
     
   }
 
@@ -29,4 +25,5 @@ export class MSolutionComponent implements OnInit {
 
   }
 
+  
 }

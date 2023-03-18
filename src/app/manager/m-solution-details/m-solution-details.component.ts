@@ -16,8 +16,12 @@ export class MSolutionDetailsComponent implements OnInit {
   tsln : any[] | undefined
 
   ngOnInit(): void {
+
     this.id= this.route.snapshot.params['id'];
-    this.tsln = this.man.sloutions.filter( s => s.sid == this.id)
+    this.man.solutioninfo = this.man.allsln.filter( (s: { solutionid: number | undefined; }) => s.solutionid == this.id)
+
+    console.log(this.man.solutioninfo);
+    
     
   }
 
