@@ -12,7 +12,9 @@ import { CreateleaveComponent } from './createleave/createleave.component';
 import { GettaskComponent } from './gettask/gettask.component';
 import { CreatesolutionComponent } from './createsolution/createsolution.component';
 import { EditsolutionComponent } from './editsolution/editsolution.component';
-
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatInputModule } from "@angular/material/input";
+import { MatSelectModule } from "@angular/material/select";
 
 @NgModule({
   declarations: [
@@ -24,12 +26,16 @@ import { EditsolutionComponent } from './editsolution/editsolution.component';
     CreateleaveComponent,
     GettaskComponent,
     CreatesolutionComponent,
-    EditsolutionComponent
+    EditsolutionComponent,
+    
   ],
   imports: [
     CommonModule,
     EmployeeRoutingModule,
-    SharedModule
+    SharedModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule
   ]
 })
 export class EmployeeModule { }
