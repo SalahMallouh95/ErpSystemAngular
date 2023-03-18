@@ -65,7 +65,7 @@ export class EmployeeService {
       
       //  })
 }
-allLeaves: any = []
+
 async Search(data:any)
 {
   console.log(data);
@@ -74,10 +74,10 @@ async Search(data:any)
     this.spinner.show()
     this.http.post("https://localhost:44388/api/Employee/searchleave", data).subscribe(
       {
-        next: (res) => {this.allLeaves=res
+        next: (res) => {this.allleaves=res
           resolve();
-          this.toaster.success('Department Added successfully!');
-          console.log(this.allLeaves)
+          this.toaster.success('successfully!');
+          console.log(this.allleaves)
         }
         ,
         error: (ee) => {
@@ -93,5 +93,24 @@ async Search(data:any)
 
   })
 
+}
+CreateLeave(leave : any) // 
+{
+return new Promise<void>((resolve, reject) => {
+  this.spinner.show()
+  this.http.post("https://localhost:44388/api/Employee/CreateLeave",leave).subscribe(
+    {
+      next:()=>{
+this.spinner.hide()
+this.toaster.success("Added Successfully")
+resolve();
+      },
+      error:()=>{
+        this.spinner.hide()
+this.toaster.error("error")
+      }
+    }
+  )
+})
 }
 }
