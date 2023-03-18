@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ManagerService } from 'src/app/manager.service';
+import { MatDialog } from '@angular/material/dialog';
+import { MLeaveDetailsComponent } from '../m-leave-details/m-leave-details.component';
+
 
 @Component({
   selector: 'app-m-all-emp-leaves',
@@ -10,7 +13,7 @@ import { ManagerService } from 'src/app/manager.service';
 })
 export class MAllEmpLeavesComponent implements OnInit {
 
-  constructor( private router:Router, public managerService : ManagerService ){
+  constructor( private router:Router, public managerService : ManagerService , public dialog : MatDialog){
 
 
 
@@ -39,10 +42,17 @@ export class MAllEmpLeavesComponent implements OnInit {
   }
 
 
-  GetValues(id :any){
-    this.router.navigate(['Manager/LeaveDetails',id]);
-    console.log(id);
+  async GetValues(id :any){
+    let leave : any = {}
+    leave.leaveid = id
+   await this.managerService.GetLeaveDetails(leave)
+    this.OpenMoreInfoDialog()
+   
     
+  }
+
+  OpenMoreInfoDialog(){
+    this.dialog.open(MLeaveDetailsComponent)
   }
 
 
