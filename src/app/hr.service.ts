@@ -225,7 +225,31 @@ export class HrService {
 
     })
   }
+  async EditDep(dep: any) {
+    console.log(dep);
+    
+    return new Promise<void>((resolve, reject) => {
+      this.spinner.show()
+      this.http.put("https://localhost:44388/api/Hr/updatedept", dep).subscribe(
+        {
+          next: () => {
+            resolve();
+            this.toastr.success('Department updated successfully!');
+          }
+          ,
+          error: (ee) => {
+            console.log(ee)
+            this.toastr.error('Somthing went wrong!');
 
+            reject();
+          }
+
+        }
+      )
+      this.spinner.hide();
+
+    })
+  }
   async Search(data:any)
   {
     console.log(data);

@@ -26,7 +26,7 @@
                           </div>    
                           <div class="mb-3">
                             <label for="exampleFormControlSelect1" class="form-label">Manager</label>
-                            <select (change)="Prient()" [(ngModel)]="managerid" name="managerid"class="form-select" id="exampleFormControlSelect1" aria-label="Default select example">
+                            <select [(ngModel)]="managerid" name="managerid"class="form-select" id="exampleFormControlSelect1" aria-label="Default select example">
                               <option selected="">Open this select menu</option>
                               <option *ngFor="let i of this.hrService.allEmp" value={{i.userid}}>{{i.fname}} {{i.lname}}</option>                              
                             </select>

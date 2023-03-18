@@ -25,8 +25,8 @@
                    <div class="mb-3">
                      <label for="exampleFormControlSelect1" class="form-label">Manager</label>
                      <select formControlName="userid" name="userid"class="form-select"  aria-label="Default select example">
-                       <option value="">Open this select menu</option>
-                       <option *ngFor="let i of this.hrService.allEmp" value={{i.userid}}>{{i.fname}} {{i.lname}} {{i.userid}}</option>                              
+                       <option Value="">Open this select menu</option>
+                       <option *ngFor="let i of this.hrService.allEmp" [ngValue]="i.userid">{{i.fname}} {{i.lname}}</option>                              
                      </select>
                    </div>                                              
                    <button type="submit" class="btn btn-primary" mat-button mat-dialog-close (click)="UpdateDep()">Add</button>
