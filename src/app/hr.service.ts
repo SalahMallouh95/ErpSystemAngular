@@ -178,6 +178,8 @@ export class HrService {
 
   }
   async CreateDep(dep: any) {
+    console.log(dep);
+    
     return new Promise<void>((resolve, reject) => {
       this.spinner.show()
       this.http.post("https://localhost:44388/api/Hr/createdept", dep).subscribe(
