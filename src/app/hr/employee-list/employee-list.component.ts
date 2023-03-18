@@ -1,6 +1,8 @@
 import { Component,OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HrService } from 'src/app/hr.service';
+import { NgxSpinnerService } from 'ngx-spinner';
+
 
 @Component({
   selector: 'app-employee-list',
@@ -10,16 +12,14 @@ import { HrService } from 'src/app/hr.service';
 export class EmployeeListComponent implements OnInit{
 
 
-  constructor(private router:Router,public hrService:HrService)
+  constructor(private router:Router,public hrService:HrService, private spinner:NgxSpinnerService)
   {
 
   }
   user:any={}
 
   ngOnInit(): void {
-    this.hrService.GetAllEmployee();
-    this.hrService.GetAllDepartment();
-    this.hrService.GetAllRole();
+    this.hrService.GetAllEmployee();  
 
 
   }
@@ -27,6 +27,7 @@ export class EmployeeListComponent implements OnInit{
 
     this.user.userid=id
     await this.hrService.GetEmpInfo(this.user);
+
     console.log(this.hrService.empInfo);    
     this.router.navigate(['Hr/EmpDetails']);
   }

@@ -12,7 +12,7 @@
          <!-- Basic Bootstrap Table -->
          <div class="card wow fadeInUp"  style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
             <div class="demo-inline-spacing">
-            <button style="position: absolute; top: 0px; right:100px;" type="button" class="btn rounded-pill btn-success"  [routerLink]="['/Hr/DepartmentCreate']">Add new Department</button>                      
+            <button style="position: absolute; top: 0px; right:100px;" type="button" class="btn rounded-pill btn-success"  (click)="OpenCreateDialog()">Add new Department</button>                      
                          </div>
             <h5 class="card-header">Department Table </h5>
             <div class="table-responsive text-nowrap">
@@ -39,8 +39,8 @@
                 <td>
                     <div class="demo-inline-spacing">
                         <button type="button" class="btn rounded-pill btn-info" (click)="ViewEmp(item.departmentid)">Employee List</button>
-                        <button type="button" class="btn rounded-pill btn-info" [routerLink]="['/Hr/DepartmentEdit']">Edit</button>
-                        <button type="button" class="btn rounded-pill btn-danger" (click)="DeleteDep(item.departmentid)">Delete</button>                        
+                        <button type="button" class="btn rounded-pill btn-secondary" (click)="OpenEditDialog(item.departmentid)" >Edit/Add Manager</button>
+                        <button type="button" class="btn rounded-pill btn-danger" (click)="OpenDeleteDialog(item.departmentid)">Delete</button>                        
                         
                       </div>
                 </td>
@@ -51,7 +51,24 @@
             </div>
           </div>
         </div>
-          <!--/ Basic Bootstrap Table -->
+
+      </div>
     </div>
     </div>
+
+    <ng-template #DeleteDio>
+    <mat-dialog-content>
+
+    <p>Are You Sure to Delete this item</p>
+    </mat-dialog-content>
+
+      <mat-dialog-actions >
+      <div class="demo-inline-spacing">
+      <button mat-button [mat-dialog-close]="true" type="button" (click)="DeleteDep(this.rawDepid)" class="btn rounded-pill btn-success" >Yes</button>
+      <button type="button" class="btn rounded-pill btn-danger" mat-button mat-dialog-close>No</button>                      
+      
     </div>
+    </mat-dialog-actions>
+    </ng-template>
+
+    

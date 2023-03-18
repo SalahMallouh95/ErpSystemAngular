@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HrService } from 'src/app/hr.service';
 import {FormGroup, FormControl} from '@angular/forms';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { MatDialog } from '@angular/material/dialog';
+import { LeaveDetailsComponent } from '../leave-details/leave-details.component';
+
 
 
 
@@ -14,7 +18,7 @@ import {FormGroup, FormControl} from '@angular/forms';
 })
 export class AllEmpLeavesComponent implements OnInit {
   
-  constructor(private router:Router,public hrService:HrService)
+  constructor(public dialog:MatDialog,private router:Router,public hrService:HrService,private spinner: NgxSpinnerService)
   {
 
   }  
@@ -28,13 +32,21 @@ export class AllEmpLeavesComponent implements OnInit {
     this.hrService.GetAllLeaves();
     
   }
-  GetValues(id :any){
-    this.router.navigate(['Hr/LeaveDetails',id]);
+  async GetValues(id :any){
+
+    let leave :any={}
+        leave.leaveid=id
+    await this.hrService.GetLeaveDetails(leave)
+    this.OpenMoreInfoDialog();
   }
   
 
   async Search(){
     
     await this.hrService.Search(this.range.value)
+  }
+
+  OpenMoreInfoDialog(){
+    this.dialog.open(LeaveDetailsComponent)
   }
 }

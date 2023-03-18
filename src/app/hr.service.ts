@@ -46,6 +46,7 @@ export class HrService {
 
   async GetAllDepartment() {
     this.spinner.show();
+    
     return new Promise<void>((resolve, reject) => {
       this.http.get("https://localhost:44388/api/HR/getdept").subscribe(
         {
@@ -78,8 +79,9 @@ export class HrService {
   }
 
   GetEmpInfo(user: any) {
+          this.spinner.show()
+
     return new Promise<void>((resolve, reject) => {
-      this.spinner.show()
       this.http.post("https://localhost:44388/api/User/GetProfile", user).subscribe(
         {
           next: (res) => {
@@ -125,7 +127,59 @@ export class HrService {
 
   }
 
+  async GetLeaveDetails(leave:any)
+  {    
+    this.spinner.show()
+    return new Promise<void>((resolve, reject) => {
+      this.http.post("https://localhost:44388/api/Hr/getoneleave", leave).subscribe(
+        {
+          next: (res) => {
+            this.leaveInfo = res;
+            resolve();
+          }
+          ,
+          error: (ee) => {
+            console.log(ee)
+            reject();
+          }
+
+        }
+      )
+      this.spinner.hide();
+
+    })
+
+  }
+
+  async UpdateLeaveDetails(leave:any)
+  {   
+           console.log(leave);
+           
+    return new Promise<void>((resolve, reject) => {
+      this.http.put("https://localhost:44388/api/Hr/updateleave", leave).subscribe(
+        {
+          next: () => {
+            this.toastr.success("Leave state updateded")
+            resolve();
+          }
+          ,
+          error: (ee) => {
+            console.log(ee)
+            this.toastr.success("something want wrong")
+
+            reject();
+          }
+
+        }
+      )
+      this.spinner.hide();
+
+    })
+
+  }
   async CreateDep(dep: any) {
+    console.log(dep);
+    
     return new Promise<void>((resolve, reject) => {
       this.spinner.show()
       this.http.post("https://localhost:44388/api/Hr/createdept", dep).subscribe(
@@ -181,8 +235,7 @@ export class HrService {
       this.http.post("https://localhost:44388/api/Hr/searchleave", data).subscribe(
         {
           next: (res) => {this.allLeaves=res
-            resolve();
-            this.toastr.success('Department Added successfully!');
+            resolve();           
             console.log(this.allLeaves)
           }
           ,

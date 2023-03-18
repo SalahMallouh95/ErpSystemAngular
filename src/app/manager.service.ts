@@ -5,152 +5,244 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class ManagerService {
 
-  constructor(private http : HttpClient, private spinner : NgxSpinnerService, private toaster : ToastrService) { }
+  constructor(private http: HttpClient, private spinner: NgxSpinnerService, private toaster: ToastrService) { }
 
 
-    
 
 
-AllEmp: any =[]
 
-async GetAllEmp(emp : any){
+  AllEmp: any = []
 
-  return new Promise<void>((resolve,reject) => {
+  async GetAllEmp(emp: any) {
 
-    this.spinner.show()
-    this.http.post("https://localhost:44388/api/Manager/GetAllEmp",emp).subscribe(
-      {
-        next: (res) => {
-          this.AllEmp = res
-          resolve();
-          this.toaster.success('List Of All EMployees');
-        },
-
-        error: (err) => {
-          console.log(err);
-          this.toaster.success('Error')
-          
-          reject();
-        }
-      }
-    )
-
-    this.spinner.hide()
-
-  })
-}
-
-
-AllLeave: any = []
-
-async GetAllLeaves(lev : any){
-
-  return new Promise<void>((resolve,reject) => {
-
-    this.spinner.show()
-    this.http.post("https://localhost:44388/api/Manager/getLeaves",lev).subscribe(
-      {
-        next: (res) => {
-          this.AllLeave = res
-          resolve();
-          this.toaster.success('List Of All Leaves');
-        },
-
-        error: (err) => {
-          console.log(err);
-          this.toaster.success('Error')
-          
-          reject();
-        }
-      }
-    )
-
-    this.spinner.hide()
-
-  })
-
-}
-
-MyLeaves: any = []
-async GetMyLeaves(ml: any){
-
-    return new Promise<void>((resolve,reject) => {
+    return new Promise<void>((resolve, reject) => {
 
       this.spinner.show()
-      this.http.post('https://localhost:44388/api/Employee/GetAllLeaves',ml).subscribe({
+      this.http.post("https://localhost:44388/api/Manager/GetAllEmp", emp).subscribe(
+        {
+          next: (res) => {
+            this.AllEmp = res
+            resolve();
+            this.toaster.success('List Of All EMployees');
+          },
 
-      next: (res) => {
-        this.MyLeaves = res
-        resolve()
-        this.toaster.success('List Of My Leaves')
-      },
+          error: (err) => {
+            console.log(err);
+            this.toaster.success('Error')
 
-        error: (err) =>{
+            reject();
+          }
+        }
+      )
+
+      this.spinner.hide()
+
+    })
+  }
+
+
+  AllLeave: any = []
+
+  async GetAllLeaves(lev: any) {
+
+    return new Promise<void>((resolve, reject) => {
+
+      this.spinner.show()
+      this.http.post("https://localhost:44388/api/Manager/getLeaves", lev).subscribe(
+        {
+          next: (res) => {
+            this.AllLeave = res
+            resolve();
+            this.toaster.success('List Of All Leaves');
+          },
+
+          error: (err) => {
+            console.log(err);
+            this.toaster.success('Error')
+
+            reject();
+          }
+        }
+      )
+
+      this.spinner.hide()
+
+    })
+
+  }
+
+  MyLeaves: any = []
+  async GetMyLeaves(ml: any) {
+
+    return new Promise<void>((resolve, reject) => {
+
+      this.spinner.show()
+      this.http.post('https://localhost:44388/api/Employee/GetAllLeaves', ml).subscribe({
+
+        next: (res) => {
+          this.MyLeaves = res
+          resolve()
+          this.toaster.success('List Of My Leaves')
+        },
+
+        error: (err) => {
           console.log(err);
           this.toaster.success('Error')
-          
+
         }
 
       }
-      
+
       )
 
       this.spinner.hide()
     })
-}
+  }
 
 
-AllTasks: any =[]
-async GetAllTasks(at:any){
-  return new Promise<void>((resolve,reject) =>{
+  AllTasks: any = []
+  async GetAllTasks(at: any) {
+    return new Promise<void>((resolve, reject) => {
 
-    this.spinner.show()
-    this.http.post('https://localhost:44388/api/Manager/getAllTask',at).subscribe({
+      this.spinner.show()
+      this.http.post('https://localhost:44388/api/Manager/getAllTask', at).subscribe({
 
-    next : res => {
-      this.AllTasks = res
-      resolve()
+        next: res => {
+          this.AllTasks = res
+          resolve()
 
-      this.toaster.success('List Of All Tasks')
-    },
+          this.toaster.success('List Of All Tasks')
+        },
 
-    error: err => {
-      console.log(err);
-      this.toaster.success('Error')
-      
-    }
+        error: err => {
+          console.log(err);
+          this.toaster.error('Error')
+
+        }
+      })
     })
-  } )
-}
+  }
 
-ManagerProfile: any = []
-async GetManagerPrifile(mp:any){
+  ManagerProfile: any = []
+  async GetManagerPrifile(mp: any) {
 
-  return new Promise<void> ((resolve,reject)=> {
+    return new Promise<void>((resolve, reject) => {
 
-    this.spinner.show()
-    this.http.post('https://localhost:44388/api/User/GetProfile',mp).subscribe({
+      this.spinner.show()
+      this.http.post('https://localhost:44388/api/User/GetProfile', mp).subscribe({
 
-    next: res =>{
-      this.ManagerProfile =res 
-      resolve()
-      
-    }
+        next: res => {
+          this.ManagerProfile = res
+          resolve()
+
+        }
+      })
+
+      this.spinner.hide()
+    })
+  }
+
+
+  async Searchs(data: any) {
+
+    console.log(data);
+
+    data.managerid = 2
+
+    return new Promise<void>((resolve, reject) => {
+      this.spinner.show()
+      this.http.post("https://localhost:44388/api/Manager/searchleave", data).subscribe(
+        {
+          next: res => {
+            this.AllLeave = res
+            resolve()
+            this.toaster.success('success')
+            console.log(this.AllLeave);
+
+          },
+
+          error: (err) => {
+            console.log(err);
+            this.toaster.error('Error')
+
+          }
+        }
+      )
+      this.spinner.show()
     })
 
-    this.spinner.hide()
-  })
-}
+  }
 
 
-///////////////////////////////////////////////////////////////////
 
-  employees : any= [
+  empInformation: any = {}
+
+  async GetEmpInfo(ei: any) {
+    let user : any = {}
+    user.userid = ei
+    return new Promise<void>((resolve, reject) => {
+
+      this.spinner.show()
+      this.http.post('https://localhost:44388/api/User/GetProfile', user).subscribe(
+        {
+          next: res => {
+            this.empInformation = res
+            resolve()
+            this.toaster.success('success')
+            console.log(this.empInformation);
+            console.log(res);
+            
+
+          },
+
+          error: (err) => {
+            console.log(err);
+            this.toaster.error('Error')
+
+          }
+        }
+      )
+      this.spinner.show()
+    })
+  }
+
+
+  attendance : any= []
+
+  async GetAttendance(at : any){
+    return new Promise<void>((resolve,reject)=> {
+
+      this.spinner.show()
+      this.http.post('https://localhost:44388/api/User/GetAttendance',at).subscribe({
+
+      next: res =>{
+        this.attendance =res
+        resolve()
+        this.toaster.success('success')
+        console.log(res);
+        
+
+      },
+
+      error: err =>{
+        console.log(err);
+        this.toaster.error('Error')
+        
+      }
+      })
+    })
+
+  }
+
+  ///////////////////////////////////////////////////////////////////
+
+  employees: any = [
     {
       userid: 1,
       fName: 'Ahmad',
@@ -190,21 +282,22 @@ async GetManagerPrifile(mp:any){
   ];
 
   allLeaves = [
-    { "leaveid": 1, "startDate": "2222","endDate":"2222","Message":"tet","State":2,"documentFileName":"ss","leaveType":"lev","fName":"Salah","LName":"Malouh"},
-    { "leaveid": 2, "startDate": "2222","endDate":"2222","Message":"tet2","State":0,"documentFileName":"ss2","leaveType":"lev2","fName":"mohamde","LName":"ma2"},
-    { "leaveid": 3, "startDate": "2222","endDate":"2222","Message":"tet3","State":1,"documentFileName":"ss3","leaveType":"lev3","fName":"Moyeed","LName":"ma3"}
+    { "leaveid": 1, "startDate": "2222", "endDate": "2222", "Message": "tet", "State": 2, "documentFileName": "ss", "leaveType": "lev", "fName": "Salah", "LName": "Malouh" },
+    { "leaveid": 2, "startDate": "2222", "endDate": "2222", "Message": "tet2", "State": 0, "documentFileName": "ss2", "leaveType": "lev2", "fName": "mohamde", "LName": "ma2" },
+    { "leaveid": 3, "startDate": "2222", "endDate": "2222", "Message": "tet3", "State": 1, "documentFileName": "ss3", "leaveType": "lev3", "fName": "Moyeed", "LName": "ma3" }
   ];
 
   myLeaves = [
-    {  userid:1,"leaveid": 1, "startDate": "2222","endDate":"2222","State":1,"Message":"tet","documentFileName":"ss","leaveType":"lev"},
-    {  userid:1,"leaveid": 2, "startDate": "2222","endDate":"2222","State":0,"Message":"tet","documentFileName":"ss","leaveType":"lev"},
-    {  userid:1,"leaveid": 3, "startDate": "2222","endDate":"2222","State":2,"Message":"tet","documentFileName":"ss","leaveType":"lev"},
-    {  userid:1,"leaveid": 4, "startDate": "2222","endDate":"2222","State":0,"Message":"tet","documentFileName":"ss","leaveType":"lev"},
-    {  userid:1,"leaveid": 5, "startDate": "2222","endDate":"2222","State":1,"Message":"tet","documentFileName":"ss","leaveType":"lev"}
+    { userid: 1, "leaveid": 1, "startDate": "2222", "endDate": "2222", "State": 1, "Message": "tet", "documentFileName": "ss", "leaveType": "lev" },
+    { userid: 1, "leaveid": 2, "startDate": "2222", "endDate": "2222", "State": 0, "Message": "tet", "documentFileName": "ss", "leaveType": "lev" },
+    { userid: 1, "leaveid": 3, "startDate": "2222", "endDate": "2222", "State": 2, "Message": "tet", "documentFileName": "ss", "leaveType": "lev" },
+    { userid: 1, "leaveid": 4, "startDate": "2222", "endDate": "2222", "State": 0, "Message": "tet", "documentFileName": "ss", "leaveType": "lev" },
+    { userid: 1, "leaveid": 5, "startDate": "2222", "endDate": "2222", "State": 1, "Message": "tet", "documentFileName": "ss", "leaveType": "lev" }
   ];
 
   empInfo = [
-    { userid: 1,
+    {
+      userid: 1,
       fName: 'Ahmad',
       lName: 'Ali',
       email: 'aa@aa.com',
@@ -243,8 +336,8 @@ async GetManagerPrifile(mp:any){
 
   tasks = [
     {
-       userid: 1,
-      name : 'ali ahmad'
+      userid: 1,
+      name: 'ali ahmad'
     },
     {
       userid: 2,
@@ -265,24 +358,24 @@ async GetManagerPrifile(mp:any){
   task = [
     {
       tid: 1,
-      managerid:1,
-      userid:1,
-      uploaddeate:'',
-      docFileName:'assdad',
-      desc:'vdsvdsdvds',
-      name : 'ali ahmad',
+      managerid: 1,
+      userid: 1,
+      uploaddeate: '',
+      docFileName: 'assdad',
+      desc: 'vdsvdsdvds',
+      name: 'ali ahmad',
       tName: 'task1',
       state: 0,
-      startDate: new Date(2022,1,3),
-      endDate: new Date(2022,2,3)
+      startDate: new Date(2022, 1, 3),
+      endDate: new Date(2022, 2, 3)
     },
     {
       tid: 2,
-      managerid:1,
-      userid:1,
-      uploaddeate:'',
-      docFileName:'assdad',
-      desc:'vdsvdsdvds',
+      managerid: 1,
+      userid: 1,
+      uploaddeate: '',
+      docFileName: 'assdad',
+      desc: 'vdsvdsdvds',
       name: 'Salah Mallouh',
       tName: 'task2',
       state: 2,
@@ -291,11 +384,11 @@ async GetManagerPrifile(mp:any){
     },
     {
       tid: 3,
-      managerid:2,
-      userid:3,
-      uploaddeate:'',
-      docFileName:'assdad',
-      desc:'vdsvdsdvds',
+      managerid: 2,
+      userid: 3,
+      uploaddeate: '',
+      docFileName: 'assdad',
+      desc: 'vdsvdsdvds',
       name: 'Moayad Khateeb',
       tName: 'task3',
       state: 1,
@@ -305,11 +398,11 @@ async GetManagerPrifile(mp:any){
     },
     {
       tid: 4,
-      managerid:3,
-      userid:4,
-      uploaddeate:'',
-      docFileName:'assdad',
-      desc:'vdsvdsdvds',
+      managerid: 3,
+      userid: 4,
+      uploaddeate: '',
+      docFileName: 'assdad',
+      desc: 'vdsvdsdvds',
       name: 'Mohammad Mashtooli',
       tName: 'task4',
       state: 1,
@@ -319,27 +412,27 @@ async GetManagerPrifile(mp:any){
     }
   ];
 
-  sloutions =[
+  sloutions = [
 
     {
       sid: 1,
       tid: 1,
       state: 1,
-      uploudDate: new Date(2022,3,1),
+      uploudDate: new Date(2022, 3, 1),
       feedBack: 'good job',
       docFileName: 'sdfsdfsdfs'
-    },{
+    }, {
       sid: 2,
       tid: 1,
       state: 2,
-      uploudDate: new Date(2022,3,1),
+      uploudDate: new Date(2022, 3, 1),
       feedBack: 'good job',
       docFileName: 'sdfsdfsdfs'
-    },{
+    }, {
       sid: 1,
       tid: 2,
       state: 0,
-      uploudDate: new Date(2022,3,1),
+      uploudDate: new Date(2022, 3, 1),
       feedBack: 'good job',
       docFileName: 'sdfsdfsdfs'
     },
@@ -347,19 +440,19 @@ async GetManagerPrifile(mp:any){
       sid: 2,
       tid: 2,
       state: 2,
-      uploudDate: new Date(2022,3,1),
+      uploudDate: new Date(2022, 3, 1),
       feedBack: 'good job',
       docFileName: 'sdfsdfsdfs'
     },
   ]
 
-  profile=
-  [
-    {"userid":1,fName:"salah","lName":"mallouh","salary":1000,"role":"Manager","Department":"IT","phoneNumber":"1234567890","address":"asda","Imagefilename":'t.png',"ssn":123456789,"state":0,email:'as@as',BANKINFOID:1234}
-  ]
+  profile =
+    [
+      { "userid": 1, fName: "salah", "lName": "mallouh", "salary": 1000, "role": "Manager", "Department": "IT", "phoneNumber": "1234567890", "address": "asda", "Imagefilename": 't.png', "ssn": 123456789, "state": 0, email: 'as@as', BANKINFOID: 1234 }
+    ]
 
 
-///////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////
 
 
 

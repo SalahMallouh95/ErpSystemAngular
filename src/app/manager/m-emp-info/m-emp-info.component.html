@@ -1,83 +1,159 @@
 <div class="layout-wrapper layout-content-navbar">
-    <div class="layout-container">
+  <div class="layout-container">
 
-        <app-manager-side-bar></app-manager-side-bar>
-
-
-        <div class="layout-page">
-
-            <app-dash-header>
-            </app-dash-header>
+    <app-manager-side-bar></app-manager-side-bar>
 
 
-            <div class="content-wrapper">
-                <!-- Content -->
-    
-                <div class="container-xxl flex-grow-1 container-p-y">
-                  <h4 class="fw-bold py-3 mb-4"> Profile Details</h4>
-    
-                  <div class="row">
-                    <div class="col-md-12">
-                      
-                      <div class="card mb-4">
+    <div class="layout-page">
+
+      <app-dash-header>
+      </app-dash-header>
+
+      <div class="content-wrapper">
+        <!-- Content -->
+
+        <div class="container-xxl flex-grow-1 container-p-y">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card mb-4">
+                <h3 class="card-header">Profile Details</h3>
+
+                <!-- Account -->
+                <div class="card-body">
+                  <div class="d-flex align-items-start align-items-sm-center gap-4">
+                    <img *ngIf="this.info.value.imagefilename ==null" _ngcontent-fnq-c20=""
+                      src="/assets/Documents/UserDefaultImage.png" alt="" class="img-fluid w-100"
+                      style="max-height: 350px; max-width: 350px;">
+                    <img *ngIf="this.info.value.imagefilename !=null" _ngcontent-fnq-c20=""
+                      [src]="'/assets/Documents/'+this.info.value.imagefilename" alt="" class="img-fluid w-100"
+                      style="max-height: 350px; max-width: 350px;">
+
+                      <div class="button-wrapper">
+                        <label hidden for="upload" class="btn btn-primary me-2 mb-4" tabindex="0">
+                          <span class="d-none d-sm-block">Upload new photo</span>
+                          <i class="bx bx-upload d-block d-sm-none"></i>
+                          <input type="file" id="upload" class="account-file-input" hidden=""
+                            accept="image/png, image/jpeg">
+                        </label>
                         
-                        <!-- Account -->
-                        <div class="card-body" style="max-width: 350px; max-height: 350px;" >
-                          <div class="d-flex align-items-start align-items-sm-center gap-4">
-                            <img *ngIf="emp[0].Imagefilename==null" _ngcontent-fnq-c20="" src="/assets/Documents/UserDefaultImage.png" alt="" class="img-fluid w-100" width="100" height="100">
-                            <img *ngIf="emp[0].Imagefilename!=null" _ngcontent-fnq-c20="" [src]="'/assets/Documents/'+emp[0].Imagefilename" alt="" class="img-fluid w-100" width="100" height="100">
-                            
-                          </div>
-                        </div>
-                        <hr class="my-0" />
-                        <div class="card-body">
-                          <form id="formAccountSettings" method="POST" onsubmit="return false">
-                            <div class="row"  >
-                              <div class="mb-3 col-md-6" >
-                                <label for="firstName" class="form-label" >First Name</label>
-                               <h3>{{emp[0].fName}}</h3>
-                              </div>
-                              <div class="mb-3 col-md-6">
-                                <label for="lastName" class="form-label">Last Name</label>
-                                <h3>{{emp[0].lName}}</h3>
-                              </div>
-                              <div class="mb-3 col-md-6">
-                                <label for="email" class="form-label">E-mail</label>
-                                <h3>{{emp[0].email}}</h3>
-                              </div>
-                              <div class="mb-3 col-md-6">
-                                <label for="email" class="form-label">SSN</label>
-                                <h3>{{emp[0].ssn}}</h3>
-                              </div>
-                              <div class="mb-3 col-md-6">
-                                <label for="email" class="form-label">Address</label>
-                                <h3>{{emp[0].address}}</h3>
-                              </div>
-                              
-                              
-                             
-                            </div>
+                      </div>
+                    
+                  </div>
+                </div>
+                <hr class="my-0">
+                <div class="card-body">
 
-                            <div class="demo-inline-spacing">
-                            
-                                <button style="position: absolute; top: 0px; right:0px;" type="button" [routerLink]="['/Manager/AllEmp']"
-                                routerLinkActive="active" class="btn rounded-pill btn-info">Back</button>
-                              
-                              
-                           
-                            </div>
-                          </form>
-                        </div>
                   
-                        
-    
-              
-                        
-    
-                <div class="content-backdrop fade"></div>
-              </div>
+                  <form [formGroup]="info" id="formAccountSettings" method="POST" onsubmit="return false">
+                    <div class="row">
+                      <div class="mb-3 col-md-6">
+                        <label for="firstName" class="form-label">First Name</label>
+                        <input  class="form-control" type="text" id="firstName" name="firstName"
+                           autofocus="" formControlName="fname" >
+                      </div>
+                      <div class="mb-3 col-md-6">
+                        <label for="lastName" class="form-label">Last Name</label>
+                        <input  class="form-control" type="text" name="lastName" id="lastName"
+                        formControlName="lname">
+                      </div>
+                      <div class="mb-3 col-md-6">
+                        <label for="email" class="form-label">E-mail</label>
+                        <input class="form-control" type="text" id="email" name="email" 
+                          placeholder="john.doe@example.com" formControlName="email">
+                      </div>
+   
+                      <div class="mb-3 col-md-6">
+                        <label class="form-label" for="phoneNumber">Phone Number</label>
+                        <div class="input-group input-group-merge">
+                          <span class="input-group-text">Jod (+962)</span>
+                          <input type="number" id="phoneNumber" name="phoneNumber" 
+                            class="form-control" length="9" placeholder="788253988" formControlName="phonenumber">
+                        </div>
+                      </div>
+                      <div class="mb-3 col-md-6">
+                        <label for="address" class="form-label">Address</label>
+                        <input type="text" class="form-control" id="address"  name="address" formControlName="address"
+                          placeholder="Address">
+                      </div>
+                      
+                      <div class="mb-3 col-md-6">
+                        <label for="zipCode" class="form-label">SNN number</label>
+                        <input   type="text" class="form-control" id="zipCod" name="zipCode"
+                           placeholder="" maxlength="6" formControlName="ssn" >
+                      </div>
+                      
+                      
+                      
+                    </div>
+                    
+                    <div class="demo-inline-spacing">
+                      <button style="position: absolute; top: 0px; right:0px;" type="button" onclick="history.back(-1)"
+                        routerLinkActive="active" class="btn rounded-pill btn-info">Back</button>
+                    </div>
+                  </form>
+                </div>
+                
+                
 
+
+                <h4 class="fw-bold py-3 mb-4">Attendance Of Employee</h4>
+                 <div class="card">
+          <div class="table-responsive text-nowrap">
+              <table class="table table-hover wow slideInUp"
+              style="visibility: visible; animation-delay: 0.3s; animation-name: slideInUp;">
+                  <thead >
+                      <tr style="background-color: #696cff66;">
+                          <th>Check in</th>
+                          <th>Check out</th>
+                          <th>Working hour</th>
+                          <th>Status</th>
+                          
+
+                      </tr>
+                  </thead>
+                  <tbody class="table-border-bottom-0">
+                      <tr *ngFor="let emp of this.man.attendance">
+                          <td>{{emp.checkin}}</td>
+                          <td>{{emp.checkout}}</td>
+                          <td>{{emp.workinghour}}</td>
+                          
+                          
+                          <td>
+                              <div [ngSwitch]="emp.state">
+                                      <div *ngSwitchCase="2">
+                                          <span class="badge bg-label-success me-1">Pending</span>
+                                      </div>
+
+                                      <div *ngSwitchCase="1">
+                                          <span class="badge bg-label-danger me-1">Accepted</span>
+                                      </div>
+
+                                      <div *ngSwitchCase="0">
+                                          <span class="badge bg-label-danger me-1">Rejected</span>
+                                      </div>
+                              </div>
+                          </td>
+                          
+                         
+
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+      </div>
+              </div>
+            </div>
+          </div>
 
         </div>
+
+
+       
+
+
+        
+      </div>
+
     </div>
+  </div>
 </div>

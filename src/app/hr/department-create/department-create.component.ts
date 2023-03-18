@@ -12,13 +12,28 @@ import { NgxSpinnerService } from 'ngx-spinner';
   styleUrls: ['./department-create.component.css']
 })
 export class DepartmentCreateComponent {
-  constructor(public hrService:HrService, public router:Router) {}
-  depName:string|undefined
-  dep:any={}
+  constructor(public hrService: HrService, public router: Router) { }
+  depName: string | undefined
+  managerid: any | undefined
+  dep: any = {}
+
+  async ngOnInit() {
+
+    await this.hrService.GetAllEmployee()
+    this.hrService.allEmp = this.hrService.allEmp.filter((e: { roleid: number; })=>e.roleid==2)
+    
+  }
 
   async CreateDep() {
-   this.dep.departmentname=this.depName
-   await this.hrService.CreateDep(this.dep)
-   this.router.navigate(['Hr/Department'])
+    this.dep.departmentname = this.depName
+    this.dep.userid = parseInt(this.managerid) 
+    await this.hrService.CreateDep(this.dep)
+    
+    this.hrService.GetAllDepartment()
+  }
+
+  Prient() {
+    console.log(this.managerid);
+
   }
 }
