@@ -9,6 +9,7 @@ import { ToastrModule ,ToastNoAnimationModule} from 'ngx-toastr';
 import {HttpClientModule} from '@angular/common/http'
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import {MatTableModule} from '@angular/material/table';
 
 
 @NgModule({
@@ -25,12 +26,14 @@ import { MatNativeDateModule } from '@angular/material/core';
     ToastNoAnimationModule,
     HttpClientModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatTableModule
   ],
   exports:[
     FormsModule,
     ToastrModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    MatTableModule
   ],
   schemas:[
     CUSTOM_ELEMENTS_SCHEMA
