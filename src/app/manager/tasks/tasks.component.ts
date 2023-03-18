@@ -16,19 +16,27 @@ export class TasksComponent {
 tas :any = {}
 id : number = 2
 
-ngOnInit() {
-    this.tas.userid = this.id
-    this.man.GetAllTasks(this.tas)
-}
-SendSelecterTaskId(id :any){
-  this.route.navigate(['Manager/TaskDetails',id]);
+ async ngOnInit() {
+    
+  let user : any ={}
+  user.userid = this.id
+    await this.man.GetAllTasks(user)
+    this.tas=this.man.AllTasks.filter((l: { userid: number; })=>l.userid==2)
+    
+
   
-  
+    
+
+    
 }
 
 
-SendSelecterSolutionId(id :any){
-  this.route.navigate(['Manager/TaskSolution',id]);
+
+async GetValues(id :any){
+let task : any = {}
+task.taskid = id
+ await this.man.GetAllSolutions(task)
+  this.route.navigate(['Manager/TaskSolution']);
   
   
 }

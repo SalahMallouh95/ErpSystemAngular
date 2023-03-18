@@ -63,7 +63,7 @@ const routes: Routes = [
     component: TasksDetailesComponent
   },
   {
-    path: 'TaskSolution/:id',
+    path: 'TaskSolution',
     component: MSolutionComponent
   },
   {

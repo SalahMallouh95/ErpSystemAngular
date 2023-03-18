@@ -39,10 +39,10 @@
   
   
   
-                  <tr *ngFor="let s of tsln" >
-                    <td>{{s.uploudDate}}</td>
-                    <td>{{s.feedBack}}</td>
-                    <td>{{s.docFileName}}</td>
+                  <tr *ngFor="let s of this.man.solutioninfo" >
+                    <td>{{s.uploaddate}}</td>
+                    <td>{{s.feedbackmessage}}</td>
+                    <td>{{s.documentfilename}}</td>
                     <td>
                       <div [ngSwitch]="s.state" style="display: inline;">
                         <div *ngSwitchCase="2" style="display: inline;">
