@@ -240,6 +240,70 @@ export class ManagerService {
 
   }
 
+  leaveInfo : any
+  async GetLeaveDetails(leave:any)
+  {    
+    
+    this.spinner.show()
+    return new Promise<void>((resolve, reject) => {
+      this.http.post("https://localhost:44388/api/Manager/getLeaveByID", leave).subscribe(
+        {
+          next: (res) => {
+            this.leaveInfo = res;
+            console.log(res);
+            
+            this.toaster.success('success')
+            resolve();
+            
+          }
+          ,
+          error: (ee) => {
+            console.log(ee)
+            this.toaster.error('Error')
+            reject();
+            
+          }
+
+        }
+      )
+      this.spinner.hide();
+      console.log(this.leaveInfo);
+      
+
+    })
+
+  }
+
+  async UpdateLeaveDetails(leave:any)
+  {   
+           console.log(leave);
+           
+    return new Promise<void>((resolve, reject) => {
+      this.http.put("https://localhost:44388/api/Manager/updateleave", leave).subscribe(
+        {
+          next: () => {
+            this.toaster.success("Leave state updateded")
+            resolve();
+          }
+          ,
+          error: (ee) => {
+            console.log(ee)
+            this.toaster.success("something want wrong")
+
+            reject();
+          }
+
+        }
+      )
+      this.spinner.hide();
+
+    })
+
+  }
+
+
+
+
   ///////////////////////////////////////////////////////////////////
 
   employees: any = [

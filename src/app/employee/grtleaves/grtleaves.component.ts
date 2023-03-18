@@ -13,10 +13,6 @@ export class GrtleavesComponent implements OnInit{
 constructor(public employeeService:EmployeeService,private router:Router){
 
 }
-range = new FormGroup({
-  startdate: new FormControl<Date | null>(null),
-  enddate: new FormControl<Date | null>(null),
-});
 
 ngOnInit(): void {
     this.leaves.userid=1;
@@ -33,7 +29,15 @@ async GetValues(id :any){
   await this.employeeService.GetleaveById(this.leave)
   this.router.navigate(['Employee/leavedetail']);
 }
+range = new FormGroup({
+  dateFrom: new FormControl<Date | null>(null),
+  dateTo: new FormControl<Date | null>(null),
+  id:new FormControl
+});
+
 async Search(){
-  await this.employeeService.Search(this.range.value)
+
+ await this.employeeService.Search(this.range.value)
+ 
 }
 }

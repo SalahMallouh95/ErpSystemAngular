@@ -72,7 +72,7 @@ async Search(data:any)
 
   return new Promise<void>((resolve, reject) => {
     this.spinner.show()
-    this.http.post("https://localhost:44388/api/Hr/searchleave", data).subscribe(
+    this.http.post("https://localhost:44388/api/Employee/searchleave", data).subscribe(
       {
         next: (res) => {this.allLeaves=res
           resolve();
