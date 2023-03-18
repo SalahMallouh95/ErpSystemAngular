@@ -26,6 +26,8 @@ export class EmployeeListComponent implements OnInit{
   async GetValues(id:any){
 
     this.user.userid=id
+    this.hrService.GetAllRole()
+    this.hrService.GetAllDepartment()
     await this.hrService.GetEmpInfo(this.user);
 
     console.log(this.hrService.empInfo);    
