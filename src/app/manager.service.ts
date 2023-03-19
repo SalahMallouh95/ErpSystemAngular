@@ -30,7 +30,6 @@ taskid : number |undefined
           next: (res) => {
             this.AllEmp = res
             resolve();
-            this.toaster.success('List Of All EMployees');
           },
 
           error: (err) => {
@@ -60,7 +59,6 @@ taskid : number |undefined
           next: (res) => {
             this.AllLeave = res
             resolve();
-            this.toaster.success('List Of All Leaves');
           },
 
           error: (err) => {
@@ -89,7 +87,6 @@ taskid : number |undefined
         next: (res) => {
           this.MyLeaves = res
           resolve()
-          this.toaster.success('List Of My Leaves')
         },
 
         error: (err) => {
@@ -118,7 +115,6 @@ taskid : number |undefined
           this.AllTasks = res
           resolve()
 
-          this.toaster.success('List Of All Tasks')
         },
 
         error: err => {
@@ -163,7 +159,6 @@ taskid : number |undefined
           next: res => {
             this.AllLeave = res
             resolve()
-            this.toaster.success('success')
             console.log(this.AllLeave);
 
           },
@@ -195,7 +190,6 @@ taskid : number |undefined
           next: res => {
             this.empInformation = res
             resolve()
-            this.toaster.success('success')
             console.log(this.empInformation);
             console.log(res);
             
@@ -225,7 +219,6 @@ taskid : number |undefined
       next: res =>{
         this.attendance =res
         resolve()
-        this.toaster.success('success')
         console.log(res);
         
 
@@ -253,7 +246,6 @@ taskid : number |undefined
             this.leaveInfo = res;
             console.log(res);
             
-            this.toaster.success('success')
             resolve();
             
           }
@@ -283,7 +275,6 @@ taskid : number |undefined
       this.http.put("https://localhost:44388/api/Manager/updateleave", leave).subscribe(
         {
           next: () => {
-            this.toaster.success("Leave state updateded")
             resolve();
           }
           ,
@@ -314,7 +305,6 @@ taskid : number |undefined
         this.taskinfo = res;
         console.log(res);
         
-        this.toaster.success('success')
         resolve();
         
       }
@@ -348,7 +338,6 @@ taskid : number |undefined
           
           resolve()
 
-          this.toaster.success('List Of All Tasks')
         },
 
         error: err => {
@@ -362,8 +351,56 @@ taskid : number |undefined
   }
 
 
-  
+  async UpdateSolutionState(sln :any){
+    return new Promise<void>((resolve,reject) =>{
+      this.http.put('https://localhost:44388/api/Manager/UpdateSolutionState',sln).subscribe({
+        next: () => {
+          resolve()
+        },
+        error: err => {
+          console.log(err);
+          reject()
+        }
+      })
+      this.spinner.hide();
+    } )
 
+  }
+
+  async GetSolutionDetails(sln: any){
+    return new Promise<void>((resolve,reject)=>{
+      this.http.post("https://localhost:44388/api/Manager/OneSolution",sln).subscribe({
+        next: res =>{
+          this.solutioninfo = res
+          resolve()
+        },
+        error: err =>{
+          console.log(err);
+          reject()
+          
+        }
+      })
+    })
+  }
+
+  createTask: any = {}
+
+  async CreateTask(ct:any){
+    return new Promise<void>((resolve,reject) =>{
+      this.http.post('https://localhost:44388/api/Manager/CreateTask',ct).subscribe({
+        next: res =>{
+          this.createTask = res
+          resolve()
+        },
+
+        error: err => {
+          console.log(err);
+          reject()
+          
+        }
+      })
+    })
+  }
 
   ///////////////////////////////////////////////////////////////////
 

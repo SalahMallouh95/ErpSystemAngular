@@ -25,27 +25,26 @@ export class MLeaveDetailsComponent  implements OnInit {
 
 
   async AcceptLeave() {
-    let id : any ={}
-    id.userid = 2
+    let user : any ={}
+    user.userid = 2
     let leave: any = {}
     leave.leaveid = this.managerService.leaveInfo.leaveid
     leave.state = 1
     await this.managerService.UpdateLeaveDetails(leave)
     this.managerService.GetLeaveDetails(leave)
-    await this.managerService.GetAllLeaves(id)
+    await this.managerService.GetAllLeaves(user)
 
   }
 
   async RejectLeave() {
-    let id : any ={}
-    id.userid = 2
+    let user : any ={}
+    user.userid = 2
     let leave: any = {}
     leave.leaveid = this.managerService.leaveInfo.leaveid
     leave.state = 0
     await this.managerService.UpdateLeaveDetails(leave)
     this.managerService.GetLeaveDetails(leave)
-    await this.managerService.GetAllLeaves(id)
-
+    await this.managerService.GetAllLeaves(user)
   }
 
 

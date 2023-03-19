@@ -12,25 +12,45 @@ export class MSolutionDetailsComponent implements OnInit {
 
   }
 
-  id: number| undefined
-  tsln : any[] | undefined
+ 
 
   ngOnInit(): void {
 
-    this.id= this.route.snapshot.params['id'];
-    this.man.solutioninfo = this.man.allsln.filter( (s: { solutionid: number | undefined; }) => s.solutionid == this.id)
-
-    console.log(this.man.solutioninfo);
-    
     
   }
 
 
 
-  SendSelecterSlnId(id : any){
-    this.rou.navigate(['Manager/SolutionDetails'],id)
+  
+
+  async AcceptSolution() {
+    let user : any ={}
+    user.userid = 2
+    let sln: any = {}
+    sln.taskid = this.man.solutioninfo.taskid
+    sln.solutionid = this.man.solutioninfo.solutionid
+    sln.state = 1
+    await this.man.UpdateSolutionState(sln)
+    this.man.GetSolutionDetails(sln)
+    await this.man.GetAllSolutions(sln)
+    
+    
+  }
+
+  async RejectSolution() {
+    let user : any ={}
+    user.userid = 2
+    let sln: any = {}
+    sln.taskid = this.man.solutioninfo.taskid
+    sln.solutionid = this.man.solutioninfo.solutionid
+    sln.state = 0
+    await this.man.UpdateSolutionState(sln)
+    this.man.GetSolutionDetails(sln)
+    await this.man.GetAllSolutions(sln)
 
   }
 
-
+  
+ 
+  
 }
