@@ -20,8 +20,8 @@
                    <mat-form-field appearance="fill" class=" ml-3 mb-3">
                    <mat-label>Enter a date range</mat-label>
                    <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
-                     <input matStartDate formControlName="DateFrom" placeholder="Start date">
-                     <input matEndDate formControlName="DateTO" placeholder="End date">
+                     <input matStartDate formControlName="dateFrom" placeholder="Start date">
+                     <input matEndDate formControlName="dateTo" placeholder="End date">
                    </mat-date-range-input>
                    <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
@@ -31,13 +31,8 @@
                    <mat-error *ngIf="range.controls.dateFrom.hasError('matStartDateInvalid')">Invalid start date</mat-error>
                    <mat-error *ngIf="range.controls.dateTo.hasError('matEndDateInvalid')">Invalid end date</mat-error>
                   </mat-form-field>           
-                  <input type="number" matInput formControlName="id" placeholder="id" class="form-control" id="defaultFormControlInput"aria-describedby="defaultFormControlHelp">
-                    <input class="btn" type="button" value="Search" (click)="Search()" >
-                 </form>
-       
-                  
-                   
-                 
+                                      <input class="btn" type="button" value="Search" (click)="Search()" >
+                 </form>     
        </div>
             <!-- Content wrapper -->
             <div class="content-wrapper">
@@ -46,7 +41,7 @@
                 <!-- Basic Bootstrap Table -->
                 <div class="card wow fadeInUp"  style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
                    <h5 class="card-header">Table Of leaves</h5>
-                   <button type="submit" style="position: absolute; top: 25px; right:165px;" class="btn btn-primary" [routerLink]="['/Employee/Createleave']">ADD Leave</button>
+                   <button type="submit" style="position: absolute; top: 25px; right:165px;" class="btn btn-primary" (click)="OpenDialog()">ADD Leave</button>
                    <div class="table-responsive text-nowrap">
                      <table class="table table-hover wow slideInUp"
                      style="visibility: visible; animation-delay: 0.3s; animation-name: slideInUp;">
@@ -83,10 +78,15 @@
                 </div>
         </div>                       
     </td>     
-    <td>
+    <td *ngIf="item.state==2">
         <a (click)="GetValues(item.leaveid)" class="btn btn-outline-info">More Info</a>
+        <a (click)="GetValues(item.leaveid)" class="btn btn-outline-info">Edit Leave</a>
+        <a (click)="GetValues(item.leaveid)" class="btn btn-outline-info">Delete</a>
     </td>           
                  
+    <td *ngIf="item.state!=2">
+      <a (click)="GetValues(item.leaveid)" class="btn btn-outline-info">More Info</a>
+  </td>           
                            </tr>            
                       
                       </tbody>
@@ -109,3 +109,104 @@
         <div class="layout-overlay layout-menu-toggle"></div>
       </div>
       <!-- / Layout wrapper -->
+
+ <ng-template #CreateForm>
+    
+        
+              <!-- Content wrapper -->
+              <div class="content-wrapper">
+                <!-- Content -->
+                <div class="container-xxl flex-grow-1 container-p-y">
+                 <div class="row">
+                   <div class="col-xl">
+                     <div class="card mb-4">
+                       <div class="card-header d-flex justify-content-between align-items-center">
+                         <h5 class="mb-0">ADD leave</h5>
+                        </div>
+                       <div class="card-body">
+                        <form [formGroup]="CreateLeaveForm" class="example-form">
+                          <div class=" col-md-10">
+                        
+                            <label for="language" class="form-label" >Leave Type</label>                            
+                            <select id="language" class="select2 form-select" formControlName="leavetypeid">
+                              <option *ngFor="let it of this.employeeService.leavetype1" [ngValue]="it.leaveid" >{{it.leavetype}}</option>
+                            </select>
+                            <mat-error *ngIf="CreateLeaveForm.controls['leavetypeid'].hasError('required')">
+                              leave type is <strong>required</strong>
+                            </mat-error>
+                      </div>
+                      <div>
+                            <label for="html5-datetime-local-input" class="col-md-0 col-form-label">Start time</label>
+                            <div class=" col-md-10">
+                              <input
+                                 class="form-control"
+                                type="datetime-local"
+                                value=""
+                                id="html5-datetime-local-input"
+                                matInput formControlName="startdate"
+                              />
+                            </div>
+                              <mat-error *ngIf="CreateLeaveForm.controls['startdate'].hasError('required')">
+                                Start time is <strong>required</strong>
+                              </mat-error>
+                          </div>
+                          <div>
+                              <label for="html5-datetime-local-input" class="col-md-0 col-form-label">End time</label>
+                              <div class=" col-md-10">
+                                <input
+                                   class="form-control"
+                                  type="datetime-local"
+                                  value=""
+                                  id="html5-datetime-local-input"
+                                  matInput formControlName="enddate"
+                                />
+                              </div>
+                                <mat-error *ngIf="CreateLeaveForm.controls['enddate'].hasError('required')">
+                                  end time is <strong>required</strong>
+                                </mat-error>
+                            </div>
+                            <div class="mb-3 col-md-20">
+                                <label for="html5-datetime-local-input" class="col-md-0 col-form-label">Message</label>
+                                <textarea
+                      id="basic-default-message"
+                         class="form-control"
+                         placeholder=""
+                         matInput formControlName="message"
+                       ></textarea>
+                                  <mat-error *ngIf="CreateLeaveForm.controls['message'].hasError('required')">
+                                    message is <strong>required</strong>
+                                  </mat-error>
+                              </div>
+                             <!-- <div>
+                                <mat-form-field class="example-full-width">
+                                  <label for="html5-datetime-local-input" class="col-md-0 col-form-label">Document</label>
+                                  <input class="form-control" type="file" id="formFile" matInput formControlName="document"/>
+                                    <mat-error *ngIf="CreateLeaveForm.controls['document'].hasError('required')">
+                                      Document is <strong>required</strong>
+                                    </mat-error>
+                                  </mat-form-field>
+                                </div> -->
+                          <div>
+                        <!-- <input type="file" #file (change)="UploadImage(file)"> -->
+                      <input type="button" class="btn btn-primary" [disabled]="CreateLeaveForm.invalid" mat-button value="Create" (click)="CreateLeave()">
+                      </div>
+                      </form>
+                       </div>
+                     </div>
+                   </div>
+                </div>
+                   <!--/ Basic Bootstrap Table -->
+                <!-- / Content -->
+                <!-- Footer -->
+                <!-- / Footer -->
+                <div class="content-backdrop fade"></div>
+              </div>
+              <!-- Content wrapper -->
+            </div>
+            <!-- / Layout page -->
+      
+          <!-- Overlay -->
+</ng-template>
+
+
+

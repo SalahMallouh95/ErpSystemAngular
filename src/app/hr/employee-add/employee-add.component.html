@@ -1,0 +1,199 @@
+<div class="layout-wrapper layout-content-navbar">
+    <div class="layout-container">
+
+<app-hr-sidebar></app-hr-sidebar>
+
+
+<div class="layout-page">
+
+       <app-dash-header>
+        </app-dash-header>
+
+        <div class="content-wrapper">
+            <!-- Content -->
+        
+            <div class="container-xxl flex-grow-1 container-p-y">
+        <div class="row">
+            <div class="col-md-12">              
+              <div class="card mb-4">
+                <h5 class="card-header">Profile Details</h5>               
+   
+                <!-- Account -->
+                <div class="card-body">
+                  <div class="d-flex align-items-start align-items-sm-center gap-4">
+
+                    <mat-card class="example-card">
+                      <mat-card-header>
+                        <div mat-card-avatar class="example-header-image"></div>
+                       
+                      </mat-card-header>
+                      <img mat-card-image *ngIf="this.empInfoForm.value.imagefilename!=null" name="img" _ngcontent-fnq-c20="" [src]="'/assets/Documents/'+this.empInfoForm.value.imagefilename" alt="" class="img-fluid w-100" style="max-height: 350px; max-width: 350px;">
+                
+                    </mat-card>
+
+
+                       <div class="button-wrapper">
+                      <label for="upload" class="btn btn-primary me-2 mb-4" tabindex="0">
+                        <span class="d-none d-sm-block">Upload a photo</span>
+                        <i class="bx bx-upload d-block d-sm-none"></i>
+                        <input type="file" #file id="upload" class="account-file-input" hidden="" (change)="UploadPhoto(file)" accept="image/png, image/jpeg">
+                      </label>    
+                      <p class="text-muted mb-0">Allowed JPG, GIF or PNG. Max size of 800K</p>
+                     
+                    </div>
+                  </div>
+                </div>
+                <hr class="my-0">
+                <div class="card-body">
+                  <form [formGroup]="empInfoForm" id="formAccountSettings">
+                    
+                    <div class="row">
+
+                      <mat-form-field class="mb-3 col-md-6">
+                        <mat-label>First Name</mat-label>
+                        <input type="text" matInput formControlName="fname" placeholder="Ahmed">
+                        <mat-error *ngIf="empInfoForm.controls.fname.hasError('fname') && !empInfoForm.controls.fname.hasError('required')">
+                          Please enter a First Name
+                        </mat-error>
+                        <mat-error *ngIf="empInfoForm.controls.fname.hasError('required')">
+                          First Name is <strong>required</strong>
+                        </mat-error>
+                      </mat-form-field>
+
+                      <mat-form-field class="mb-3 col-md-6">
+                        <mat-label>Last Name</mat-label>
+                        <input type="text" matInput formControlName="lname" placeholder="Ahmed">
+                        <mat-error *ngIf="empInfoForm.controls.lname.hasError('lname') && !empInfoForm.controls.lname.hasError('required')">
+                          Please enter a Last Name
+                        </mat-error>
+                        <mat-error *ngIf="empInfoForm.controls.lname.hasError('required')">
+                          Last Name is <strong>required</strong>
+                        </mat-error>
+                      </mat-form-field>
+                      
+                      <mat-form-field class="mb-3 col-md-6">
+                        <mat-label>Email</mat-label>
+                        <input type="email" matInput formControlName="email" placeholder="john.doe@example.com">
+                        <mat-error *ngIf="empInfoForm.controls.email.hasError('email') && !empInfoForm.controls.lname.hasError('required')">
+                          Please enter a Email
+                        </mat-error>
+                        <mat-error *ngIf="empInfoForm.controls.email.hasError('required')">
+                          Email is <strong>required</strong>
+                        </mat-error>
+                        <mat-error *ngIf="empInfoForm.controls.email.hasError('pattern')">Invalid Email format</mat-error>
+                      </mat-form-field>                   
+                    
+                      <mat-form-field class="mb-3 col-md-6">
+                        <mat-label>Password</mat-label>
+                        <input type="password" matInput formControlName="password" placeholder="john.doe@example.com">
+                        <mat-error *ngIf="empInfoForm.controls.password.hasError('password') && !empInfoForm.controls.lname.hasError('required')">
+                          Please enter a Password
+                        </mat-error>
+                        <mat-error *ngIf="empInfoForm.controls.password.hasError('required')">
+                          Password is <strong>required</strong>
+                        </mat-error>
+                        <mat-error *ngIf="empInfoForm.controls.password.hasError('minlength')"> Password must be at least 6 character</mat-error>
+
+                      </mat-form-field>                        
+                  
+
+                      <mat-form-field class="mb-3 col-md-6">
+                        <mat-label>Phone Number</mat-label>
+                        <input type="number" matInput formControlName="phonenumber" placeholder="788253988">                                      
+
+                      </mat-form-field>  
+
+                      <mat-form-field class="mb-3 col-md-6">
+                        <mat-label>Address</mat-label>
+                        <input type="text" matInput formControlName="address" placeholder="irbid">                                      
+
+                      </mat-form-field>  
+
+                      <mat-form-field class="mb-3 col-md-6">
+                        <mat-label>Salary</mat-label>
+                        <input type="number" matInput formControlName="salary" placeholder="1000">                                      
+
+                      </mat-form-field>  
+                    
+
+
+                      <mat-form-field class="mb-3 col-md-6">
+                        <mat-label>SNN number</mat-label>
+                        <input type="number" matInput formControlName="ssn" placeholder="12345">
+                        <mat-error *ngIf="empInfoForm.controls.ssn.hasError('lname') && !empInfoForm.controls.lname.hasError('required')">
+                          Please enter a SNN number
+                        </mat-error>
+                        <mat-error *ngIf="empInfoForm.controls.ssn.hasError('required')">
+                          SNN number is <strong>required</strong>
+                        </mat-error>
+                      </mat-form-field>
+
+                      
+                      <mat-form-field class="mb-3 col-md-6">
+                        <mat-label>Role</mat-label>
+
+                        <mat-select formControlName="roleid" id="Role">
+                          <mat-option *ngFor="let item of this.hrservice.allRole" [value]="item.roleid">{{item.rolename}}
+                           
+                          </mat-option>
+                        </mat-select>
+
+                        <mat-error *ngIf="empInfoForm.controls.roleid.hasError('roleid') && !empInfoForm.controls.roleid.hasError('required')">
+                          Please select a Role
+                        </mat-error>
+                        <mat-error *ngIf="empInfoForm.controls.roleid.hasError('required')">
+                          Role is <strong>required</strong>
+                        </mat-error>
+                      </mat-form-field>
+                      
+                      <mat-form-field class="mb-3 col-md-6">
+                        <mat-label>Department</mat-label>
+
+                        <mat-select formControlName="departmentid" id="Role">
+                          <mat-option *ngFor="let item of this.hrservice.allDep" [value]="item.departmentid">{{item.departmentname}}
+                           
+                          </mat-option>
+                        </mat-select>
+
+                        <mat-error *ngIf="empInfoForm.controls.departmentid.hasError('departmentid') && !empInfoForm.controls.roleid.hasError('required')">
+                          Please select a Department
+                        </mat-error>
+                        <mat-error *ngIf="empInfoForm.controls.departmentid.hasError('required')">
+                          Department is <strong>required</strong>
+                        </mat-error>
+                      </mat-form-field>
+
+                      <mat-form-field class="mb-3 col-md-6">
+                        <mat-label>Bank ID</mat-label>
+                        <input type="number" matInput formControlName="bankinfoid" placeholder="12345">
+                        <mat-error *ngIf="empInfoForm.controls.bankinfoid.hasError('bankinfoid') && !empInfoForm.controls.lname.hasError('required')">
+                          Please enter a Bank ID
+                        </mat-error>
+                        <mat-error *ngIf="empInfoForm.controls.bankinfoid.hasError('required')">
+                          Bank ID is <strong>required</strong>
+                        </mat-error>
+                      </mat-form-field>
+                  
+                                       
+                    </div>
+                    <div class="mt-2">
+                      <button type="submit" class="btn btn-primary me-2" (click)="AddEmp()" [disabled]="empInfoForm.invalid">Add New Employee</button>                     
+                    </div>
+                    <div class="demo-inline-spacing">                        
+                        <button style="position: absolute; top: 0px; right:0px;" type="button" onclick="history.back(-1)"
+                          routerLinkActive="active" class="btn rounded-pill btn-info">Back</button>
+                      </div>
+                  </form>
+                <!-- /Account -->
+              </div>              
+            </div>
+          </div>
+
+        </div>   
+     </div>
+
+    </div>
+    </div>
+    </div>
+
+

@@ -10,7 +10,9 @@ import {HttpClientModule} from '@angular/common/http'
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatTableModule} from '@angular/material/table';
-
+import { MatSelectModule } from '@angular/material/select';
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatInputModule } from "@angular/material/input";
 
 @NgModule({
   declarations: [
@@ -27,13 +29,19 @@ import {MatTableModule} from '@angular/material/table';
     HttpClientModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatTableModule
+    MatTableModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    MatInputModule
+
   ],
   exports:[
     FormsModule,
     ToastrModule,
     NgxSpinnerModule,
-    MatTableModule
+    MatTableModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   schemas:[
     CUSTOM_ELEMENTS_SCHEMA
