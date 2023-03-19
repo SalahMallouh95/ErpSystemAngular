@@ -101,6 +101,34 @@ export class HrService {
     })
   }
 
+  AddEmpProfile(user:any)
+  {
+        
+    console.log(user);
+    
+    this.spinner.show()
+
+    return new Promise<void>((resolve, reject) => {
+      this.http.post("https://localhost:44388/api/Hr/createuser", user).subscribe(
+        {
+          next: () => {
+            this.toastr.success("Profile created successfully")
+            resolve();
+          }
+          ,
+          error: (ee) => {
+            console.log(ee)
+            this.toastr.error("something want wrong")
+            reject();
+          }
+
+        }
+      )
+      this.spinner.hide();
+
+    })
+  }
+
   // ---------------------- Leave --------------------------
 
   GetAllLeaves() {
@@ -311,7 +339,6 @@ export class HrService {
           next: (res) => {
             this.documentName = res
             resolve();
-            console.log(this.allLeaves)
           }
           ,
           error: (ee) => {

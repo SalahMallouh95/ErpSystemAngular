@@ -16,6 +16,8 @@ import { EmployeeSidbarComponent } from './employee-sidbar/employee-sidbar.compo
 import { ToastrModule } from 'ngx-toastr';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatDialogModule} from '@angular/material/dialog';
+import { MatSelectModule } from '@angular/material/select';
+import {MatCardModule} from '@angular/material/card';
 
 
 
@@ -39,8 +41,9 @@ import {MatDialogModule} from '@angular/material/dialog';
     RouterModule,
     FormsModule,
     ToastrModule.forRoot(),
-    MatDialogModule
-    
+    MatDialogModule,
+    MatSelectModule,
+    MatCardModule
   ],
   exports:[
     HomeFooterComponent,
@@ -59,7 +62,9 @@ import {MatDialogModule} from '@angular/material/dialog';
     FormsModule,
     ToastrModule,
     MatDatepickerModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSelectModule,
+    MatCardModule
   ]
 })
 export class SharedModule { }

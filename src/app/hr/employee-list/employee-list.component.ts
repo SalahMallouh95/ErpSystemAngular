@@ -25,13 +25,14 @@ export class EmployeeListComponent implements OnInit{
   }
   async GetValues(id:any){
 
-    this.user.userid=id
-    this.hrService.GetAllRole()
-    this.hrService.GetAllDepartment()
+    this.user.userid=id    
     await this.hrService.GetEmpInfo(this.user);
-
-    console.log(this.hrService.empInfo);    
     this.router.navigate(['Hr/EmpDetails']);
+  }
+  AddEmp(){
+    this.hrService.GetAllDepartment()
+    this.hrService.GetAllRole()
+    this.router.navigate(['Hr/AddEmp']);
   }
   
 }

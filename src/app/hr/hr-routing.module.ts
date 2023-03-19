@@ -10,6 +10,7 @@ import { DepartmentCreateComponent } from './department-create/department-create
 import { DepartmentEditComponent } from './department-edit/department-edit.component';
 import { DepartmentEmpListComponent } from './department-emp-list/department-emp-list.component';
 import { DepartmentComponent } from './department/department.component';
+import { EmployeeAddComponent } from './employee-add/employee-add.component';
 import { EmployeeDetailsComponent } from './employee-details/employee-details.component';
 import { EmployeeListComponent } from './employee-list/employee-list.component';
 import { HomeManageComponent } from './home-manage/home-manage.component';
@@ -85,6 +86,10 @@ const routes: Routes = [
   {
     path:"ContactUsMessages",
     component:ContactUsComponent
+  },
+  {
+    path:"AddEmp",
+    component:EmployeeAddComponent
   }
 ];
 
