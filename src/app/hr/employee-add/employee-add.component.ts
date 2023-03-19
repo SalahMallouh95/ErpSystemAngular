@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AbstractControl, ValidatorFn } from '@angular/forms';
 import { FormControl,FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HrService } from 'src/app/hr.service';
 
@@ -9,6 +10,11 @@ import { HrService } from 'src/app/hr.service';
   styleUrls: ['./employee-add.component.css']
 })
 export class EmployeeAddComponent {
+  ssnList:any=[]
+
+
+
+
   empInfoForm = new FormGroup({
     fname: new FormControl(null,[Validators.required]),
     lname: new FormControl('',Validators.required),
@@ -17,7 +23,7 @@ export class EmployeeAddComponent {
     phonenumber: new FormControl(),
     address: new FormControl(),
     salary: new FormControl(),
-    ssn: new FormControl('',Validators.required),
+    ssn: new FormControl('',[Validators.required,notInListValidator(this.ssnList)]),
     roleid: new FormControl('',Validators.required),
     departmentid: new FormControl('',Validators.required),
     bankinfoid: new FormControl('',Validators.required),
@@ -26,12 +32,19 @@ export class EmployeeAddComponent {
   })
 
   constructor(public hrservice: HrService) {
+    
+    
 
   }
 
-  ngOnInit(): void {
+    async ngOnInit(): Promise<void> {
     this.hrservice.GetAllRole()
     this.hrservice.GetAllDepartment()
+    await this.hrservice.GetAllEmployee()    
+    this.ssnList=this.hrservice.allEmp.map((s: { ssn: any; })=>s.ssn)
+    console.log(this.ssnList);
+    console.log(this.hrservice.allEmp);
+
   }
 
   async AddEmp(){
@@ -56,4 +69,16 @@ export class EmployeeAddComponent {
     
   }
 
+}
+
+function notInListValidator(list: any[]): ValidatorFn {
+  return (control: AbstractControl): { [key: string]: any } | null => {
+    const value = control.value;
+
+    if (list.includes(value)) {
+      return { notInList: true };
+    }
+
+    return null;
+  };
 }
