@@ -130,18 +130,18 @@ export class HrService {
     })
   }
 
-DeleteEmpProfile(user:any)
+DeleteEmpProfile(userid:any)
   {
         
-    console.log(user);
+    console.log(userid);
     
     this.spinner.show()
 
     return new Promise<void>((resolve, reject) => {
-      this.http.post("https://localhost:44388/api/Hr/createuser", user).subscribe(
+      this.http.delete("https://localhost:44388/api/Hr/deleteuser?id="+userid).subscribe(
         {
           next: () => {
-            this.toastr.success("Profile created successfully")
+            this.toastr.success("Profile deleted successfully")
             resolve();
           }
           ,

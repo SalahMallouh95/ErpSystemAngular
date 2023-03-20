@@ -26,6 +26,8 @@ export class EmployeeListComponent implements OnInit{
   async GetValues(id:any){
 
     this.user.userid=id    
+    this.hrService.GetAllDepartment()
+    this.hrService.GetAllRole()
     await this.hrService.GetEmpInfo(this.user);
     this.router.navigate(['Hr/EmpDetails']);
   }

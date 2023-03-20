@@ -55,6 +55,7 @@ export class EmployeeAddComponent {
       this.empInfoForm.reset()
       this.empInfoForm.markAsUntouched()
       this.hrservice.documentName.imagefilename=undefined
+      history.back()
 
       
   }
