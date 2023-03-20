@@ -126,6 +126,9 @@
                         <mat-error *ngIf="empInfoForm.controls.ssn.hasError('required')">
                           SNN number is <strong>required</strong>
                         </mat-error>
+                        <mat-error *ngIf="empInfoForm.controls.ssn.getError('notInListValidator')">
+                          SNN must be <strong>unique</strong>
+                        </mat-error>
                       </mat-form-field>
 
                       

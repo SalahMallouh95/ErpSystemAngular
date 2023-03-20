@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { HrService } from 'src/app/hr.service';
+import { LeaveTypesCreateComponent } from '../leave-types-create/leave-types-create.component';
+import { LeaveTypesEditComponent } from '../leave-types-edit/leave-types-edit.component';
 
 @Component({
   selector: 'app-leave-types',
@@ -6,5 +10,34 @@ import { Component } from '@angular/core';
   styleUrls: ['./leave-types.component.css']
 })
 export class LeaveTypesComponent {
+  @ViewChild('DeleteDio') Deletedia:any
+  rawLevTyid:number|undefined
+
+  constructor(public hrService:HrService, public dialog:MatDialog){
+
+  }
+
+  ngOnInit(){
+    this.hrService.GetAllLeaveTypes();
+  }
+ 
+  CreateType(){
+    this.dialog.open(LeaveTypesCreateComponent)
+
+  }
+
+  EditType(id:any){
+    this.hrService.leaveTypeInfo=this.hrService.allLeaveTypes.find((lev: { leavetypeid: any; })=>lev.leavetypeid==id)
+    
+    this.dialog.open(LeaveTypesEditComponent)
+
+  }
+
+  OpenDeleteDialog(id:any){
+
+  }
+  DeleteLeaveType(id:any){
+
+  }
 
 }

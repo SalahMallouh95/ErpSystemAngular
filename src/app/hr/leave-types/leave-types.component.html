@@ -10,7 +10,7 @@
          <!-- Basic Bootstrap Table -->
          <div class="card wow fadeInUp"  style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
             <div class="demo-inline-spacing">
-            <button style="position: absolute; top: 0px; right:100px;" type="button" class="btn rounded-pill btn-success"  [routerLink]="['/Hr/leaveTypeCreate']">Add new Leave Type</button>                      
+            <button style="position: absolute; top: 0px; right:100px;" type="button" class="btn rounded-pill btn-success"  (click)="CreateType()">Add new Leave Type</button>                      
                          </div>
             <h5 class="card-header">Table Basic</h5>
             <div class="table-responsive text-nowrap">
@@ -24,14 +24,14 @@
                   </tr>
                 </thead>
                 <tbody class="table-border-bottom-0"> 
-               <tr>
+               <tr *ngFor="let item of this.hrService.allLeaveTypes">
                 <td>
-                    test
+                    {{item.leavetype}}
                 </td>
                 <td>
                     <div class="demo-inline-spacing">
-                        <button type="button" class="btn rounded-pill btn-info" [routerLink]="['/Hr/leaveTypeEdit']">Edit</button>
-                        <button type="button" class="btn rounded-pill btn-danger" [routerLink]="['/Hr/leaveType']">Delete</button>                        
+                        <button type="button" class="btn rounded-pill btn-info" (click)="EditType(item.leavetypeid)">Edit</button>
+                        <button type="button" class="btn rounded-pill btn-danger" (click)="OpenDeleteDialog(item.leavetypeid)">Delete</button>                        
                         
                       </div>
                 </td>
@@ -46,3 +46,18 @@
     </div>
     </div>
     </div>
+
+    <ng-template #DeleteDio>
+      <mat-dialog-content>
+  
+      <p>Are You Sure to Delete this item</p>
+      </mat-dialog-content>
+  
+        <mat-dialog-actions >
+        <div class="demo-inline-spacing">
+        <button type="button" (click)="DeleteLeaveType(this.rawLevTyid)" class="btn rounded-pill btn-success"  mat-dialog-close>Yes</button>
+        <button type="button" class="btn rounded-pill btn-danger"  mat-dialog-close>No</button>                      
+        
+      </div>
+      </mat-dialog-actions>
+      </ng-template>

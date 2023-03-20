@@ -1,18 +1,11 @@
-<div class="layout-wrapper layout-content-navbar">
-    <div class="layout-container">
-      
-<app-hr-sidebar></app-hr-sidebar>
-<div class="layout-page">
-       <app-dash-header>
-        </app-dash-header>
-
         <div class="container-xxl flex-grow-1 container-p-y">
          <!-- Basic Bootstrap Table -->
          <div class="card wow fadeInUp"  style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
             <div class="demo-inline-spacing">
           
-                        <button style="position: absolute; top: 0px; right:0px;" type="button" onclick="history.go(-1)" 
-                           class="btn rounded-pill btn-info">Back</button>
+              <button style="position: absolute; top: 0px; right:0px;" type="button"  mat-dialog-close 
+              class="btn rounded-pill btn-danger">X
+            </button>
                          </div>
               <div class="container-xxl flex-grow-1 container-p-y">              
   
@@ -30,13 +23,11 @@
                             <label class="form-label" for="basic-default-fullname">Leave Type Name</label>
                             <input type="text" class="form-control" id="basic-default-fullname" placeholder="Haj leave">
                           </div>                          
-                          <button type="submit" class="btn btn-primary">Add</button>
+                          <button type="submit" class="btn btn-primary"  mat-dialog-close (click)="CreateLeaveType()">Add</button>
                         </form>
                       
                     </div>
                   </div>               
                 </div>
               </div>
-                  </div>
-    </div>
-    </div>
+         

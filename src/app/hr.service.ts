@@ -24,6 +24,7 @@ export class HrService {
   leaveInfo: any
   depInfo: any
   documentName: any
+  leaveTypeInfo:any
 
 
   

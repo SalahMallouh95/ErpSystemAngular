@@ -13,11 +13,11 @@ import { DepartmentEditComponent } from '../department-edit/department-edit.comp
 export class DepartmentComponent implements OnInit {
   @ViewChild('DeleteDio') Deletedia:any
   @ViewChild('CreateDio') Createdia:any
-
+   rawDepid:number|undefined
 
 
   constructor(public hrService:HrService,public router:Router,public dialog:MatDialog){}
-  rawDepid:number|undefined
+  
   
   ngOnInit(): void {
     this.hrService.GetAllDepartment();
@@ -43,6 +43,7 @@ export class DepartmentComponent implements OnInit {
     this.dialog.open(DepartmentCreateComponent);
     this.hrService.GetAllDepartment
    }
+
    async OpenEditDialog(id:any){
     this.hrService.GetAllDepartment
     this.hrService.depInfo = this.hrService.allDep.filter((d: { departmentid: any; })=>d.departmentid==id)

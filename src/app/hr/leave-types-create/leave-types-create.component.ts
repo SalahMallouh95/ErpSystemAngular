@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./leave-types-create.component.css']
 })
 export class LeaveTypesCreateComponent {
+  CreateLeaveType(){
 
+  }
+  
 }
