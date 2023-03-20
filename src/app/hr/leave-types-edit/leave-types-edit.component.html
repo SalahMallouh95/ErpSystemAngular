@@ -18,13 +18,22 @@
                        
                         <small class="text-muted float-end">Edit Leave Type Name</small>
                       </div>
-                        <form class=" wow slideInUp"
+                        <form [formGroup]="levType" class=" wow slideInUp"
                         style="visibility: visible; animation-delay: 0.3s; animation-name: slideInUp;">
-                          <div class="mb-3">
-                            <label class="form-label" for="basic-default-fullname">Leave Type Name</label>
-                            <input type="text" class="form-control" id="basic-default-fullname" placeholder="Haj leave">
-                          </div>                          
-                          <button type="submit" class="btn btn-primary">Save</button>
+                           
+                        <mat-form-field class="mb-3">
+                          <mat-label>Leave Type Name</mat-label>
+                          <input type="text" matInput formControlName="leavetype" placeholder="Haj leave">
+                          <mat-error *ngIf="levType.controls.leavetype.hasError('leavetype') && !levType.controls.leavetype.hasError('required')">
+                            Please enter a Leave Type
+                          </mat-error>
+                          <mat-error *ngIf="levType.controls.leavetype.hasError('required')">
+                            Leave Type is <strong>required</strong>
+                          </mat-error>
+                        </mat-form-field>
+                        <br>
+
+                          <button type="submit" class="btn btn-primary" [disabled]="levType.invalid" mat-dialog-close (click)="SaveLeaveType()">Save</button>
                         </form>
                       
                     </div>

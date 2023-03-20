@@ -136,10 +136,45 @@
           </div>
 
         </div>   
+        <div class="card">
+          <h5 class="card-header">Delete Account</h5>
+          <div class="card-body">
+            <div class="mb-3 col-12 mb-0">
+              <div class="alert alert-warning">
+                <h6 class="alert-heading fw-bold mb-1">Are you sure you want to delete the account?</h6>
+                <p class="mb-0">Once you delete the account, there is no going back. Please be certain.</p>
+              </div>
+            </div>
+            <form id="formAccountDeactivation" onsubmit="return false">
+              <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" name="accountActivation"  onchange="document.getElementById('deactivateBtn').disabled = !this.checked;" id="accountActivation">
+                <label class="form-check-label" for="accountActivation">I confirm my account deactivation</label>
+              </div>
+              <button id="deactivateBtn" disabled class="btn btn-danger deactivate-account" (click)="OpenDeleteDialog()">Deactivate Account</button>
+            </form>
+          </div>
+        </div>
      </div>
 
-    </div>
-    </div>
-    </div>
+     
 
+    </div>
+    </div>
+    </div>
+</div>
 
+    <ng-template #DeleteDio>
+      <mat-dialog-content>
+  
+      <p>Are You Sure to Delete this item</p>
+      </mat-dialog-content>
+  
+        <mat-dialog-actions >
+        <div class="demo-inline-spacing">
+        <button type="button" class="btn rounded-pill btn-success" mat-dialog-close>Yes</button>
+        <button type="button" class="btn rounded-pill btn-danger"  mat-dialog-close>No</button>                      
+        
+      </div>
+      </mat-dialog-actions>
+      </ng-template>
+  
