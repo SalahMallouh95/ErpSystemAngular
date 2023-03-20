@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { HrService } from 'src/app/hr.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 
 
@@ -12,10 +13,13 @@ import { NgxSpinnerService } from 'ngx-spinner';
   styleUrls: ['./department-create.component.css']
 })
 export class DepartmentCreateComponent {
-  constructor(public hrService: HrService, public router: Router) { }
-  depName: string | undefined
-  managerid: any | undefined
-  dep: any = {}
+ 
+   departmentFormGroup = new FormGroup({
+    departmentname: new FormControl('', Validators.required),
+    userid:new FormControl()
+  })
+
+ constructor(public hrService: HrService, public router: Router) { }
 
   async ngOnInit() {
 
@@ -25,9 +29,8 @@ export class DepartmentCreateComponent {
   }
 
   async CreateDep() {
-    this.dep.departmentname = this.depName
-    this.dep.userid = parseInt(this.managerid) 
-    await this.hrService.CreateDep(this.dep)
+    this.departmentFormGroup.value.userid=parseInt(this.departmentFormGroup.value.userid)
+    await this.hrService.CreateDep(this.departmentFormGroup.value)
     
     this.hrService.GetAllDepartment()
   }

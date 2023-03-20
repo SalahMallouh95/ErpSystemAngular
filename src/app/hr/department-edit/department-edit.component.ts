@@ -9,8 +9,8 @@ import { HrService } from 'src/app/hr.service';
 })
 export class DepartmentEditComponent {
   
-  dep=new FormGroup({
-    departmentname:new FormControl(),
+    dep=new FormGroup({
+    departmentname:new FormControl('',[Validators.required]),
     userid:new FormControl(),
     departmentid:new FormControl()
   })
