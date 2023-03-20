@@ -362,6 +362,7 @@ export class HrService {
         {
           next: (res) => {
             this.documentName = res
+           console.log(this.documentName);
            
             
             resolve();
