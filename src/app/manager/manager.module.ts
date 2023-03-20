@@ -22,22 +22,22 @@ import { MSolutionDetailsComponent } from './m-solution-details/m-solution-detai
 
 @NgModule({
   declarations: [
-    
-  
+
+
     MainComponent,
-              AllEmployeesComponent,
-              MAllEmpLeavesComponent,
-              MLeavesComponent,
-              MLeaveDetailsComponent,
-              MEmpInfoComponent,
-              CreateTaskComponent,
-              TasksComponent,
-              TasksDetailesComponent,
-              MMyLeaveDetailsComponent,
-              EditTaskComponent,
-              MSolutionComponent,
-              MUpdateProfileComponent,
-              MSolutionDetailsComponent
+    AllEmployeesComponent,
+    MAllEmpLeavesComponent,
+    MLeavesComponent,
+    MLeaveDetailsComponent,
+    MEmpInfoComponent,
+    CreateTaskComponent,
+    TasksComponent,
+    TasksDetailesComponent,
+    MMyLeaveDetailsComponent,
+    EditTaskComponent,
+    MSolutionComponent,
+    MUpdateProfileComponent,
+    MSolutionDetailsComponent
   ],
   imports: [
     CommonModule,
