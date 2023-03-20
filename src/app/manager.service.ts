@@ -13,12 +13,11 @@ export class ManagerService {
 
   constructor(private http: HttpClient, private spinner: NgxSpinnerService, private toaster: ToastrService) { }
 
-  solutioninfo : any
-
-
-taskid : number |undefined
-
+  solutioninfo: any
+  taskid: number | undefined
   AllEmp: any = []
+  documentName: any
+  
 
   async GetAllEmp(emp: any) {
 
@@ -180,7 +179,7 @@ taskid : number |undefined
   empInformation: any = {}
 
   async GetEmpInfo(ei: any) {
-    let user : any = {}
+    let user: any = {}
     user.userid = ei
     return new Promise<void>((resolve, reject) => {
 
@@ -192,7 +191,7 @@ taskid : number |undefined
             resolve()
             console.log(this.empInformation);
             console.log(res);
-            
+
 
           },
 
@@ -208,36 +207,35 @@ taskid : number |undefined
   }
 
 
-  attendance : any= []
+  attendance: any = []
 
-  async GetAttendance(at : any){
-    return new Promise<void>((resolve,reject)=> {
+  async GetAttendance(at: any) {
+    return new Promise<void>((resolve, reject) => {
 
       this.spinner.show()
-      this.http.post('https://localhost:44388/api/User/GetAttendance',at).subscribe({
+      this.http.post('https://localhost:44388/api/User/GetAttendance', at).subscribe({
 
-      next: res =>{
-        this.attendance =res
-        resolve()
-        console.log(res);
-        
+        next: res => {
+          this.attendance = res
+          resolve()
+          console.log(res);
 
-      },
 
-      error: err =>{
-        console.log(err);
-        this.toaster.error('Error')
-        
-      }
+        },
+
+        error: err => {
+          console.log(err);
+          this.toaster.error('Error')
+
+        }
       })
     })
 
   }
 
-  leaveInfo : any
-  async GetLeaveDetails(leave:any)
-  {    
-    
+  leaveInfo: any
+  async GetLeaveDetails(leave: any) {
+
     this.spinner.show()
     return new Promise<void>((resolve, reject) => {
       this.http.post("https://localhost:44388/api/Manager/getLeaveByID", leave).subscribe(
@@ -245,32 +243,31 @@ taskid : number |undefined
           next: (res) => {
             this.leaveInfo = res;
             console.log(res);
-            
+
             resolve();
-            
+
           }
           ,
           error: (ee) => {
             console.log(ee)
             this.toaster.error('Error')
             reject();
-            
+
           }
 
         }
       )
       this.spinner.hide();
       console.log(this.leaveInfo);
-      
+
 
     })
 
   }
 
-  async UpdateLeaveDetails(leave:any)
-  {   
-           console.log(leave);
-           
+  async UpdateLeaveDetails(leave: any) {
+    console.log(leave);
+
     return new Promise<void>((resolve, reject) => {
       this.http.put("https://localhost:44388/api/Manager/updateleave", leave).subscribe(
         {
@@ -294,27 +291,27 @@ taskid : number |undefined
   }
 
 
-  taskinfo : any
-  async GetTaskDetails(tas: any){
+  taskinfo: any
+  async GetTaskDetails(tas: any) {
     this.spinner.show()
     return new Promise<void>((resolve, reject) => {
 
-      this.http.post("https://localhost:44388/api/Manager/GetTask",tas).subscribe({
+      this.http.post("https://localhost:44388/api/Manager/GetTask", tas).subscribe({
 
-      next: (res) => {
-        this.taskinfo = res;
-        console.log(res);
-        
-        resolve();
-        
-      }
-      ,
-      error: (ee) => {
-        console.log(ee)
-        this.toaster.error('Error')
-        reject();
-        
-      }
+        next: (res) => {
+          this.taskinfo = res;
+          console.log(res);
+
+          resolve();
+
+        }
+        ,
+        error: (ee) => {
+          console.log(ee)
+          this.toaster.error('Error')
+          reject();
+
+        }
 
       })
       this.spinner.show()
@@ -324,10 +321,10 @@ taskid : number |undefined
 
   }
 
- 
 
-  allsln: any =[]
-  async GetAllSolutions(as:any){
+
+  allsln: any = []
+  async GetAllSolutions(as: any) {
     return new Promise<void>((resolve, reject) => {
 
       this.spinner.show()
@@ -335,7 +332,7 @@ taskid : number |undefined
 
         next: res => {
           this.allsln = res
-          
+
           resolve()
 
         },
@@ -351,9 +348,9 @@ taskid : number |undefined
   }
 
 
-  async UpdateSolutionState(sln :any){
-    return new Promise<void>((resolve,reject) =>{
-      this.http.put('https://localhost:44388/api/Manager/UpdateSolutionState',sln).subscribe({
+  async UpdateSolutionState(sln: any) {
+    return new Promise<void>((resolve, reject) => {
+      this.http.put('https://localhost:44388/api/Manager/UpdateSolutionState', sln).subscribe({
         next: () => {
           resolve()
         },
@@ -363,21 +360,21 @@ taskid : number |undefined
         }
       })
       this.spinner.hide();
-    } )
+    })
 
   }
 
-  async GetSolutionDetails(sln: any){
-    return new Promise<void>((resolve,reject)=>{
-      this.http.post("https://localhost:44388/api/Manager/OneSolution",sln).subscribe({
-        next: res =>{
+  async GetSolutionDetails(sln: any) {
+    return new Promise<void>((resolve, reject) => {
+      this.http.post("https://localhost:44388/api/Manager/OneSolution", sln).subscribe({
+        next: res => {
           this.solutioninfo = res
           resolve()
         },
-        error: err =>{
+        error: err => {
           console.log(err);
           reject()
-          
+
         }
       })
     })
@@ -385,10 +382,13 @@ taskid : number |undefined
 
   createTask: any = {}
 
-  async CreateTask(ct:any){
-    return new Promise<void>((resolve,reject) =>{
-      this.http.post('https://localhost:44388/api/Manager/CreateTask',ct).subscribe({
-        next: res =>{
+  async CreateTask(ct: any) {
+    console.log(ct);
+    
+    return new Promise<void>((resolve, reject) => {
+
+      this.http.post('https://localhost:44388/api/Manager/CreateTask', ct).subscribe({
+        next: res => {
           this.createTask = res
           resolve()
         },
@@ -396,7 +396,7 @@ taskid : number |undefined
         error: err => {
           console.log(err);
           reject()
-          
+
         }
       })
     })

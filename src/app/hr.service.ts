@@ -338,6 +338,8 @@ export class HrService {
         {
           next: (res) => {
             this.documentName = res
+           
+            
             resolve();
           }
           ,
