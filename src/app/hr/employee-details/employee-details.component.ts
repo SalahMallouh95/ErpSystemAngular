@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl,FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
 import { HrService } from 'src/app/hr.service';
+import { MatDialog } from '@angular/material/dialog';
 
 
 @Component({
@@ -10,13 +10,14 @@ import { HrService } from 'src/app/hr.service';
   styleUrls: ['./employee-details.component.css']
 })
 export class EmployeeDetailsComponent implements OnInit {
+  
+  @ViewChild('DeleteDio') Deletedia:any
 
-  constructor(public hrservice: HrService) {
+  constructor(public hrservice: HrService,public dialog:MatDialog) {
 
   }
 
-  rId:number=0
-
+  
   empInfoForm = new FormGroup({
     userid: new FormControl(),
     fname: new FormControl(null,[Validators.required]),
@@ -63,7 +64,12 @@ export class EmployeeDetailsComponent implements OnInit {
   {     
     await this.hrservice.UpdateEmpProfile(this.empInfoForm.value)
   }
+  
+  OpenDeleteDialog(){
 
+    this.dialog.open(this.Deletedia);
+
+   }
   
 
 }

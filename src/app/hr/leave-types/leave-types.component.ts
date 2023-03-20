@@ -11,7 +11,6 @@ import { LeaveTypesEditComponent } from '../leave-types-edit/leave-types-edit.co
 })
 export class LeaveTypesComponent {
   @ViewChild('DeleteDio') Deletedia:any
-  rawLevTyid:number|undefined
 
   constructor(public hrService:HrService, public dialog:MatDialog){
 
@@ -27,16 +26,19 @@ export class LeaveTypesComponent {
   }
 
   EditType(id:any){
-    this.hrService.leaveTypeInfo=this.hrService.allLeaveTypes.find((lev: { leavetypeid: any; })=>lev.leavetypeid==id)
-    
+    this.hrService.leaveTypeInfo=this.hrService.allLeaveTypes.find((lev: { leavetypeid: any; })=>lev.leavetypeid==id)    
     this.dialog.open(LeaveTypesEditComponent)
 
   }
 
   OpenDeleteDialog(id:any){
+  this.hrService.leaveTypeInfo=this.hrService.allLeaveTypes.find((lev: { leavetypeid: any; })=>lev.leavetypeid==id)
+  this.dialog.open(this.Deletedia)
 
   }
-  DeleteLeaveType(id:any){
+  async DeleteLeaveType(){
+   await this.hrService.DeleteLeaveType(this.hrService.leaveTypeInfo.leavetypeid)
+   this.hrService.GetAllLeaveTypes();
 
   }
 

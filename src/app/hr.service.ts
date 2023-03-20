@@ -130,6 +130,34 @@ export class HrService {
     })
   }
 
+DeleteEmpProfile(user:any)
+  {
+        
+    console.log(user);
+    
+    this.spinner.show()
+
+    return new Promise<void>((resolve, reject) => {
+      this.http.post("https://localhost:44388/api/Hr/createuser", user).subscribe(
+        {
+          next: () => {
+            this.toastr.success("Profile created successfully")
+            resolve();
+          }
+          ,
+          error: (ee) => {
+            console.log(ee)
+            this.toastr.error("something want wrong")
+            reject();
+          }
+
+        }
+      )
+      this.spinner.hide();
+
+    })
+  }
+
   // ---------------------- Leave --------------------------
 
   GetAllLeaves() {
@@ -148,14 +176,19 @@ export class HrService {
   GetAllLeaveTypes() {
     this.spinner.show();
 
+    return new Promise<void>((resolve, reject) => {
     this.http.get("https://localhost:44388/api/Hr/getleavetype").subscribe(
       {
-        next: (res) => { this.allLeaveTypes = res },
-        error: (ee) => { console.log(ee) }
+        next: (res) => { this.allLeaveTypes = res 
+          resolve();
+        },
+        error: (ee) => { console.log(ee) 
+          reject();
+        }
       }
     )
     this.spinner.hide();
-
+  })
   }
 
   CreateLeaveType(lev:any)
@@ -167,6 +200,56 @@ export class HrService {
           next: () => {
             resolve();
             this.toastr.success('Leave type Added successfully!');
+          }
+          ,
+          error: (ee) => {
+            console.log(ee)
+            this.toastr.error('Somthing went wrong!');
+
+            reject();
+          }
+
+        }
+      )
+      this.spinner.hide();
+
+    })
+  }
+
+  UpdateLeaveType(lev:any)
+  {
+    return new Promise<void>((resolve, reject) => {
+      this.spinner.show()
+      this.http.put("https://localhost:44388/api/Hr/updateleavetype", lev).subscribe(
+        {
+          next: () => {
+            resolve();
+            this.toastr.success('Leave type updateded successfully!');
+          }
+          ,
+          error: (ee) => {
+            console.log(ee)
+            this.toastr.error('Somthing went wrong!');
+
+            reject();
+          }
+
+        }
+      )
+      this.spinner.hide();
+
+    })
+  }
+
+  DeleteLeaveType(levid:any)
+  {
+    return new Promise<void>((resolve, reject) => {
+      this.spinner.show()
+      this.http.delete("https://localhost:44388/api/Hr/deleteleavetype?id="+levid).subscribe(
+        {
+          next: () => {
+            resolve();
+            this.toastr.success('Leave type deleted successfully!');
           }
           ,
           error: (ee) => {
