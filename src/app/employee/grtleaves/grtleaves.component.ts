@@ -14,7 +14,8 @@ import { LeavedetailComponent } from '../leavedetail/leavedetail.component';
 
 export class GrtleavesComponent implements OnInit{
 @ViewChild('CreateForm') Create : any
-
+@ViewChild('UpdateForm') Update : any
+@ViewChild('DeleteForm')Delete:any
 constructor(public employeeService:EmployeeService,private router:Router, public dialog:MatDialog){
 
 }
@@ -74,4 +75,46 @@ CreateLeaveForm = new FormGroup(
     width: '600px',
   })
  }
+ UpdateLeaveForm = new FormGroup(
+  { leavetypeid : new FormControl (),
+   startdate : new FormControl(),
+   enddate : new FormControl(),
+   message : new FormControl(),
+   userid : new FormControl()
+ })
+ async OpenUpdateDialog(id:number)
+ {
+  let leave2:any={}
+  leave2.leaveid=id;
+  await this.employeeService.GetleaveById(leave2)
+  console.log(this.employeeService.leave);
+  this.UpdateLeaveForm.patchValue(this.employeeService.leave)
+  this.dialog.open(this.Update, {
+    height: '600px',
+    width: '600px',
+  })
+
+}
+
+async UpdateLeave()
+{
+  this.UpdateLeaveForm.value.userid=1
+  console.log(this.UpdateLeaveForm.value);
+ await this.employeeService.UpdateLeave(this.UpdateLeaveForm.value)
+  this.employeeService.GetAllleave(this.leaves)
+
+}
+leave2:any={}
+OpenDeleteDialog(leave : any)
+{
+this.leave2=leave
+   this.dialog.open(this.Delete)
+}
+
+async DeleteLeave(){
+console.log(this.leave2)
+await this.employeeService.DeleteLeave(this.leave2)
+this.employeeService.GetAllleave(this.leaves)
+}
+
 }
