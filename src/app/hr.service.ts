@@ -158,6 +158,31 @@ export class HrService {
 
   }
 
+  CreateLeaveType(lev:any)
+  {
+    return new Promise<void>((resolve, reject) => {
+      this.spinner.show()
+      this.http.post("https://localhost:44388/api/Hr/createleavetype", lev).subscribe(
+        {
+          next: () => {
+            resolve();
+            this.toastr.success('Leave type Added successfully!');
+          }
+          ,
+          error: (ee) => {
+            console.log(ee)
+            this.toastr.error('Somthing went wrong!');
+
+            reject();
+          }
+
+        }
+      )
+      this.spinner.hide();
+
+    })
+  }
+
   async GetLeaveDetails(leave: any) {
     this.spinner.show()
     return new Promise<void>((resolve, reject) => {
@@ -259,8 +284,6 @@ export class HrService {
   }
 
   async CreateDep(dep: any) {
-    console.log(dep);
-
     return new Promise<void>((resolve, reject) => {
       this.spinner.show()
       this.http.post("https://localhost:44388/api/Hr/createdept", dep).subscribe(
