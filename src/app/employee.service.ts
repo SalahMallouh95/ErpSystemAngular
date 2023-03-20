@@ -18,7 +18,7 @@ export class EmployeeService {
     { "solutionid":3, "taskid": 2,"uploadDate":"32432","feedMessage":"tet","State":1,"documentFileName":"wefss"},  
   ];
   leavetype1 = [
-    { "leaveid": 1, "leavetype": "ergregerg"},
+    { "leavetypeid": 1, "leavetype": "ergregerg"},
     { "leaveid": 2, "leavetype": "wdewdwe"},   
     { "leaveid": 3, "leavetype": "edfwefwef"},  
     { "leaveid": 3, "leavetype": "sdsad"}
@@ -44,7 +44,7 @@ export class EmployeeService {
  leave: any={} // {} 
   async GetleaveById(leaves:any)//10
   {
-    // return new Promise<void>((resolve, reject) => {
+   return new Promise<void>((resolve, reject) => {
       this.spinner.show()
       this.http.post("https://localhost:44388/api/Hr/getoneleave" ,leaves).subscribe(
         {
@@ -52,7 +52,7 @@ export class EmployeeService {
             this.leave = res
             this.spinner.hide()
             this.toaster.success("Success")
-            // resolve()
+             resolve()
           },
 
           error: (err) => {
@@ -63,7 +63,7 @@ export class EmployeeService {
         }
       )
       
-      //  })
+       })
 }
 
 async Search(data:any)
@@ -112,5 +112,46 @@ this.toaster.error("error")
     }
   )
 })
+}
+async UpdateLeave(leave : any) // 
+{
+return new Promise<void>((resolve, reject) => {
+  this.spinner.show()
+  console.log(this.leave)
+  this.http.put("https://localhost:44388/api/Employee/UpdateLeave",leave).subscribe(
+    {
+      next:()=>{
+this.spinner.hide()
+this.toaster.success("Edit Successfully")
+resolve();
+      },
+      error:()=>{
+        this.spinner.hide()
+this.toaster.error("error")
+reject();
+      }
+    }
+  )
+})
+}
+async DeleteLeave(leave:any){
+  console.log(leave)
+  return new Promise<void>((resolve, reject) => {
+    this.spinner.show()
+    this.http.delete("https://localhost:44388/api/Employee/DeleteLeave",leave).subscribe(
+      {
+        next:()=>{
+        this.spinner.hide()
+        this.toaster.success("delete Successfully")
+  resolve();
+        },
+        error:()=>{
+          this.spinner.hide()
+  this.toaster.error("error")
+  reject()
+        }
+      }
+    )
+  })
 }
 }
