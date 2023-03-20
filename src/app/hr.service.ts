@@ -23,6 +23,13 @@ export class HrService {
   empInfo: any
   leaveInfo: any
   depInfo: any
+  documentName: any
+  leaveTypeInfo:any
+
+
+  
+  // ---------------------- Employee --------------------------
+
 
   async GetAllEmployee() {
     this.spinner.show();
@@ -44,42 +51,11 @@ export class HrService {
 
   }
 
-  async GetAllDepartment() {
-    this.spinner.show();
-    
-    return new Promise<void>((resolve, reject) => {
-      this.http.get("https://localhost:44388/api/HR/getdept").subscribe(
-        {
-          next: (res) => {
-            this.allDep = res
-            resolve()
-          }
-          ,
-          error: (ee) => {
-            console.log(ee)
-            reject()
-          }
-        }
-      )
-      this.spinner.hide();
-    })
 
-  }
-  GetAllRole() {
-    this.spinner.show();
-
-    this.http.get("https://localhost:44388/api/Hr/getdept").subscribe(
-      {
-        next: (res) => { this.allRole = res },
-        error: (ee) => { console.log(ee) }
-      }
-    )
-    this.spinner.hide();
-
-  }
+  
 
   GetEmpInfo(user: any) {
-          this.spinner.show()
+    this.spinner.show()
 
     return new Promise<void>((resolve, reject) => {
       this.http.post("https://localhost:44388/api/User/GetProfile", user).subscribe(
@@ -101,6 +77,89 @@ export class HrService {
     })
   }
 
+  UpdateEmpProfile(user:any)
+  {
+
+    this.spinner.show()
+
+    return new Promise<void>((resolve, reject) => {
+      this.http.put("https://localhost:44388/api/Hr/updateuser", user).subscribe(
+        {
+          next: () => {
+            this.toastr.success("Profile updated successfully")
+            resolve();
+          }
+          ,
+          error: (ee) => {
+            console.log(ee)
+            reject();
+          }
+
+        }
+      )
+      this.spinner.hide();
+
+    })
+  }
+
+  AddEmpProfile(user:any)
+  {
+        
+    console.log(user);
+    
+    this.spinner.show()
+
+    return new Promise<void>((resolve, reject) => {
+      this.http.post("https://localhost:44388/api/Hr/createuser", user).subscribe(
+        {
+          next: () => {
+            this.toastr.success("Profile created successfully")
+            resolve();
+          }
+          ,
+          error: (ee) => {
+            console.log(ee)
+            this.toastr.error("something want wrong")
+            reject();
+          }
+
+        }
+      )
+      this.spinner.hide();
+
+    })
+  }
+
+DeleteEmpProfile(user:any)
+  {
+        
+    console.log(user);
+    
+    this.spinner.show()
+
+    return new Promise<void>((resolve, reject) => {
+      this.http.post("https://localhost:44388/api/Hr/createuser", user).subscribe(
+        {
+          next: () => {
+            this.toastr.success("Profile created successfully")
+            resolve();
+          }
+          ,
+          error: (ee) => {
+            console.log(ee)
+            this.toastr.error("something want wrong")
+            reject();
+          }
+
+        }
+      )
+      this.spinner.hide();
+
+    })
+  }
+
+  // ---------------------- Leave --------------------------
+
   GetAllLeaves() {
     this.spinner.show();
 
@@ -117,18 +176,97 @@ export class HrService {
   GetAllLeaveTypes() {
     this.spinner.show();
 
+    return new Promise<void>((resolve, reject) => {
     this.http.get("https://localhost:44388/api/Hr/getleavetype").subscribe(
       {
-        next: (res) => { this.allLeaveTypes = res },
-        error: (ee) => { console.log(ee) }
+        next: (res) => { this.allLeaveTypes = res 
+          resolve();
+        },
+        error: (ee) => { console.log(ee) 
+          reject();
+        }
       }
     )
     this.spinner.hide();
-
+  })
   }
 
-  async GetLeaveDetails(leave:any)
-  {    
+  CreateLeaveType(lev:any)
+  {
+    return new Promise<void>((resolve, reject) => {
+      this.spinner.show()
+      this.http.post("https://localhost:44388/api/Hr/createleavetype", lev).subscribe(
+        {
+          next: () => {
+            resolve();
+            this.toastr.success('Leave type Added successfully!');
+          }
+          ,
+          error: (ee) => {
+            console.log(ee)
+            this.toastr.error('Somthing went wrong!');
+
+            reject();
+          }
+
+        }
+      )
+      this.spinner.hide();
+
+    })
+  }
+
+  UpdateLeaveType(lev:any)
+  {
+    return new Promise<void>((resolve, reject) => {
+      this.spinner.show()
+      this.http.put("https://localhost:44388/api/Hr/updateleavetype", lev).subscribe(
+        {
+          next: () => {
+            resolve();
+            this.toastr.success('Leave type updateded successfully!');
+          }
+          ,
+          error: (ee) => {
+            console.log(ee)
+            this.toastr.error('Somthing went wrong!');
+
+            reject();
+          }
+
+        }
+      )
+      this.spinner.hide();
+
+    })
+  }
+
+  DeleteLeaveType(levid:any)
+  {
+    return new Promise<void>((resolve, reject) => {
+      this.spinner.show()
+      this.http.delete("https://localhost:44388/api/Hr/deleteleavetype?id="+levid).subscribe(
+        {
+          next: () => {
+            resolve();
+            this.toastr.success('Leave type deleted successfully!');
+          }
+          ,
+          error: (ee) => {
+            console.log(ee)
+            this.toastr.error('Somthing went wrong!');
+
+            reject();
+          }
+
+        }
+      )
+      this.spinner.hide();
+
+    })
+  }
+
+  async GetLeaveDetails(leave: any) {
     this.spinner.show()
     return new Promise<void>((resolve, reject) => {
       this.http.post("https://localhost:44388/api/Hr/getoneleave", leave).subscribe(
@@ -151,10 +289,9 @@ export class HrService {
 
   }
 
-  async UpdateLeaveDetails(leave:any)
-  {   
-           console.log(leave);
-           
+  async UpdateLeaveDetails(leave: any) {
+    console.log(leave);
+
     return new Promise<void>((resolve, reject) => {
       this.http.put("https://localhost:44388/api/Hr/updateleave", leave).subscribe(
         {
@@ -177,9 +314,59 @@ export class HrService {
     })
 
   }
+
+  async Search(data: any) {
+    return new Promise<void>((resolve, reject) => {
+      this.spinner.show()
+      this.http.post("https://localhost:44388/api/Hr/searchleave", data).subscribe(
+        {
+          next: (res) => {
+            this.allLeaves = res
+            resolve();
+            console.log(this.allLeaves)
+          }
+          ,
+          error: (ee) => {
+            console.log(ee)
+            this.toastr.error('Somthing went wrong!');
+
+            reject();
+          }
+
+        }
+      )
+      this.spinner.hide();
+
+    })
+
+  }
+
+
+  // ---------------------- Department --------------------------
+
+  async GetAllDepartment() {
+    this.spinner.show();
+
+    return new Promise<void>((resolve, reject) => {
+      this.http.get("https://localhost:44388/api/HR/getdept").subscribe(
+        {
+          next: (res) => {
+            this.allDep = res
+            resolve()
+          }
+          ,
+          error: (ee) => {
+            console.log(ee)
+            reject()
+          }
+        }
+      )
+      this.spinner.hide();
+    })
+
+  }
+
   async CreateDep(dep: any) {
-    console.log(dep);
-    
     return new Promise<void>((resolve, reject) => {
       this.spinner.show()
       this.http.post("https://localhost:44388/api/Hr/createdept", dep).subscribe(
@@ -227,7 +414,7 @@ export class HrService {
   }
   async EditDep(dep: any) {
     console.log(dep);
-    
+
     return new Promise<void>((resolve, reject) => {
       this.spinner.show()
       this.http.put("https://localhost:44388/api/Hr/updatedept", dep).subscribe(
@@ -250,17 +437,17 @@ export class HrService {
 
     })
   }
-  async Search(data:any)
-  {
-    console.log(data);
 
+  UploadDocument(file: any) {
     return new Promise<void>((resolve, reject) => {
       this.spinner.show()
-      this.http.post("https://localhost:44388/api/Hr/searchleave", data).subscribe(
+      this.http.post("https://localhost:44388/api/User/uploadFile", file).subscribe(
         {
-          next: (res) => {this.allLeaves=res
-            resolve();           
-            console.log(this.allLeaves)
+          next: (res) => {
+            this.documentName = res
+           
+            
+            resolve();
           }
           ,
           error: (ee) => {
@@ -275,7 +462,18 @@ export class HrService {
       this.spinner.hide();
 
     })
-
   }
 
+  GetAllRole() {
+    this.spinner.show();
+
+    this.http.get("https://localhost:44388/api/Hr/getRole").subscribe(
+      {
+        next: (res) => { this.allRole = res },
+        error: (ee) => { console.log(ee) }
+      }
+    )
+    this.spinner.hide();
+
+  }
 }

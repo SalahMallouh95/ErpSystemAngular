@@ -17,18 +17,19 @@ export class DepartmentEmpListComponent implements OnInit{
   user:any={}
   lengtharyy:number=0
 
-  constructor(private router:Router,public hrService:HrService)
+  constructor(private route:Router,public hrService:HrService)
   {
 
   }
   ngOnInit(): void {
   this.allEmp=this.hrService.allEmp
   this.lengtharyy=this.hrService.allEmp.length
+  
   }
   async GetValues(id:any){
   this.user.userid=id
   await this.hrService.GetEmpInfo(this.user);
-  this.router.navigate(['Hr/EmpDetails']);
+  this.route.navigate(['Hr/EmpDetails']);
   }
   
   

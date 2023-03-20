@@ -21,99 +21,160 @@
                 <!-- Account -->
                 <div class="card-body">
                   <div class="d-flex align-items-start align-items-sm-center gap-4">
-                    <img *ngIf="empInfo.Imagefilename==null" name="img" _ngcontent-fnq-c20="" src="/assets/Documents/UserDefaultImage.png" alt="" class="img-fluid w-100" style="max-height: 350px; max-width: 350px;">
-                    <img *ngIf="empInfo.Imagefilename!=null" name="img" _ngcontent-fnq-c20="" [src]="'/assets/Documents/'+empInfo.Imagefilename" alt="" class="img-fluid w-100" style="max-height: 350px; max-width: 350px;">
+                    <img *ngIf="this.empInfoForm.value.imagefilename==null" name="img" _ngcontent-fnq-c20="" src="/assets/Documents/UserDefaultImage.png" alt="" class="img-fluid w-100" style="max-height: 350px; max-width: 350px;">
+                    <img *ngIf="this.empInfoForm.value.imagefilename!=null" name="img" _ngcontent-fnq-c20="" [src]="'/assets/Documents/'+this.empInfoForm.value.imagefilename" alt="" class="img-fluid w-100" style="max-height: 350px; max-width: 350px;">
                        <div class="button-wrapper">
                       <label for="upload" class="btn btn-primary me-2 mb-4" tabindex="0">
                         <span class="d-none d-sm-block">Upload new photo</span>
                         <i class="bx bx-upload d-block d-sm-none"></i>
-                        <input type="file" id="upload" class="account-file-input" hidden="" accept="image/png, image/jpeg">
-                      </label>                     
+                        <input type="file" #file id="upload" class="account-file-input" hidden="" (change)="UploadPhoto(file)" accept="image/png, image/jpeg">
+                      </label>    <button type="button" class="btn btn-outline-secondary account-image-reset mb-4">
+                        <i class="bx bx-reset d-block d-sm-none"></i>
+                        <span class="d-none d-sm-block" (click)="ResetPic()">Reset</span>
+                      </button>                  
                       <p class="text-muted mb-0">Allowed JPG, GIF or PNG. Max size of 800K</p>
+                     
                     </div>
                   </div>
                 </div>
                 <hr class="my-0">
                 <div class="card-body">
-                  <form id="formAccountSettings" method="POST" onsubmit="return false">
+                  <form [formGroup]="empInfoForm" id="formAccountSettings">
                     <div class="row">
                       <div class="mb-3 col-md-6">
                         <label for="firstName" class="form-label">First Name</label>
-                        <input class="form-control" type="text" id="firstName" name="firstName" [(ngModel)]="empInfo.fname" autofocus="">
+                        <input matInput formControlName="fname" class="form-control" type="text">
+                        <mat-error *ngIf="empInfoForm.controls['fname'].hasError('required')">Please enter a First Name</mat-error>
                       </div>
+                  
                       <div class="mb-3 col-md-6">
                         <label for="lastName" class="form-label">Last Name</label>
-                        <input class="form-control" type="text" name="lastName" id="lastName" [(ngModel)]="empInfo.lname">
+                        <input matInput class="form-control" type="text" name="lastName" id="lastName" formControlName="lname">
+                        <mat-error *ngIf="empInfoForm.controls['lname'].hasError('required')">Please enter a Last Name</mat-error>
                       </div>
+                  
                       <div class="mb-3 col-md-6">
                         <label for="email" class="form-label">E-mail</label>
-                        <input class="form-control" type="text" id="email" name="email" [(ngModel)]="empInfo.email" placeholder="john.doe@example.com">
+                        <input matInput class="form-control" type="text" id="email" name="email" formControlName="email" placeholder="john.doe@example.com">
+                        <mat-error *ngIf="empInfoForm.controls['email'].hasError('required')">Please enter an Email</mat-error>
+                        <mat-error *ngIf="empInfoForm.controls['email'].hasError('pattern')">Invalid Email format</mat-error>
                       </div>
+                  
                       <div class="mb-3 col-md-6">
                         <label for="organization" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="Password" name="Password" >
+                        <input matInput type="password" class="form-control" id="Password" name="Password" formControlName="password">
                       </div>
+                  
                       <div class="mb-3 col-md-6">
                         <label class="form-label" for="phoneNumber">Phone Number</label>
                         <div class="input-group input-group-merge">
                           <span class="input-group-text">Jod (+962)</span>
-                          <input type="number" id="phoneNumber" name="phoneNumber" [(ngModel)]="empInfo.phonenumber" class="form-control" length="9" placeholder="788253988">
+                          <input matInput type="number" id="phoneNumber" name="phoneNumber" formControlName="phonenumber" class="form-control" length="9" placeholder="788253988">
                         </div>
                       </div>
+                  
                       <div class="mb-3 col-md-6">
                         <label for="address" class="form-label">Address</label>
-                        <input type="text" class="form-control" id="address" [(ngModel)]="empInfo.address" name="address" placeholder="Address">
+                        <input matInput type="text" class="form-control" id="address" formControlName="address" name="address" placeholder="Address">
                       </div>
+                  
                       <div class="mb-3 col-md-6">
                         <label for="state" class="form-label">Salary</label>
-                        <input class="form-control" type="text" id="state" name="state" [(ngModel)]="empInfo.salary"  placeholder="California">
+                        <input matInput class="form-control" type="text" id="state" name="state" formControlName="salary" placeholder="California">
                       </div>
+                  
                       <div class="mb-3 col-md-6">
-                        <label for="zipCode" class="form-label">SNN number</label>
-                        <input type="text" class="form-control" id="zipCode" name="zipCode" [(ngModel)]="empInfo.ssn"  placeholder="231465" maxlength="6">
+                        <label class="form-label">SNN number</label>
+                        <input matInput type="number" class="form-control" formControlName="ssn" placeholder="231465" maxlength="6">
+                        <mat-error *ngIf="empInfoForm.controls['ssn'].hasError('required')">
+                          Please select a Enter the SNN number
+                        </mat-error>   
                       </div>
+                  
                       <div class="mb-3 col-md-6">
-                        <label class="form-label"  [(ngModel)]="empInfo.role" for="Role">Role</label>
-                        <select id="Role" class="select2 form-select">
-                          <option value="">Select</option>
-                          <option value="Australia">Employee</option>
-                          <option value="Bangladesh">Manager</option>                          
+                        <label class="form-label" for="Role">Role</label>
+                        <select formControlName="roleid" id="Role" class="select2 form-select">
+                          <option *ngFor="let item of this.hrservice.allRole" [ngValue]="item.roleid">{{item.rolename}}</option>
                         </select>
+                        <mat-error *ngIf="empInfoForm.controls['roleid'].hasError('required')">
+                          Please select a role
+                        </mat-error>
                       </div>
                       <div class="mb-3 col-md-6">
-                        <label for="language" class="form-label">Department</label>
-                        <select id="language" class="select2 form-select">
-                          <option value="">Select Language</option>
-                          <option value="en">English</option>
-                          <option value="fr">French</option>
-                          <option value="de">German</option>
-                          <option value="pt">Portuguese</option>
+                        <label for="language" *ngIf="this.hrservice.empInfo" class="form-label">Department</label>
+                        <select id="language" *ngIf="this.hrservice.empInfo.roleid!=2" formControlName="departmentid" class="select2 form-select">
+                          <option *ngFor="let item of this.hrservice.allDep" [ngValue]="item.departmentid">{{item.departmentname}}</option>                          
                         </select>
+                        <select id="language"  *ngIf="this.hrservice.empInfo.roleid==2" formControlName="departmentid" class="select2 form-select">
+                          <option [disabled]="true" *ngFor="let item of this.hrservice.allDep" [ngValue]="item.departmentid">{{item.departmentname}}</option>                          
+                        </select>
+                        <mat-error *ngIf="empInfoForm.controls['departmentid'].hasError('required')">
+                          Please select a department
+                        </mat-error>
                       </div>
+
                       <div class="mb-3 col-md-6">
-                        <label for="Bank" class="form-label">Bank ID</label>
-                        <input type="text" class="form-control" id="Bank" name="Bank" [(ngModel)]="empInfo.bankinfoid"  placeholder="231465" maxlength="6">
-                      </div>                      
+                        <label  class="form-label">Bank ID</label>
+                        <input matInput type="number"  class="form-control" formControlName="bankinfoid" placeholder="231465" maxlength="6">
+                         <mat-error *ngIf="empInfoForm.controls['bankinfoid'].hasError('required')">
+                        Please select a Enter the Bank id
+                      </mat-error>  
+                      </div>  
+                                       
                     </div>
                     <div class="mt-2">
-                      <button type="submit" class="btn btn-primary me-2">Save changes</button>                     
+                      <button type="submit" class="btn btn-primary me-2" (click)="UpdateProfile()" [disabled]="empInfoForm.invalid">Save changes</button>                     
                     </div>
                     <div class="demo-inline-spacing">                        
                         <button style="position: absolute; top: 0px; right:0px;" type="button" onclick="history.back(-1)"
                           routerLinkActive="active" class="btn rounded-pill btn-info">Back</button>
                       </div>
                   </form>
-                </div>
                 <!-- /Account -->
               </div>              
             </div>
           </div>
 
         </div>   
+        <div class="card">
+          <h5 class="card-header">Delete Account</h5>
+          <div class="card-body">
+            <div class="mb-3 col-12 mb-0">
+              <div class="alert alert-warning">
+                <h6 class="alert-heading fw-bold mb-1">Are you sure you want to delete the account?</h6>
+                <p class="mb-0">Once you delete the account, there is no going back. Please be certain.</p>
+              </div>
+            </div>
+            <form id="formAccountDeactivation" onsubmit="return false">
+              <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" name="accountActivation"  onchange="document.getElementById('deactivateBtn').disabled = !this.checked;" id="accountActivation">
+                <label class="form-check-label" for="accountActivation">I confirm my account deactivation</label>
+              </div>
+              <button id="deactivateBtn" disabled class="btn btn-danger deactivate-account" (click)="OpenDeleteDialog()">Deactivate Account</button>
+            </form>
+          </div>
+        </div>
      </div>
 
-    </div>
-    </div>
-    </div>
+     
 
+    </div>
+    </div>
+    </div>
+</div>
 
+    <ng-template #DeleteDio>
+      <mat-dialog-content>
+  
+      <p>Are You Sure to Delete this item</p>
+      </mat-dialog-content>
+  
+        <mat-dialog-actions >
+        <div class="demo-inline-spacing">
+        <button type="button" class="btn rounded-pill btn-success" mat-dialog-close>Yes</button>
+        <button type="button" class="btn rounded-pill btn-danger"  mat-dialog-close>No</button>                      
+        
+      </div>
+      </mat-dialog-actions>
+      </ng-template>
+  

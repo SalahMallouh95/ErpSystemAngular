@@ -71,7 +71,7 @@ const routes: Routes = [
     component: MUpdateProfileComponent
   },
   {
-    path: 'SolutionDetails/:id',
+    path: 'SolutionDetails',
     component: MSolutionDetailsComponent
   }
  ];

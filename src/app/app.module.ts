@@ -13,6 +13,8 @@ import {MatTableModule} from '@angular/material/table';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
+import {MatDialogModule} from '@angular/material/dialog';
+
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { MatInputModule } from "@angular/material/input";
     MatTableModule,
     MatSelectModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatDialogModule
 
   ],
   exports:[
@@ -41,7 +44,8 @@ import { MatInputModule } from "@angular/material/input";
     NgxSpinnerModule,
     MatTableModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatDialogModule
   ],
   schemas:[
     CUSTOM_ELEMENTS_SCHEMA

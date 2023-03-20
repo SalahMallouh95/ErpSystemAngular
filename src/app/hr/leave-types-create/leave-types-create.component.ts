@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { HrService } from 'src/app/hr.service';
 
 @Component({
   selector: 'app-leave-types-create',
@@ -7,4 +9,18 @@ import { Component } from '@angular/core';
 })
 export class LeaveTypesCreateComponent {
 
+  constructor(public hrService:HrService){}
+
+   levType =new FormGroup({
+   leavetype:new FormControl('',Validators.required)
+  })
+
+
+  async CreateLeaveType(){
+
+   await this.hrService.CreateLeaveType(this.levType.value)
+   this.hrService.GetAllLeaveTypes()
+
+  }
+  
 }

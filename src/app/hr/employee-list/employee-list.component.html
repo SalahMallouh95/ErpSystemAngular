@@ -10,7 +10,9 @@
         </app-dash-header>
 
         <div class="container-xxl flex-grow-1 container-p-y">
+        
         <div class="col-12 col-lg-12 order-2 order-md-3 order-lg-2 mb-4">
+          <button type="submit" class="btn btn-primary card wow fadeInUp mb-2"   style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;" (click)="AddEmp()">Add new Employee</button>
             <div class="card wow fadeInUp"  style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;" >             
                 
               <app-person-card (SendValues)="GetValues($event)" app-person-card [allEmp]="this.hrService.allEmp" [allDep]="this.hrService.allDep"></app-person-card>   
