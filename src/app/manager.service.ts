@@ -136,6 +136,8 @@ export class ManagerService {
         next: res => {
           this.ManagerProfile = res
           resolve()
+          console.log(res);
+          
 
         }
       })

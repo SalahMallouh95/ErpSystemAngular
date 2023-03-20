@@ -36,6 +36,7 @@ export class EmployeeDetailsComponent implements OnInit {
   })
   ngOnInit(): void {
 
+  
     this.empInfoForm.patchValue(this.hrservice.empInfo);
     this.empInfoForm.markAsTouched();   
     
@@ -68,6 +69,14 @@ export class EmployeeDetailsComponent implements OnInit {
   OpenDeleteDialog(){
 
     this.dialog.open(this.Deletedia);
+
+   }
+
+   async DeleteEmpProfile()
+   {
+
+    await this.hrservice.DeleteEmpProfile(this.empInfoForm.value.userid)
+    history.back()
 
    }
   
