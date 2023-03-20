@@ -12,8 +12,8 @@ export class GetsolutionComponent {
 
   }
   
-  allSolutionList :any []=this.employeeService.allsultion.filter(l=>l.taskid==1)
-  alltaskList :any []=this.employeeService.alltask.filter(l=>l.userid==1)
+  allSolutionList :any []=this.employeeService.allsultion
+  alltaskList :any []=this.employeeService.alltask
   GetValues(id :any){
     this.router.navigate(['Employee/solutiondetail',id]);
   }

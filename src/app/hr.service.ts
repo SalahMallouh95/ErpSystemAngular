@@ -51,9 +51,6 @@ export class HrService {
 
   }
 
-
-  
-
   GetEmpInfo(user: any) {
     this.spinner.show()
 

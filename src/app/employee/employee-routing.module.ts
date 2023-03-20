@@ -24,7 +24,7 @@ const routes: Routes = [
   path:'leavedetail',
   component:LeavedetailComponent
 },{
-    path:'getsolution/:id',
+    path:'getsolution',
     component:GetsolutionComponent
   },{
     path:'solutiondetail/:id',

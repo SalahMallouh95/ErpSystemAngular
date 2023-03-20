@@ -20,7 +20,8 @@
                                 <small class="text-muted">End Date: {{this.employeeService.leave.enddate}}</small>
                               </p>
                               <p class="card-text">
-                                <small class="text-muted">Document: {{this.employeeService.leave.documentfilename}}</small>
+                                <small class="text-muted">Document:</small>
+                                <a *ngIf="this.employeeService.leave.documentfilename" class="card-link" target="_blank"  [href]="'../../../assets/Documents/'+this.employeeService.leave.documentfilename">{{this.employeeService.leave.documentfilename}}</a>
                               </p>
                           </div>
                         </div>

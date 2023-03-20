@@ -16,6 +16,6 @@ export class SolutindetailComponent {
   
     ngOnInit(): void {
       this.id=this.route.snapshot.params['id'];
-      this.solutionInfo=this.employeeService.allsultion.filter((sol)=>sol.solutionid==this.id )
+      
     }
 }

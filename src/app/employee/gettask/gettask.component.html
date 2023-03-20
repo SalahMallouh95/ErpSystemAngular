@@ -28,14 +28,14 @@
                      </tr>
                    </thead>
                    <tbody class="table-border-bottom-0"> 
-                       <tr *ngFor="let item of alltaskList">   
+                       <tr *ngFor="let item of employeeService.alltask1">   
                         
 <td>{{item.taskname}}</td>
 <td>
-    {{item.uploadDate}}                  
+    {{item.uploaddate}}                  
 </td>
    <td>
-    <div [ngSwitch]="item.State">
+    <div [ngSwitch]="item.state">
         <div *ngSwitchCase="2">
       <span class="badge bg-label-warning me-1">Pending</span>
         </div>
