@@ -36,9 +36,9 @@ export class CreateTaskComponent {
 
   async AddTask(){
 
-    console.log(this.taskform.value);
-    this.taskform.value.userid = parseInt(this.taskform.value.userid)
     
+    this.taskform.value.userid = parseInt(this.taskform.value.userid)
+    this.taskform.value.documentfilename = this.hr.documentName.imagefilename
     await this.man.CreateTask(this.taskform.value)
     this.taskform.reset()
     this.hr.documentName.imagefilename = undefined
@@ -47,17 +47,8 @@ export class CreateTaskComponent {
   async UploadTaskFile(file : any){
 
     let formData = new FormData()
-    console.log(file);
-
     formData.append('file', file.files[0])
     await this.hr.UploadDocument(formData)
-    this.taskform.value.documentfilename = this.hr.documentName.imagefilename
-    console.log(this.taskform.value.documentfilename);
-    console.log(this.hr.documentName.imagefilename);
-    
-    console.log(file.files[0]);
-    
-    
   }
   
 

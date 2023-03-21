@@ -6,7 +6,7 @@
       <p class="card-text">
         <b>Start Date:</b> {{this.managerService.leaveInfo.startdate}}<br>
         <b>End Date:</b> {{this.managerService.leaveInfo.enddate}}<br>
-        <b>Leave Type</b> {{this.managerService.leaveInfo.leavetype}}<br>
+        <b>Leave Type</b> {{this.managerService.leaveInfo.leavetype.leavetype}}<br>
         <b>Message:</b> {{this.managerService.leaveInfo.message}} <br>
         <b>Document:</b> 
         <a *ngIf="this.managerService.leaveInfo.documentfilename!=='null'" class="card-link" target="_blank"  [href]="'../../../assets/Documents/'+this.managerService.leaveInfo.documentfilename">{{this.managerService.leaveInfo.documentfilename}}</a> <br>

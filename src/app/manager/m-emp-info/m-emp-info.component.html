@@ -106,7 +106,7 @@
                           <th>Check in</th>
                           <th>Check out</th>
                           <th>Working hour</th>
-                          <th>Status</th>
+                          
                           
 
                       </tr>
@@ -118,21 +118,7 @@
                           <td>{{emp.workinghour}}</td>
                           
                           
-                          <td>
-                              <div [ngSwitch]="emp.state">
-                                      <div *ngSwitchCase="2">
-                                          <span class="badge bg-label-success me-1">Pending</span>
-                                      </div>
-
-                                      <div *ngSwitchCase="1">
-                                          <span class="badge bg-label-danger me-1">Accepted</span>
-                                      </div>
-
-                                      <div *ngSwitchCase="0">
-                                          <span class="badge bg-label-danger me-1">Rejected</span>
-                                      </div>
-                              </div>
-                          </td>
+                         
                           
                          
 

@@ -32,9 +32,7 @@ export class ManagerService {
 
 
   async GetAllEmp(emp: any) {
-
     return new Promise<void>((resolve, reject) => {
-
       this.spinner.show()
       this.http.post("https://localhost:44388/api/Manager/GetAllEmp", emp).subscribe(
         {
@@ -42,18 +40,14 @@ export class ManagerService {
             this.AllEmp = res
             resolve();
           },
-
           error: (err) => {
             console.log(err);
             this.toaster.success('Error')
-
             reject();
           }
         }
       )
-
       this.spinner.hide()
-
     })
   }
 
@@ -63,7 +57,6 @@ export class ManagerService {
   async GetAllLeaves(lev: any) {
 
     return new Promise<void>((resolve, reject) => {
-
       this.spinner.show()
       this.http.post("https://localhost:44388/api/Manager/getLeaves", lev).subscribe(
         {
@@ -71,7 +64,6 @@ export class ManagerService {
             this.AllLeave = res
             resolve();
           },
-
           error: (err) => {
             console.log(err);
             this.toaster.success('Error')
@@ -80,36 +72,25 @@ export class ManagerService {
           }
         }
       )
-
       this.spinner.hide()
-
     })
 
   }
 
 
   async GetMyLeaves(ml: any) {
-
     return new Promise<void>((resolve, reject) => {
-
       this.spinner.show()
       this.http.post('https://localhost:44388/api/Employee/GetAllLeaves', ml).subscribe({
-
         next: (res) => {
           this.MyLeaves = res
           resolve()
         },
-
         error: (err) => {
           console.log(err);
           this.toaster.success('Error')
-
         }
-
-      }
-
-      )
-
+      })
       this.spinner.hide()
     })
   }
@@ -118,52 +99,38 @@ export class ManagerService {
 
   async GetAllTasks(at: any) {
     return new Promise<void>((resolve, reject) => {
-
       this.spinner.show()
       this.http.post('https://localhost:44388/api/Manager/getAllTask', at).subscribe({
-
         next: res => {
           this.AllTasks = res
           resolve()
-
         },
-
         error: err => {
           console.log(err);
           this.toaster.error('Error')
-
         }
       })
     })
   }
 
   async GetManagerPrifile(mp: any) {
-
     return new Promise<void>((resolve, reject) => {
-
       this.spinner.show()
       this.http.post('https://localhost:44388/api/User/GetProfile', mp).subscribe({
-
         next: res => {
-          this.ManagerProfile = res
+           this.ManagerProfile = res
           resolve()
           console.log(res);
-
-
         }
       })
-
       this.spinner.hide()
     })
   }
 
 
   async Searchs(data: any) {
-
     console.log(data);
-
     data.managerid = 2
-
     return new Promise<void>((resolve, reject) => {
       this.spinner.show()
       this.http.post("https://localhost:44388/api/Manager/searchleave", data).subscribe(
@@ -172,22 +139,15 @@ export class ManagerService {
             this.AllLeave = res
             resolve()
             console.log(this.AllLeave);
-
           },
-
           error: (err) => {
             console.log(err);
             this.toaster.error('Error')
-
           }
-        }
-      )
+        })
       this.spinner.show()
     })
-
   }
-
-
 
 
 
@@ -195,7 +155,6 @@ export class ManagerService {
     let user: any = {}
     user.userid = ei
     return new Promise<void>((resolve, reject) => {
-
       this.spinner.show()
       this.http.post('https://localhost:44388/api/User/GetProfile', user).subscribe(
         {
@@ -204,17 +163,12 @@ export class ManagerService {
             resolve()
             console.log(this.empInformation);
             console.log(res);
-
-
           },
-
           error: (err) => {
             console.log(err);
             this.toaster.error('Error')
-
           }
-        }
-      )
+        })
       this.spinner.show()
     })
   }
@@ -224,31 +178,23 @@ export class ManagerService {
 
   async GetAttendance(at: any) {
     return new Promise<void>((resolve, reject) => {
-
       this.spinner.show()
       this.http.post('https://localhost:44388/api/User/GetAttendance', at).subscribe({
-
         next: res => {
           this.attendance = res
           resolve()
           console.log(res);
-
-
         },
-
         error: err => {
           console.log(err);
           this.toaster.error('Error')
-
         }
       })
     })
-
   }
 
 
   async GetLeaveDetails(leave: any) {
-
     this.spinner.show()
     return new Promise<void>((resolve, reject) => {
       this.http.post("https://localhost:44388/api/Manager/getLeaveByID", leave).subscribe(
@@ -256,115 +202,79 @@ export class ManagerService {
           next: (res) => {
             this.leaveInfo = res;
             console.log(res);
-
             resolve();
-
           }
           ,
           error: (ee) => {
             console.log(ee)
             this.toaster.error('Error')
             reject();
-
           }
-
-        }
-      )
+        })
       this.spinner.hide();
       console.log(this.leaveInfo);
-
-
     })
-
   }
 
   async UpdateLeaveDetails(leave: any) {
     console.log(leave);
-
     return new Promise<void>((resolve, reject) => {
       this.http.put("https://localhost:44388/api/Manager/updateleave", leave).subscribe(
         {
           next: () => {
+            this.toaster.success('Updated')
             resolve();
-          }
-          ,
+          },
           error: (ee) => {
             console.log(ee)
             this.toaster.success("something want wrong")
-
             reject();
           }
-
-        }
-      )
+        })
       this.spinner.hide();
-
     })
-
   }
-
-
 
   async GetTaskDetails(tas: any) {
     this.spinner.show()
     return new Promise<void>((resolve, reject) => {
-
       this.http.post("https://localhost:44388/api/Manager/GetTask", tas).subscribe({
-
         next: (res) => {
           this.taskinfo = res;
           console.log(res);
-
           resolve();
-
-        }
-        ,
+        },
         error: (ee) => {
           console.log(ee)
           this.toaster.error('Error')
           reject();
-
         }
-
       })
       this.spinner.show()
-
     })
-
-
   }
-
-
-
 
   async GetAllSolutions(as: any) {
     return new Promise<void>((resolve, reject) => {
-
       this.spinner.show()
       this.http.post('https://localhost:44388/api/Manager/getTaskSolution', as).subscribe({
-
         next: res => {
           this.allsln = res
-
           resolve()
-
         },
-
         error: err => {
           console.log(err);
           this.toaster.error('Error')
-
         }
       })
     })
-
   }
-
 
   async UpdateSolutionState(sln: any) {
     return new Promise<void>((resolve, reject) => {
       this.http.put('https://localhost:44388/api/Manager/UpdateSolutionState', sln).subscribe({
         next: () => {
+          this.toaster.success('Updated')
           resolve()
         },
         error: err => {
@@ -374,9 +284,7 @@ export class ManagerService {
       })
       this.spinner.hide();
     })
-
   }
-
   async GetSolutionDetails(sln: any) {
     return new Promise<void>((resolve, reject) => {
       this.http.post("https://localhost:44388/api/Manager/OneSolution", sln).subscribe({
@@ -387,7 +295,6 @@ export class ManagerService {
         error: err => {
           console.log(err);
           reject()
-
         }
       })
     })
@@ -397,19 +304,16 @@ export class ManagerService {
 
   async CreateTask(ct: any) {
     console.log(ct);
-
     return new Promise<void>((resolve, reject) => {
-
       this.http.post('https://localhost:44388/api/Manager/CreateTask', ct).subscribe({
         next: res => {
           this.createTask = res
+          this.toaster.success('Created')
           resolve()
         },
-
         error: err => {
           console.log(err);
           reject()
-
         }
       })
     })
@@ -417,23 +321,42 @@ export class ManagerService {
 
   async Updateprofile(up : any){
     return new Promise<void>((resolve,reject)=>{
-      
       this.http.put('https://localhost:44388/api/User/UpdateProfile',up).subscribe({
         next: res => {
-          
-          
-          
+          this.toaster.success('Updated')
           resolve()
         },
         error: err => {
           console.log(err);
           reject()
-          
         }
       })
     })
 
   }
+
+  async DeleteTask(dt:any){
+    return new Promise<void>((resolve,reject)=>{
+      this.spinner.show()
+      this.http.delete('https://localhost:44388/api/Manager/DeleteTask',dt).subscribe({
+        next: res =>{
+          resolve()
+          this.toaster.success('Task Deleted')
+        },
+        error: err => {
+          console.log(err);
+          this.toaster.error('Error')
+          reject()
+          
+        }
+      })
+    })
+  }
+
+
+
+
+  
 
   ///////////////////////////////////////////////////////////////////
 

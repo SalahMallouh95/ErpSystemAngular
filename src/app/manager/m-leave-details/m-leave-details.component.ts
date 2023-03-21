@@ -45,6 +45,7 @@ export class MLeaveDetailsComponent  implements OnInit {
     await this.managerService.UpdateLeaveDetails(leave)
     this.managerService.GetLeaveDetails(leave)
     await this.managerService.GetAllLeaves(user)
+    
   }
 
 
