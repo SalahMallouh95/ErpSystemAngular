@@ -47,7 +47,9 @@ export class EmployeeAddComponent {
 
   async AddEmp() {
 
-    this.empInfoForm.value.imagefilename = this.hrservice.documentName.imagefilename
+    if (this.hrservice.documentName.imagefilename != null || this.hrservice.documentName.imagefilename != undefined || this.hrservice.documentName.imagefilename != '') {
+      this.empInfoForm.value.imagefilename = this.hrservice.documentName.imagefilename
+    }
     await this.hrservice.AddEmpProfile(this.empInfoForm.value)
     this.empInfoForm.reset()
     this.empInfoForm.markAsUntouched()
