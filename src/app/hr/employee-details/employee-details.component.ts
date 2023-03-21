@@ -50,9 +50,10 @@ export class EmployeeDetailsComponent implements OnInit {
   }
 
   async UpdateProfile() {
-    if(this.hrservice.documentName.imagefilename!=null||this.hrservice.documentName.imagefilename!=undefined||this.hrservice.documentName.imagefilename!='')
+    if(this.hrservice.documentName.imagefilename!=null && this.hrservice.documentName.imagefilename!=undefined && this.hrservice.documentName.imagefilename!='')
     this.empInfoForm.value.imagefilename = this.hrservice.documentName.imagefilename
     await this.hrservice.UpdateEmpProfile(this.empInfoForm.value)
+    this.hrservice.documentName.imagefilename
   }
 
   OpenDeleteDialog() {

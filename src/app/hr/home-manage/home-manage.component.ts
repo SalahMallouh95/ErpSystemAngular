@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { HrService } from 'src/app/hr.service';
 import { MatDialog } from '@angular/material/dialog';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-home-manage',
@@ -14,10 +14,10 @@ export class HomeManageComponent {
   @ViewChild('EditDio') Editdia:any
 
   homeFormGroup= new FormGroup({
-    homeid:new FormControl(),
+    homeid:new FormControl(undefined),
     titile:new FormControl(),
     description:new FormControl(),
-    imagename:new FormControl()
+    imagename:new FormControl('',Validators.required)
 
   })
   
@@ -28,6 +28,8 @@ export class HomeManageComponent {
 
   async ngOnInit(){
     await this.hrService.GetAllHome()
+    this.hrService.documentName={}
+    this.hrService.documentName.imagefilename=null
     this.count=this.hrService.allHome.length
     
   }
@@ -36,26 +38,59 @@ export class HomeManageComponent {
      this.dialog.open(this.Createdia)
   }
 
-  CreateHome(){
-    this.hrService.CreateHome(this.homeFormGroup.value)
+  async CreateHome(){
+    if (this.hrService.documentName.imagefilename !== null && this.hrService.documentName.imagefilename !== undefined && this.hrService.documentName.imagefilename !== '') {
+      this.homeFormGroup.value.imagename = this.hrService.documentName.imagefilename
+    }
+    console.log(this.homeFormGroup.value);    
+    await this.hrService.CreateHome(this.homeFormGroup.value)
+    this.hrService.documentName.imagefilename=null
+    this.homeFormGroup.reset()
+    this.GetHome()
+
   }
 
   EdiDialog(id:number){
-    this.homeInfo=this.hrService.allHome.find((h:any)=>h.homeid==id)
+    this.homeInfo=this.hrService.allHome.find((h:any)=>h.homeid==id)   
     this.homeFormGroup.patchValue(this.homeInfo)
+    console.log(this.homeFormGroup.value); 
     this.dialog.open(this.Editdia)
   }
 
   async UpdateHome()
   {
-   await this.hrService.UpdateHome(this.homeInfo)
+    if (this.hrService.documentName.imagefilename !== null && this.hrService.documentName.imagefilename !== undefined && this.hrService.documentName.imagefilename !== '') {
+      this.homeFormGroup.value.imagename = this.hrService.documentName.imagefilename
+    }
+  console.log(this.homeFormGroup.value);   
+   await this.hrService.UpdateHome(this.homeFormGroup.value)
+   this.hrService.documentName.imagefilename=null
+  this.GetHome()
+
+  }
+
+  async UploadPhoto(file:any)
+  {
+    let formData = new FormData();
+    formData.append('file', file.files[0])
+    await this.hrService.UploadDocument(formData)
+
   }
 
   OpenDeleteDialog(id:number){
+    this.homeInfo=this.hrService.allHome.find((h:any)=>h.homeid==id)
+    this.homeFormGroup.patchValue(this.homeInfo)
     this.dialog.open(this.Deletedia)
   }
 
-  DeleteHome(){
-      this.hrService.DeleteHome(this.homeInfo.homeid)
+  async DeleteHome(){
+    await this.hrService.DeleteHome(this.homeInfo.homeid)
+    this.GetHome()
+  }
+
+  async GetHome(){
+    await this.hrService.GetAllHome()
+    this.count=this.hrService.allHome.length
+
   }
 }

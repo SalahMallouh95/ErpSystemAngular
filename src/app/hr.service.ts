@@ -564,7 +564,7 @@ export class HrService {
         {
           next: () => {
             resolve();
-            this.toastr.success('Home Added successfully!');
+            this.toastr.success('Home deleted successfully!');
           }
           ,
           error: (ee) => {
@@ -600,6 +600,54 @@ export class HrService {
         }
       )
       this.spinner.hide();
+    })
+  }
+
+  async UpdateAbout(about: any) {
+    return new Promise<void>((resolve, reject) => {
+      this.spinner.show()
+      this.http.put("https://localhost:44388/api/Hr/updateabout", about).subscribe(
+        {
+          next: () => {
+            resolve();
+            this.toastr.success('About info updateded successfully!');
+          }
+          ,
+          error: (ee) => {
+            console.log(ee)
+            this.toastr.error('Somthing went wrong!');
+
+            reject();
+          }
+
+        }
+      )
+      this.spinner.hide();
+
+    })
+  }
+
+  SendMessageContactUs(message:any){
+    return new Promise<void>((resolve, reject) => {
+      this.spinner.show()
+      this.http.post("https://localhost:44388/api/User/sendMessage", message).subscribe(
+        {
+          next: () => {
+            resolve();
+            this.toastr.success('Message was sent successfully!');
+          }
+          ,
+          error: (ee) => {
+            console.log(ee)
+            this.toastr.error('Somthing went wrong!');
+
+            reject();
+          }
+
+        }
+      )
+      this.spinner.hide();
+
     })
   }
 
