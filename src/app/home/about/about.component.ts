@@ -9,9 +9,16 @@ import { HrService } from 'src/app/hr.service';
   styleUrls: ['./about.component.css']
 })
 export class AboutComponent  implements OnInit {
+
+  emplist :any
   constructor(private spinner: NgxSpinnerService,public hrService:HrService) {}
   
-  ngOnInit(): void {
+  async ngOnInit() {
+   await this.hrService.GetAllEmployee()
+   this.emplist= this.hrService.allEmp.filter((emp:any) =>emp.roleid==2)
+   console.log(this.emplist);
+   console.log("xxxx");
+
    
   }
 }

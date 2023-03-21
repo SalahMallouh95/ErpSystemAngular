@@ -12,16 +12,18 @@ export class HrService {
   constructor(public http: HttpClient, private spinner: NgxSpinnerService, private toastr: ToastrService) {
 
   }
-  mesage: string = "test"
+
+//arrays
   allEmp: any = []
   allDep: any = []
   allRole: any = []
   allLeaves: any = []
   allLeaveTypes: any = []
   allHome: any = []
+  contactMessages:any
 
 
-
+//object's
   empInfo: any
   leaveInfo: any
   depInfo: any
@@ -29,6 +31,7 @@ export class HrService {
   leaveTypeInfo: any
   homeInfo: any
   homeAbout: any
+  contactMessageInfo:any
 
 
 
@@ -449,7 +452,7 @@ export class HrService {
         {
           next: (res) => {
             this.documentName = res
-            this.toastr.success('Photo uploaded!');
+            this.toastr.success('File uploaded!');
             resolve();
           }
           ,
@@ -564,7 +567,7 @@ export class HrService {
         {
           next: () => {
             resolve();
-            this.toastr.success('Home Added successfully!');
+            this.toastr.success('Home deleted successfully!');
           }
           ,
           error: (ee) => {
@@ -603,4 +606,97 @@ export class HrService {
     })
   }
 
+  async UpdateAbout(about: any) {
+    return new Promise<void>((resolve, reject) => {
+      this.spinner.show()
+      this.http.put("https://localhost:44388/api/Hr/updateabout", about).subscribe(
+        {
+          next: () => {
+            resolve();
+            this.toastr.success('About info updateded successfully!');
+          }
+          ,
+          error: (ee) => {
+            console.log(ee)
+            this.toastr.error('Somthing went wrong!');
+
+            reject();
+          }
+
+        }
+      )
+      this.spinner.hide();
+
+    })
+  }
+
+  SendMessageContactUs(message:any){
+    return new Promise<void>((resolve, reject) => {
+      this.spinner.show()
+      this.http.post("https://localhost:44388/api/User/sendMessage", message).subscribe(
+        {
+          next: () => {
+            resolve();
+            this.toastr.success('Message was sent successfully!');
+          }
+          ,
+          error: (ee) => {
+            console.log(ee)
+            this.toastr.error('Somthing went wrong!');
+
+            reject();
+          }
+
+        }
+      )
+      this.spinner.hide();
+
+    })
+  }
+
+  async GetContactMessages() {
+
+    this.spinner.show();
+    return new Promise<void>((resolve, reject) => {
+      this.http.get("https://localhost:44388/api/Hr/getcontact").subscribe(
+        {
+          next: (res) => {
+            this.contactMessages = res
+            resolve();
+
+          },
+          error: (ee) => {
+            console.log(ee)
+            reject();
+
+          }
+        }
+      )
+      this.spinner.hide();
+    })
+  }
+  DeleteConatctMessage(id:number){
+    
+    return new Promise<void>((resolve, reject) => {
+      this.spinner.show()
+      this.http.delete("https://localhost:44388/api/User/DeleteMessage?id=" + id).subscribe(
+        {
+          next: () => {
+            resolve();
+            this.toastr.success('Message deleteded successfully!');
+          }
+          ,
+          error: (ee) => {
+            console.log(ee)
+            this.toastr.error('Somthing went wrong!');
+
+            reject();
+          }
+
+        }
+      )
+      this.spinner.hide();
+
+    })
+  }
 }
