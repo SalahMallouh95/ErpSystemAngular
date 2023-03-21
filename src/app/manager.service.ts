@@ -25,15 +25,16 @@ export class ManagerService {
   empInformation: any = {}
   attendance: any = []
   leaveInfo: any
-  taskinfo: any
+  taskinfo: any = {}
   allsln: any = []
   updateManProf: any = {}
-
+  updatetask: any = {}
 
 
   async GetAllEmp(emp: any) {
+    this.spinner.show()
     return new Promise<void>((resolve, reject) => {
-      this.spinner.show()
+
       this.http.post("https://localhost:44388/api/Manager/GetAllEmp", emp).subscribe(
         {
           next: (res) => {
@@ -84,6 +85,7 @@ export class ManagerService {
       this.http.post('https://localhost:44388/api/Employee/GetAllLeaves', ml).subscribe({
         next: (res) => {
           this.MyLeaves = res
+          this.spinner.hide()
           resolve()
         },
         error: (err) => {
@@ -118,7 +120,7 @@ export class ManagerService {
       this.spinner.show()
       this.http.post('https://localhost:44388/api/User/GetProfile', mp).subscribe({
         next: res => {
-           this.ManagerProfile = res
+          this.ManagerProfile = res
           resolve()
           console.log(res);
         }
@@ -241,7 +243,7 @@ export class ManagerService {
       this.http.post("https://localhost:44388/api/Manager/GetTask", tas).subscribe({
         next: (res) => {
           this.taskinfo = res;
-          console.log(res);
+         
           resolve();
         },
         error: (ee) => {
@@ -255,6 +257,7 @@ export class ManagerService {
   }
 
   async GetAllSolutions(as: any) {
+    this.spinner.show()
     return new Promise<void>((resolve, reject) => {
       this.spinner.show()
       this.http.post('https://localhost:44388/api/Manager/getTaskSolution', as).subscribe({
@@ -319,9 +322,10 @@ export class ManagerService {
     })
   }
 
-  async Updateprofile(up : any){
-    return new Promise<void>((resolve,reject)=>{
-      this.http.put('https://localhost:44388/api/User/UpdateProfile',up).subscribe({
+  async Updateprofile(up: any) {
+    return new Promise<void>((resolve, reject) => {
+      this.spinner.show()
+      this.http.put('https://localhost:44388/api/User/UpdateProfile', up).subscribe({
         next: res => {
           this.toaster.success('Updated')
           resolve()
@@ -335,11 +339,11 @@ export class ManagerService {
 
   }
 
-  async DeleteTask(dt:any){
-    return new Promise<void>((resolve,reject)=>{
+  async DeleteTask(id: number) {
+    return new Promise<void>((resolve, reject) => {
       this.spinner.show()
-      this.http.delete('https://localhost:44388/api/Manager/DeleteTask',dt).subscribe({
-        next: res =>{
+      this.http.delete('https://localhost:44388/api/Manager/DeleteTask?id=' + id).subscribe({
+        next: res => {
           resolve()
           this.toaster.success('Task Deleted')
         },
@@ -347,18 +351,33 @@ export class ManagerService {
           console.log(err);
           this.toaster.error('Error')
           reject()
-          
+
         }
       })
     })
   }
 
 
+  async UpdateTask(ut: any) {
+    return new Promise<void>((resolve, reject) => {
+      this.http.put('https://localhost:44388/api/Manager/UpdateTask', ut).subscribe({
+        next: res => {
+          this.toaster.success('Updated')
+          resolve()
+        },
+        error: err => {
+          console.log(err);
+          reject()
+          this.toaster.error('Error')
+        }
+      })
+    })
+  }
 
 
-  
-
-  ///////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////
 
   employees: any = [
     {
@@ -570,7 +589,6 @@ export class ManagerService {
     ]
 
 
-  ///////////////////////////////////////////////////////////////////////
 
 
 

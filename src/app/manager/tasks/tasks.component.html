@@ -24,10 +24,10 @@
 
 
                             <div class="demo-inline-spacing">
-                                <button style="position: absolute; top: 0px; right:100px;" type="button"
-                                    class="btn rounded-pill btn-success" [routerLink]="['/Manager/CreateTask']">Create New
-                                    Task</button>
+                                <button style="position: absolute; top: 0px; right:100px;" type="button" class="btn rounded-pill btn-success" [routerLink]="['/Manager/CreateTask']">Create New Task</button> 
+
                             </div>
+                            
 
                            <table class="table table-hover wow slideInUp"
                            style="visibility: visible; animation-delay: 0.3s; animation-name: slideInUp;">
@@ -38,7 +38,9 @@
                                  <th>Date</th>
                                  <th>Document</th>
                                  <th>state</th>
-                                 <th>Actions</th>
+                                 <th></th>
+                                 <th >Actions</th>
+                                 <th></th>
                                </tr>
                              </thead>
                              <tbody class="table-border-bottom-0"> 
@@ -70,9 +72,17 @@
                           <span class="badge bg-label-danger me-1">Submitted</span>
                       </div>
               </div>                       
-          </td>     
+          </td>  
+         
+          <td>
+            <button  type="button" class="btn rounded-pill btn-success" (click)="GetEditValues(item.taskid)">Edit Task</button>
+          </td>
           <td>
               <a (click)="GetValues(item.taskid)" class="btn btn-outline-info">Show Solution</a>
+            </td>
+              <td>
+              <button type="button" class="btn rounded-pill btn-danger" (click)="deletetask(item.taskid)">Delete</button>                        
+
           </td>           
                        
                                  </tr>            

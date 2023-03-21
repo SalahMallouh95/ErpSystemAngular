@@ -38,8 +38,27 @@ await this.man.GetAllSolutions(task)
 this.route.navigate(['Manager/TaskSolution']);
 }
 
+async GetEditValues(id :any){
+  let task : any = {}
+  task.taskid = id
+  await this.man.GetTaskDetails(task)
+  await this.man.GetAllSolutions(task)
+    
+  this.route.navigate(['/Manager/EditTask',id])
 
-async deletetask(){
+  }
+
+
+
+async deletetask(id:any){
+  let task : any = {}
+  task.taskid = id
+  await this.man.GetTaskDetails(task)
+  await this.man.DeleteTask(id)
+
+  let user : any ={}
+  user.userid = this.id
+  await this.man.GetAllTasks(user)
   
 }
 

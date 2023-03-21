@@ -15,60 +15,60 @@
 
 
                 <div class="container-xxl flex-grow-1 container-p-y">
-                    <h3 class="fw-bold py-3 mb-4"> Edit Task</h3>
+                    <h3 class="fw-bold py-3 mb-4"> Create Task</h3>
 
-                    <!-- Basic Layout -->
+                   
                     <div class="row">
                         <div class="col-xl">
                             <div class="card mb-4">
 
+
+                                
+
                                 <div class="card-body">
-                                    <form>
+                                    <form [formGroup]="editTaskform">
 
                                         
 
                                         <div class="mb-3 col-md-6">
                                             <label class="form-label" for="basic-default-fullname">Task Name</label>
                                             <input type="text" class="form-control" id="basic-default-fullname"
-                                                placeholder="John Doe" [value]="tas[0].tName" />
+                                                placeholder="John Doe" formControlName="taskname" />
                                         </div>
 
                                         <div class="mb-3 col-md-6">
-                                            <label class="form-label" for="basic-default-phone">Upload Task</label>
-                                            <input type="file" id="basic-default-phone" class="form-control phone-mask"
-                                                placeholder="10001" [value]="tas.docFileName" />
+                                            <label class="form-label" for="basic-default-phon">Upload Task</label>
+                                            <input type="file"  #file (change)="UploadTaskFile(file)" id="basic-default-phone" class="form-control phone-mask"
+                                                placeholder="10001"  />
                                         </div>
 
                                         <div class="mb-3 col-md-6">
-                                            <label class="form-label" for="basic-default-phone">Start Date</label>
+                                            <label class="form-label" for="basic-default-ph">Upload Date</label>
                                             <input type="datetime-local" id="basic-default-phone"
-                                                class="form-control phone-mask" placeholder="10001" [value]="tas.startDate" />
+                                                class="form-control phone-mask" placeholder="10001" formControlName="uploaddate" />
                                         </div>
 
-                                        <div class="mb-3 col-md-6">
-                                            <label class="form-label" for="basic-default-phone">End Date</label>
-                                            <input type="datetime-local" id="basic-default-phone"
-                                                class="form-control phone-mask" placeholder="10001" [value]="tas.endDate"/>
-                                        </div>
+                                        
 
                                         <div class="mb-3 col-md-6">
                                             <label class="form-label" for="country">User</label>
-                                            <select  id="country" class="select2 form-select">
-                                                <option *ngFor="let emp of tas " value={{emp.userid}} >{{emp.name}}</option>
+                                            <select  id="country" class="select2 form-select"formControlName="userid" >
+  
+                                                <option *ngFor="let emp of this.man.AllEmp " value={{emp.userid}} >{{emp.fname}}  {{emp.lname}}</option>
                                             </select>
                                         </div>
 
                                         <div class="mb-3 col-md-6">
-                                            <label class="form-label" for="basic-default-message">Message</label>
+                                            <label class="form-label" for="basic-default-message">Task Description</label>
                                             <textarea id="basic-default-message" class="form-control"
-                                                placeholder="Hi, Do you have a moment to talk Joe?"></textarea>
+                                                placeholder="Hi, Do you have a moment to talk Joe?" formControlName="taskdescription"></textarea>
                                         </div>
-                                        <button type="submit" class="btn btn-primary" (click)="GetValues($event)"  >Send</button>
+                                        <button type="submit" class="btn btn-primary" (click)="UpdateT()"  >Send</button>
 
                                         <div class="demo-inline-spacing">
 
                                             <button style="position: absolute; top: 0px; right:0px;" type="button"
-                                                onclick="history.back(-1)" 
+                                                onclick="history.back(-1)" routerLinkActive="active"
                                                 class="btn rounded-pill btn-info">Back</button>
                                         </div>
 
