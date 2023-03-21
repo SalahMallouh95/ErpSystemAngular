@@ -4,7 +4,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from '../home/about/about.component';
 import { AboutUsManageComponent } from './about-us-manage/about-us-manage.component';
 import { AllEmpLeavesComponent } from './all-emp-leaves/all-emp-leaves.component';
-import { ContactInfoManageComponent } from './contact-info-manage/contact-info-manage.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { DepartmentCreateComponent } from './department-create/department-create.component';
 import { DepartmentEditComponent } from './department-edit/department-edit.component';
@@ -75,11 +74,7 @@ const routes: Routes = [
     path:"HomeEdit",
     component:HomeManageComponent
   },
-  {
-    path:"ContactInfoManage",
-    component:ContactInfoManageComponent
-  },
-  {
+   {
     path:"AboutUsManage",
     component:AboutUsManageComponent
   },
