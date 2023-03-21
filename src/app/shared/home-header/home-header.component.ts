@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HrService } from 'src/app/hr.service';
 
 @Component({
   selector: 'app-home-header',
@@ -6,5 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./home-header.component.css']
 })
 export class HomeHeaderComponent {
+constructor(public hrService:HrService){}
+
+async ngOnInit(){
+  
+console.log(this.hrService.homeAbout);
+
+}
 
 }

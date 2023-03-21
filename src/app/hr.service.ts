@@ -18,6 +18,8 @@ export class HrService {
   allRole: any = []
   allLeaves: any = []
   allLeaveTypes: any = []
+  allHome:any=[]
+  
 
 
   empInfo: any
@@ -25,6 +27,8 @@ export class HrService {
   depInfo: any
   documentName: any
   leaveTypeInfo:any
+  homeInfo:any
+  homeAbout:any
 
 
   
@@ -51,7 +55,7 @@ export class HrService {
 
   }
 
-  GetEmpInfo(user: any) {
+  async GetEmpInfo(user: any) {
     this.spinner.show()
 
     return new Promise<void>((resolve, reject) => {
@@ -74,7 +78,7 @@ export class HrService {
     })
   }
 
-  UpdateEmpProfile(user:any)
+  async UpdateEmpProfile(user:any)
   {
 
     this.spinner.show()
@@ -99,7 +103,7 @@ export class HrService {
     })
   }
 
-  AddEmpProfile(user:any)
+  async AddEmpProfile(user:any)
   {
         
     console.log(user);
@@ -127,7 +131,7 @@ export class HrService {
     })
   }
 
-DeleteEmpProfile(userid:any)
+async DeleteEmpProfile(userid:any)
   {
         
     console.log(userid);
@@ -157,20 +161,23 @@ DeleteEmpProfile(userid:any)
 
   // ---------------------- Leave --------------------------
 
-  GetAllLeaves() {
+  async GetAllLeaves() {
     this.spinner.show();
-
+    return new Promise<void>((resolve, reject) => {
     this.http.get("https://localhost:44388/api/Hr/getleave").subscribe(
       {
-        next: (res) => { this.allLeaves = res },
-        error: (ee) => { console.log(ee) }
+        next: (res) => { this.allLeaves = res
+          resolve(); },
+        error: (ee) => { console.log(ee) 
+          reject(); }
       }
     )
     this.spinner.hide();
+  })
 
   }
 
-  GetAllLeaveTypes() {
+  async GetAllLeaveTypes() {
     this.spinner.show();
 
     return new Promise<void>((resolve, reject) => {
@@ -188,7 +195,7 @@ DeleteEmpProfile(userid:any)
   })
   }
 
-  CreateLeaveType(lev:any)
+  async CreateLeaveType(lev:any)
   {
     return new Promise<void>((resolve, reject) => {
       this.spinner.show()
@@ -213,7 +220,7 @@ DeleteEmpProfile(userid:any)
     })
   }
 
-  UpdateLeaveType(lev:any)
+  async UpdateLeaveType(lev:any)
   {
     return new Promise<void>((resolve, reject) => {
       this.spinner.show()
@@ -238,7 +245,7 @@ DeleteEmpProfile(userid:any)
     })
   }
 
-  DeleteLeaveType(levid:any)
+  async DeleteLeaveType(levid:any)
   {
     return new Promise<void>((resolve, reject) => {
       this.spinner.show()
@@ -435,7 +442,7 @@ DeleteEmpProfile(userid:any)
     })
   }
 
-  UploadDocument(file: any) {
+  async UploadDocument(file: any) {
     return new Promise<void>((resolve, reject) => {
       this.spinner.show()
       this.http.post("https://localhost:44388/api/User/uploadFile", file).subscribe(
@@ -462,16 +469,140 @@ DeleteEmpProfile(userid:any)
     })
   }
 
-  GetAllRole() {
+  async GetAllRole() {
     this.spinner.show();
-
+    return new Promise<void>((resolve, reject) => {
     this.http.get("https://localhost:44388/api/Hr/getRole").subscribe(
       {
-        next: (res) => { this.allRole = res },
-        error: (ee) => { console.log(ee) }
+        next: (res) => { 
+          this.allRole = res 
+          resolve();
+
+        },
+        error: (ee) => { 
+          console.log(ee) 
+          reject();
+
+        }
       }
     )
     this.spinner.hide();
-
+  })
   }
+  // ---------------------- Home Page --------------------------
+ 
+  async GetAllHome(){
+
+    this.spinner.show();
+    return new Promise<void>((resolve, reject) => {
+    this.http.get("https://localhost:44388/api/Hr/gethome").subscribe(
+      {
+        next: (res) => { 
+          this.allHome = res 
+          resolve();
+
+        },
+        error: (ee) => { 
+          console.log(ee) 
+          reject();
+
+        }
+      }
+    )
+    this.spinner.hide();
+  })
+  }
+
+  async CreateHome(home: any) {
+    return new Promise<void>((resolve, reject) => {
+      this.spinner.show()
+      this.http.post("https://localhost:44388/api/Hr/createhome", home).subscribe(
+        {
+          next: () => {
+            resolve();
+            this.toastr.success('Home Added successfully!');
+          }
+          ,
+          error: (ee) => {
+            console.log(ee)
+            this.toastr.error('Somthing went wrong!');
+
+            reject();
+          }
+
+        }
+      )
+      this.spinner.hide();
+
+    })
+  }
+  async UpdateHome(home: any) {
+    return new Promise<void>((resolve, reject) => {
+      this.spinner.show()
+      this.http.put("https://localhost:44388/api/Hr/updatehome", home).subscribe(
+        {
+          next: () => {
+            resolve();
+            this.toastr.success('Home updateded successfully!');
+          }
+          ,
+          error: (ee) => {
+            console.log(ee)
+            this.toastr.error('Somthing went wrong!');
+
+            reject();
+          }
+
+        }
+      )
+      this.spinner.hide();
+
+    })
+  }
+  async DeleteHome(id: number) {
+    return new Promise<void>((resolve, reject) => {
+      this.spinner.show()
+      this.http.delete("https://localhost:44388/api/Hr/deletehome?id="+id).subscribe(
+        {
+          next: () => {
+            resolve();
+            this.toastr.success('Home Added successfully!');
+          }
+          ,
+          error: (ee) => {
+            console.log(ee)
+            this.toastr.error('Somthing went wrong!');
+
+            reject();
+          }
+
+        }
+      )
+      this.spinner.hide();
+
+    })
+  }
+
+  async GetAbout(){
+
+    this.spinner.show();
+    return new Promise<void>((resolve, reject) => {
+    this.http.get("https://localhost:44388/api/Hr/getabout").subscribe(
+      {
+        next: (res) => { 
+          this.homeAbout = res 
+          resolve();
+
+        },
+        error: (ee) => { 
+          console.log(ee) 
+          reject();
+
+        }
+      }
+    )
+    this.spinner.hide();
+  })
+  }
+
 }

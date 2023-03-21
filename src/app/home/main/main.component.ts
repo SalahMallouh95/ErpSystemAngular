@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { HrService } from 'src/app/hr.service';
 
 
 @Component({
@@ -8,15 +9,9 @@ import { NgxSpinnerService } from 'ngx-spinner';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit{
-  constructor(private spinner: NgxSpinnerService) {}
-  ngOnInit(): void {
-    /** spinner starts on init */
-    this.spinner.show();
-
-    setTimeout(() => {
-      /** spinner ends after 5 seconds */
-      this.spinner.hide();
-    }, 3000);
+  constructor(private spinner: NgxSpinnerService,public hrService:HrService) {}
+  async ngOnInit(){
+   await this.hrService.GetAllHome()
   }
 
   }
