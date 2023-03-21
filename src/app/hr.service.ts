@@ -12,16 +12,18 @@ export class HrService {
   constructor(public http: HttpClient, private spinner: NgxSpinnerService, private toastr: ToastrService) {
 
   }
-  mesage: string = "test"
+
+//arrays
   allEmp: any = []
   allDep: any = []
   allRole: any = []
   allLeaves: any = []
   allLeaveTypes: any = []
   allHome: any = []
+  contactMessages:any
 
 
-
+//object's
   empInfo: any
   leaveInfo: any
   depInfo: any
@@ -29,6 +31,7 @@ export class HrService {
   leaveTypeInfo: any
   homeInfo: any
   homeAbout: any
+  contactMessageInfo:any
 
 
 
@@ -651,4 +654,49 @@ export class HrService {
     })
   }
 
+  async GetContactMessages() {
+
+    this.spinner.show();
+    return new Promise<void>((resolve, reject) => {
+      this.http.get("https://localhost:44388/api/Hr/getcontact").subscribe(
+        {
+          next: (res) => {
+            this.contactMessages = res
+            resolve();
+
+          },
+          error: (ee) => {
+            console.log(ee)
+            reject();
+
+          }
+        }
+      )
+      this.spinner.hide();
+    })
+  }
+  DeleteConatctMessage(id:number){
+    
+    return new Promise<void>((resolve, reject) => {
+      this.spinner.show()
+      this.http.delete("https://localhost:44388/api/User/DeleteMessage?id=" + id).subscribe(
+        {
+          next: () => {
+            resolve();
+            this.toastr.success('Message deleteded successfully!');
+          }
+          ,
+          error: (ee) => {
+            console.log(ee)
+            this.toastr.error('Somthing went wrong!');
+
+            reject();
+          }
+
+        }
+      )
+      this.spinner.hide();
+
+    })
+  }
 }

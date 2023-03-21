@@ -1,1 +1,55 @@
-<p>contact-us works!</p>
+<div class="layout-wrapper layout-content-navbar">
+    <div class="layout-container">
+      
+<app-hr-sidebar></app-hr-sidebar>
+<div class="layout-page">
+       <app-dash-header>
+        </app-dash-header>
+
+        <div class="container-xxl flex-grow-1 container-p-y">
+          
+                <div class="col-12">
+                    <div class="card wow fadeInUp"  style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+                        <div class="card-header d-flex align-items-center justify-content-between">                       
+                      </div>
+                      <div class="card-body" >
+                        <div class="row">
+
+                        <div class="card col-4 col-sm-12 m-2" style="max-width: 400px;" *ngFor="let item of this.hrService.contactMessages">
+                            <div class="card-body">
+                              <h5 class="card-title">Name: {{item.name}}</h5>
+                              <div class="card-subtitle text-muted mb-3">Email: {{item.email}}</div>
+                              <div class="card-subtitle text-muted mb-3">Phone Number: {{item.phonenumber}}</div>
+
+                              <p class="card-text">
+                                Message:
+                                {{item.message}}
+                              </p>
+                              <a  class="btn btn-danger text-white" (click)="OpenDeleteDialog(item.contactid)">Delete Message</a>
+                            </div>
+                          </div>
+                          </div>
+                      </div>
+                    </div>
+
+            </div>
+          </div>
+        </div>
+          <!--/ Basic Bootstrap Table -->
+    </div>
+    </div>
+    <ng-template #DeleteDio>
+        <mat-dialog-content>
+    
+        <p>Are You Sure to Delete this item</p>
+        </mat-dialog-content>
+    
+          <mat-dialog-actions >
+          <div class="demo-inline-spacing">
+          <button type="button" (click)="DeleteMessage()" class="btn rounded-pill btn-success"  mat-dialog-close>Yes</button>
+          <button type="button" class="btn rounded-pill btn-danger"  mat-dialog-close>No</button>                      
+          
+        </div>
+        </mat-dialog-actions>
+        </ng-template>
+  

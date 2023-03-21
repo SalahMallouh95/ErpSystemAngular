@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { HrService } from 'src/app/hr.service';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-contact-us',
@@ -7,4 +9,24 @@ import { Component } from '@angular/core';
 })
 export class ContactUsComponent {
 
+  @ViewChild('DeleteDio') Deletedia:any
+
+  messageid:any|undefined
+  constructor(public hrService:HrService,public dialog:MatDialog){}
+
+  ngOnInit(){
+    this.hrService.GetContactMessages()
+  }
+
+  OpenDeleteDialog(id:number){
+    this.messageid=id
+    this.dialog.open(this.Deletedia)
+
+  }
+  async DeleteMessage(){
+
+    await this.hrService.DeleteConatctMessage(this.messageid)
+    this.hrService.GetContactMessages()
+
+  }
 }
