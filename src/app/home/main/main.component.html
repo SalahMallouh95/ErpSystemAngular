@@ -8,7 +8,7 @@
         <div class="carousel-inner">
 
             <div class="carousel-item active">
-                <img class="w-100" [src]="'./assets/HomeAssets/img/'+this.hrService.allHome[0].imagename" alt="Image">
+                <img class="w-100" [src]="'../../../assets/Documents/'+this.hrService.allHome[0].imagename" alt="Image">
                 <div class="carousel-caption d-flex flex-column align-items-center justify-content-center " style="right: 0% !important; left: 0% !important;">
                     <div class="p-3" style="max-width: 900px;">
                         <h5 class="text-white text-uppercase mb-3 animated slideInDown">{{this.hrService.allHome[0].titile}}</h5>
@@ -18,7 +18,7 @@
                 </div>
             </div>
             <div class="carousel-item" *ngFor="let item of this.hrService.allHome.slice(1) ">
-                <img class="w-100" [src]="'./assets/HomeAssets/img/'+item.imagename" alt="Image">
+                <img class="w-100" [src]="'../../../assets/Documents/'+item.imagename" alt="Image">
                 <div class="carousel-caption d-flex flex-column align-items-center justify-content-center " style="right: 0% !important; left: 0% !important;">
                     <div class="p-3" style="max-width: 900px;">
                         <h5 class="text-white text-uppercase mb-3 animated slideInDown">{{item.titile}}</h5>
