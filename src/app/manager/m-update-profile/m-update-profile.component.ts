@@ -17,20 +17,21 @@ export class MUpdateProfileComponent {
 
   manInfo = new FormGroup({
 
-    userid : new FormControl(),
-    managerid : new FormControl(),
-    fname : new FormControl({value: '', disabled: true}, Validators.required),
-    lname : new FormControl({value: '', disabled: true}, Validators.required),
+    userid : new FormControl(2),
+    fname : new FormControl({ disabled: true}, Validators.required),
+    lname : new FormControl({ disabled: true}, Validators.required),
+    password : new FormControl(),
+    phonenumber : new FormControl(),
+    address : new FormControl(),
+    imagefilename : new FormControl(),
+
+
     salary : new FormControl({value: '', disabled: true}, Validators.required),
     bankinfoid : new FormControl(),
     email : new FormControl({value: '', disabled: true}, Validators.required),
-    departmentname : new FormControl({value: '', disabled: true}, Validators.required),
-    phonenumber : new FormControl(),
-    imagefilename : new FormControl(),
     ssn : new FormControl({value: '', disabled: true}, Validators.required),
-    password : new FormControl(),
-    rolename :  new FormControl({value: '', disabled: true}, Validators.required),
-    address : new FormControl()
+    rolename :  new FormControl({value: '', disabled: true}, Validators.required)
+    
   })
 
 
@@ -55,10 +56,13 @@ export class MUpdateProfileComponent {
     formData.append('file', file.files[0])
     await this.hr.UploadDocument(formData)
     this.manInfo.value.imagefilename = this.hr.documentName.imagefilename
+  }
 
-
+  async UpdateProf(){
+    await this.man.Updateprofile(this.manInfo.value)
+    console.log(this.manInfo.value);
     
-
+    
   }
 
 }

@@ -17,7 +17,19 @@ export class ManagerService {
   taskid: number | undefined
   AllEmp: any = []
   documentName: any
-  
+  createTask: any = {}
+  AllLeave: any = []
+  MyLeaves: any = []
+  AllTasks: any = []
+  ManagerProfile: any = []
+  empInformation: any = {}
+  attendance: any = []
+  leaveInfo: any
+  taskinfo: any
+  allsln: any = []
+  updateManProf: any = {}
+
+
 
   async GetAllEmp(emp: any) {
 
@@ -46,7 +58,7 @@ export class ManagerService {
   }
 
 
-  AllLeave: any = []
+
 
   async GetAllLeaves(lev: any) {
 
@@ -75,7 +87,7 @@ export class ManagerService {
 
   }
 
-  MyLeaves: any = []
+
   async GetMyLeaves(ml: any) {
 
     return new Promise<void>((resolve, reject) => {
@@ -103,7 +115,7 @@ export class ManagerService {
   }
 
 
-  AllTasks: any = []
+
   async GetAllTasks(at: any) {
     return new Promise<void>((resolve, reject) => {
 
@@ -125,7 +137,6 @@ export class ManagerService {
     })
   }
 
-  ManagerProfile: any = []
   async GetManagerPrifile(mp: any) {
 
     return new Promise<void>((resolve, reject) => {
@@ -137,7 +148,7 @@ export class ManagerService {
           this.ManagerProfile = res
           resolve()
           console.log(res);
-          
+
 
         }
       })
@@ -178,7 +189,7 @@ export class ManagerService {
 
 
 
-  empInformation: any = {}
+
 
   async GetEmpInfo(ei: any) {
     let user: any = {}
@@ -209,7 +220,7 @@ export class ManagerService {
   }
 
 
-  attendance: any = []
+
 
   async GetAttendance(at: any) {
     return new Promise<void>((resolve, reject) => {
@@ -235,7 +246,7 @@ export class ManagerService {
 
   }
 
-  leaveInfo: any
+
   async GetLeaveDetails(leave: any) {
 
     this.spinner.show()
@@ -293,7 +304,7 @@ export class ManagerService {
   }
 
 
-  taskinfo: any
+
   async GetTaskDetails(tas: any) {
     this.spinner.show()
     return new Promise<void>((resolve, reject) => {
@@ -325,7 +336,7 @@ export class ManagerService {
 
 
 
-  allsln: any = []
+
   async GetAllSolutions(as: any) {
     return new Promise<void>((resolve, reject) => {
 
@@ -382,11 +393,11 @@ export class ManagerService {
     })
   }
 
-  createTask: any = {}
+
 
   async CreateTask(ct: any) {
     console.log(ct);
-    
+
     return new Promise<void>((resolve, reject) => {
 
       this.http.post('https://localhost:44388/api/Manager/CreateTask', ct).subscribe({
@@ -402,6 +413,26 @@ export class ManagerService {
         }
       })
     })
+  }
+
+  async Updateprofile(up : any){
+    return new Promise<void>((resolve,reject)=>{
+      
+      this.http.put('https://localhost:44388/api/User/UpdateProfile',up).subscribe({
+        next: res => {
+          
+          
+          
+          resolve()
+        },
+        error: err => {
+          console.log(err);
+          reject()
+          
+        }
+      })
+    })
+
   }
 
   ///////////////////////////////////////////////////////////////////

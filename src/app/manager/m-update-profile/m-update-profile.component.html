@@ -24,7 +24,7 @@
       <div class="row">
           <div class="col-md-12">              
             <div class="card mb-4">
-              <h5 class="card-header">Profile Details</h5>               
+              <h3 class="card-header">Profile Details</h3>               
  
               <!-- Account -->
               <div class="card-body">
@@ -35,8 +35,8 @@
                       <div mat-card-avatar class="example-header-image"></div>
                      
                     </mat-card-header>
-                    <img *ngIf="this.manInfo.value.imagefilename==null" name="img" _ngcontent-fnq-c20="" src="/assets/Documents/UserDefaultImage.png" alt="" class="img-fluid w-100" style="max-height: 350px; max-width: 350px;">
-                    <img *ngIf="this.manInfo.value.imagefilename!=null" name="img" _ngcontent-fnq-c20="" [src]="'/assets/Documents/'+this.manInfo.value.imagefilename" alt="" class="img-fluid w-100" style="max-height: 350px; max-width: 350px;">              
+                    <img *ngIf="this.manInfo.value.imagefilename == null" name="img" _ngcontent-fnq-c20="" src="/assets/Documents/user.jpg" alt="" class="img-fluid w-100" style="max-height: 350px; max-width: 350px;">
+                    <img *ngIf="this.manInfo.value.imagefilename != null" name="img" _ngcontent-fnq-c20="" [src]="'/assets/Documents/'+this.manInfo.value.imagefilename" alt="" class="img-fluid w-100" style="max-height: 350px; max-width: 350px;">              
                   
                   </mat-card>
 
@@ -74,7 +74,7 @@
                     </mat-form-field>                   
                   
                     <mat-form-field class="mb-3 col-md-6">
-                      <label for="organization" class="form-label">Password</label>
+                      <label for="password" class="form-label">Password</label>
                       <input type="password" matInput formControlName="password" >
                     </mat-form-field>                        
                 
@@ -109,11 +109,7 @@
                       
                     </mat-form-field>
                     
-                    <mat-form-field class="mb-3 col-md-6">
-                      <label for="language" class="form-label">Department</label>
-                      <input matInput formControlName="rolename" class="form-control" type="text" id="itrw" name="role" placeholder="California" >
-                    </mat-form-field>
-
+                    
                     <mat-form-field class="mb-3 col-md-6">
                       <label for="zipCode" class="form-label">Bank ID</label>
                       <input type="number" matInput formControlName="bankinfoid" placeholder="12345">
@@ -122,7 +118,7 @@
                                      
                   </div>
                   <div class="mt-2">
-                    <button type="submit" class="btn btn-primary me-2"  >Add New Employee</button>                     
+                    <button type="submit" class="btn btn-primary me-2" (click)="UpdateProf()" [disabled]="manInfo.invalid"  >Save Changes</button>                     
                   </div>
                   <div class="demo-inline-spacing">                        
                       <button style="position: absolute; top: 0px; right:0px;" type="button" onclick="history.back(-1)"
