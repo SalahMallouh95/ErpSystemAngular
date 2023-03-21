@@ -452,7 +452,7 @@ export class HrService {
         {
           next: (res) => {
             this.documentName = res
-            this.toastr.success('Photo uploaded!');
+            this.toastr.success('File uploaded!');
             resolve();
           }
           ,
