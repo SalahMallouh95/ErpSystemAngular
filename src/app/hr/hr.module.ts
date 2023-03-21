@@ -16,7 +16,6 @@ import { DepartmentCreateComponent } from './department-create/department-create
 import { DepartmentEditComponent } from './department-edit/department-edit.component';
 import { DepartmentEmpListComponent } from './department-emp-list/department-emp-list.component';
 import { HomeManageComponent } from './home-manage/home-manage.component';
-import { ContactInfoManageComponent } from './contact-info-manage/contact-info-manage.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { AboutUsManageComponent } from './about-us-manage/about-us-manage.component';
 import { EmployeeAddComponent } from './employee-add/employee-add.component';
@@ -37,7 +36,6 @@ import { EmployeeAddComponent } from './employee-add/employee-add.component';
     DepartmentEditComponent,
     DepartmentEmpListComponent,
     HomeManageComponent,
-    ContactInfoManageComponent,
     ContactUsComponent,
     AboutUsManageComponent,
     EmployeeAddComponent

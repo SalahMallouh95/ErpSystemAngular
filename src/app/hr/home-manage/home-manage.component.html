@@ -1,1 +1,102 @@
-<p>home-manage works!</p>
+<div class="layout-wrapper layout-content-navbar">
+    <div class="layout-container">
+      
+<app-hr-sidebar></app-hr-sidebar>
+<div class="layout-page">
+       <app-dash-header>
+        </app-dash-header>
+
+        <div class="container-xxl flex-grow-1 container-p-y">
+         <!-- Basic Bootstrap Table -->
+         <div class="card wow fadeInUp"  style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+            <div class="demo-inline-spacing">
+            <button style="position: absolute; top: 0px; right:100px;" type="button" class="btn rounded-pill btn-success"  (click)="CreateHomeDialog()">Add new Home Photo</button>                      
+                         </div>
+            <h5 class="card-header">Table Basic</h5>
+            <div class="table-responsive text-nowrap">
+              <table class="table table-hover wow slideInUp"
+              style="visibility: visible; animation-delay: 0.3s; animation-name: slideInUp;">
+                <thead>
+                  <tr style="background-color: #696cff66;">
+                    <th>Image</th>
+                    <th>Titile</th>
+                    <th>Description</th>
+                    <th>Action</th>
+                    
+                  </tr>
+                </thead>
+                <tbody class="table-border-bottom-0"> 
+               <tr *ngFor="let item of this.hrService.allHome">
+                <td>                   
+                    <img [src]="'../../../assets/Documents/'+item.imagename" width="300px">
+                </td>
+                <td>
+                    {{item.titile}}
+                </td>
+                <td>
+                    {{item.description}}
+                </td>
+                <td>
+                    <div class="demo-inline-spacing">
+                        <button type="button" class="btn rounded-pill btn-info" (click)="EdiDialog(item.homeid)">Edit</button>
+                        <button type="button" class="btn rounded-pill btn-danger"[disabled]="(this.count<2)" (click)="OpenDeleteDialog(item.homeid)">Delete</button>                        
+                        
+                      </div>
+                </td>
+
+               </tr>
+               </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+          <!--/ Basic Bootstrap Table -->
+    </div>
+    </div>
+    </div>
+
+    <ng-template #DeleteDio>
+      <mat-dialog-content>
+  
+      <p>Are You Sure to Delete this item</p>
+      </mat-dialog-content>
+  
+        <mat-dialog-actions >
+        <div class="demo-inline-spacing">
+        <button type="button" (click)="DeleteHome()" class="btn rounded-pill btn-success"  mat-dialog-close>Yes</button>
+        <button type="button" class="btn rounded-pill btn-danger"  mat-dialog-close>No</button>                      
+        
+      </div>
+      </mat-dialog-actions>
+      </ng-template>
+
+
+      <ng-template #CreateDio>
+        <mat-dialog-content>
+    
+        <p>Are You Sure to Delete this item</p>
+        </mat-dialog-content>
+    
+          <mat-dialog-actions >
+          <div class="demo-inline-spacing">
+          <button type="button" (click)="DeleteHome()" class="btn rounded-pill btn-success"  mat-dialog-close>Yes</button>
+          <button type="button" class="btn rounded-pill btn-danger"  mat-dialog-close>No</button>                      
+          
+        </div>
+        </mat-dialog-actions>
+        </ng-template>
+
+        <ng-template #EditDio>
+            <mat-dialog-content>
+        
+            <p>Are You Sure to Delete this item</p>
+            </mat-dialog-content>
+        
+              <mat-dialog-actions >
+              <div class="demo-inline-spacing">
+              <button type="button" (click)="DeleteHome()" class="btn rounded-pill btn-success"  mat-dialog-close>Yes</button>
+              <button type="button" class="btn rounded-pill btn-danger"  mat-dialog-close>No</button>                      
+              
+            </div>
+            </mat-dialog-actions>
+            </ng-template>
