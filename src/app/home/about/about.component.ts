@@ -1,5 +1,6 @@
 import { Component , OnInit} from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { HrService } from 'src/app/hr.service';
 
 
 @Component({
@@ -8,7 +9,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
   styleUrls: ['./about.component.css']
 })
 export class AboutComponent  implements OnInit {
-  constructor(private spinner: NgxSpinnerService) {}
+  constructor(private spinner: NgxSpinnerService,public hrService:HrService) {}
   
   ngOnInit(): void {
    

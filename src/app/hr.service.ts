@@ -511,6 +511,7 @@ async DeleteEmpProfile(userid:any)
     )
     this.spinner.hide();
   })
+  
   }
 
   async CreateHome(home: any) {

@@ -6,13 +6,12 @@ import { HrService } from 'src/app/hr.service';
   templateUrl: './home-header.component.html',
   styleUrls: ['./home-header.component.css']
 })
+
 export class HomeHeaderComponent {
 constructor(public hrService:HrService){}
 
 async ngOnInit(){
-  
-console.log(this.hrService.homeAbout);
-
+this.hrService.GetAbout()
 }
 
 }
