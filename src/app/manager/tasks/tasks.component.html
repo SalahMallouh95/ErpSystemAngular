@@ -19,7 +19,7 @@
                     <div class="container-xxl flex-grow-1 container-p-y">
                       <!-- Basic Bootstrap Table -->
                       <div class="card wow fadeInUp"  style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
-                         <h5 class="card-header">Table Of Task</h5>
+                         <h3 class="card-header">Table Of Task</h3>
                          <div class="table-responsive text-nowrap">
 
 
@@ -33,18 +33,30 @@
                            style="visibility: visible; animation-delay: 0.3s; animation-name: slideInUp;">
                              <thead>
                                <tr style="background-color: #696cff66;">
-                                 <th>Name</th>
+                                 <th>Task Name</th>
+                                 <th>Employee Name</th>
                                  <th>Date</th>
+                                 <th>Document</th>
                                  <th>state</th>
-                                 <th></th>
+                                 <th>Actions</th>
                                </tr>
                              </thead>
                              <tbody class="table-border-bottom-0"> 
-                                 <tr *ngFor="let item of this.man.AllTasks">   
+                                 <tr *ngFor="let item of this.man.AllTasks" >   
                                   
-          <td>{{item.taskname}}</td>
+          <td>
+            {{item.taskname}}
+            </td>
+
+            <td>
+                {{item.fname}} {{item.lname}}
+            </td>
           <td>
               {{item.uploaddate}}                  
+          </td>
+
+          <td>
+            <a *ngIf=" item.documentfilename !==null" class="card-link" target="_blank"  [href]="'../../../assets/Documents/'+item.documentfilename">Download File</a>
           </td>
              <td>
               <div [ngSwitch]="item.state">

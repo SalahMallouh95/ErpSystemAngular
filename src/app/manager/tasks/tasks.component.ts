@@ -26,8 +26,6 @@ id : number = 2
 
   
     
-
-    
 }
 
 
@@ -36,12 +34,13 @@ async GetValues(id :any){
 let task : any = {}
 task.taskid = id
 await this.man.GetTaskDetails(task)
- await this.man.GetAllSolutions(task)
-  this.route.navigate(['Manager/TaskSolution']);
-  
-  
+await this.man.GetAllSolutions(task)
+this.route.navigate(['Manager/TaskSolution']);
 }
 
 
+async deletetask(){
+  
+}
 
 }

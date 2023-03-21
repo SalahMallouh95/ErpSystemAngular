@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ManagerService } from 'src/app/manager.service';
 
@@ -13,15 +14,13 @@ export class MSolutionDetailsComponent implements OnInit {
   }
 
  
+  feed : any | undefined
 
   ngOnInit(): void {
 
-    
+    this.feed = this.man.solutioninfo.feedbackmessage
+
   }
-
-
-
-  
 
   async AcceptSolution() {
     let user : any ={}
@@ -30,11 +29,11 @@ export class MSolutionDetailsComponent implements OnInit {
     sln.taskid = this.man.solutioninfo.taskid
     sln.solutionid = this.man.solutioninfo.solutionid
     sln.state = 1
+    sln.feedbackmessage = this.feed
     await this.man.UpdateSolutionState(sln)
     this.man.GetSolutionDetails(sln)
     await this.man.GetAllSolutions(sln)
-    
-    
+
   }
 
   async RejectSolution() {
@@ -44,10 +43,10 @@ export class MSolutionDetailsComponent implements OnInit {
     sln.taskid = this.man.solutioninfo.taskid
     sln.solutionid = this.man.solutioninfo.solutionid
     sln.state = 0
+    sln.feedbackmessage = this.feed
     await this.man.UpdateSolutionState(sln)
     this.man.GetSolutionDetails(sln)
     await this.man.GetAllSolutions(sln)
-
   }
 
   
