@@ -12,17 +12,13 @@ export class MainComponent {
   constructor(public hrService:HrService,private auth:AuthService){}
 
  async ngOnInit(){
-    let data:any = {}
-    data=localStorage.getItem("userInfo")?.valueOf
-    console.log('data');    
-    console.log(data);    
-    let user:any={}
-    user.userid=parseInt(data.userid)    
-    console.log(user);                  
-    await this.hrService.GetEmpInfo(user)
-    localStorage.setItem('fullUserInfo',this.hrService.empInfo) 
-    console.log(localStorage.getItem("fullUserInfo"));
-
-    
+    let userData:any = JSON.parse( localStorage.getItem('userInfo')+'')   
+    userData.userid=parseInt (userData.userid)   
+    userData.roleid=parseInt (userData.roleid)        
+    delete userData.exp          
+    await this.hrService.GetEmpInfo(userData)
+    this.auth.systemUserInfo=this.hrService.empInfo
+    localStorage.setItem('fullUserInfo',JSON.stringify(this.hrService.empInfo)) 
+           
   }
 }
