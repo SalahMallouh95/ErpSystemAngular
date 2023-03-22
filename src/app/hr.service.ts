@@ -35,7 +35,6 @@ export class HrService {
   homeAbout: any
   contactMessageInfo:any
   serviceInfo:any|undefined
-  systemUserInfo:any
 
   // ---------------------- Employee --------------------------
 
