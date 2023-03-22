@@ -180,6 +180,44 @@ export class EmployeeService {
       )
     })
   }
+  checkout(user: any) // 
+  {
+    return new Promise<void>((resolve, reject) => {
+      this.spinner.show()
+      this.http.put("https://localhost:44388/api/Employee/UpdateCheckOut", user).subscribe(
+        {
+          next: () => {
+            this.spinner.hide()
+            this.toaster.success("Added Successfully")
+            resolve();
+          },
+          error: () => {
+            this.spinner.hide()
+            this.toaster.error("error")
+          }
+        }
+      )
+    })
+  }
+  Checkin(user: any) // 
+  {
+    return new Promise<void>((resolve, reject) => {
+      this.spinner.show()
+      this.http.post("https://localhost:44388/api/Employee/CreateCheckIn", user).subscribe(
+        {
+          next: () => {
+            this.spinner.hide()
+            this.toaster.success("Added Successfully")
+            resolve();
+          },
+          error: () => {
+            this.spinner.hide()
+            this.toaster.error("error")
+          }
+        }
+      )
+    })
+  }
   async UpdateLeave(leave: any) // 
   {
     return new Promise<void>((resolve, reject) => {

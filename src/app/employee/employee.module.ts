@@ -14,6 +14,7 @@ import { EditsolutionComponent } from './editsolution/editsolution.component';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { MatSelectModule } from "@angular/material/select";
+import { UpdateprofileComponent } from './updateprofile/updateprofile.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { MatSelectModule } from "@angular/material/select";
     GettaskComponent,
     CreatesolutionComponent,
     EditsolutionComponent,
+    UpdateprofileComponent,
     
   ],
   imports: [

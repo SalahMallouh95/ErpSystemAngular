@@ -4,12 +4,11 @@ import { HrService } from 'src/app/hr.service';
 import { ManagerService } from 'src/app/manager.service';
 
 @Component({
-  selector: 'app-m-update-profile',
-  templateUrl: './m-update-profile.component.html',
-  styleUrls: ['./m-update-profile.component.css']
+  selector: 'app-updateprofile',
+  templateUrl: './updateprofile.component.html',
+  styleUrls: ['./updateprofile.component.css']
 })
-export class MUpdateProfileComponent {
-
+export class UpdateprofileComponent {
   constructor(public man : ManagerService, public hr : HrService){
 
 
@@ -17,7 +16,7 @@ export class MUpdateProfileComponent {
 
   manInfo = new FormGroup({
 
-    userid : new FormControl(2),
+    userid : new FormControl(1),
     fname : new FormControl({ disabled: true}, Validators.required),
     lname : new FormControl({ disabled: true}, Validators.required),
     password : new FormControl(),
@@ -25,7 +24,7 @@ export class MUpdateProfileComponent {
     address : new FormControl(),
     imagefilename : new FormControl(),
     salary : new FormControl({value: '', disabled: true}, Validators.required),
-    bankinfoid : new FormControl(),
+    bankinfoid : new FormControl({value: '', disabled: true}, Validators.required),
     email : new FormControl({value: '', disabled: true}, Validators.required),
     ssn : new FormControl({value: '', disabled: true}, Validators.required),
     rolename :  new FormControl({value: '', disabled: true}, Validators.required)
@@ -35,14 +34,15 @@ export class MUpdateProfileComponent {
 
 
   emp : any = {}
-  id: number =2
+  id: number =1
 
   ngOnInit(){
 
     this.emp.userid = this.id
     this.man.GetManagerPrifile(this.emp)
     this.manInfo.patchValue(this.man.ManagerProfile)
-    
+    this.hr.documentName={}
+    this.hr.documentName.imagefilename=null
   }
 
 
@@ -51,10 +51,11 @@ export class MUpdateProfileComponent {
     console.log(file);
     formData.append('file', file.files[0])
     await this.hr.UploadDocument(formData)
-    this.manInfo.value.imagefilename = this.hr.documentName.imagefilename
   }
 
   async UpdateProf(){
+    if(this.hr.documentName.imagefilename!=null && this.hr.documentName.imagefilename!=undefined && this.hr.documentName.imagefilename!='')
+    this.manInfo.value.imagefilename = this.hr.documentName.imagefilename
     await this.man.Updateprofile(this.manInfo.value)
     console.log(this.manInfo.value);
     this.man.GetManagerPrifile(this.emp)
