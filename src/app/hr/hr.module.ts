@@ -21,6 +21,7 @@ import { AboutUsManageComponent } from './about-us-manage/about-us-manage.compon
 import { EmployeeAddComponent } from './employee-add/employee-add.component';
 import { OurServiceComponent } from './our-service/our-service.component';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
+import { PayoutComponent } from './payout/payout.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { UpdateProfileComponent } from './update-profile/update-profile.componen
     AboutUsManageComponent,
     EmployeeAddComponent,
     OurServiceComponent,
-    UpdateProfileComponent
+    UpdateProfileComponent,
+    PayoutComponent
   ],
   imports: [
     CommonModule,
