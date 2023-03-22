@@ -27,7 +27,7 @@ const routes: Routes = [
     path:'getsolution',
     component:GetsolutionComponent
   },{
-    path:'solutiondetail/:id',
+    path:'solutiondetail',
     component:SolutindetailComponent
   }
   ,{

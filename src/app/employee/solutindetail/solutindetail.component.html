@@ -1,50 +1,21 @@
-    <!-- Layout wrapper -->
-    <div class="layout-wrapper layout-content-navbar">
-        <div class="layout-container">
-          <!-- Menu -->
-          <app-employee-sidbar></app-employee-sidbar>
-         <!-- / Menu -->
-          <!-- Layout container -->
-          <div class="layout-page">
-            <!-- Navbar -->
-            <app-dash-header></app-dash-header>
-            <!-- / Navbar -->
-            <!-- Content wrapper -->
-            <div class="content-wrapper">
-              <!-- Content -->
-              <div class="container-xxl flex-grow-1 container-p-y">
-                <!-- Basic Bootstrap Table -->
-                    <h2 class="pb-1 mb-4">solution info</h2> 
-                    <div class="row mb-5">
-                      <div class="col-md-6 col-xl-4">
-                        <div class="card mb-3">
-                          <div class="card-body">
-                            <h5 class="card-title">TaskID: {{solutionInfo[0].taskid}}</h5>
-                            <p class="card-text">
-                              Date: {{solutionInfo[0].uploadDate}}
-                            </p>
-                            <p class="card-text">
-                              <small class="text-muted">Document: {{solutionInfo[0].documentFileName}}</small>
-                            </p>
-                            <p class="card-text">
-                                <small class="text-muted">Feedback: {{solutionInfo[0].feedMessage}}</small>
-                              </p>
-                          </div>
-                        </div>
-                      </div>
-                     </div>
-                 <!--/ Basic Bootstrap Table -->
-              <!-- / Content -->
-              <!-- Footer -->
-              <!-- / Footer -->
-              <div class="content-backdrop fade"></div>
+
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <!-- <div class="row mb-10">
+          <div class="col-md-6 col-xl-4"> -->
+            <div class="card mb-5">
+              <div class="card-body">
+                 <h2 class="pb-1 mb-4">solution info</h2> 
+                <h5 class="card-title">TaskID : {{this.employeeService.onesol.taskid}}</h5>
+                <p class="card-text">
+                  Feedback : {{this.employeeService.onesol.feedbackmessage}}
+                </p>
+                <p class="card-text">
+                  <small class="text-muted"> Date: {{this.employeeService.onesol.uploaddate}}</small>
+                </p>
+                  <p class="card-text">
+                    <small class="text-muted">Document:</small>
+                    <a *ngIf="this.employeeService.onesol.documentfilename" class="card-link" target="_blank"  [href]="'../../../assets/Documents/'+this.employeeService.onesol.documentfilename">{{this.employeeService.leave.documentfilename}}</a>
+                  </p>
+              </div>
             </div>
-            <!-- Content wrapper -->
-          </div>
-          <!-- / Layout page -->
-        </div>
-  
-        <!-- Overlay -->
-        <div class="layout-overlay layout-menu-toggle"></div>
-      </div>
-      <!-- / Layout wrapper -->
+         </div>

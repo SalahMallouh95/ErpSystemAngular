@@ -273,7 +273,7 @@
                           </div>
                           <div>
                             <label for="html5-datetime-local-input" class="col-md-0 col-form-label">Document</label>
-                            <input #file class="form-control" type="file" id="formFile"(change)="UploadDoc(file)" formControlName="documentfilename"/>
+                            <input #file class="form-control" type="file" id="formFile"(change)="UploadDoc(file)" />
                               <mat-error *ngIf="CreateLeaveForm.controls['documentfilename'].hasError('required')">
                                 Document is <strong>required</strong>
                               </mat-error>

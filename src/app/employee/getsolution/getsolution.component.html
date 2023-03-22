@@ -16,13 +16,13 @@
                 <!-- Basic Bootstrap Table -->
                 <div class="card wow fadeInUp"  style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
                    <h2 class="card-header">Table Of Solution</h2>
-                   <button type="submit" style="position: absolute; top: 25px; right:165px;" class="btn btn-primary" [routerLink]="['/Employee/createsolution']">ADD Solution</button>
+                   <button *ngIf="this.employeeService.task.state!=1" type="submit" style="position: absolute; top: 25px; right:165px;" class="btn btn-primary" (click)="OpenDialog()">ADD Solution</button>
                    <div>
-                   <h3 class="card-body">Task name : {{employeeService.task.taskname}}</h3>
-                   <h3 class="card-body" style="position: absolute; top: 100px; right:700px;">Task Date : {{employeeService.task.uploaddate}}</h3>
-                   <h3 class="card-body" >Document :<a *ngIf="this.employeeService.task.documentfilename" class="card-link" target="_blank"  [href]="'../../../assets/Documents/'+this.employeeService.task.documentfilename">{{this.employeeService.task.documentfilename}}</a>
+                   <h3 class="card-body">Task name : {{this.employeeService.task.taskname}}</h3>
+                   <h3 class="card-body" >Task Date : {{this.employeeService.task.uploaddate}}</h3>
+                   <h3 class="card-body" >Document :<a *ngIf="this.employeeService.task.documentfilename" class="card-link" target="_blank"  [href]="'../../../assets/Documents/'+this.employeeService.task.documentfilename">Download File</a>
                    </h3>
-                   <h3 class="card-body" style="position: absolute; top: 200px; right:700px;">Task Descrption : {{employeeService.task.taskdescription}}</h3>
+                   <h3 class="card-body" >Task Descrption : {{employeeService.task.taskdescription}}</h3>
                   </div>
                    <div class="table-responsive text-nowrap">
                      <table class="table table-hover wow slideInUp"
@@ -37,14 +37,14 @@
                          </tr>
                        </thead>
                        <tbody class="table-border-bottom-0"> 
-                           <tr *ngFor="let item of allSolutionList">   
+                           <tr *ngFor="let item of this.employeeService.allSol">   
                             
-    <td>{{item.uploadDate}}</td>
+    <td>{{item.uploaddate}}</td>
     <td>
-        {{item.feedMessage}}                  
+        {{item.feedbackmessage}}                  
     </td>
        <td>
-        <div [ngSwitch]="item.State">
+        <div [ngSwitch]="item.state">
             <div *ngSwitchCase="2">
           <span class="badge bg-label-warning me-1">Pending</span>
             </div>
@@ -55,13 +55,16 @@
                     <span class="badge bg-label-danger me-1">Rejected</span>
                 </div>
         </div>                       
-    </td>     
-    <td>
-        <a (click)="GetValues(item.solutionid)" class="btn btn-outline-info">More Info</a>
-    </td>    
-        <td>
-        <a (click)="GetValue(item.solutionid)" class="btn btn-outline-info">Edit Solution</a>
-    </td>       
+    </td>        
+    <td *ngIf="item.state==2">
+      <a (click)="GetValues(item.solutionid)" class="btn btn-outline-info">More Info</a>
+      <a (click)="OpenDeleteDialog(item.solutionid)" class="btn btn-outline-info">Delete</a>
+      <a (click)="OpenUpdateDialog(item.solutionid)" class="btn btn-outline-info">Edit Solution</a>
+  </td>           
+               
+  <td *ngIf="item.state!=2">
+    <a (click)="GetValues(item.solutionid)" class="btn btn-outline-info">More Info</a>
+  </td>
                  
                            </tr>            
                       
@@ -85,3 +88,100 @@
         <div class="layout-overlay layout-menu-toggle"></div>
       </div>
       <!-- / Layout wrapper -->
+
+
+      <ng-template #CreateForm>
+    
+        
+        <!-- Content wrapper -->
+        <div class="content-wrapper">
+          <!-- Content -->
+          <div class="container-xxl flex-grow-1 container-p-y">
+           <div class="row">
+             <div class="col-xl">
+               <div class="card mb-4">
+                 <div class="card-header d-flex justify-content-between align-items-center">
+                   <h5 class="mb-0">ADD Solution</h5>
+                  </div>
+                 <div class="card-body">
+                  <form [formGroup]="SolutionForm" class="example-form">
+                       <div>
+                            <label for="html5-datetime-local-input" class="col-md-0 col-form-label">Document</label>
+                            <input #file class="form-control" type="file" id="formFile"(change)="UploadDoc(file) "/>
+                              <mat-error *ngIf="SolutionForm.controls['documentfilename'].hasError('required')">
+                                Document is <strong>required</strong>
+                              </mat-error>
+                          </div> 
+                    <div>
+                  <!-- <input type="file" #file (change)="UploadImage(file)"> -->
+                <input type="button" class="btn btn-primary" [disabled]="SolutionForm.invalid" mat-dialog-close value="Create" (click)="CreateSolution()">
+                </div>
+                </form>
+                 </div>
+               </div>
+             </div>
+          </div>
+             <!--/ Basic Bootstrap Table -->
+          <!-- / Content -->
+          <!-- Footer -->
+          <!-- / Footer -->
+          <div class="content-backdrop fade"></div>
+        </div>
+        <!-- Content wrapper -->
+      </div>
+      <!-- / Layout page -->
+
+    <!-- Overlay -->
+</ng-template>
+
+<ng-template #UpdateForm>
+    
+        
+  <!-- Content wrapper -->
+  <div class="content-wrapper">
+    <!-- Content -->
+    <div class="container-xxl flex-grow-1 container-p-y">
+     <div class="row">
+       <div class="col-xl">
+         <div class="card mb-4">
+           <div class="card-header d-flex justify-content-between align-items-center">
+             <h5 class="mb-0">ADD Solution</h5>
+            </div>
+           <div class="card-body">
+            <form [formGroup]="SolutionForm" class="example-form">
+                 <div>
+                      <label for="html5-datetime-local-input" class="col-md-0 col-form-label">Document</label>
+                      <input #file class="form-control" type="file" id="formFile"(change)="UploadDoc(file) "/>
+                        <mat-error *ngIf="SolutionForm.controls['documentfilename'].hasError('required')">
+                          Document is <strong>required</strong>
+                        </mat-error>
+                    </div> 
+              <div>
+            <!-- <input type="file" #file (change)="UploadImage(file)"> -->
+          <input type="button" class="btn btn-primary" [disabled]="SolutionForm.invalid" mat-dialog-close value="Update" mat-dialog-close (click)="UpdateSolution()">
+          </div>
+          </form>
+           </div>
+         </div>
+       </div>
+    </div>
+       <!--/ Basic Bootstrap Table -->
+    <!-- / Content -->
+    <!-- Footer -->
+    <!-- / Footer -->
+    <div class="content-backdrop fade"></div>
+  </div>
+  <!-- Content wrapper -->
+</div>
+<!-- / Layout page -->
+
+<!-- Overlay -->
+</ng-template>
+
+<ng-template #DeleteForm>
+  <h2 mat-dialog-content>Would you like to delete this item?</h2>
+  <div mat-dialog-actions>
+  <input mat-dialog-close value="Yes" type="button" class="btn btn-success" mat-dialog-close (click)="DeleteSolution()">
+  <input mat-dialog-close value="No" type="button" class="btn btn-error">
+  </div>
+  </ng-template>
