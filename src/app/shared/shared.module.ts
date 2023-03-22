@@ -18,6 +18,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatDialogModule} from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
 import {MatCardModule} from '@angular/material/card';
+import { DataTablesModule } from "angular-datatables";
+
 
 
 
@@ -43,7 +45,8 @@ import {MatCardModule} from '@angular/material/card';
     ToastrModule.forRoot(),
     MatDialogModule,
     MatSelectModule,
-    MatCardModule
+    MatCardModule,
+    DataTablesModule
   ],
   exports:[
     HomeFooterComponent,
@@ -64,7 +67,8 @@ import {MatCardModule} from '@angular/material/card';
     MatDatepickerModule,
     MatDialogModule,
     MatSelectModule,
-    MatCardModule
+    MatCardModule,
+    DataTablesModule
   ]
 })
 export class SharedModule { }
