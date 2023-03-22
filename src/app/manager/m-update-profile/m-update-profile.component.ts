@@ -18,8 +18,8 @@ export class MUpdateProfileComponent {
   manInfo = new FormGroup({
 
     userid : new FormControl(2),
-    fname : new FormControl({ disabled: true}, Validators.required),
-    lname : new FormControl({ disabled: true}, Validators.required),
+    fname : new FormControl({ value: '',disabled: true}, Validators.required),
+    lname : new FormControl({value: '', disabled: true}, Validators.required),
     password : new FormControl(),
     phonenumber : new FormControl(),
     address : new FormControl(),
@@ -27,7 +27,7 @@ export class MUpdateProfileComponent {
 
 
     salary : new FormControl({value: '', disabled: true}, Validators.required),
-    bankinfoid : new FormControl(),
+    bankinfoid : new FormControl({value: '', disabled: true}, Validators.required),
     email : new FormControl({value: '', disabled: true}, Validators.required),
     ssn : new FormControl({value: '', disabled: true}, Validators.required),
     rolename :  new FormControl({value: '', disabled: true}, Validators.required)
