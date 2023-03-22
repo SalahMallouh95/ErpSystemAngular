@@ -12,10 +12,6 @@ export class EmployeeService {
 
   }
 
-  allsultion = [
-    { "solutionid": 1, "taskid": 1, "uploadDate": "32432", "feedMessage": "tet", "State": 2, "documentFileName": "srfwes" },
-    { "solutionid": 3, "taskid": 2, "uploadDate": "32432", "feedMessage": "tet", "State": 1, "documentFileName": "wefss" },
-  ];
   leavetype1 = [
     { "leavetypeid": 1, "leavetype": "ergregerg" },
     { "leaveid": 2, "leavetype": "wdewdwe" },
@@ -53,11 +49,24 @@ export class EmployeeService {
     this.spinner.hide();
 
   }
+  allSol: any = [];
+  onesol :any
+  GetSolution(allsol: any) {
+    this.spinner.show();
+    this.http.post("https://localhost:44388/api/Employee/GetAllSolutions", allsol).subscribe(
+      {
+        next: (res) => { this.allSol = res },
+        error: (ee) => { console.log(ee) }
+      }
+    )
+    this.spinner.hide();
 
+  }
   leave: any = {} // {} 
   async GetleaveById(leaves: any)//10
   {
     return new Promise<void>((resolve, reject) => {
+      
       this.spinner.show()
       this.http.post("https://localhost:44388/api/Hr/getoneleave", leaves).subscribe(
         {
@@ -72,18 +81,19 @@ export class EmployeeService {
             console.log(err)
             this.spinner.hide()
             this.toaster.error("Error")
+            reject()
           }
         }
       )
 
     })
   }
-  task: any={} // {} 
-  async GettaskById(task:any)//10
+  task: any= {} // {} 
+  async GettaskById(tasks:any)//10
   {
    return new Promise<void>((resolve, reject) => {
       this.spinner.show()
-      this.http.post("https://localhost:44388/api/Employee/GetOneTask" ,task).subscribe(
+      this.http.post("https://localhost:44388/api/Employee/GetOneTask" ,tasks).subscribe(
         {
           next: (res) => {
             this.task = res
@@ -151,6 +161,25 @@ export class EmployeeService {
       )
     })
   }
+  CreateSolution(solution: any) // 
+  {
+    return new Promise<void>((resolve, reject) => {
+      this.spinner.show()
+      this.http.post("https://localhost:44388/api/Employee/CreateSolution", solution).subscribe(
+        {
+          next: () => {
+            this.spinner.hide()
+            this.toaster.success("Added Successfully")
+            resolve();
+          },
+          error: () => {
+            this.spinner.hide()
+            this.toaster.error("error")
+          }
+        }
+      )
+    })
+  }
   async UpdateLeave(leave: any) // 
   {
     return new Promise<void>((resolve, reject) => {
@@ -172,10 +201,52 @@ export class EmployeeService {
       )
     })
   }
+  async UpdateSolution(solution: any) // 
+  {
+    return new Promise<void>((resolve, reject) => {
+      this.spinner.show()
+      console.log(this.leave)
+      this.http.put("https://localhost:44388/api/Employee/UpdateSolution", solution).subscribe(
+        {
+          next: () => {
+            this.spinner.hide()
+            this.toaster.success("Edit Successfully")
+            resolve();
+          },
+          error: () => {
+            this.spinner.hide()
+            this.toaster.error("error")
+            reject();
+          }
+        }
+      )
+    })
+  }
   async DeleteLeave(id: number) {
     return new Promise<void>((resolve, reject) => {
       this.spinner.show()
       this.http.delete("https://localhost:44388/api/Employee/DeleteLeave?id=" + id).subscribe(
+        {
+
+          next: () => {
+
+            this.spinner.hide()
+            this.toaster.success("delete Successfully")
+            resolve();
+          },
+          error: () => {
+            this.spinner.hide()
+            this.toaster.error("error")
+            reject()
+          }
+        }
+      )
+    })
+  }
+  async DeleteSolution(id: number) {
+    return new Promise<void>((resolve, reject) => {
+      this.spinner.show()
+      this.http.delete("https://localhost:44388/api/Employee/DeleteSolution?id=" + id).subscribe(
         {
 
           next: () => {

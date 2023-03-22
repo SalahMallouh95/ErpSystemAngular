@@ -15,7 +15,7 @@ export class SolutindetailComponent {
     solutionInfo:any|{}  
   
     ngOnInit(): void {
-      this.id=this.route.snapshot.params['id'];
-      
+      //this.id=this.route.snapshot.params['id'];
+      console.log(this.employeeService.onesol)
     }
 }
