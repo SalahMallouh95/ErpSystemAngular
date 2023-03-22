@@ -19,6 +19,8 @@ import { HomeManageComponent } from './home-manage/home-manage.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { AboutUsManageComponent } from './about-us-manage/about-us-manage.component';
 import { EmployeeAddComponent } from './employee-add/employee-add.component';
+import { OurServiceComponent } from './our-service/our-service.component';
+import { UpdateProfileComponent } from './update-profile/update-profile.component';
 
 
 @NgModule({
@@ -38,7 +40,9 @@ import { EmployeeAddComponent } from './employee-add/employee-add.component';
     HomeManageComponent,
     ContactUsComponent,
     AboutUsManageComponent,
-    EmployeeAddComponent
+    EmployeeAddComponent,
+    OurServiceComponent,
+    UpdateProfileComponent
   ],
   imports: [
     CommonModule,

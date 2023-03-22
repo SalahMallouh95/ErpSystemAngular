@@ -155,8 +155,34 @@
               </div>
             </div>
 
-          </div>
-          <div class="card">
+            <h4 class="fw-bold py-3 mb-4">Attendance</h4>
+            <div class="card">
+     <div class="table-responsive text-nowrap">
+         <table class="table table-hover wow slideInUp m-1"
+         style="visibility: visible; animation-delay: 0.3s; animation-name: slideInUp;">
+             <thead >
+                 <tr style="background-color: #696cff66;">
+                     <th>Check in</th>
+                     <th>Check out</th>
+                     <th>Working hour</th>                          
+                 </tr>
+             </thead>
+             <tbody class="table-border-bottom-0">
+                 <tr *ngFor="let emp of this.managerService.attendance">
+                     <td>{{emp.checkin}}</td>
+                     <td>{{emp.checkout}}</td>
+                     <td>{{emp.workinghour}}</td>                       
+                </tr>
+             </tbody>
+         </table>
+     </div>
+ </div>
+
+
+
+
+         
+          <div class="card mt-2" [hidden]="this.hrservice.empInfo.roleid==1">
             <h5 class="card-header">Delete Account</h5>
             <div class="card-body">
               <div class="mb-3 col-12 mb-0">
@@ -185,7 +211,7 @@
     </div>
   </div>
 </div>
-
+</div>
 <ng-template #DeleteDio>
   <mat-dialog-content>
 

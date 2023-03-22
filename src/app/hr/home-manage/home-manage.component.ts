@@ -35,6 +35,7 @@ export class HomeManageComponent {
   }
 
   CreateHomeDialog(){
+    this.homeFormGroup.reset();
      this.dialog.open(this.Createdia)
   }
 
@@ -42,7 +43,6 @@ export class HomeManageComponent {
     if (this.hrService.documentName.imagefilename !== null && this.hrService.documentName.imagefilename !== undefined && this.hrService.documentName.imagefilename !== '') {
       this.homeFormGroup.value.imagename = this.hrService.documentName.imagefilename
     }
-    console.log(this.homeFormGroup.value);    
     await this.hrService.CreateHome(this.homeFormGroup.value)
     this.hrService.documentName.imagefilename=null
     this.homeFormGroup.reset()
@@ -53,7 +53,6 @@ export class HomeManageComponent {
   EdiDialog(id:number){
     this.homeInfo=this.hrService.allHome.find((h:any)=>h.homeid==id)   
     this.homeFormGroup.patchValue(this.homeInfo)
-    console.log(this.homeFormGroup.value); 
     this.dialog.open(this.Editdia)
   }
 
@@ -62,11 +61,10 @@ export class HomeManageComponent {
     if (this.hrService.documentName.imagefilename !== null && this.hrService.documentName.imagefilename !== undefined && this.hrService.documentName.imagefilename !== '') {
       this.homeFormGroup.value.imagename = this.hrService.documentName.imagefilename
     }
-  console.log(this.homeFormGroup.value);   
    await this.hrService.UpdateHome(this.homeFormGroup.value)
    this.hrService.documentName.imagefilename=null
-  this.GetHome()
-
+   this.homeFormGroup.reset();
+   this.GetHome()
   }
 
   async UploadPhoto(file:any)
@@ -79,7 +77,6 @@ export class HomeManageComponent {
 
   OpenDeleteDialog(id:number){
     this.homeInfo=this.hrService.allHome.find((h:any)=>h.homeid==id)
-    this.homeFormGroup.patchValue(this.homeInfo)
     this.dialog.open(this.Deletedia)
   }
 

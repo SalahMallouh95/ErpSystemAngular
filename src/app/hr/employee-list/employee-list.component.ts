@@ -1,4 +1,4 @@
-import { Component,OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HrService } from 'src/app/hr.service';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -9,32 +9,31 @@ import { NgxSpinnerService } from 'ngx-spinner';
   templateUrl: './employee-list.component.html',
   styleUrls: ['./employee-list.component.css']
 })
-export class EmployeeListComponent implements OnInit{
+export class EmployeeListComponent implements OnInit {
 
 
-  constructor(private router:Router,public hrService:HrService, private spinner:NgxSpinnerService)
-  {
-
-  }
-  user:any={}
-
-  ngOnInit(): void {
-    this.hrService.GetAllEmployee();  
-
+  constructor(private router: Router, public hrService: HrService, private spinner: NgxSpinnerService) {
 
   }
-  async GetValues(id:any){
+  user: any = {}
 
-    this.user.userid=id    
+  async ngOnInit() {
+    await this.hrService.GetAllEmployee();
+    this.hrService.allEmp = this.hrService.allEmp.filter((e: any) => e.userid != 3)
+  }
+
+  async GetValues(id: any) {
+    this.user.userid = id
     this.hrService.GetAllDepartment()
     this.hrService.GetAllRole()
     await this.hrService.GetEmpInfo(this.user);
     this.router.navigate(['Hr/EmpDetails']);
   }
-  AddEmp(){
+
+  AddEmp() {
     this.hrService.GetAllDepartment()
     this.hrService.GetAllRole()
     this.router.navigate(['Hr/AddEmp']);
   }
-  
+
 }

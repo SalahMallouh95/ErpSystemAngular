@@ -21,9 +21,7 @@ export class AboutUsManageComponent {
   constructor(public hrService:HrService){}
 
   async ngOnInit(){
-    await this.hrService.GetAbout()
-    console.log(this.hrService.homeAbout);
-    
+    await this.hrService.GetAbout()    
     this.aboutForm.patchValue(this.hrService.homeAbout)
   }
 

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HrService } from 'src/app/hr.service';
 
 @Component({
   selector: 'app-service',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./service.component.css']
 })
 export class ServiceComponent {
+
+  constructor(public hrService:HrService){}
+  async ngOnInit(){
+    await this.hrService.GetAllServices()
+
+  }
 
 }

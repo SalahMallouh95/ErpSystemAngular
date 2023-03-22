@@ -21,6 +21,7 @@ export class HrService {
   allLeaveTypes: any = []
   allHome: any = []
   contactMessages:any
+  allService:any
 
 
 //object's
@@ -32,8 +33,8 @@ export class HrService {
   homeInfo: any
   homeAbout: any
   contactMessageInfo:any
-
-
+  serviceInfo:any|undefined
+  systemUserInfo:any
 
   // ---------------------- Employee --------------------------
 
@@ -699,4 +700,99 @@ export class HrService {
 
     })
   }
+
+
+  async GetAllServices() {
+
+    this.spinner.show();
+    return new Promise<void>((resolve, reject) => {
+      this.http.get("https://localhost:44388/api/Hr/GetService").subscribe(
+        {
+          next: (res) => {
+            this.allService = res
+            resolve();
+
+          },
+          error: (ee) => {
+            console.log(ee)
+            reject();
+
+          }
+        }
+      )
+      this.spinner.hide();
+    })
+
+  }
+
+  async CreateService(Service: any) {
+    return new Promise<void>((resolve, reject) => {
+      this.spinner.show()
+      this.http.post("https://localhost:44388/api/Hr/CreateService", Service).subscribe(
+        {
+          next: () => {
+            resolve();
+            this.toastr.success('Service Added successfully!');
+          }
+          ,
+          error: (ee) => {
+            console.log(ee)
+            this.toastr.error('Somthing went wrong!');
+
+            reject();
+          }
+
+        }
+      )
+      this.spinner.hide();
+
+    })
+  }
+  async UpdateService(Service: any) {
+    return new Promise<void>((resolve, reject) => {
+      this.spinner.show()
+      this.http.put("https://localhost:44388/api/Hr/UpdateService", Service).subscribe(
+        {
+          next: () => {
+            resolve();
+            this.toastr.success('Service updateded successfully!');
+          }
+          ,
+          error: (ee) => {
+            console.log(ee)
+            this.toastr.error('Somthing went wrong!');
+
+            reject();
+          }
+
+        }
+      )
+      this.spinner.hide();
+
+    })
+  }
+  async DeleteService(id: number) {
+    return new Promise<void>((resolve, reject) => {
+      this.spinner.show()
+      this.http.delete("https://localhost:44388/api/Hr/DeleteService?id=" + id).subscribe(
+        {
+          next: () => {
+            resolve();
+            this.toastr.success('Service deleted successfully!');
+          }
+          ,
+          error: (ee) => {
+            console.log(ee)
+            this.toastr.error('Somthing went wrong!');
+
+            reject();
+          }
+        }
+      )
+      this.spinner.hide();
+
+    })
+  }
+
+
 }

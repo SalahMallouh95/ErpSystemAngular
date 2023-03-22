@@ -185,11 +185,11 @@ export class ManagerService {
         next: res => {
           this.attendance = res
           resolve()
-          console.log(res);
-        },
+                },
         error: err => {
           console.log(err);
           this.toaster.error('Error')
+          reject()
         }
       })
     })

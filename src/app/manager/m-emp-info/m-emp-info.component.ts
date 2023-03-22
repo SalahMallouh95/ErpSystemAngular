@@ -25,10 +25,7 @@ export class MEmpInfoComponent implements OnInit {
    
     this.id = this.route.snapshot.params['id'];
     this.emp = this.man.empInfo.filter(  (ex) => ex.userid == this.id )
-    this.info.patchValue(this.man.empInformation)
-    console.log(this.man.empInformation);
-
-    
+    this.info.patchValue(this.man.empInformation)    
     
   }
 

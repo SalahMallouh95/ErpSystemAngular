@@ -1,0 +1,156 @@
+<div class="layout-wrapper layout-content-navbar">
+    <div class="layout-container">
+      
+<app-hr-sidebar></app-hr-sidebar>
+<div class="layout-page">
+       <app-dash-header>
+        </app-dash-header>
+
+        <div class="container-xxl flex-grow-1 container-p-y">
+         <!-- Basic Bootstrap Table -->
+         <div class="card wow fadeInUp"  style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+            <div class="demo-inline-spacing">
+            <button style="position: absolute; top: 0px; right:100px;" type="button" class="btn rounded-pill btn-success"  (click)="OpenCreateDialog()">Add new Service</button>                      
+                         </div>
+            <h5 class="card-header">Table Basic</h5>
+            <div class="table-responsive text-nowrap">
+              <table class="table table-hover wow slideInUp"
+              style="visibility: visible; animation-delay: 0.3s; animation-name: slideInUp;">
+                <thead>
+                  <tr style="background-color: #696cff66;">                   
+                    <th>Service Name</th>
+                    <th>Description</th>
+                    <th>Action</th>
+                    
+                  </tr>
+                </thead>
+                <tbody class="table-border-bottom-0"> 
+               <tr *ngFor="let item of this.hrService.allService">                
+                <td>
+                    {{item.name}}
+                </td>
+                <td style="white-space: normal;max-width: 300px;">
+                    {{item.description}}
+                </td>
+                <td>
+                    <div class="demo-inline-spacing">
+                        <button type="button" class="btn rounded-pill btn-info" (click)="OpenEditDialog(item.id)">Edit</button>
+                        <button type="button" class="btn rounded-pill btn-danger" (click)="OpenDeleteDialog(item.id)">Delete</button>                        
+                        
+                      </div>
+                </td>
+
+               </tr>
+               </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+          <!--/ Basic Bootstrap Table -->
+    </div>
+    </div>
+    </div>
+
+    <ng-template #DeleteDio>
+      <mat-dialog-content>
+  
+      <p>Are You Sure to Delete this item</p>
+      </mat-dialog-content>
+  
+        <mat-dialog-actions >
+        <div class="demo-inline-spacing">
+        <button type="button" (click)="DeleteService()" class="btn rounded-pill btn-success"  mat-dialog-close>Yes</button>
+        <button type="button" class="btn rounded-pill btn-danger"  mat-dialog-close>No</button>                      
+        
+      </div>
+      </mat-dialog-actions>
+      </ng-template>
+
+
+      <ng-template #CreateDio>
+        <div class="container-xxl flex-grow-1 container-p-y">
+          <!-- Basic Bootstrap Table -->
+          <div class="card wow fadeInUp"  style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+        <mat-dialog-content>
+          <div class="demo-inline-spacing">
+          
+          <button style="position: absolute; top: 0px; right:0px;" type="button"  mat-dialog-close 
+          class="btn rounded-pill btn-danger">X</button></div>
+
+          <div class="row  wow slideInUp"
+          style="visibility: visible; animation-delay: 0.3s; animation-name: slideInUp;">
+       
+                <div class="card-header d-flex justify-content-between align-items-center">
+                 
+                  <small class="text-muted float-end">Add New Service</small>
+                </div>
+       <form [formGroup]="ServiceFormGroup">
+        <div>
+          <label for="defaultFormControlInput" class="form-label">Service Name</label>
+          <input type="text" class="form-control" matInput formControlName="name" id="defaultFormControlInput" placeholder="Best" aria-describedby="defaultFormControlHelp">          
+        </div>
+        <div>
+          <label for="defaultFormControlInput" class="form-label">Descrepition</label>
+          <input type="text" class="form-control" matInput formControlName="description" id="defaultFormControlInput"  aria-describedby="defaultFormControlHelp">
+          
+        </div>       
+       </form>
+      </div>
+
+        </mat-dialog-content>    
+        
+          <mat-dialog-actions >
+          <div class="demo-inline-spacing">
+            <button type="submit" class="btn btn-primary" [disabled]="ServiceFormGroup.invalid" mat-dialog-close (click)="CreateService()"  >Add</button>           
+
+          
+        </div>
+        </mat-dialog-actions>
+
+      </div>
+    </div>
+
+        </ng-template>
+
+        <ng-template #EditDio>
+          <div class="container-xxl flex-grow-1 container-p-y">
+            <!-- Basic Bootstrap Table -->
+            <div class="card wow fadeInUp"  style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+          <mat-dialog-content>
+            <div class="demo-inline-spacing">
+            
+            <button style="position: absolute; top: 0px; right:0px;" type="button"  mat-dialog-close 
+            class="btn rounded-pill btn-danger">X</button></div>
+  
+            <div class="row  wow slideInUp"
+            style="visibility: visible; animation-delay: 0.3s; animation-name: slideInUp;">
+         
+                  <div class="card-header d-flex justify-content-between align-items-center">
+                   
+                    <small class="text-muted float-end">Update Home</small>
+                  </div>
+         <form [formGroup]="ServiceFormGroup">
+          <div>
+            <label for="defaultFormControlInput" class="form-label">Service Name</label>
+            <input type="text" class="form-control" matInput formControlName="name" id="defaultFormControlInput" placeholder="Best" aria-describedby="defaultFormControlHelp">          
+          </div>
+          <div>
+            <label for="defaultFormControlInput" class="form-label">Descrepition</label>
+            <input type="text" class="form-control" matInput formControlName="description" id="defaultFormControlInput"  aria-describedby="defaultFormControlHelp">
+            
+          </div>          
+         </form>
+        </div>  
+          </mat-dialog-content>    
+          
+            <mat-dialog-actions >
+            <div class="demo-inline-spacing">
+              <button type="submit" class="btn btn-primary" mat-dialog-close [disabled]="ServiceFormGroup.invalid" (click)="EditService()" [disabled]="ServiceFormGroup.invalid" >Edit</button>           
+  
+            
+          </div>
+          </mat-dialog-actions>
+  
+        </div>
+      </div>
+            </ng-template>

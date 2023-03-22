@@ -18,6 +18,8 @@ import { LeaveTypesCreateComponent } from './leave-types-create/leave-types-crea
 import { LeaveTypesEditComponent } from './leave-types-edit/leave-types-edit.component';
 import { LeaveTypesComponent } from './leave-types/leave-types.component';
 import { MainComponent } from './main/main.component';
+import { OurServiceComponent } from './our-service/our-service.component';
+import { UpdateProfileComponent } from './update-profile/update-profile.component';
 
 const routes: Routes = [
   {
@@ -85,6 +87,14 @@ const routes: Routes = [
   {
     path:"AddEmp",
     component:EmployeeAddComponent
+  },
+  {
+    path:"Service",
+    component:OurServiceComponent
+  },
+  {
+    path:"UpdateProfile",
+    component:UpdateProfileComponent
   }
 ];
 
