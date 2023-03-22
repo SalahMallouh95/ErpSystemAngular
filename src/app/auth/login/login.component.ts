@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -16,10 +17,11 @@ export class LoginComponent {
     }
   )
 
-  GetDate()
+  constructor(public auth:AuthService){}
+
+ async Login()
   {
-    const user =this.loginForm.value;
-  console.log(user)
-  }
+   await this.auth.Login(this.loginForm.value)
+    }
   }
 
