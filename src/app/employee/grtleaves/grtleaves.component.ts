@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { EmployeeService } from 'src/app/employee.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { LeaveDetailsComponent } from 'src/app/hr/leave-details/leave-details.component';
 import { LeavedetailComponent } from '../leavedetail/leavedetail.component';
 import { HrService } from 'src/app/hr.service';
 

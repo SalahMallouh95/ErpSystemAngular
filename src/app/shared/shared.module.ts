@@ -18,7 +18,6 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatDialogModule} from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
 import {MatCardModule} from '@angular/material/card';
-import { DataTablesModule } from "angular-datatables";
 
 
 
@@ -46,7 +45,7 @@ import { DataTablesModule } from "angular-datatables";
     MatDialogModule,
     MatSelectModule,
     MatCardModule,
-    DataTablesModule
+
   ],
   exports:[
     HomeFooterComponent,
@@ -67,8 +66,7 @@ import { DataTablesModule } from "angular-datatables";
     MatDatepickerModule,
     MatDialogModule,
     MatSelectModule,
-    MatCardModule,
-    DataTablesModule
+    MatCardModule
   ]
 })
 export class SharedModule { }
