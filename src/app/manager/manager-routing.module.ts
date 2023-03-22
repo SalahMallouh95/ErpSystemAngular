@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AllEmpLeavesComponent } from '../hr/all-emp-leaves/all-emp-leaves.component';
+import { PayoutComponent } from '../hr/payout/payout.component';
 import { ManagerSideBarComponent } from '../shared/manager-side-bar/manager-side-bar.component';
 import { AllEmployeesComponent } from './all-employees/all-employees.component';
 import { CreateTaskComponent } from './create-task/create-task.component';

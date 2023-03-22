@@ -14,6 +14,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import {MatDialogModule} from '@angular/material/dialog';
+import { DataTablesModule } from "angular-datatables";
+
 
 
 @NgModule({
@@ -35,7 +37,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatSelectModule,
     MatFormFieldModule,
     MatInputModule,
-    MatDialogModule
+    MatDialogModule,
+    DataTablesModule
 
   ],
   exports:[
