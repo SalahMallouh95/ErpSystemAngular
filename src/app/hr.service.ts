@@ -796,10 +796,10 @@ export class HrService {
   }
 
 //-------------- Payment -----------------
-async GetPayout() {
+async GetPayout(payout:any) {
   this.spinner.show();
   return new Promise<void>((resolve, reject) => {
-    this.http.get("https://localhost:44388/api/Hr/getpayout").subscribe(
+    this.http.post("https://localhost:44388/api/Hr/getpayout",payout).subscribe(
       {
         next: (res) => {
           this.allPayout = res

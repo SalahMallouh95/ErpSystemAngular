@@ -19,6 +19,7 @@ import { LeaveTypesEditComponent } from './leave-types-edit/leave-types-edit.com
 import { LeaveTypesComponent } from './leave-types/leave-types.component';
 import { MainComponent } from './main/main.component';
 import { OurServiceComponent } from './our-service/our-service.component';
+import { PayoutComponent } from './payout/payout.component';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
 
 const routes: Routes = [
@@ -95,6 +96,10 @@ const routes: Routes = [
   {
     path:"UpdateProfile",
     component:UpdateProfileComponent
+  },
+  {
+    path: 'Payout',
+    component: PayoutComponent
   }
 ];
 

@@ -2,3 +2,9 @@
 <div *ngIf="this.hrService.empInfo.userid==this.user.userid">
 <app-employee-details></app-employee-details>
 </div>
+
+<div *ngIf="this.hrService.empInfo.userid!=this.user.userid">
+    <app-dash-header></app-dash-header>
+
+    <app-hr-sidebar></app-hr-sidebar>
+    </div>
