@@ -13,6 +13,7 @@ import { ManagerService } from 'src/app/manager.service';
 export class EmployeeDetailsComponent implements OnInit {
 
   @ViewChild('DeleteDio') Deletedia: any
+  depcount:any
 
   constructor(public hrservice: HrService, public dialog: MatDialog,public managerService:ManagerService) {
 
@@ -44,6 +45,10 @@ export class EmployeeDetailsComponent implements OnInit {
     this.empInfoForm.markAsTouched();
     this.hrservice.documentName={}
     this.hrservice.documentName.imagefilename=null
+    this.hrservice.GetAllDepartment()    
+    this.depcount=this.hrservice.allDep.find((e:any)=>e.userid==this.empInfoForm.value.userid)
+    console.log(this.depcount);
+    
 
   }
 
