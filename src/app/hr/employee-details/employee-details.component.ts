@@ -44,8 +44,6 @@ export class EmployeeDetailsComponent implements OnInit {
     this.empInfoForm.markAsTouched();
     this.hrservice.documentName={}
     this.hrservice.documentName.imagefilename=null
-
-
   }
 
   async UploadPhoto(file: any) {

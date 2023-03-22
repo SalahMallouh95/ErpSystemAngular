@@ -7,14 +7,18 @@ import { HrService } from 'src/app/hr.service';
   styleUrls: ['./update-profile.component.css']
 })
 export class UpdateProfileComponent {
-       constructor(public hrService:HrService){
+      
+   user:any={"userid":null}
+   
+  
+  constructor(public hrService:HrService){
 
        }
 
        async ngOnInit(){
-        let user:any={}
-        user.userid=3;               
-        await this.hrService.GetEmpInfo(user)
+        
+        this.user.userid=3;               
+        await this.hrService.GetEmpInfo(this.user)
         console.log(this.hrService.empInfo);
         
          this.hrService.GetAllDepartment()

@@ -145,19 +145,20 @@
                       <button type="submit" class="btn btn-primary me-2" (click)="UpdateProfile()"
                         [disabled]="empInfoForm.invalid">Save changes</button>
                     </div>
-                    <div class="demo-inline-spacing">
-                      <button style="position: absolute; top: 0px; right:0px;" type="button" onclick="history.back(-1)"
+                    <div  routerLink="/Hr/UpdateProfile" routerLinkActive="active" #rle="routerLinkActive" [routerLinkActiveOptions]="{exact: true}">
+                    <div *ngIf="!rle.isActive" class="demo-inline-spacing"  >
+                      <button style="position: absolute; top: 0px; right:0px;"  type="button" onclick="history.back(-1)"
                         routerLinkActive="active" class="btn rounded-pill btn-info">Back</button>
-                    </div>
+                    </div></div>
                   </form>
                   <!-- /Account -->
                 </div>
               </div>
             </div>
 
-            <h4 class="fw-bold py-3 mb-4">Attendance</h4>
+            <h4 class="fw-bold py-3 mb-4"[hidden]="this.hrservice.empInfo.roleid==1">Attendance</h4>
             <div class="card">
-     <div class="table-responsive text-nowrap">
+     <div class="table-responsive text-nowrap" [hidden]="this.hrservice.empInfo.roleid==1">
          <table class="table table-hover wow slideInUp m-1"
          style="visibility: visible; animation-delay: 0.3s; animation-name: slideInUp;">
              <thead >
