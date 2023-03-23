@@ -7,7 +7,7 @@
             </app-dash-header>
 
 
-            
+
 
             <div class="container-xxl flex-grow-1 container-p-y">
 
@@ -17,97 +17,117 @@
                 <div class="content-wrapper">
                     <!-- Content -->
                     <div class="container-xxl flex-grow-1 container-p-y">
-                      <!-- Basic Bootstrap Table -->
-                      <div class="card wow fadeInUp"  style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
-                         <h3 class="card-header">Table Of Task</h3>
-                         <div class="table-responsive text-nowrap">
+                        <!-- Basic Bootstrap Table -->
+                        <div class="card wow fadeInUp"
+                            style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+                            <h3 class="card-header">Table Of Task</h3>
+                            <div class="table-responsive text-nowrap">
 
 
-                            <div class="demo-inline-spacing">
-                                <button style="position: absolute; top: 0px; right:100px;" type="button" class="btn rounded-pill btn-success" [routerLink]="['/Manager/CreateTask']">Create New Task</button> 
+                                <div class="demo-inline-spacing">
+                                    <button style="position: absolute; top: 0px; right:100px;" type="button"
+                                        class="btn rounded-pill btn-success"
+                                        [routerLink]="['/Manager/CreateTask']">Create New Task</button>
 
+                                </div>
+
+
+                                <table class="table table-hover wow slideInUp"
+                                    style="visibility: visible; animation-delay: 0.3s; animation-name: slideInUp;">
+                                    <thead>
+                                        <tr style="background-color: #696cff66;">
+                                            <th>Task Name</th>
+                                            <th>Employee Name</th>
+                                            <th>Date</th>
+                                            <th>Document</th>
+                                            <th>state</th>
+                                            <th></th>
+                                            <th>Actions</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="table-border-bottom-0">
+                                        <tr *ngFor="let item of this.man.AllTasks">
+
+                                            <td>
+                                                {{item.taskname}}
+                                            </td>
+
+                                            <td>
+                                                {{item.fname}} {{item.lname}}
+                                            </td>
+                                            <td>
+                                                {{item.uploaddate}}
+                                            </td>
+
+                                            <td>
+                                                <a *ngIf=" item.documentfilename !==null" class="card-link"
+                                                    target="_blank"
+                                                    [href]="'../../../assets/Documents/'+item.documentfilename">Download
+                                                    File</a>
+                                            </td>
+                                            <td>
+                                                <div [ngSwitch]="item.state">
+                                                    <div *ngSwitchCase="2">
+                                                        <span class="badge bg-label-warning me-1">Done</span>
+                                                    </div>
+                                                    <div *ngSwitchCase="1">
+                                                        <span class="badge bg-label-success me-1">Pending</span>
+                                                    </div>
+                                                    <div *ngSwitchCase="0">
+                                                        <span class="badge bg-label-danger me-1">Submitted</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+
+                                            <td>
+                                                <button type="button" class="btn rounded-pill btn-success"
+                                                    (click)="GetEditValues(item.taskid)">Edit Task</button>
+                                            </td>
+                                            <td>
+                                                <a (click)="GetValues(item.taskid)" class="btn btn-outline-info">Show
+                                                    Solution</a>
+                                            </td>
+                                            <td>
+                                                <button type="button" class="btn rounded-pill btn-danger"
+                                                    (click)="deletetask(item.taskid)">Delete</button>
+
+                                            </td>
+
+                                        </tr>
+
+                                    </tbody>
+                                </table>
                             </div>
-                            
-
-                           <table class="table table-hover wow slideInUp"
-                           style="visibility: visible; animation-delay: 0.3s; animation-name: slideInUp;">
-                             <thead>
-                               <tr style="background-color: #696cff66;">
-                                 <th>Task Name</th>
-                                 <th>Employee Name</th>
-                                 <th>Date</th>
-                                 <th>Document</th>
-                                 <th>state</th>
-                                 <th></th>
-                                 <th >Actions</th>
-                                 <th></th>
-                               </tr>
-                             </thead>
-                             <tbody class="table-border-bottom-0"> 
-                                 <tr *ngFor="let item of this.man.AllTasks" >   
-                                  
-          <td>
-            {{item.taskname}}
-            </td>
-
-            <td>
-                {{item.fname}} {{item.lname}}
-            </td>
-          <td>
-              {{item.uploaddate}}                  
-          </td>
-
-          <td>
-            <a *ngIf=" item.documentfilename !==null" class="card-link" target="_blank"  [href]="'../../../assets/Documents/'+item.documentfilename">Download File</a>
-          </td>
-             <td>
-              <div [ngSwitch]="item.state">
-                  <div *ngSwitchCase="2">
-                <span class="badge bg-label-warning me-1">Done</span>
-                  </div>
-                  <div *ngSwitchCase="1">
-                      <span class="badge bg-label-success me-1">Pending</span>
-                  </div>
-                        <div *ngSwitchCase="0">
-                          <span class="badge bg-label-danger me-1">Submitted</span>
-                      </div>
-              </div>                       
-          </td>  
-         
-          <td>
-            <button  type="button" class="btn rounded-pill btn-success" (click)="GetEditValues(item.taskid)">Edit Task</button>
-          </td>
-          <td>
-              <a (click)="GetValues(item.taskid)" class="btn btn-outline-info">Show Solution</a>
-            </td>
-              <td>
-              <button type="button" class="btn rounded-pill btn-danger" (click)="deletetask(item.taskid)">Delete</button>                        
-
-          </td>           
-                       
-                                 </tr>            
-                            
-                            </tbody>
-                           </table>
-                         </div>
-                       </div>
-                     </div>
-                       <!--/ Basic Bootstrap Table -->
+                        </div>
+                    </div>
+                    <!--/ Basic Bootstrap Table -->
                     <!-- / Content -->
                     <!-- Footer -->
                     <!-- / Footer -->
                     <div class="content-backdrop fade"></div>
-                  </div>
-                  <!-- Content wrapper -->
+                </div>
+                <!-- Content wrapper -->
+
+
+
+
+                
+
+
+            </div>
         </div>
     </div>
-</div>
 
 
 
 
 
-<!-- <div class="layout-wrapper layout-content-navbar">
+
+
+
+
+    <!-- <div class="layout-wrapper layout-content-navbar">
     <div class="layout-container">
 
         <app-manager-side-bar></app-manager-side-bar>
