@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ManagerService } from 'src/app/manager.service';
 import { FormControl,FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HrService } from 'src/app/hr.service';
+import { AuthService } from 'src/app/auth.service';
 
 
 @Component({
@@ -12,20 +13,20 @@ import { HrService } from 'src/app/hr.service';
 })
 export class CreateTaskComponent {
 
-  constructor( public man : ManagerService, private route: Router,public hr : HrService ){
+  constructor( public man : ManagerService, private route: Router,public hr : HrService,private auth : AuthService ){
 
   }
 
   ngOnInit(){
     let user : any = {}
-    user.userid =2
+    user.userid = this.auth.systemUserInfo.userid
     this.man.GetAllEmp(user)
   }
 
   taskform =  new FormGroup({
     userid : new FormControl(),
     taskid: new FormControl,
-    managerid : new FormControl(2),
+    managerid : new FormControl(),
     uploaddate : new FormControl(),
     documentfilename : new FormControl(),
     taskname : new FormControl(),

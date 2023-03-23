@@ -4,6 +4,8 @@ import { AllEmpLeavesComponent } from '../hr/all-emp-leaves/all-emp-leaves.compo
 import { PayoutComponent } from '../hr/payout/payout.component';
 import { ManagerSideBarComponent } from '../shared/manager-side-bar/manager-side-bar.component';
 import { AllEmployeesComponent } from './all-employees/all-employees.component';
+import { CheckinCheckoutComponent } from './checkin-checkout/checkin-checkout.component';
+import { CreateLeaveComponent } from './create-leave/create-leave.component';
 import { CreateTaskComponent } from './create-task/create-task.component';
 import { EditTaskComponent } from './edit-task/edit-task.component';
 import { MAllEmpLeavesComponent } from './m-all-emp-leaves/m-all-emp-leaves.component';
@@ -74,6 +76,14 @@ const routes: Routes = [
   {
     path: 'SolutionDetails',
     component: MSolutionDetailsComponent
+  },
+  {
+    path: 'CheckinCkeckout',
+    component: CheckinCheckoutComponent
+  },
+  {
+    path: 'CreateLeave',
+    component: CreateLeaveComponent
   }
  ];
 

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ManagerService } from 'src/app/manager.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MMyLeaveDetailsComponent } from '../m-my-leave-details/m-my-leave-details.component';
+import { AuthService } from 'src/app/auth.service';
 
 
 @Component({
@@ -12,12 +13,12 @@ import { MMyLeaveDetailsComponent } from '../m-my-leave-details/m-my-leave-detai
 })
 export class MLeavesComponent {
 
-  constructor(public managerserv : ManagerService , private route : Router,public dialog : MatDialog){
+  constructor(public managerserv : ManagerService , private route : Router,public dialog : MatDialog,private auth : AuthService){
 
   }
 
   managerLeaves : any = {}
-  id : number =2
+  id : number =this.auth.systemUserInfo.userid
   
   ngOnInit()  {
     this.managerLeaves.userid = this.id

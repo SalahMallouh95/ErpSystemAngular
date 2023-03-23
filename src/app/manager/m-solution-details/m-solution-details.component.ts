@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from 'src/app/auth.service';
 import { ManagerService } from 'src/app/manager.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { ManagerService } from 'src/app/manager.service';
   styleUrls: ['./m-solution-details.component.css']
 })
 export class MSolutionDetailsComponent implements OnInit {
-  constructor(public man : ManagerService, private route: ActivatedRoute,private rou : Router){
+  constructor(public man : ManagerService, private route: ActivatedRoute,private rou : Router,private auth : AuthService){
 
   }
 
@@ -24,7 +25,7 @@ export class MSolutionDetailsComponent implements OnInit {
 
   async AcceptSolution() {
     let user : any ={}
-    user.userid = 2
+    user.userid =  this.auth.systemUserInfo.userid
     let sln: any = {}
     sln.taskid = this.man.solutioninfo.taskid
     sln.solutionid = this.man.solutioninfo.solutionid
@@ -38,7 +39,7 @@ export class MSolutionDetailsComponent implements OnInit {
 
   async RejectSolution() {
     let user : any ={}
-    user.userid = 2
+    user.userid =  this.auth.systemUserInfo.userid
     let sln: any = {}
     sln.taskid = this.man.solutioninfo.taskid
     sln.solutionid = this.man.solutioninfo.solutionid
