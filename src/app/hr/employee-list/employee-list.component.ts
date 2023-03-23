@@ -19,10 +19,10 @@ export class EmployeeListComponent implements OnInit {
   user: any = {}
 
   async ngOnInit() {
-    let userData=JSON.parse(localStorage.getItem("fullUserInfo")+'')
-    userData.userid= parseInt(userData.userid);
+    this.user.userid=this.auth.systemUserInfo.userid
     await this.hrService.GetAllEmployee();
     this.hrService.allEmp = this.hrService.allEmp.filter((e: any) => e.userid != 3)    
+    
 
   }
 
