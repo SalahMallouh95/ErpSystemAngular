@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ManagerService } from 'src/app/manager.service';
 import { FormControl,FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HrService } from 'src/app/hr.service';
+import { AuthService } from 'src/app/auth.service';
 
 @Component({
   selector: 'app-edit-task',
@@ -11,7 +12,7 @@ import { HrService } from 'src/app/hr.service';
 })
 export class EditTaskComponent {
 
-  constructor( public man :ManagerService , private route: Router , private rou: ActivatedRoute, public hr: HrService ){
+  constructor( public man :ManagerService , private route: Router , private rou: ActivatedRoute, public hr: HrService,private auth : AuthService ){
 
   }
 
@@ -29,7 +30,7 @@ export class EditTaskComponent {
 
   ngOnInit(): void {
     let user : any = {}
-    user.userid =2
+    user.userid = this.auth.systemUserInfo.userid
     this.man.GetAllEmp(user)
     this.editTaskform.patchValue(this.man.taskinfo)
     console.log(this.man.taskinfo);

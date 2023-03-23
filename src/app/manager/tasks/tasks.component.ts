@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth.service';
 import { ManagerService } from 'src/app/manager.service';
 
 @Component({
@@ -9,12 +10,12 @@ import { ManagerService } from 'src/app/manager.service';
 })
 export class TasksComponent {
 
-  constructor(public man: ManagerService , private route: Router){
+  constructor(public man: ManagerService , private route: Router,private auth : AuthService){
 
   }
 
 tas :any = {}
-id : number = 2
+id : number =  this.auth.systemUserInfo.userid
 
  async ngOnInit() {
     

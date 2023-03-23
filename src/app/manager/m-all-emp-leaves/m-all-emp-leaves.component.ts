@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ManagerService } from 'src/app/manager.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MLeaveDetailsComponent } from '../m-leave-details/m-leave-details.component';
+import { AuthService } from 'src/app/auth.service';
 
 
 @Component({
@@ -13,14 +14,14 @@ import { MLeaveDetailsComponent } from '../m-leave-details/m-leave-details.compo
 })
 export class MAllEmpLeavesComponent implements OnInit {
 
-  constructor( private router:Router, public managerService : ManagerService , public dialog : MatDialog){
+  constructor( private router:Router, public managerService : ManagerService , public dialog : MatDialog,private auth : AuthService){
 
 
 
   }
 
   leaves : any ={}
-  id : number = 2
+  id : number = this.auth.systemUserInfo.userid
 
   ngOnInit(){
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { AuthService } from 'src/app/auth.service';
 import { ManagerService } from 'src/app/manager.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { ManagerService } from 'src/app/manager.service';
 export class MMyLeaveDetailsComponent implements OnInit {
 
 
-  constructor( public managerService : ManagerService,private route :ActivatedRoute ){
+  constructor( public managerService : ManagerService,private route :ActivatedRoute,private auth : AuthService ){
 
   }
 
@@ -19,7 +20,7 @@ export class MMyLeaveDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     
-    this.id = this.route.snapshot.params['id']
+    this.id = this.auth.systemUserInfo.userid
     this.leaveInfo = this.managerService.myLeaves.filter( l => l.leaveid == this.id )
   }
 
