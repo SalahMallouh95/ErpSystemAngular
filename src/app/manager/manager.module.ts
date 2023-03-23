@@ -17,6 +17,8 @@ import { EditTaskComponent } from './edit-task/edit-task.component';
 import { MSolutionComponent } from './m-solution/m-solution.component';
 import { MUpdateProfileComponent } from './m-update-profile/m-update-profile.component';
 import { MSolutionDetailsComponent } from './m-solution-details/m-solution-details.component';
+import { CheckinCheckoutComponent } from './checkin-checkout/checkin-checkout.component';
+import { CreateLeaveComponent } from './create-leave/create-leave.component';
 
 
 
@@ -37,7 +39,9 @@ import { MSolutionDetailsComponent } from './m-solution-details/m-solution-detai
     EditTaskComponent,
     MSolutionComponent,
     MUpdateProfileComponent,
-    MSolutionDetailsComponent
+    MSolutionDetailsComponent,
+    CheckinCheckoutComponent,
+    CreateLeaveComponent
   ],
   imports: [
     CommonModule,

@@ -1,6 +1,7 @@
 
 import { Component,OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { AuthService } from 'src/app/auth.service';
 import { ManagerService } from 'src/app/manager.service';
 
 
@@ -10,7 +11,7 @@ import { ManagerService } from 'src/app/manager.service';
   styleUrls: ['./m-leave-details.component.css']
 })
 export class MLeaveDetailsComponent  implements OnInit {
-  constructor(public managerService : ManagerService,private route:ActivatedRoute){
+  constructor(public managerService : ManagerService,private route:ActivatedRoute,private auth : AuthService){
   }
   id:number|undefined
   leaveInf:any|{}
@@ -26,7 +27,7 @@ export class MLeaveDetailsComponent  implements OnInit {
 
   async AcceptLeave() {
     let user : any ={}
-    user.userid = 2
+    user.userid = this.auth.systemUserInfo.userid
     let leave: any = {}
     leave.leaveid = this.managerService.leaveInfo.leaveid
     leave.state = 1
@@ -38,7 +39,7 @@ export class MLeaveDetailsComponent  implements OnInit {
 
   async RejectLeave() {
     let user : any ={}
-    user.userid = 2
+    user.userid = this.auth.systemUserInfo.userid
     let leave: any = {}
     leave.leaveid = this.managerService.leaveInfo.leaveid
     leave.state = 0
