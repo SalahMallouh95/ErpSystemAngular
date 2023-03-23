@@ -25,7 +25,7 @@
      <li class="nav-item navbar-dropdown dropdown-user dropdown">
        <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
          <div [ngClass]="(this.auth.systemUserInfo.state==0)?'avatar avatar-offline':'avatar avatar-online'">
-           <img [src]="'./assets/Documents/'+this.auth.systemUserInfo.imagefilename" alt class="w-px-40 h-auto rounded-circle" />
+           <img [src]="'./assets/Documents/'+this.auth.systemUserInfo.imagefilename" alt class="w-px-40 h-auto rounded-circle" style="max-width: 50px; max-height: 50px;"/>
          </div>
        </a>
        <ul class="dropdown-menu dropdown-menu-end">
