@@ -15,6 +15,7 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
 import { MatSelectModule } from "@angular/material/select";
 import { UpdateprofileComponent } from './updateprofile/updateprofile.component';
+import { CheckinComponent } from './checkin/checkin.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { UpdateprofileComponent } from './updateprofile/updateprofile.component'
     CreatesolutionComponent,
     EditsolutionComponent,
     UpdateprofileComponent,
+    CheckinComponent,
     
   ],
   imports: [

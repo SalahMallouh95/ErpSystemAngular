@@ -15,10 +15,6 @@ export class AboutComponent  implements OnInit {
   
   async ngOnInit() {
    await this.hrService.GetAllEmployee()
-   this.emplist= this.hrService.allEmp.filter((emp:any) =>emp.roleid==2)
-   console.log(this.emplist);
-   console.log("xxxx");
-
-   
+   this.emplist= this.hrService.allEmp.filter((emp:any) =>emp.roleid==2)   
   }
 }

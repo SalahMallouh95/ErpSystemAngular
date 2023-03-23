@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/auth.service';
 import { HrService } from 'src/app/hr.service';
 import { ManagerService } from 'src/app/manager.service';
 
@@ -9,16 +10,16 @@ import { ManagerService } from 'src/app/manager.service';
   styleUrls: ['./updateprofile.component.css']
 })
 export class UpdateprofileComponent {
-  constructor(public man : ManagerService, public hr : HrService){
+  constructor(public man : ManagerService, public hr : HrService,private auth:AuthService){
 
 
   }
 
   manInfo = new FormGroup({
 
-    userid : new FormControl(1),
-    fname : new FormControl({ disabled: true}, Validators.required),
-    lname : new FormControl({ disabled: true}, Validators.required),
+    userid : new FormControl(),
+    fname : new FormControl({ value: '',disabled: true}, Validators.required),
+    lname : new FormControl({value: '', disabled: true}, Validators.required),
     password : new FormControl(),
     phonenumber : new FormControl(),
     address : new FormControl(),
@@ -34,11 +35,11 @@ export class UpdateprofileComponent {
 
 
   emp : any = {}
-  id: number =1
+  
 
   ngOnInit(){
 
-    this.emp.userid = this.id
+    this.emp.userid = this.auth.systemUserInfo.userid
     this.man.GetManagerPrifile(this.emp)
     this.manInfo.patchValue(this.man.ManagerProfile)
     this.hr.documentName={}

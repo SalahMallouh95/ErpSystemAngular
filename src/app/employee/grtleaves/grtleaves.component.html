@@ -27,12 +27,13 @@
                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                    <mat-date-range-picker #picker>
                    </mat-date-range-picker>      
-                  
                    <mat-error *ngIf="range.controls.dateFrom.hasError('matStartDateInvalid')">Invalid start date</mat-error>
                    <mat-error *ngIf="range.controls.dateTo.hasError('matEndDateInvalid')">Invalid end date</mat-error>
                   </mat-form-field>           
-                                      <input class="btn" type="button" value="Search" (click)="Search()" >
-                 </form>     
+                 </form>   
+                 <div class="col-3" style="padding-top: 20px;left: 20px;"> <input class="btn btn-info"  type="button" value="Search" (click)="Search()" ></div>
+                
+  
        </div>
             <!-- Content wrapper -->
             <div class="content-wrapper">
