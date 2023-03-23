@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth.service';
+import { HrService } from 'src/app/hr.service';
 
 @Component({
   selector: 'app-dash-header',
@@ -9,7 +10,17 @@ import { AuthService } from 'src/app/auth.service';
 })
 export class DashHeaderComponent {
 
-  constructor(private route:Router,public auth:AuthService){}
+  constructor(private route:Router,public auth:AuthService,private hrService:HrService){}
+  user:any
+
+  async ngOnInit(){
+    this.user=JSON.parse(localStorage.getItem('userInfo')+'') 
+    this.user.roleid=parseInt(this.user.roleid)
+    this.user.userid=parseInt(this.user.userid)
+    delete this.user.exp
+    await this.hrService.GetEmpInfo(this.user)
+    this.auth.systemUserInfo=this.hrService.empInfo  
+  }
 
   Logout(){
     localStorage.clear();

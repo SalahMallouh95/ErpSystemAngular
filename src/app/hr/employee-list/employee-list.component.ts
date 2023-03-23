@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HrService } from 'src/app/hr.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { AuthService } from 'src/app/auth.service';
 
 
 @Component({
@@ -12,16 +13,17 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class EmployeeListComponent implements OnInit {
 
 
-  constructor(private router: Router, public hrService: HrService, private spinner: NgxSpinnerService) {
+  constructor(private router: Router, public hrService: HrService,private auth:AuthService) {
 
   }
   user: any = {}
 
   async ngOnInit() {
-    let userData=JSON.parse(localStorage.getItem("fullUserInfo")+'')
-    userData.userid= parseInt(userData.userid);
+    this.user.userid=this.auth.systemUserInfo.userid
     await this.hrService.GetAllEmployee();
-    this.hrService.allEmp = this.hrService.allEmp.filter((e: any) => e.userid != 3)
+    this.hrService.allEmp = this.hrService.allEmp.filter((e: any) => e.userid != 3)    
+    
+
   }
 
   async GetValues(id: any) {
