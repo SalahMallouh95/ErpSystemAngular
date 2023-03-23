@@ -22,6 +22,8 @@ import { EmployeeAddComponent } from './employee-add/employee-add.component';
 import { OurServiceComponent } from './our-service/our-service.component';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
 import { PayoutComponent } from './payout/payout.component';
+import { HrMyAttendanceComponent } from './hr-my-attendance/hr-my-attendance.component';
+import { SalaryPaymentComponent } from './salary-payment/salary-payment.component';
 
 
 @NgModule({
@@ -44,7 +46,9 @@ import { PayoutComponent } from './payout/payout.component';
     EmployeeAddComponent,
     OurServiceComponent,
     UpdateProfileComponent,
-    PayoutComponent
+    PayoutComponent,
+    HrMyAttendanceComponent,
+    SalaryPaymentComponent
   ],
   imports: [
     CommonModule,
