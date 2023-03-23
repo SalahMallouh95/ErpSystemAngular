@@ -18,6 +18,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatDialogModule} from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
 import {MatCardModule} from '@angular/material/card';
+import { AttendanceComponent } from './attendance/attendance.component';
 
 
 
@@ -35,7 +36,8 @@ import {MatCardModule} from '@angular/material/card';
     HrSidebarComponent,
     RawAllEmpLeaveComponent,
     PersonCardComponent,
-    EmployeeSidbarComponent
+    EmployeeSidbarComponent,
+    AttendanceComponent
       ],
   imports: [
     CommonModule,
@@ -45,7 +47,6 @@ import {MatCardModule} from '@angular/material/card';
     MatDialogModule,
     MatSelectModule,
     MatCardModule,
-
   ],
   exports:[
     HomeFooterComponent,
@@ -66,7 +67,7 @@ import {MatCardModule} from '@angular/material/card';
     MatDatepickerModule,
     MatDialogModule,
     MatSelectModule,
-    MatCardModule
+    MatCardModule,
   ]
 })
 export class SharedModule { }
