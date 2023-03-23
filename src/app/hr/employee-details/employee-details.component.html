@@ -107,7 +107,7 @@
                       <div class="mb-3 col-md-6">
                         <label class="form-label" for="Role">Role</label>
                         <select formControlName="roleid" id="Role" class="select2 form-select">
-                          <option *ngFor="let item of this.hrservice.allRole" [ngValue]="item.roleid">{{item.rolename}}
+                          <option  [disabled]="this.depcount!=null" *ngFor="let item of this.hrservice.allRole" [ngValue]="item.roleid">{{item.rolename}}
                           </option>
                         </select>
                         <mat-error *ngIf="empInfoForm.controls['roleid'].hasError('required')">

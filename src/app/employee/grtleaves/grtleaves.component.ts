@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { EmployeeService } from 'src/app/employee.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { LeaveDetailsComponent } from 'src/app/hr/leave-details/leave-details.component';
 import { LeavedetailComponent } from '../leavedetail/leavedetail.component';
 import { HrService } from 'src/app/hr.service';
 
@@ -25,6 +24,8 @@ export class GrtleavesComponent implements OnInit {
     this.leaves.userid = 1;
     this.employeeService.GetAllleave(this.leaves);
     this.hrService.GetAllLeaveTypes();
+    this.hrService.documentName={}
+    this.hrService.documentName.imagefilename=null
 
   }
   leaves: any = {}
@@ -99,6 +100,8 @@ export class GrtleavesComponent implements OnInit {
   }
 
   async UpdateLeave() {
+    if(this.hrService.documentName.imagefilename!=null && this.hrService.documentName.imagefilename!=undefined && this.hrService.documentName.imagefilename!='')
+    this.employeeService.leave.documentfilename = this.hrService.documentName.imagefilename
     this.CreateLeaveForm.value.userid = 1
     console.log(this.CreateLeaveForm.value);
     await this.employeeService.UpdateLeave(this.CreateLeaveForm.value)
@@ -121,7 +124,6 @@ export class GrtleavesComponent implements OnInit {
     let formData = new FormData();
     formData.append('file', file.files[0])
     await this.hrService.UploadDocument(formData)
-    this.employeeService.leave.documentfilename = this.hrService.documentName.imagefilename
     console.log(this.CreateLeaveForm.value.documentfilename);
 
   }

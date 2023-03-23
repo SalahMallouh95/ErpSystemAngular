@@ -17,15 +17,17 @@ export class GettaskComponent implements OnInit {
 
   tasks: any = {}
   ngOnInit(): void {
-    this.tasks.userid = 1;
+    this.tasks.userid = 45;
     this.employeeService.GetAlltask(this.tasks);
   }
 
   async GetValue(id: any) {
     await this.employeeService.GetAlltask(this.tasks);
   }
-  GetValues(id: any) {
-    this.employeeService.GettaskById(id)
+  task:any ={}
+ async GetValues(id: any) {
+    this.task.taskid=id
+    await this.employeeService.GettaskById(this.task)
     this.router.navigate(['Employee/getsolution']);
   }
 }

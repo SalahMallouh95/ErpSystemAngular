@@ -10,6 +10,7 @@ import { GrtleavesComponent } from './grtleaves/grtleaves.component';
 import { LeavedetailComponent } from './leavedetail/leavedetail.component';
 import { MainComponent } from './main/main.component';
 import { SolutindetailComponent } from './solutindetail/solutindetail.component';
+import { UpdateprofileComponent } from './updateprofile/updateprofile.component';
 
 const routes: Routes = [
 {
@@ -27,7 +28,7 @@ const routes: Routes = [
     path:'getsolution',
     component:GetsolutionComponent
   },{
-    path:'solutiondetail/:id',
+    path:'solutiondetail',
     component:SolutindetailComponent
   }
   ,{
@@ -43,8 +44,8 @@ const routes: Routes = [
     component:CreatesolutionComponent
   }
   ,{
-    path:'editsolution/:id',
-    component:EditsolutionComponent
+    path:'updateprofile',
+    component:UpdateprofileComponent
   }
 ];
 

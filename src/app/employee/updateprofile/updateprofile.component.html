@@ -1,0 +1,262 @@
+
+
+
+
+
+
+
+
+<div class="layout-wrapper layout-content-navbar">
+    <div class="layout-container">
+  
+        <app-employee-sidbar></app-employee-sidbar>
+  
+  
+  <div class="layout-page">
+  
+       <app-dash-header>
+        </app-dash-header>
+  
+        <div class="content-wrapper">
+            <!-- Content -->
+        
+            <div class="container-xxl flex-grow-1 container-p-y">
+        <div class="row">
+            <div class="col-md-12">              
+              <div class="card mb-4">
+                <h3 class="card-header">Profile Details</h3>               
+   
+                <!-- Account -->
+                <div class="card-body">
+                  <div class="d-flex align-items-start align-items-sm-center gap-4">
+  
+                    <mat-card class="example-card">
+                      <mat-card-header>
+                        <div mat-card-avatar class="example-header-image"></div>
+                       
+                      </mat-card-header>
+                      <img *ngIf="this.manInfo.value.imagefilename == null" name="img" _ngcontent-fnq-c20="" src="/assets/Documents/UserDefaultImage.png" alt="" class="img-fluid w-100" style="max-height: 350px; max-width: 350px;">
+                      <img *ngIf="this.manInfo.value.imagefilename != null" name="img" _ngcontent-fnq-c20="" [src]="'/assets/Documents/'+this.manInfo.value.imagefilename" alt="" class="img-fluid w-100" style="max-height: 350px; max-width: 350px;">              
+                    
+                    </mat-card>
+  
+  
+                       <div class="button-wrapper">
+                      <label for="upload" class="btn btn-primary me-2 mb-4" tabindex="0">
+                        <span class="d-none d-sm-block">Upload a photo</span>
+                        <i class="bx bx-upload d-block d-sm-none"></i>
+                        <input type="file" #file id="upload" class="account-file-input" hidden="" (change)="UploadPhoto(file)" accept="image/png, image/jpeg,image/jpg">
+                      </label>    
+                      <p class="text-muted mb-0">Allowed JPG, GIF or PNG. Max size of 800K</p>
+                     
+                    </div>
+                  </div>
+                </div>
+                <hr class="my-0">
+                <div class="card-body">
+                  <form [formGroup]="manInfo" id="formAccountSettings">
+                    
+                    <div class="row">
+  
+                      <mat-form-field class="mb-3 col-md-6">
+                        <label for="firstName" class="form-label">First Name</label>
+                        <input  type="text" matInput formControlName="fname" placeholder="Ahmed">
+                      </mat-form-field>
+  
+                      <mat-form-field class="mb-3 col-md-6">
+                        <label for="lastName" class="form-label">Last Name</label>
+                        <input type="text" matInput formControlName="lname" placeholder="Ahmed">
+                      </mat-form-field>
+                      
+                      <mat-form-field class="mb-3 col-md-6">
+                        <label for="email" class="form-label">E-mail</label>
+                        <input type="email" matInput formControlName="email" placeholder="john.doe@example.com">
+                      </mat-form-field>                   
+                    
+                      <mat-form-field class="mb-3 col-md-6">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" matInput formControlName="password" >
+                      </mat-form-field>                        
+                  
+  
+                      <mat-form-field class="mb-3 col-md-6">
+                        <label class="form-label" for="phoneNumber">Phone Number</label>
+                        <input type="number" matInput formControlName="phonenumber" placeholder="07xxxxxxxx">                                      
+                      </mat-form-field>  
+  
+                      <mat-form-field class="mb-3 col-md-6">
+                        <label for="address" class="form-label">Address</label>
+                        <input type="text" matInput formControlName="address" placeholder="irbid">                                      
+                      </mat-form-field>  
+  
+                      <mat-form-field class="mb-3 col-md-6">
+                        <label for="state" class="form-label">Salary</label>
+                        <input type="number" matInput formControlName="salary" placeholder="1000">                                      
+                      </mat-form-field>  
+                    
+  
+  
+                      <mat-form-field class="mb-3 col-md-6">
+                        <label for="zipCode" class="form-label">SNN number</label>
+                        <input type="number" matInput formControlName="ssn" placeholder="12345">
+                      </mat-form-field>
+  
+                      
+                      <mat-form-field class="mb-3 col-md-6">
+                        <label for="state" class="form-label">Role</label>
+                        <input matInput formControlName="rolename" class="form-control" type="text" id="itrw" name="role" placeholder="California" >
+  
+                        
+                      </mat-form-field>
+                      
+                      
+                      <mat-form-field class="mb-3 col-md-6">
+                        <label for="zipCode" class="form-label">Bank ID</label>
+                        <input type="number" matInput formControlName="bankinfoid" placeholder="12345">
+                      </mat-form-field>
+                  
+                                       
+                    </div>
+                    <div class="mt-2">
+                      <button type="submit" class="btn btn-primary me-2" (click)="UpdateProf()" [disabled]="manInfo.invalid"  >Save Changes</button>                     
+                    </div>
+                    <div class="demo-inline-spacing">                        
+                        <button style="position: absolute; top: 0px; right:0px;" type="button" onclick="history.back(-1)"
+                          routerLinkActive="active" class="btn rounded-pill btn-info">Back</button>
+                      </div>
+                  </form>
+                <!-- /Account -->
+              </div>              
+            </div>
+          </div>
+  
+        </div>   
+     </div>
+  
+    </div>
+    </div>
+    </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <!-- <div class="layout-wrapper layout-content-navbar">
+    <div class="layout-container">
+  
+      <app-manager-side-bar></app-manager-side-bar>
+  
+  
+      <div class="layout-page">
+  
+        <app-dash-header>
+        </app-dash-header>
+  
+        <div class="content-wrapper">
+  
+  
+          <div class="container-xxl flex-grow-1 container-p-y">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="card mb-4">
+                  <h5 class="card-header">Profile Details</h5>
+  
+                  <div class="card-body">
+  
+                    <div class="d-flex align-items-start align-items-sm-center gap-4">
+  
+                      <img *ngIf="true" _ngcontent-fnq-c20="" src="/assets/Documents/UserDefaultImage.png" alt="" class="img-fluid w-100" style="max-height: 350px; max-width: 350px;">
+  
+                      <img *ngIf="false" _ngcontent-fnq-c20="" [src]="'/assets/Documents/'+emp[0].imagefilename" alt="" class="img-fluid w-100" style="max-height: 350px; max-width: 350px;">
+                      
+                      <div class="button-wrapper">
+                        <label for="upload" class="btn btn-primary me-2 mb-4" tabindex="0">
+                          <span class="d-none d-sm-block">Upload new photo</span>
+                          <i class="bx bx-upload d-block d-sm-none"></i>
+                          <input type="file" #file id="upload" class="account-file-input" hidden="" (change)="UploadPhoto(file)" accept="image/png, image/jpeg">
+                        </label>
+                        <p class="text-muted mb-0">Allowed JPG, GIF or PNG. Max size of 800K</p>
+                      </div>
+                    </div>
+                  </div>
+                  <hr class="my-0">
+                  <div class="card-body">
+                    <form id="formAccountSettings" method="POST" onsubmit="return false">
+                      <div class="row">
+                        <div class="mb-3 col-md-6">
+                          <label for="firstName" class="form-label">First Name</label>
+                          <input disabled="" class="form-control" type="text" id="firstName" name="firstName"
+                            autofocus=""  [value]="this.man.ManagerProfile.fname">
+                        </div>
+                        <div class="mb-3 col-md-6">
+                          <label for="lastName" class="form-label">Last Name</label>
+                          <input disabled="" class="form-control" type="text" name="lastName" id="lastName" [value]="this.man.ManagerProfile.lname">
+                        </div>
+                        <div class="mb-3 col-md-6">
+                          <label for="email" class="form-label">E-mail</label>
+                          <input disabled="" class="form-control" type="text" id="email" name="email"
+                            placeholder="john.doe@example.com" [value]="this.man.ManagerProfile.email">
+                        </div>
+                        <div class="mb-3 col-md-6">
+                          <label for="organization" class="form-label">Password</label>
+                          <input type="password" class="form-control" id="Password" name="Password" [value]="this.man.ManagerProfile.password">
+                        </div>
+                        <div class="mb-3 col-md-6">
+                          <label class="form-label" for="phoneNumber">Phone Number</label>
+                          <input type="number" class="form-control" id="Passwo" name="phoneNumber" 
+                          placeholder="788253988" [value]="this.man.ManagerProfile.phonenumber">
+                        </div>
+                        <div class="mb-3 col-md-6">
+                          <label for="address" class="form-label">Address</label>
+                          <input type="text" class="form-control" id="address" name="address" placeholder="Address" [value]="this.man.ManagerProfile.address">
+                        </div>
+                        <div class="mb-3 col-md-6">
+                          <label for="state" class="form-label">Salary</label>
+                          <input disabled="" class="form-control" type="text" id="state" name="salary"
+                            placeholder="California" [value]="this.man.ManagerProfile.salary">
+                        </div>
+                        <div class="mb-3 col-md-6">
+                          <label for="zipCode" class="form-label">SNN number</label>
+                          <input disabled="" type="text" class="form-control" id="zipCode" name="zipCode"
+                            placeholder="231465" maxlength="6" [value]="this.man.ManagerProfile.ssn">
+                        </div>
+                        <div class="mb-3 col-md-6">
+                          <label for="state" class="form-label">Role</label>
+                          <input disabled="" class="form-control" type="text" id="itrw" name="role"
+                            placeholder="California" [value]="this.man.ManagerProfile.role">
+                        </div>
+                        <div class="mb-3 col-md-6">
+                          <label for="language" class="form-label">Department</label>
+                          <input disabled="" class="form-control" type="text" id="itrwww" name="Department"
+                            placeholder="Java" [value]="this.man.ManagerProfile.departmentname">
+                        </div>
+                        <div class="mb-3 col-md-6">
+                          <label for="zipCode" class="form-label">Bank ID</label>
+                          <input disabled="" type="text" class="form-control" id="zipCode" name="zipCode"
+                            placeholder="231465" maxlength="6" [value]="this.man.ManagerProfile.bankinfoid">
+                        </div>
+                      </div>
+                      <div class="mt-2">
+                        <button type="submit" class="btn btn-primary me-2">Save changes</button>
+                      </div>
+                      <div class="demo-inline-spacing">
+                        <button style="position: absolute; top: 0px; right:0px;" type="button" onclick="history.back(-1)"
+                          routerLinkActive="active" class="btn rounded-pill btn-info">Back</button>
+                      </div>
+                    </form>
+                  </div>
+                 
+                </div>
+              </div>
+            </div>
+  
+          </div>
+        </div>
+  
+      </div>
+    </div>
+  </div> -->
