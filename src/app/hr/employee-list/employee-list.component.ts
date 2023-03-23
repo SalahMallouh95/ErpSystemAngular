@@ -19,10 +19,8 @@ export class EmployeeListComponent implements OnInit {
   user: any = {}
 
   async ngOnInit() {
-    this.user.userid=this.auth.systemUserInfo.userid
-    await this.hrService.GetAllEmployee();
-    this.hrService.allEmp = this.hrService.allEmp.filter((e: any) => e.userid != 3)    
-    
+     await this.hrService.GetAllEmployee();
+    this.hrService.allEmp = this.hrService.allEmp.filter((e: any) => e.userid != this.auth.systemUserInfo.userid)  
 
   }
 

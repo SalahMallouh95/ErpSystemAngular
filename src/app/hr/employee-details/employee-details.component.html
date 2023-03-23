@@ -118,6 +118,7 @@
                         <label for="language" *ngIf="this.hrservice.empInfo" class="form-label">Department</label>
                         <select id="language" *ngIf="this.hrservice.empInfo.roleid!=2" formControlName="departmentid"
                           class="select2 form-select">
+                          <option value="">No Department</option>
                           <option *ngFor="let item of this.hrservice.allDep" [ngValue]="item.departmentid">
                             {{item.departmentname}}</option>
                         </select>
