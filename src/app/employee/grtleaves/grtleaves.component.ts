@@ -5,6 +5,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { LeavedetailComponent } from '../leavedetail/leavedetail.component';
 import { HrService } from 'src/app/hr.service';
+import { AuthService } from 'src/app/auth.service';
 
 @Component({
   selector: 'app-grtleaves',
@@ -16,12 +17,12 @@ export class GrtleavesComponent implements OnInit {
   @ViewChild('CreateForm') Create: any
   @ViewChild('UpdateForm') Update: any
   @ViewChild('DeleteForm') Delete: any
-  constructor(public employeeService: EmployeeService, private router: Router, public dialog: MatDialog, public hrService: HrService) {
+  constructor(public employeeService: EmployeeService, private router: Router, public dialog: MatDialog, public hrService: HrService,private auth:AuthService) {
 
   }
 
   ngOnInit(): void {
-    this.leaves.userid = 1;
+    this.leaves.userid = this.auth.systemUserInfo.userid;
     this.employeeService.GetAllleave(this.leaves);
     this.hrService.GetAllLeaveTypes();
     this.hrService.documentName={}
@@ -50,7 +51,7 @@ export class GrtleavesComponent implements OnInit {
     })
   }
   async Search() {
-    this.range.value.userid = 1
+    this.range.value.userid = this.auth.systemUserInfo.userid
     await this.employeeService.Search(this.range.value)
     console.log(this.employeeService.allleaves)
   }
@@ -65,7 +66,7 @@ export class GrtleavesComponent implements OnInit {
       documentfilename: new FormControl()
     })
   async CreateLeave() {
-    this.CreateLeaveForm.value.userid = 1
+    this.CreateLeaveForm.value.userid =this.auth.systemUserInfo.userid
     await this.employeeService.CreateLeave(this.CreateLeaveForm.value)
     this.employeeService.GetAllleave(this.leaves)
     console.log(this.CreateLeaveForm.value)
@@ -102,7 +103,7 @@ export class GrtleavesComponent implements OnInit {
   async UpdateLeave() {
     if(this.hrService.documentName.imagefilename!=null && this.hrService.documentName.imagefilename!=undefined && this.hrService.documentName.imagefilename!='')
     this.employeeService.leave.documentfilename = this.hrService.documentName.imagefilename
-    this.CreateLeaveForm.value.userid = 1
+    this.CreateLeaveForm.value.userid = this.auth.systemUserInfo.userid
     console.log(this.CreateLeaveForm.value);
     await this.employeeService.UpdateLeave(this.CreateLeaveForm.value)
     this.employeeService.GetAllleave(this.leaves)

@@ -47,6 +47,7 @@ const routes: Routes = [
     path:'updateprofile',
     component:UpdateprofileComponent
   }
+  
 ];
 
 @NgModule({

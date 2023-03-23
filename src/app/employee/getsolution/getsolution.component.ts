@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth.service';
 import { EmployeeService } from 'src/app/employee.service';
 import { HrService } from 'src/app/hr.service';
 import { SolutindetailComponent } from '../solutindetail/solutindetail.component';
@@ -15,7 +16,7 @@ export class GetsolutionComponent {
   @ViewChild('CreateForm') Create: any
   @ViewChild('UpdateForm') Update: any
   @ViewChild('DeleteForm') Delete: any
-  constructor(public employeeService:EmployeeService,private router:Router,public dialog: MatDialog,public hrService: HrService){
+  constructor(public employeeService:EmployeeService,private router:Router,public dialog: MatDialog,public hrService: HrService,private auth:AuthService){
 
   }
   ngOnInit(): void {
