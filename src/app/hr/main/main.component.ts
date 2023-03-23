@@ -17,7 +17,7 @@ export class MainComponent {
     userData.roleid=parseInt (userData.roleid)        
     delete userData.exp          
     await this.hrService.GetEmpInfo(userData)
-    this.auth.systemUserInfo=this.hrService.empInfo
+    this.auth.systemUserInfo=this.hrService.empInfo    
     localStorage.setItem('fullUserInfo',JSON.stringify(this.hrService.empInfo)) 
            
   }

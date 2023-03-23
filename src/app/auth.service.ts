@@ -10,6 +10,7 @@ import { HrService } from './hr.service';
   providedIn: 'root'
 })
 export class AuthService {
+  
   systemUserInfo:any
 
 
@@ -49,10 +50,6 @@ export class AuthService {
             {
               this.route.navigate(["Employee/"])
             }
-
-
-
-
             resolve()
           },
           error: (ee) => {
