@@ -13,6 +13,7 @@ import { EmployeeAddComponent } from './employee-add/employee-add.component';
 import { EmployeeDetailsComponent } from './employee-details/employee-details.component';
 import { EmployeeListComponent } from './employee-list/employee-list.component';
 import { HomeManageComponent } from './home-manage/home-manage.component';
+import { HrMyAttendanceComponent } from './hr-my-attendance/hr-my-attendance.component';
 import { LeaveDetailsComponent } from './leave-details/leave-details.component';
 import { LeaveTypesCreateComponent } from './leave-types-create/leave-types-create.component';
 import { LeaveTypesEditComponent } from './leave-types-edit/leave-types-edit.component';
@@ -20,6 +21,7 @@ import { LeaveTypesComponent } from './leave-types/leave-types.component';
 import { MainComponent } from './main/main.component';
 import { OurServiceComponent } from './our-service/our-service.component';
 import { PayoutComponent } from './payout/payout.component';
+import { SalaryPaymentComponent } from './salary-payment/salary-payment.component';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
 
 const routes: Routes = [
@@ -100,6 +102,14 @@ const routes: Routes = [
   {
     path: 'Payout',
     component: PayoutComponent
+  },
+  {
+    path: 'Payment',
+    component: SalaryPaymentComponent
+  },
+  {
+    path: 'attendance',
+    component: HrMyAttendanceComponent
   }
 ];
 
