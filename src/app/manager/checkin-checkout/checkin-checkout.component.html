@@ -1,33 +1,27 @@
 <div class="layout-wrapper layout-content-navbar">
     <div class="layout-container">
-      <!-- Menu -->
+   
       <app-manager-side-bar></app-manager-side-bar>
-     <!-- / Menu -->
-      <!-- Layout container -->
+     
       <div class="layout-page">
-        <!-- Navbar -->
+
         <app-dash-header></app-dash-header>
-        <!-- / Navbar -->
-        <!-- Content wrapper -->
+
         <div class="content-wrapper">
           <!-- Content -->
-          <div class="container-xxl flex-grow-1 container-p-y">
+          <div class="container-xxl flex-grow-1 container-p-y" style="padding-top: 1.625rem !important;">
            
-             <div class="card-header d-flex justify-content-between align-items-center">
+             <div class="card-header d-flex justify-content-between align-items-center" style="padding: 0rem 1.5rem">
               <!-- <div class="row mb-10">
                 <div class="col-md-6 col-xl-4"> -->
-                  <div class="card mb-5">
-                    <div class="card-body">
-                      <input class="btn" type="button" value="CheckIn"  [disabled]="this.man.ManagerProfile.state==1" (click)="checkin()">
-                      <input class="btn" type="button" value="CheckOut"  [disabled]="this.man.ManagerProfile.state==0" (click)="checkOut()">
-                    </div>
-                  </div>
              </div>      
           <div class="row">
-          <div class="card">
-           <div class="table-responsive text-nowrap" >
+          <div class="card  wow slideInUp" style="visibility: visible; animation-delay: 0.1s; animation-name: slideInUp;">
+           <div class="table-responsive text-nowrap " >
             <h4 class="fw-bold py-3 mb-4">Attendance</h4>
-               <table class="table table-hover wow slideInUp m-1"
+            <input style="background-color: #04e104f0;color: white; position: absolute; top: 10px; right:125px;" class="btn m-1" type="button" value="CheckIn"  [disabled]="this.man.ManagerProfile.state ==1" (click)="checkin()">
+            <input style="background-color: #e30404f0;color: white; position: absolute; top: 15px; right:15px;" class="btn" type="button" value="CheckOut"  [disabled]="this.man.ManagerProfile.state ==0" (click)="checkOut()">
+               <table class="table table-hover wow slideInUp m-1 col-10"
                style="visibility: visible; animation-delay: 0.3s; animation-name: slideInUp;">
                    <thead >
                        <tr style="background-color: #696cff66;">
@@ -54,13 +48,13 @@
           <!-- / Footer -->
           <div class="content-backdrop fade"></div>
         </div>
-        <!-- Content wrapper -->
+       
       </div>
-      <!-- / Layout page -->
+      
     </div>
   
-    <!-- Overlay -->
+    
     <div class="layout-overlay layout-menu-toggle"></div>
   
-  <!-- / Layout wrapper -->
+
   
