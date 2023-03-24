@@ -35,11 +35,11 @@
 
 
           </div>
-          <div class="table-responsive text-nowrap">
-            <table class="table wow slideInUp table-hover table-striped table-bordered"  cellspacing="0"
-               datatable [dtOptions]="this.hrService.dtOptions"  [dtTrigger]="this.hrService.dtTrigger"
-              
-              style="visibility: visible; animation-delay: 0.3s; animation-name: slideInUp;">
+          <!-- <div class="table-responsive text-nowrap">          </div> -->
+
+            <table class="table table-hover table-striped table-bordered"  cellspacing="0"
+               datatable [dtOptions]="this.hrService.dtOptions"  [dtTrigger]="this.hrService.dtTrigger"             
+              >
               <thead>
                 <tr style="background-color: #696cff66;">
                   <th>ssn</th>
@@ -68,7 +68,6 @@
               </tbody>
               <tfoot></tfoot>
             </table>
-          </div>
         </div>
       </div>
       <!--/ Basic Bootstrap Table -->

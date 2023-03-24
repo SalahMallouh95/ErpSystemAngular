@@ -17,17 +17,14 @@ export class PayoutComponent {
 
   }
 
-  async ngOnInit() {
+   ngOnInit() {
 
-    await this.hrService.GetPayout(this.range.value)
+    this.hrService.GetPayout(this.range.value)
     this.hrService.dtOptions = {
       // Declare the use of the extension in the dom parameter   
       dom: 'Bfrtip',
       // Configure the buttons  
-      buttons: ['columnsToggle', 'colvis', 'copy', 'print', 'excel', 'csv', 'pdf',
-        {
-          text: 'Some button', key: '1', action: function (e: any, dt: any, node: any, config: any) { alert('Button activated'); }
-        }]
+      buttons: ['print', 'excel', 'pdf']
     };
   }
 
