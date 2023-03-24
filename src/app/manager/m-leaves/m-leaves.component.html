@@ -13,12 +13,21 @@
                 <h4 class="fw-bold py-3 mb-4">My Leaves</h4>
 
                 <div class="card">
+
+                    <div class="demo-inline-spacing">
+                        <button style="position: absolute; top: 0px; right:100px;" type="button"
+                            class="btn rounded-pill btn-success"[routerLink]="['/Manager/CreateLeave']">ADD Leave</button>
+                        </div>
+
                     <div class="table-responsive text-nowrap">
+
+                       
+ <br><br><br><br><br>
                         <table class="table table-hover wow slideInUp"
                         style="visibility: visible; animation-delay: 0.3s; animation-name: slideInUp;">
                             <thead >
                                 <tr style="background-color: #696cff66;">
-                                    <th>Leave Id</th>
+                                    
                                     <th>Start Date</th>
                                     <th>End Date</th>
                                     <th>Status</th>
@@ -29,18 +38,18 @@
                             </thead>
                             <tbody class="table-border-bottom-0">
                                 <tr *ngFor="let emp of this.managerserv.MyLeaves">
-                                    <td>{{emp.leaveid}}</td>
+                                    
                                     <td>{{emp.startdate}}</td>
                                     <td>{{emp.enddate}}</td>
         
                                     <td>
                                         <div [ngSwitch]="emp.state">
                                                 <div *ngSwitchCase="2">
-                                                    <span class="badge bg-label-success me-1">Pending</span>
+                                                    <span class="badge bg-label-warning me-1">Pending</span>
                                                 </div>
 
                                                 <div *ngSwitchCase="1">
-                                                    <span class="badge bg-label-danger me-1">Accepted</span>
+                                                    <span class="badge bg-label-success me-1">Accepted</span>
                                                 </div>
 
                                                 <div *ngSwitchCase="0">
@@ -51,6 +60,7 @@
                                     
                                     <td>
                                         <a  (click)="SendSelectorMyLeaveId(emp.leaveid)" class="btn btn-outline-info">More Info</a>
+                                        
                                     </td>
 
                                 </tr>

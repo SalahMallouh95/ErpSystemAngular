@@ -14,7 +14,7 @@ export class AllEmployeesComponent {
 
   }
 
-user : any = {}
+user : any = { "userid": null }
 id : number = this.auth.systemUserInfo.userid
 
 

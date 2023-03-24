@@ -12,43 +12,43 @@ import { ManagerService } from 'src/app/manager.service';
 })
 export class MUpdateProfileComponent {
 
-  constructor(public man : ManagerService, public hr : HrService,private auth : AuthService){
+  constructor(public man: ManagerService, public hr: HrService, private auth: AuthService) {
 
 
   }
 
   manInfo = new FormGroup({
 
-    userid : new FormControl(),
-    fname : new FormControl({ value: '',disabled: true}, Validators.required),
-    lname : new FormControl({value: '', disabled: true}, Validators.required),
-    password : new FormControl(),
-    phonenumber : new FormControl(),
-    address : new FormControl(),
-    imagefilename : new FormControl(),
-    salary : new FormControl({value: '', disabled: true}, Validators.required),
-    bankinfoid : new FormControl({value: '', disabled: true}, Validators.required),
-    email : new FormControl({value: '', disabled: true}, Validators.required),
-    ssn : new FormControl({value: '', disabled: true}, Validators.required),
-    rolename :  new FormControl({value: '', disabled: true}, Validators.required)
-    
+    userid: new FormControl(),
+    fname: new FormControl({ value: '', disabled: true }, Validators.required),
+    lname: new FormControl({ value: '', disabled: true }, Validators.required),
+    password: new FormControl(),
+    phonenumber: new FormControl(),
+    address: new FormControl(),
+    imagefilename: new FormControl(),
+    salary: new FormControl({ value: '', disabled: true }, Validators.required),
+    bankinfoid: new FormControl({ value: '', disabled: true }, Validators.required),
+    email: new FormControl({ value: '', disabled: true }, Validators.required),
+    ssn: new FormControl({ value: '', disabled: true }, Validators.required),
+    rolename: new FormControl({ value: '', disabled: true }, Validators.required)
+
   })
 
 
 
-  emp : any = {}
-  id: number = this.auth.systemUserInfo.userid
+  emp: any = { "userid": null }
 
-  ngOnInit(){
+  ngOnInit() {
 
-    this.emp.userid = this.id
+    let data = JSON.parse(localStorage.getItem("fullUserInfo") + '')
+    this.emp.userid = this.auth.systemUserInfo.userid
     this.man.GetManagerPrifile(this.emp)
     this.manInfo.patchValue(this.man.ManagerProfile)
-    
+
   }
 
 
-  async UploadPhoto(file : any){
+  async UploadPhoto(file: any) {
     let formData = new FormData()
     console.log(file);
     formData.append('file', file.files[0])
@@ -56,12 +56,12 @@ export class MUpdateProfileComponent {
     this.manInfo.value.imagefilename = this.hr.documentName.imagefilename
   }
 
-  async UpdateProf(){
+  async UpdateProf() {
     await this.man.Updateprofile(this.manInfo.value)
     console.log(this.manInfo.value);
     this.man.GetManagerPrifile(this.emp)
-    
-    
+
+
   }
 
 }
