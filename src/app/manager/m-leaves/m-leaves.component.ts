@@ -4,6 +4,7 @@ import { ManagerService } from 'src/app/manager.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MMyLeaveDetailsComponent } from '../m-my-leave-details/m-my-leave-details.component';
 import { AuthService } from 'src/app/auth.service';
+import { EmployeeService } from 'src/app/employee.service';
 
 
 @Component({
@@ -13,16 +14,16 @@ import { AuthService } from 'src/app/auth.service';
 })
 export class MLeavesComponent {
 
-  constructor(public managerserv : ManagerService , private route : Router,public dialog : MatDialog,private auth : AuthService){
+  constructor(public employeeService: EmployeeService,public managerserv : ManagerService , private route : Router,public dialog : MatDialog,private auth : AuthService){
 
   }
 
   managerLeaves : any = {}
   id : number =this.auth.systemUserInfo.userid
   
-  ngOnInit()  {
+  async ngOnInit()  {
     this.managerLeaves.userid = this.id
-    this.managerserv.GetMyLeaves(this.managerLeaves)
+   await this.managerserv.GetMyLeaves(this.managerLeaves)
   }
 
   async SendSelectorMyLeaveId(id : any){
@@ -36,6 +37,11 @@ export class MLeavesComponent {
 
   OpenMoreInfoDialog(){
     this.dialog.open(MMyLeaveDetailsComponent)
+  }
+
+  async DeleteLeave() {
+    await this.employeeService.DeleteLeave(this.employeeService.leave.leaveid)
+    this.employeeService.GetAllleave( this.managerLeaves)
   }
 
 }
