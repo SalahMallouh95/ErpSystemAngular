@@ -17,8 +17,8 @@ export class UpdateProfileComponent {
        }
 
        async ngOnInit(){
-        let data=JSON.parse(localStorage.getItem("fullUserInfo")+'')
-        this.user.userid= this.auth.systemUserInfo.userid              
+        let data=JSON.parse(localStorage.getItem("userInfo")+'')
+        this.user.userid= parseInt(data.userid)             
         await this.hrService.GetEmpInfo(this.user)        
          this.hrService.GetAllDepartment()
          this.hrService.GetAllRole()       
