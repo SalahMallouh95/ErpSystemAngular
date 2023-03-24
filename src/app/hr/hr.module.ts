@@ -24,6 +24,9 @@ import { UpdateProfileComponent } from './update-profile/update-profile.componen
 import { PayoutComponent } from './payout/payout.component';
 import { HrMyAttendanceComponent } from './hr-my-attendance/hr-my-attendance.component';
 import { SalaryPaymentComponent } from './salary-payment/salary-payment.component';
+import * as CanvasJSAngularChart from '../../assets/canvasjs.angular.component';
+var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
+
 
 
 @NgModule({
@@ -48,7 +51,8 @@ import { SalaryPaymentComponent } from './salary-payment/salary-payment.componen
     UpdateProfileComponent,
     PayoutComponent,
     HrMyAttendanceComponent,
-    SalaryPaymentComponent
+    SalaryPaymentComponent,
+    CanvasJSChart
   ],
   imports: [
     CommonModule,

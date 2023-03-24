@@ -104,9 +104,9 @@
                         </mat-error>
                       </div>
 
-                      <div class="mb-3 col-md-6">
+                      <div class="mb-3 col-md-6" [hidden]="hrservice.empInfo.roleid==1">
                         <label class="form-label" for="Role">Role</label>
-                        <select formControlName="roleid" id="Role" class="select2 form-select">
+                        <select  formControlName="roleid" id="Role" class="select2 form-select">
                           <option  [disabled]="this.depcount!=null" *ngFor="let item of this.hrservice.allRole" [ngValue]="item.roleid">{{item.rolename}}
                           </option>
                         </select>
@@ -114,15 +114,15 @@
                           Please select a role
                         </mat-error>
                       </div>
-                      <div class="mb-3 col-md-6">
+                      <div class="mb-3 col-md-6" [hidden]="hrservice.empInfo.roleid==1">
                         <label for="language" *ngIf="this.hrservice.empInfo" class="form-label">Department</label>
-                        <select id="language" *ngIf="this.hrservice.empInfo.roleid!=2" formControlName="departmentid"
+                        <select id="language"  *ngIf="this.hrservice.empInfo.roleid!=2" formControlName="departmentid"
                           class="select2 form-select">
-                          <option value="">No Department</option>
-                          <option *ngFor="let item of this.hrservice.allDep" [ngValue]="item.departmentid">
+                          <option  value="">No Department</option>
+                          <option  *ngFor="let item of this.hrservice.allDep" [ngValue]="item.departmentid">
                             {{item.departmentname}}</option>
                         </select>
-                        <select id="language" *ngIf="this.hrservice.empInfo.roleid==2" formControlName="departmentid"
+                        <select id="language"  *ngIf="this.hrservice.empInfo.roleid==2" formControlName="departmentid"
                           class="select2 form-select">
                           <option [disabled]="true" *ngFor="let item of this.hrservice.allDep"
                             [ngValue]="item.departmentid">{{item.departmentname}}</option>
@@ -133,7 +133,7 @@
                       </div>
 
                       <div class="mb-3 col-md-6">
-                        <label class="form-label">Bank ID</label>
+                        <label class="form-label">Bank Iban</label>
                         <input matInput type="number" class="form-control" formControlName="bankinfoid"
                           placeholder="231465" maxlength="6">
                         <mat-error *ngIf="empInfoForm.controls['bankinfoid'].hasError('required')">

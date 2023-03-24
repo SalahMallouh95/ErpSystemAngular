@@ -14,6 +14,7 @@ export class MainComponent {
   empOfCount:any
   manCount:any
   DepCount:any
+  x:any=[]
 
   constructor(public hrService:HrService,private auth:AuthService)
   {
@@ -34,7 +35,62 @@ export class MainComponent {
     this.empOfCount=this.hrService.allEmp.filter((e:any)=>e.state==0).length
     this.manCount=this.hrService.allEmp.filter((e:any)=>e.roleid==2).length
     this.DepCount=this.hrService.allDep.length
-
+   
+    this.CreateChartData()
             
   }
+
+
+  async CreateChartData(){
+    let pay:any={}
+    await this.hrService.GetPayout(pay)
+    console.log(this.hrService.allPayout);
+    
+    for (let i = 1; i <= 12; i++) {
+      let total = 0;
+      if (this.hrService.allPayout.some((x: { receiveddate: { getMonth: () => number; }; }) => x.receiveddate?.getMonth() + 1 === i)) {
+        var dt=new Date()
+        total = this.hrService.allPayout
+          .filter((x: { receiveddate: { getMonth: () => number; }; }) => x.receiveddate?.getMonth() + 1 === i)
+          .reduce((acc: any, curr: { Profit: any; }) => acc + curr.Profit, 0);
+      }
+      this.x.push({ x: new Date(2023, i, 1), y: total});    }
+      console.log(this.x);
+      
+    
+  
+    
+  }
+
+  
+  
+ 
+  chart: any;
+	
+	chartOptions = {
+		theme: "light2",
+		animationEnabled: true,
+		zoomEnabled: true,
+		title: {
+			text: "Paid Salary for this year"
+		},
+		axisY: {
+			labelFormatter: (e: any) => {
+				var suffixes = ["", "K", "M", "B", "T"];
+ 
+				var order = Math.max(Math.floor(Math.log(e.value) / Math.log(1000)), 0);
+				if(order > suffixes.length - 1)
+					order = suffixes.length - 1;
+ 
+				var suffix = suffixes[order];
+				return "$" + (e.value / Math.pow(1000, order)) + suffix;
+			}
+		},
+		data: [{
+			type: "line",
+			xValueFormatString: "MMM",
+			yValueFormatString: "$#,###.##",
+			dataPoints: this.x
+		}]
+	}
 }

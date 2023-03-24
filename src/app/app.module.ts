@@ -17,10 +17,13 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { DataTablesModule } from "angular-datatables";
 
 
+ 
+
 
 @NgModule({
   declarations: [
     AppComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -48,7 +51,8 @@ import { DataTablesModule } from "angular-datatables";
     MatTableModule,
     MatFormFieldModule,
     MatInputModule,
-    MatDialogModule
+    MatDialogModule,
+    
   ],
   schemas:[
     CUSTOM_ELEMENTS_SCHEMA

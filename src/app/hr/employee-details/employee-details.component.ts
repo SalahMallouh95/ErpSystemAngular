@@ -47,7 +47,6 @@ export class EmployeeDetailsComponent implements OnInit {
     this.hrservice.documentName.imagefilename=null
     this.hrservice.GetAllDepartment()    
     this.depcount=this.hrservice.allDep.find((e:any)=>e.userid==this.empInfoForm.value.userid)
-    console.log(this.depcount);
     
 
   }
@@ -61,7 +60,6 @@ export class EmployeeDetailsComponent implements OnInit {
   async UpdateProfile() {
     if(this.hrservice.documentName.imagefilename!=null && this.hrservice.documentName.imagefilename!=undefined && this.hrservice.documentName.imagefilename!='')
     this.empInfoForm.value.imagefilename = this.hrservice.documentName.imagefilename
-    console.log(this.empInfoForm.value);    
     await this.hrservice.UpdateEmpProfile(this.empInfoForm.value)
     this.hrservice.documentName.imagefilename
      this.hrservice.GetEmpInfo(this.hrservice.empInfo)

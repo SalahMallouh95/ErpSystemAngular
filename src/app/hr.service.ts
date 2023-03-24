@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, ViewChild } from '@angular/core';
+import { DataTableDirective } from 'angular-datatables';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
+import { Subject } from 'rxjs';
 
 
 @Injectable({
@@ -13,19 +15,19 @@ export class HrService {
 
   }
 
-//arrays
+  //arrays
   allEmp: any = []
   allDep: any = []
   allRole: any = []
   allLeaves: any = []
   allLeaveTypes: any = []
   allHome: any = []
-  contactMessages:any
-  allService:any
-  allPayout:any
+  contactMessages: any
+  allService: any
+  allPayout: any
 
 
-//object's
+  //object's
   empInfo: any
   leaveInfo: any
   depInfo: any
@@ -33,8 +35,8 @@ export class HrService {
   leaveTypeInfo: any
   homeInfo: any
   homeAbout: any
-  contactMessageInfo:any
-  serviceInfo:any|undefined
+  contactMessageInfo: any
+  serviceInfo: any | undefined
 
   // ---------------------- Employee --------------------------
 
@@ -631,7 +633,7 @@ export class HrService {
     })
   }
 
-  SendMessageContactUs(message:any){
+  SendMessageContactUs(message: any) {
     return new Promise<void>((resolve, reject) => {
       this.spinner.show()
       this.http.post("https://localhost:44388/api/User/sendMessage", message).subscribe(
@@ -676,8 +678,8 @@ export class HrService {
       this.spinner.hide();
     })
   }
-  DeleteConatctMessage(id:number){
-    
+  DeleteConatctMessage(id: number) {
+
     return new Promise<void>((resolve, reject) => {
       this.spinner.show()
       this.http.delete("https://localhost:44388/api/User/DeleteMessage?id=" + id).subscribe(
@@ -794,24 +796,37 @@ export class HrService {
     })
   }
 
-//-------------- Payment -----------------
-async GetPayout(payout:any) {
-  this.spinner.show();
-  return new Promise<void>((resolve, reject) => {
-    this.http.post("https://localhost:44388/api/Hr/getpayout",payout).subscribe(
-      {
-        next: (res) => {
-          this.allPayout = res
-          resolve()
-        },
-        error: (ee) => {
-          console.log(ee)
-          reject()
+  //-------------- Payment -----------------
+  async GetPayout(payout: any) {
+    this.spinner.show();
+    return new Promise<void>((resolve, reject) => {
+      this.http.post("https://localhost:44388/api/Hr/getpayout", payout).subscribe(
+        {
+          next: (res) => {
+            this.allPayout = res
+            resolve()
+            this.dtTrigger.next(0);
+          },
+          error: (ee) => {
+            console.log(ee)
+            reject()
+          }
         }
-      }
-    )
-    this.spinner.hide();
-  })
+      )
+      this.spinner.hide();
+    })
 
-}
+  }
+  @ViewChild(DataTableDirective) dtElement!: DataTableDirective;
+  dtOptions: DataTables.Settings | any = {};
+  dtTrigger: Subject<any> = new Subject();
+  rerender(): void {
+    this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
+      // Destroy the table first     
+      dtInstance.destroy();
+      // Call the dtTrigger to rerender again     
+      this.dtTrigger.next(0);
+    });
+  }
+
 }
