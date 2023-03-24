@@ -19,7 +19,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
 import {MatCardModule} from '@angular/material/card';
 import { AttendanceComponent } from './attendance/attendance.component';
-
+import { DataTablesModule } from 'angular-datatables';
 
 
 
@@ -47,6 +47,7 @@ import { AttendanceComponent } from './attendance/attendance.component';
     MatDialogModule,
     MatSelectModule,
     MatCardModule,
+    DataTablesModule
   ],
   exports:[
     HomeFooterComponent,
@@ -68,6 +69,7 @@ import { AttendanceComponent } from './attendance/attendance.component';
     MatDialogModule,
     MatSelectModule,
     MatCardModule,
+    DataTablesModule
   ]
 })
 export class SharedModule { }

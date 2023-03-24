@@ -17,11 +17,28 @@ export class EmployeeListComponent implements OnInit {
 
   }
   user: any = {}
+  ssn:number|undefined
+  emplist:any
 
   async ngOnInit() {
+     let data=JSON.parse(localStorage.getItem("userInfo")+'')
+     data.userid= parseInt(data.userid)   
      await this.hrService.GetAllEmployee();
-    this.hrService.allEmp = this.hrService.allEmp.filter((e: any) => e.userid != this.auth.systemUserInfo.userid)  
+     this.emplist = this.hrService.allEmp.filter((e: any) => e.userid != data.userid)  
+     
 
+  }
+
+  FiliterByssn(){
+    if(this.ssn==null)
+    {
+      this.emplist = this.hrService.allEmp.filter((e: any) => e.userid != this.auth.systemUserInfo.userid) 
+    }
+    else
+    {
+      this.emplist = this.hrService.allEmp.filter((e: any) => e.ssn == this.ssn) 
+    }
+    
   }
 
   async GetValues(id: any) {
