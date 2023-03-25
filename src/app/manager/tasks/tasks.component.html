@@ -62,20 +62,19 @@
 
                                             <td>
                                                 <a *ngIf=" item.documentfilename !==null" class="card-link"
-                                                    target="_blank"
-                                                    [href]="'../../../assets/Documents/'+item.documentfilename">Download
+                                                    target="_blank" download [href]="'../../../assets/Documents/'+item.documentfilename">Download
                                                     File</a>
                                             </td>
                                             <td>
                                                 <div [ngSwitch]="item.state">
                                                     <div *ngSwitchCase="2">
-                                                        <span class="badge bg-label-warning me-1">Done</span>
+                                                        <span class="badge bg-label-danger me-1">Done</span>
                                                     </div>
                                                     <div *ngSwitchCase="1">
                                                         <span class="badge bg-label-success me-1">Pending</span>
                                                     </div>
                                                     <div *ngSwitchCase="0">
-                                                        <span class="badge bg-label-danger me-1">Submitted</span>
+                                                        <span class="badge bg-label-warning me-1">Submitted</span>
                                                     </div>
                                                 </div>
                                             </td>

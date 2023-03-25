@@ -11,41 +11,40 @@ import { ManagerService } from 'src/app/manager.service';
 export class AllEmployeesComponent {
 
   constructor(private route :Router ,public managerService : ManagerService,private auth : AuthService ){
-
   }
-
-user : any = { "userid": null }
-id : number = this.auth.systemUserInfo.userid
-
-
-
+ userData:any = JSON.parse( localStorage.getItem('userInfo')+'')   
   async GetValues(ide:any){
-
     let att : any ={}
     att.userid = ide
-  
-    
     await this.managerService.GetEmpInfo(ide)
-    
     await this.managerService.GetAttendance(att)
-
     this.route.navigate(['Manager/EmpInfo']);
-    
-
-    
-
-    
   }
 
 
 
  ngOnInit(){
-
-
-  this.user.userid = this.id
-  this.managerService.GetAllEmp(this.user)
-  
-  
+  this.userData.userid=parseInt (this.userData.userid) 
+  this.userData.roleid=parseInt (this.userData.roleid)  
+  delete this.userData.exp 
+  this.managerService.GetAllEmp(this.userData)
+  this.emplist = this.managerService.AllEmp
  }
+
+
+ ssn:number|undefined
+  emplist:any
+
+ FiliterByssn(){
+  if(this.ssn==null)
+  {
+    this.emplist = this.managerService.AllEmp.filter((e: any) => e.userid != this.auth.systemUserInfo.userid && e.roleid==3) 
+  }
+  else
+  {
+    this.emplist = this.managerService.AllEmp.filter((e: any) => e.ssn == this.ssn && e.roleid==3) 
+  }
+  
+}
 
 }

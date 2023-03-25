@@ -17,17 +17,20 @@ export class CreateTaskComponent {
 
   }
 
+  userData:any = JSON.parse( localStorage.getItem('userInfo')+'')   
+
   ngOnInit(){
-    let user : any = {}
-    user.userid = this.auth.systemUserInfo.userid
-    this.man.GetAllEmp(user)
+   
+    this.userData.userid=parseInt (this.userData.userid)   
+    this.userData.roleid=parseInt (this.userData.roleid)        
+    delete this.userData.exp   
+    this.man.GetAllEmp(this.userData)
   }
 
   taskform =  new FormGroup({
     userid : new FormControl(),
     taskid: new FormControl,
     managerid : new FormControl(),
-    uploaddate : new FormControl(),
     documentfilename : new FormControl(),
     taskname : new FormControl(),
     taskdescription : new FormControl()
@@ -38,11 +41,16 @@ export class CreateTaskComponent {
   async AddTask(){
 
     
+    
     this.taskform.value.userid = parseInt(this.taskform.value.userid)
+
+    this.taskform.value.managerid = this.userData.userid
     this.taskform.value.documentfilename = this.hr.documentName.imagefilename
+    console.log(this.taskform.value);
     await this.man.CreateTask(this.taskform.value)
     this.taskform.reset()
     this.hr.documentName.imagefilename = undefined
+    
   }
 
   async UploadTaskFile(file : any){

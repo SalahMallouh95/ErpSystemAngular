@@ -18,8 +18,6 @@ async ngOnInit(){
     delete userData.exp          
     await this.hrService.GetEmpInfo(userData)
     this.auth.systemUserInfo=this.hrService.empInfo    
-   
-           
   }
 
 
