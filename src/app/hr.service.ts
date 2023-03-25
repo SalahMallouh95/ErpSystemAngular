@@ -21,7 +21,11 @@ export class HrService {
   allRole: any = []
   allLeaves: any = []
   allLeaveTypes: any = []
-  allHome: any = []
+  allHome: any = [{
+    "imagename":"",
+    "titile" :null,
+    "description":null
+  }]
   contactMessages: any
   allService: any
   allPayout: any
@@ -34,7 +38,7 @@ export class HrService {
   documentName: any
   leaveTypeInfo: any
   homeInfo: any
-  homeAbout: any
+  homeAbout: any={"email":null,"phonenumber":null,"address":null}
   contactMessageInfo: any
   serviceInfo: any | undefined
 
