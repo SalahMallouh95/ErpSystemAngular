@@ -19,7 +19,7 @@ export class DashHeaderComponent {
     this.user.userid=parseInt(this.user.userid)
     delete this.user.exp
     await this.hrService.GetAllEmployee()
-    this.auth.systemUserInfo=this.hrService.allEmp.find((e:any)=>e.userid==this.user.userid)  
+    this.auth.systemUserInfo=await this.hrService.allEmp.find((e:any)=>e.userid==this.user.userid)  
   }
 
   Logout(){

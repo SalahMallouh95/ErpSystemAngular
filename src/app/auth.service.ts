@@ -11,7 +11,7 @@ import { HrService } from './hr.service';
 })
 export class AuthService {
   
-  systemUserInfo:any
+  systemUserInfo:any={"state":null}
 
 
   constructor(public http: HttpClient, private spinner: NgxSpinnerService, private toastr: ToastrService,private route:Router,public hrService:HrService) { }
