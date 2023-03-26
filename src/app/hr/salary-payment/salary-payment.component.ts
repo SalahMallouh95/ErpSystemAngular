@@ -31,7 +31,10 @@ export class SalaryPaymentComponent {
   async TransferSalary(){
     if(await this.CheckBlance()){
       this.hrService.TransferSalary()
+      
       this.tostar.success("Salary's was transferd succssasfully")
+
+      this.SendEmail()
     }
     else{
       this.tostar.error("Bank Balance Not enough")
