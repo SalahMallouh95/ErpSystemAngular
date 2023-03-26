@@ -1,1 +1,77 @@
-<p>salary-payment works!</p>
+<div class="layout-wrapper layout-content-navbar">
+    <div class="layout-container">
+
+        <app-hr-sidebar></app-hr-sidebar>
+        <div class="layout-page">
+            <app-dash-header>
+            </app-dash-header>
+
+            <div class="container-xxl flex-grow-1 container-p-y">
+                <!-- Basic Bootstrap Table -->
+                <div class="card wow fadeInUp"
+                    style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+                    <h5 class="card-header">Table Basic</h5>
+
+                    <!-- <div class="table-responsive text-nowrap">          </div> -->
+                    <div class="row m-2">
+                        <div class="col">
+                            <table class="table table-hover table-striped table-bordered">
+                                <thead>
+                                    <tr style="background-color: #696cff66;">
+                                        <th>ssn</th>
+                                        <th>Name</th>
+                                        <th>Salary</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody class="table-border-bottom-0">
+                                    <tr *ngFor="let item of this.hrService.allEmp">
+                                        <td>
+                                            {{item.ssn}}
+                                        </td>
+                                        <td>
+                                            {{item.fname}} {{item.lname}}
+                                        </td>
+
+                                        <td>
+                                            {{item.salary}}
+                                        </td>
+
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td>
+                                            <strong>Total</strong>
+
+
+                                        </td>
+                                        <td>
+                                            <strong> {{hrService.allEmp.length}} </strong>
+
+                                        </td>
+                                        <td>
+                                            <strong> {{totalSalary}} </strong>
+
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-10">
+
+                        </div>
+                        <div class="col">
+                            <input class="btn btn-info mt-2" type="button" value="Transfer Salary's" (click)="TransferSalary()">
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!--/ Basic Bootstrap Table -->
+        </div>
+    </div>
+</div>

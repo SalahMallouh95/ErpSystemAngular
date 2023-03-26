@@ -39,7 +39,6 @@ export class MainComponent {
 
   }
 
-
   async CreateChartData() {
     let pay: any = {}
     pay.startdate = '2023-01-01'
@@ -56,9 +55,6 @@ export class MainComponent {
       this.x.push({ x: new Date(new Date(this.hrService.allPayout[0].receiveddate).getFullYear(), i, 1), y: total });
     }
   }
-
-
-
 
   chart: any;
 

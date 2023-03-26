@@ -37,6 +37,7 @@ export class HrService {
   homeAbout: any = { "email": null, "phonenumber": null, "address": null }
   contactMessageInfo: any
   serviceInfo: any | undefined
+  bankBalance:any
 
   // ---------------------- Employee --------------------------
 
@@ -86,6 +87,7 @@ export class HrService {
   async UpdateEmpProfile(user: any) {
 
     this.spinner.show()
+    console.log(user);  
 
     return new Promise<void>((resolve, reject) => {
       this.http.put("https://localhost:44388/api/Hr/updateuser", user).subscribe(
@@ -829,6 +831,44 @@ export class HrService {
       this.dtTrigger.next(0);
     });
   }
+
+  async GetBlance(){    
+    this.spinner.show();
+    return new Promise<void>((resolve, reject) => {
+      this.http.get("https://localhost:44388/api/Hr/GetBalance").subscribe(
+        {
+          next: (res) => {
+            this.bankBalance = res
+            resolve()
+          },
+          error: (ee) => {
+            console.log(ee)
+            reject()
+          }
+        }
+      )
+      this.spinner.hide();
+    })
+  }
+  async TransferSalary(){    
+    this.spinner.show();
+    return new Promise<void>((resolve, reject) => {
+      this.http.get("https://localhost:44388/api/Hr/TransferSalary").subscribe(
+        {
+          next: () => {
+            resolve()
+          },
+          error: (ee) => {
+            console.log(ee)
+            reject()
+          }
+        }
+      )
+      this.spinner.hide();
+    })
+  }
+
+
 
 
 
