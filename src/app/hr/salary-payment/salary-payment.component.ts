@@ -60,7 +60,7 @@ export class SalaryPaymentComponent {
       +element.fname+" "+element.lname+"\nI hope this find you well \n We happy to conform that your salary was send succssasfully and the amount is  "+
       element.salary+
       ".\n best wishes\n"+this.auth.systemUserInfo.rolename+"."+this.auth.systemUserInfo.fname+" "+this.auth.systemUserInfo.lname;
-      
+      this.auth.SendMail(mail)
     });
   }
 
