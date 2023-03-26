@@ -38,12 +38,13 @@ export class MUpdateProfileComponent {
 
   emp: any = { "userid": null }
 
-  ngOnInit() {
+  async ngOnInit() {
 
+    
     let data = JSON.parse(localStorage.getItem("fullUserInfo") + '')
     this.emp.userid = this.auth.systemUserInfo.userid
-    this.man.GetManagerPrifile(this.emp)
-    this.manInfo.patchValue(this.man.ManagerProfile)
+    await this.man.GetManagerPrifile(this.emp)
+    await this.manInfo.patchValue(this.man.ManagerProfile)
 
   }
 
