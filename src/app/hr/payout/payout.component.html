@@ -36,38 +36,41 @@
 
           </div>
           <!-- <div class="table-responsive text-nowrap">          </div> -->
+          <div class="row m-2">
+            <div class="col">
+              <table class="table table-hover table-striped table-bordered"  cellspacing="0"
+                 datatable [dtOptions]="this.hrService.dtOptions"  [dtTrigger]="this.hrService.dtTrigger">
+                <thead>
+                  <tr style="background-color: #696cff66;">
+                    <th>ssn</th>
+                    <th>Name</th>
+                    <th>Received date</th>
+                    <th>Salary</th>
 
-            <table class="table table-hover table-striped table-bordered"  cellspacing="0"
-               datatable [dtOptions]="this.hrService.dtOptions"  [dtTrigger]="this.hrService.dtTrigger"             
-              >
-              <thead>
-                <tr style="background-color: #696cff66;">
-                  <th>ssn</th>
-                  <th>Name</th>
-                  <th>Received date</th>
-                  <th>Salary</th>
+                  </tr>
+                </thead>
+                <tbody class="table-border-bottom-0">
+                  <tr *ngFor="let item of this.hrService.allPayout">
+                    <td>
+                      {{item.ssn}}
+                    </td>
+                    <td>
+                      {{item.fname}} {{item.lname}}
+                    </td>
+                    <td>
+                      {{item.receiveddate}}
+                    </td>
+                    <td>
+                      {{item.salary}}
+                    </td>
 
-                </tr>
-              </thead>
-              <tbody class="table-border-bottom-0">
-                <tr *ngFor="let item of this.hrService.allPayout">
-                  <td>
-                    {{item.ssn}}
-                  </td>
-                  <td>
-                    {{item.fname}} {{item.lname}}
-                  </td>
-                  <td>
-                    {{item.receiveddate}}
-                  </td>
-                  <td>
-                    {{item.salary}}
-                  </td>
+                  </tr>
+                </tbody>
+                <tfoot></tfoot>
+              </table>
+            </div>
+          </div>
 
-                </tr>
-              </tbody>
-              <tfoot></tfoot>
-            </table>
         </div>
       </div>
       <!--/ Basic Bootstrap Table -->
