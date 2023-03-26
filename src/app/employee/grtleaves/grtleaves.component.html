@@ -279,7 +279,7 @@
                                 Document is <strong>required</strong>
                               </mat-error>
                           </div> 
-                          <button type="submit" class="btn btn-primary" mat-dialog-close (click)="UpdateLeave()">Send</button>
+                          <button type="submit" class="btn btn-primary" [disabled]="CreateLeaveForm.invalid" mat-dialog-close (click)="UpdateLeave()">Send</button>
                           <!-- <button type="submit" class="btn btn-primary" onclick="history.back(-1)">Back</button> -->
                         </form>
                       </div>

@@ -2,6 +2,8 @@ import { Component, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { from } from 'rxjs';
 import { AuthService } from 'src/app/auth.service';
 import { EmployeeService } from 'src/app/employee.service';
 import { HrService } from 'src/app/hr.service';
@@ -16,27 +18,34 @@ export class GetsolutionComponent {
   @ViewChild('CreateForm') Create: any
   @ViewChild('UpdateForm') Update: any
   @ViewChild('DeleteForm') Delete: any
-  constructor(public employeeService:EmployeeService,private router:Router,public dialog: MatDialog,public hrService: HrService,private auth:AuthService){
+  constructor(public employeeService:EmployeeService,private router:Router,public dialog: MatDialog,public hrService: HrService,private auth:AuthService,private toaster: ToastrService){
 
   }
   ngOnInit(): void {
     console.log(this.employeeService.task);
     this.employeeService.GetSolution(this.employeeService.task)
     console.log(this.employeeService.allSol);
-    this.hrService.documentName={}
-    this.hrService.documentName.imagefilename=null
+    this.hrService.documentName = {}
+    this.hrService.documentName.imagefilename = null
     
   }
   SolutionForm = new FormGroup(
     {
+      solutionid:new FormControl(),
       taskid: new FormControl(),
       documentfilename: new FormControl()
     })
     async CreateSolution() {
-      this.SolutionForm.value.taskid = this.employeeService.task.taskid
-      await this.employeeService.CreateSolution(this.SolutionForm.value)
-      this.employeeService.GetSolution(this.employeeService.task)
       console.log(this.SolutionForm.value)
+      this.SolutionForm.value.documentfilename=this.hrService.documentName.imagefilename
+      this.SolutionForm.value.taskid = this.employeeService.task.taskid
+      if(this.SolutionForm.value.documentfilename!=null)
+      await this.employeeService.CreateSolution(this.SolutionForm.value)
+      else
+      this.toaster.error("error")
+      this.employeeService.GetSolution(this.employeeService.task)
+      
+      this.hrService.documentName.imagefilename=null
     }
     async UploadDoc(file: any) {
       let formData = new FormData();
@@ -55,7 +64,7 @@ export class GetsolutionComponent {
     async OpenUpdateDialog(id: number) {
       this.employeeService.onesol=this.employeeService.allSol.find((l:any)=>l.solutionid==id)
       console.log(this.employeeService.onesol);
-      this.SolutionForm.patchValue(this.employeeService.leave)
+      this.SolutionForm.patchValue(this.employeeService.onesol)
       this.dialog.open(this.Update, {
         height: '300px',
         width: '600px',
@@ -64,12 +73,12 @@ export class GetsolutionComponent {
     }
   
     async UpdateSolution() {
-      if(this.hrService.documentName.imagefilename!=null && this.hrService.documentName.imagefilename!=undefined && this.hrService.documentName.imagefilename!='')
-      this.employeeService.leave.documentfilename = this.hrService.documentName.imagefilename
       this.SolutionForm.value.taskid = this.employeeService.task.taskid
-      console.log(this.SolutionForm.value);
+      if(this.hrService.documentName.imagefilename!=null && this.hrService.documentName.imagefilename!=undefined && this.hrService.documentName.imagefilename!='')
+      this.SolutionForm.value.documentfilename = this.hrService.documentName.imagefilename
       await this.employeeService.UpdateSolution(this.SolutionForm.value)
       this.employeeService.GetSolution(this.employeeService.task)
+      this.hrService.documentName.imagefilename=null
   
     }
     async OpenDeleteDialog(id: number) {

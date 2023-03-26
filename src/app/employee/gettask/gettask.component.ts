@@ -17,8 +17,10 @@ export class GettaskComponent implements OnInit {
   }
 
   tasks: any = {}
+  userdata:any
   ngOnInit(): void {
-    this.tasks.userid = this.auth.systemUserInfo.userid;
+    this.userdata=this.auth.getdata() 
+    this.tasks.userid = this.userdata.userid;
     this.employeeService.GetAlltask(this.tasks);
   }
 

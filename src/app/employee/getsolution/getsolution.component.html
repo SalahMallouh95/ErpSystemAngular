@@ -16,11 +16,16 @@
                 <!-- Basic Bootstrap Table -->
                 <div class="card wow fadeInUp"  style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
                    <h2 class="card-header">Table Of Solution</h2>
-                   <button *ngIf="this.employeeService.task.state!=1" type="submit" style="position: absolute; top: 25px; right:165px;" class="btn btn-primary" (click)="OpenDialog()">ADD Solution</button>
+                   <div class="demo-inline-spacing">                        
+                    <button style="position: absolute; top: 0px; right:90px;" type="button" onclick="history.back(-1)"
+                      routerLinkActive="active" class="btn rounded-pill btn-info">Back</button>
+                      <button *ngIf="this.employeeService.task.state!=2" type="submit" style="position: absolute; top: 0px; right:165px;" class="btn btn-primary" (click)="OpenDialog()">ADD Solution</button>
+
+                  </div>
                    <div>
                    <h3 class="card-body">Task name : {{this.employeeService.task.taskname}}</h3>
                    <h3 class="card-body" >Task Date : {{this.employeeService.task.uploaddate}}</h3>
-                   <h3 class="card-body" >Document :<a *ngIf="this.employeeService.task.documentfilename" class="card-link" target="_blank"  [href]="'../../../assets/Documents/'+this.employeeService.task.documentfilename">Download File</a>
+                   <h3 class="card-body" >Document :<a *ngIf="this.employeeService.task.documentfilename" class="card-link" target="_blank" download [href]="'../../../assets/Documents/'+this.employeeService.task.documentfilename">Download File</a>
                    </h3>
                    <h3 class="card-body" >Task Descrption : {{employeeService.task.taskdescription}}</h3>
                   </div>
@@ -46,7 +51,7 @@
        <td>
         <div [ngSwitch]="item.state">
             <div *ngSwitchCase="2">
-          <span class="badge bg-label-warning me-1">Pending</span>
+          <span class="badge bg-label-info me-1">Submited</span>
             </div>
             <div *ngSwitchCase="1">
                 <span class="badge bg-label-success me-1">Accepted</span>

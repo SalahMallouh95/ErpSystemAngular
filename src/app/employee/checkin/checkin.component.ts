@@ -14,6 +14,9 @@ export class CheckinComponent {
 
 
   }
+  ngOnInit(): void {  
+    
+  }
   async checkin(){
     await this.employeeService.Checkin(this.auth.systemUserInfo)
     this.man.GetManagerPrifile(this.auth.systemUserInfo)

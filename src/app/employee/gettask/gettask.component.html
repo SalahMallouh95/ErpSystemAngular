@@ -36,16 +36,16 @@
 </td>
    <td>
     <div [ngSwitch]="item.state">
-        <div *ngSwitchCase="2">
-      <span class="badge bg-label-warning me-1">Pending</span>
-        </div>
-        <div *ngSwitchCase="1">
-            <span class="badge bg-label-success me-1">Accepted</span>
-        </div>
-              <div *ngSwitchCase="0">
-                <span class="badge bg-label-danger me-1">Rejected</span>
-            </div>
-    </div>                       
+      <div *ngSwitchCase="1">
+    <span class="badge bg-label-warning me-1">Pending</span>
+      </div>
+      <div *ngSwitchCase="2">
+          <span class="badge bg-label-success me-1">Accepted</span>
+      </div>
+            <div *ngSwitchCase="0">
+              <span class="badge bg-label-info me-1">Submited</span>
+          </div>
+  </div>                           
 </td>     
 <td>
     <a (click)="GetValues(item.taskid)" class="btn btn-outline-info">Show Solution</a>

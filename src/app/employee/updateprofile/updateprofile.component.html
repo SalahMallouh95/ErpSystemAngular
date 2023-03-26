@@ -111,7 +111,7 @@
                       
                       
                       <mat-form-field class="mb-3 col-md-6">
-                        <label for="zipCode" class="form-label">Bank ID</label>
+                        <label for="zipCode" class="form-label">Bank IBAN</label>
                         <input type="number" matInput formControlName="bankinfoid" placeholder="12345">
                       </mat-form-field>
                   
@@ -120,10 +120,7 @@
                     <div class="mt-2">
                       <button type="submit" class="btn btn-primary me-2" (click)="UpdateProf()" [disabled]="manInfo.invalid"  >Save Changes</button>                     
                     </div>
-                    <div class="demo-inline-spacing">                        
-                        <button style="position: absolute; top: 0px; right:0px;" type="button" onclick="history.back(-1)"
-                          routerLinkActive="active" class="btn rounded-pill btn-info">Back</button>
-                      </div>
+                    
                   </form>
                 <!-- /Account -->
               </div>              

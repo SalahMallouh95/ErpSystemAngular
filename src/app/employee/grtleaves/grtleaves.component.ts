@@ -17,16 +17,17 @@ export class GrtleavesComponent implements OnInit {
   @ViewChild('CreateForm') Create: any
   @ViewChild('UpdateForm') Update: any
   @ViewChild('DeleteForm') Delete: any
-  constructor(public employeeService: EmployeeService, private router: Router, public dialog: MatDialog, public hrService: HrService,private auth:AuthService) {
+  constructor(public employeeService: EmployeeService, private router: Router, public dialog: MatDialog, public hrService: HrService, private auth: AuthService) {
 
   }
-
+   userdata:any
   ngOnInit(): void {
-    this.leaves.userid = this.auth.systemUserInfo.userid;
+    this.userdata=this.auth.getdata()
+    this.leaves.userid = this.userdata.userid;
     this.employeeService.GetAllleave(this.leaves);
     this.hrService.GetAllLeaveTypes();
-    this.hrService.documentName={}
-    this.hrService.documentName.imagefilename=null
+    this.hrService.documentName = {}
+    this.hrService.documentName.imagefilename = null
 
   }
   leaves: any = {}
@@ -51,47 +52,42 @@ export class GrtleavesComponent implements OnInit {
     })
   }
   async Search() {
-    this.range.value.userid = this.auth.systemUserInfo.userid
+    this.range.value.userid = this.userdata.userid
     await this.employeeService.Search(this.range.value)
     console.log(this.employeeService.allleaves)
   }
 
   CreateLeaveForm = new FormGroup(
     {
-      leavetypeid: new FormControl(),
-      startdate: new FormControl(),
-      enddate: new FormControl(),
-      message: new FormControl(),
+      leaveid :new FormControl(),
+      leavetypeid: new FormControl('',Validators.required),
+      startdate: new FormControl('',Validators.required),
+      enddate: new FormControl('',Validators.required),
+      message: new FormControl('',Validators.required),
       userid: new FormControl(),
       documentfilename: new FormControl()
     })
   async CreateLeave() {
-    this.CreateLeaveForm.value.userid =this.auth.systemUserInfo.userid
+    
+    this.CreateLeaveForm.value.userid = this.userdata.userid
+    console.log(this.CreateLeaveForm.value)
     await this.employeeService.CreateLeave(this.CreateLeaveForm.value)
     this.employeeService.GetAllleave(this.leaves)
-    console.log(this.CreateLeaveForm.value)
+    this.hrService.documentName.imagefilename=null
   }
 
   OpenDialog() {
-
+    this.CreateLeaveForm.reset()
     this.dialog.open(this.Create, {
       height: '600px',
       width: '600px',
     })
+   
   }
-  //  UpdateLeaveForm = new FormGroup(
-  //   { leavetypeid : new FormControl (),
-  //    startdate : new FormControl(),
-  //    enddate : new FormControl(),
-  //    message : new FormControl(),
-  //    userid : new FormControl(),
-  //    documentfilename:new FormControl()
-  //  })
   async OpenUpdateDialog(id: number) {
     let leave2: any = {}
     leave2.leaveid = id;
     await this.employeeService.GetleaveById(leave2)
-    console.log(this.employeeService.leave);
     this.CreateLeaveForm.patchValue(this.employeeService.leave)
     this.dialog.open(this.Update, {
       height: '600px',
@@ -101,13 +97,12 @@ export class GrtleavesComponent implements OnInit {
   }
 
   async UpdateLeave() {
-    if(this.hrService.documentName.imagefilename!=null && this.hrService.documentName.imagefilename!=undefined && this.hrService.documentName.imagefilename!='')
-    this.employeeService.leave.documentfilename = this.hrService.documentName.imagefilename
-    this.CreateLeaveForm.value.userid = this.auth.systemUserInfo.userid
-    console.log(this.CreateLeaveForm.value);
+    this.CreateLeaveForm.value.userid = this.userdata.userid
+    if (this.hrService.documentName.imagefilename != null && this.hrService.documentName.imagefilename != undefined && this.hrService.documentName.imagefilename != '')
+    this.CreateLeaveForm.value.documentfilename = this.hrService.documentName.imagefilename
     await this.employeeService.UpdateLeave(this.CreateLeaveForm.value)
     this.employeeService.GetAllleave(this.leaves)
-
+    this.hrService.documentName.imagefilename=null
   }
 
   async OpenDeleteDialog(id: number) {
@@ -125,7 +120,6 @@ export class GrtleavesComponent implements OnInit {
     let formData = new FormData();
     formData.append('file', file.files[0])
     await this.hrService.UploadDocument(formData)
-    console.log(this.CreateLeaveForm.value.documentfilename);
 
   }
 }

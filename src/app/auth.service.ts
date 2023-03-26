@@ -62,4 +62,11 @@ export class AuthService {
     })
   
   }
+  getdata(){
+    let userData:any = JSON.parse( localStorage.getItem('userInfo')+'')   
+    userData.userid=parseInt (userData.userid)   
+    userData.roleid=parseInt (userData.roleid)        
+    delete userData.exp   
+    return userData       
+  }
 }

@@ -36,11 +36,11 @@ export class UpdateprofileComponent {
 
   emp : any = {}
   
-
-  ngOnInit(){
-
-    this.emp.userid = this.auth.systemUserInfo.userid
-    this.man.GetManagerPrifile(this.emp)
+  userdata:any
+  async ngOnInit(){
+    this.userdata=this.auth.getdata()
+    this.emp.userid = this.userdata.userid
+    await this.man.GetManagerPrifile(this.emp)
     this.manInfo.patchValue(this.man.ManagerProfile)
     this.hr.documentName={}
     this.hr.documentName.imagefilename=null
