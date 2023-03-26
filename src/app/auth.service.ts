@@ -69,4 +69,30 @@ export class AuthService {
     delete userData.exp   
     return userData       
   }
+
+
+
+  async SendMail(emp: any) {
+    this.spinner.show()
+    return new Promise<void>((resolve, reject) => {
+
+      this.http.post("https://localhost:44388/api/User/SendEmail", emp).subscribe(
+        {
+          next: () => {
+           
+            resolve();
+          },
+          error: (err) => {
+            console.log(err);
+            this.toastr.success('Error')
+            reject();
+          }
+        }
+      )
+      this.spinner.hide()
+    })
+  }
+
+  
 }
+
