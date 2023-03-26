@@ -25,6 +25,7 @@ export class PayoutComponent {
       dom: 'Bfrtip',
       // Configure the buttons  
       buttons: ['print', 'excel', 'pdf']
+      ,bDesrtoy:true
     };
   }
 
@@ -36,11 +37,12 @@ export class PayoutComponent {
       dom: 'Bfrtip',
       // Configure the buttons  
       buttons: ['print', 'excel', 'pdf']
+      ,bDesrtoy:true
     };
 
   }
 
-
+ 
 
 
 }

@@ -91,7 +91,7 @@
 
                       <div class="mb-3 col-md-6">
                         <label for="state" class="form-label">Salary</label>
-                        <input matInput class="form-control" type="text" id="state" name="state"
+                        <input matInput class="form-control" type="number" id="state" name="state"
                           formControlName="salary" placeholder="California">
                       </div>
 
@@ -115,18 +115,13 @@
                         </mat-error>
                       </div>
                       <div class="mb-3 col-md-6" [hidden]="hrservice.empInfo.roleid==1">
-                        <label for="language" *ngIf="this.hrservice.empInfo" class="form-label">Department</label>
-                        <select id="language"  *ngIf="this.hrservice.empInfo.roleid!=2" formControlName="departmentid"
+                        <label for="language" class="form-label">Department</label>
+                        <select id="language"   formControlName="departmentid"
                           class="select2 form-select">
                           <option  value="">No Department</option>
                           <option  *ngFor="let item of this.hrservice.allDep" [ngValue]="item.departmentid">
                             {{item.departmentname}}</option>
-                        </select>
-                        <select id="language"  *ngIf="this.hrservice.empInfo.roleid==2" formControlName="departmentid"
-                          class="select2 form-select">
-                          <option [disabled]="true" *ngFor="let item of this.hrservice.allDep"
-                            [ngValue]="item.departmentid">{{item.departmentname}}</option>
-                        </select>
+                        </select>                    
                         <mat-error *ngIf="empInfoForm.controls['departmentid'].hasError('required')">
                           Please select a department
                         </mat-error>

@@ -21,7 +21,7 @@ export class HrService {
   allRole: any = []
   allLeaves: any = []
   allLeaveTypes: any = []
-  allHome: any = [{"imagename":"","titile" :null,"description":null}]
+  allHome: any = [{ "imagename": "", "titile": null, "description": null }]
   contactMessages: any
   allService: any
   allPayout: any
@@ -34,12 +34,12 @@ export class HrService {
   documentName: any
   leaveTypeInfo: any
   homeInfo: any
-  homeAbout: any={"email":null,"phonenumber":null,"address":null}
+  homeAbout: any = { "email": null, "phonenumber": null, "address": null }
   contactMessageInfo: any
   serviceInfo: any | undefined
+  bankBalance:any
 
   // ---------------------- Employee --------------------------
-
 
   async GetAllEmployee() {
     this.spinner.show();
@@ -87,6 +87,7 @@ export class HrService {
   async UpdateEmpProfile(user: any) {
 
     this.spinner.show()
+    console.log(user);  
 
     return new Promise<void>((resolve, reject) => {
       this.http.put("https://localhost:44388/api/Hr/updateuser", user).subscribe(
@@ -803,9 +804,10 @@ export class HrService {
       this.http.post("https://localhost:44388/api/Hr/getpayout", payout).subscribe(
         {
           next: (res) => {
-            this.allPayout = res                       
-            this.dtTrigger.next(0);            
-             resolve()
+            this.allPayout = res
+            this.dtTrigger.next(0);
+
+            resolve()
           },
           error: (ee) => {
             console.log(ee)
@@ -817,10 +819,11 @@ export class HrService {
     })
 
   }
+
   @ViewChild(DataTableDirective) dtElement!: DataTableDirective;
   dtOptions: DataTables.Settings | any = {};
   dtTrigger: Subject<any> = new Subject();
-   rerender(): void {
+  rerender(): void {
     this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
       // Destroy the table first     
       dtInstance.destroy();
@@ -828,5 +831,45 @@ export class HrService {
       this.dtTrigger.next(0);
     });
   }
+
+  async GetBlance(){    
+    this.spinner.show();
+    return new Promise<void>((resolve, reject) => {
+      this.http.get("https://localhost:44388/api/Hr/GetBalance").subscribe(
+        {
+          next: (res) => {
+            this.bankBalance = res
+            resolve()
+          },
+          error: (ee) => {
+            console.log(ee)
+            reject()
+          }
+        }
+      )
+      this.spinner.hide();
+    })
+  }
+  async TransferSalary(){    
+    this.spinner.show();
+    return new Promise<void>((resolve, reject) => {
+      this.http.get("https://localhost:44388/api/Hr/TransferSalary").subscribe(
+        {
+          next: () => {
+            resolve()
+          },
+          error: (ee) => {
+            console.log(ee)
+            reject()
+          }
+        }
+      )
+      this.spinner.hide();
+    })
+  }
+
+
+
+
 
 }
