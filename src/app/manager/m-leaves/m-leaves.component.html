@@ -60,7 +60,8 @@
                                     
                                     <td>
                                         <a  (click)="SendSelectorMyLeaveId(emp.leaveid)" class="btn btn-outline-info">More Info</a>
-                                        <a  (click)="DeleteLeave()" class="btn btn-outline-info">Delete</a>
+                                        <a  (click)="OpenDeleteDialog(emp.leaveid)" class="btn rounded-pill btn-danger" style="color: white;">Delete</a>
+                                        
                                     </td>
 
                                 </tr>
@@ -72,6 +73,22 @@
         </div>
     </div>
 </div>
+
+
+<ng-template #DeleteDio>
+    <mat-dialog-content>
+
+    <p>Are You Sure to Delete this item</p>
+    </mat-dialog-content>
+
+      <mat-dialog-actions >
+      <div class="demo-inline-spacing">
+      <button type="button" (click)="DeleteLeave()" class="btn rounded-pill btn-success"  mat-dialog-close>Yes</button>
+      <button type="button" class="btn rounded-pill btn-danger"  mat-dialog-close>No</button>                      
+      
+    </div>
+    </mat-dialog-actions>
+    </ng-template>
 
 
 

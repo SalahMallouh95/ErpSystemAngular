@@ -23,11 +23,11 @@ export class AllEmployeesComponent {
 
 
 
- ngOnInit(){
+ async ngOnInit(){
   this.userData.userid=parseInt (this.userData.userid) 
   this.userData.roleid=parseInt (this.userData.roleid)  
   delete this.userData.exp 
-  this.managerService.GetAllEmp(this.userData)
+  await this.managerService.GetAllEmp(this.userData)
   this.emplist = this.managerService.AllEmp
  }
 

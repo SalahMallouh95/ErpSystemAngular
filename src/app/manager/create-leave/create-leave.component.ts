@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth.service';
 import { EmployeeService } from 'src/app/employee.service';
@@ -25,9 +25,9 @@ export class CreateLeaveComponent {
   }
 
   leaveform = new FormGroup({
-    leavetypeid: new FormControl(),
-      startdate: new FormControl(),
-      enddate: new FormControl(),
+    leavetypeid: new FormControl('',Validators.required),
+      startdate: new FormControl('',Validators.required),
+      enddate: new FormControl('',Validators.required),
       message: new FormControl(),
       userid: new FormControl(),
       documentfilename: new FormControl()

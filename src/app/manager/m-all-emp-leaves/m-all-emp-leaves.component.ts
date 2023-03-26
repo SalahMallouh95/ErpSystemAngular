@@ -25,8 +25,11 @@ export class MAllEmpLeavesComponent implements OnInit {
 
   ngOnInit(){
 
-    this.leaves.userid = this.id
-    this.managerService.GetAllLeaves(this.leaves)
+    let userData:any = JSON.parse( localStorage.getItem('userInfo')+'')   
+    userData.userid=parseInt (userData.userid)   
+    userData.roleid=parseInt (userData.roleid)        
+    delete userData.exp          
+    this.managerService.GetAllLeaves(userData)
     
     
   }

@@ -42,20 +42,14 @@
                                                 placeholder="10001"  />
                                         </div>
 
-                                        <div class="mb-3 col-md-6">
-                                            <label class="form-label" for="basic-default-ph">Upload Date</label>
-                                            <input type="datetime-local" id="basic-default-phone"
-                                                class="form-control phone-mask" placeholder="10001" formControlName="uploaddate" />
-                                        </div>
-
                                         
 
                                         <div class="mb-3 col-md-6">
                                             <label class="form-label" for="country">User</label>
-                                            <select  id="country" class="select2 form-select"formControlName="userid" >
+                                            <mat-select  id="country" class="select2 form-select"formControlName="userid" >
   
-                                                <option *ngFor="let emp of this.man.AllEmp " value={{emp.userid}} >{{emp.fname}}  {{emp.lname}}</option>
-                                            </select>
+                                                <mat-option *ngFor="let emp of this.man.AllEmp " [value]="emp.userid" >{{emp.fname}}  {{emp.lname}}</mat-option>
+                                            </mat-select>
                                         </div>
 
                                         <div class="mb-3 col-md-6">
@@ -63,7 +57,7 @@
                                             <textarea id="basic-default-message" class="form-control"
                                                 placeholder="Hi, Do you have a moment to talk Joe?" formControlName="taskdescription"></textarea>
                                         </div>
-                                        <button type="submit" class="btn btn-primary" (click)="UpdateT()"  >Send</button>
+                                        <button type="submit" class="btn btn-primary" (click)="UpdateT()"  onclick="history.back(-1)" >Send</button>
 
                                         <div class="demo-inline-spacing">
 

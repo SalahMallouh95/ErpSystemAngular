@@ -20,9 +20,12 @@ export class CheckinCheckoutComponent {
 
   ngOnInit(){
 
-    this.emp.userid = this.id
-    this.man.GetManagerPrifile(this.emp)
-    this.man.GetAttendance(this.emp)
+    let userData:any = JSON.parse( localStorage.getItem('userInfo')+'')   
+    userData.userid=parseInt (userData.userid)   
+    userData.roleid=parseInt (userData.roleid)        
+    delete userData.exp          
+    this.man.GetManagerPrifile(userData)
+    this.man.GetAttendance(userData)
   }
   async checkin(){
     await this.employeeService.Checkin(this.emp)

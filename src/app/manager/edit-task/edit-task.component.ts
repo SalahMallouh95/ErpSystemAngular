@@ -19,7 +19,6 @@ export class EditTaskComponent {
   editTaskform =  new FormGroup({
     taskid : new FormControl(),
     userid : new FormControl(),
-    uploaddate : new FormControl(),
     state : new FormControl(),
     documentfilename : new FormControl(),
     taskname : new FormControl(),
@@ -29,12 +28,16 @@ export class EditTaskComponent {
   
 
   ngOnInit(): void {
-    let user : any = {}
-    user.userid = this.auth.systemUserInfo.userid
-    this.man.GetAllEmp(user)
+    let userData:any = JSON.parse( localStorage.getItem('userInfo')+'')   
+    userData.userid=parseInt (userData.userid)   
+    userData.roleid=parseInt (userData.roleid)        
+    delete userData.exp          
+    this.man.GetAllEmp(userData)
     this.editTaskform.patchValue(this.man.taskinfo)
-    console.log(this.man.taskinfo);
     
+    
+    this.hr.documentName = {}
+    this.hr.documentName.imagefilename = null
 
    
    }
@@ -44,9 +47,11 @@ export class EditTaskComponent {
     this.editTaskform.value.taskid = parseInt(this.editTaskform.value.taskid)
     this.editTaskform.value.documentfilename = this.hr.documentName.imagefilename
 
+
     await this.man.UpdateTask(this.editTaskform.value)
     this.editTaskform.reset()
     this.hr.documentName.imagefilename = undefined
+
   }
 
   async UploadTaskFile(file : any){
