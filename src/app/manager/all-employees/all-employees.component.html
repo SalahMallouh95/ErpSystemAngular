@@ -73,9 +73,15 @@
                 <div class="col-12 col-lg-12 order-2 order-md-3 order-lg-2 mb-4">
                    
                     <div class="card">
-                        <div class="col-2 mr-2">
+                        <div class="row mt-2 "> 
+                            <div class="col-9">
+                            </div>
+                          <div class="col-2 mr-2">
                             <input type="number" [(ngModel)]="ssn" placeholder="ssn" (input)="FiliterByssn()" class="form-control" id="defaultFormControlInput"aria-describedby="defaultFormControlHelp">
                           </div>
+                          <div class="col-1">
+                            </div>
+                        </div>
 
                         <app-person-card (SendValues)="GetValues($event)" [allEmp]="emplist"></app-person-card>
 

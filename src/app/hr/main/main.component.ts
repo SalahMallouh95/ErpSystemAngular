@@ -43,24 +43,22 @@ export class MainComponent {
 
   async CreateChartData(){
     let pay:any={}
-    await this.hrService.GetPayout(pay)
-    console.log(this.hrService.allPayout);
-    
-    for (let i = 1; i <= 12; i++) {
+    pay.startdate='2023-01-01'
+    pay.enddate='2023-12-31'    
+    await this.hrService.GetPayout(pay)  
+
+    for (let i = 0; i < 12; i++) {
       let total = 0;
-      if (this.hrService.allPayout.some((x: { receiveddate: { getMonth: () => number; }; }) => x.receiveddate?.getMonth() + 1 === i)) {
-        var dt=new Date()
-        total = this.hrService.allPayout
-          .filter((x: { receiveddate: { getMonth: () => number; }; }) => x.receiveddate?.getMonth() + 1 === i)
-          .reduce((acc: any, curr: { Profit: any; }) => acc + curr.Profit, 0);
-      }
-      this.x.push({ x: new Date(2023, i, 1), y: total});    }
-      console.log(this.x);
-      
-    
-  
-    
-  }
+      for(let j=0;j<this.hrService.allPayout.length;j++)
+      {
+        if(new Date(this.hrService.allPayout[j].receiveddate).getMonth()==i)
+        {
+          total=total+this.hrService.allPayout[j].salary
+        }
+      }  
+      this.x.push({ x: new Date( new Date(this.hrService.allPayout[0].receiveddate).getFullYear(), i, 1), y: total });
+    }   
+   }
 
   
   
@@ -71,6 +69,7 @@ export class MainComponent {
 		theme: "light2",
 		animationEnabled: true,
 		zoomEnabled: true,
+    willReadFrequently :true,
 		title: {
 			text: "Paid Salary for this year"
 		},

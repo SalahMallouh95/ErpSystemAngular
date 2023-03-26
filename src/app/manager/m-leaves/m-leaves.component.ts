@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ManagerService } from 'src/app/manager.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -13,7 +13,8 @@ import { EmployeeService } from 'src/app/employee.service';
   styleUrls: ['./m-leaves.component.css']
 })
 export class MLeavesComponent {
-
+  
+  @ViewChild('DeleteDio') Deletedia:any
   constructor(public employeeService: EmployeeService,public managerserv : ManagerService , private route : Router,public dialog : MatDialog,private auth : AuthService){
 
   }
@@ -22,15 +23,19 @@ export class MLeavesComponent {
   id : number =this.auth.systemUserInfo.userid
   
   async ngOnInit()  {
-    this.managerLeaves.userid = this.id
-   await this.managerserv.GetMyLeaves(this.managerLeaves)
+    let userData:any = JSON.parse( localStorage.getItem('userInfo')+'')   
+    userData.userid=parseInt (userData.userid)   
+    userData.roleid=parseInt (userData.roleid)        
+    delete userData.exp          
+   await this.managerserv.GetMyLeaves(userData)
   }
 
+  leave : any = {}
   async SendSelectorMyLeaveId(id : any){
 
-    let leave : any = {}
-    leave.leaveid = id
-    await this.managerserv.GetLeaveDetails(leave)
+ 
+    this.leave.leaveid = id
+    await this.managerserv.GetLeaveDetails(this.leave)
     this.OpenMoreInfoDialog()
 
   }
@@ -39,9 +44,20 @@ export class MLeavesComponent {
     this.dialog.open(MMyLeaveDetailsComponent)
   }
 
-  async DeleteLeave() {
-    await this.employeeService.DeleteLeave(this.employeeService.leave.leaveid)
-    this.employeeService.GetAllleave( this.managerLeaves)
+
+  
+
+  async DeleteLeave( ) {
+    
+    await this.employeeService.DeleteLeave(this.managerserv.leaveInfo.leaveid)
+    await this.managerserv.GetMyLeaves(this.managerLeaves)
   }
+
+  OpenDeleteDialog(id:any){
+    this.leave.leaveid = id
+    this.managerserv.GetLeaveDetails(this.leave)
+    this.dialog.open(this.Deletedia);
+  
+   }
 
 }

@@ -67,14 +67,14 @@
                                             </td>
                                             <td>
                                                 <div [ngSwitch]="item.state">
-                                                    <div *ngSwitchCase="2">
-                                                        <span class="badge bg-label-danger me-1">Done</span>
+                                                    <div  *ngSwitchCase="2" >
+                                                        <span class="badge bg-label-success me-1">Done</span>
                                                     </div>
                                                     <div *ngSwitchCase="1">
-                                                        <span class="badge bg-label-success me-1">Pending</span>
+                                                        <span class="badge bg-label-warning me-1">Pending</span>
                                                     </div>
                                                     <div *ngSwitchCase="0">
-                                                        <span class="badge bg-label-warning me-1">Submitted</span>
+                                                        <span class="badge bg-label-info me-1">Submitted</span>
                                                     </div>
                                                 </div>
                                             </td>
@@ -89,36 +89,41 @@
                                             </td>
                                             <td>
                                                 <button type="button" class="btn rounded-pill btn-danger"
-                                                    (click)="deletetask(item.taskid)">Delete</button>
+                                                    (click)="OpenDeleteDialog(item.taskid)">Delete</button>
 
                                             </td>
 
                                         </tr>
 
                                     </tbody>
+                                    
                                 </table>
                             </div>
                         </div>
                     </div>
-                    <!--/ Basic Bootstrap Table -->
-                    <!-- / Content -->
-                    <!-- Footer -->
-                    <!-- / Footer -->
+                
                     <div class="content-backdrop fade"></div>
                 </div>
-                <!-- Content wrapper -->
-
-
-
+                </div>
 
                 
-
-
-            </div>
         </div>
     </div>
 
-
+    <ng-template #DeleteDio>
+        <mat-dialog-content>
+    
+        <p>Are You Sure to Delete this item</p>
+        </mat-dialog-content>
+    
+          <mat-dialog-actions >
+          <div class="demo-inline-spacing">
+          <button type="button" (click)="deletetask(this.task.taskid)" class="btn rounded-pill btn-success"  mat-dialog-close>Yes</button>
+          <button type="button" class="btn rounded-pill btn-danger"  mat-dialog-close>No</button>                      
+          
+        </div>
+        </mat-dialog-actions>
+        </ng-template>
 
 
 

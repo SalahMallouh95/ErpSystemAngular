@@ -21,18 +21,21 @@ export class CreateTaskComponent {
 
   ngOnInit(){
    
+    
     this.userData.userid=parseInt (this.userData.userid)   
     this.userData.roleid=parseInt (this.userData.roleid)        
     delete this.userData.exp   
     this.man.GetAllEmp(this.userData)
+    this.hr.documentName = {}
+    this.hr.documentName.imagefilename = null
   }
 
   taskform =  new FormGroup({
-    userid : new FormControl(),
+    userid : new FormControl('',Validators.required) ,
     taskid: new FormControl,
     managerid : new FormControl(),
     documentfilename : new FormControl(),
-    taskname : new FormControl(),
+    taskname : new FormControl('',Validators.required),
     taskdescription : new FormControl()
 
     
@@ -42,7 +45,8 @@ export class CreateTaskComponent {
 
     
     
-    this.taskform.value.userid = parseInt(this.taskform.value.userid)
+    
+    // this.taskform.value.userid = parseInt(this.taskform.value.userid)
 
     this.taskform.value.managerid = this.userData.userid
     this.taskform.value.documentfilename = this.hr.documentName.imagefilename
