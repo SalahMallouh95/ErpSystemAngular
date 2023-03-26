@@ -122,7 +122,11 @@ export class ManagerService {
         next: res => {
           this.ManagerProfile = res
           resolve()
-          console.log(res);
+         
+        },
+        error: err =>{
+          console.log(err);
+          reject()
         }
       })
       this.spinner.hide()
@@ -131,7 +135,7 @@ export class ManagerService {
 
 
   async Searchs(data: any) {
-    console.log(data);
+   
     data.managerid = 2
     return new Promise<void>((resolve, reject) => {
       this.spinner.show()
@@ -140,7 +144,7 @@ export class ManagerService {
           next: res => {
             this.AllLeave = res
             resolve()
-            console.log(this.AllLeave);
+            
           },
           error: (err) => {
             console.log(err);
@@ -163,12 +167,12 @@ export class ManagerService {
           next: res => {
             this.empInformation = res
             resolve()
-            console.log(this.empInformation);
-            console.log(res);
+            
           },
           error: (err) => {
             console.log(err);
             this.toaster.error('Error')
+            reject()
           }
         })
       this.spinner.show()
@@ -203,7 +207,7 @@ export class ManagerService {
         {
           next: (res) => {
             this.leaveInfo = res;
-            console.log(res);
+            
             resolve();
           }
           ,
@@ -214,12 +218,12 @@ export class ManagerService {
           }
         })
       this.spinner.hide();
-      console.log(this.leaveInfo);
+     
     })
   }
 
   async UpdateLeaveDetails(leave: any) {
-    console.log(leave);
+   
     return new Promise<void>((resolve, reject) => {
       this.http.put("https://localhost:44388/api/Manager/updateleave", leave).subscribe(
         {
