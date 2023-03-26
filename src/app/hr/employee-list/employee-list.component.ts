@@ -24,8 +24,7 @@ export class EmployeeListComponent implements OnInit {
      let data=JSON.parse(localStorage.getItem("userInfo")+'')
      data.userid= parseInt(data.userid)   
      await this.hrService.GetAllEmployee();
-     this.emplist = this.hrService.allEmp.filter((e: any) => e.userid != data.userid)  
-     
+     this.emplist = this.hrService.allEmp.filter((e: any) => e.userid != data.userid)      
 
   }
 

@@ -31,6 +31,12 @@ export class PayoutComponent {
   async Search() {
 
     await this.hrService.GetPayout(this.range.value)
+    this.hrService.dtOptions = {
+      // Declare the use of the extension in the dom parameter   
+      dom: 'Bfrtip',
+      // Configure the buttons  
+      buttons: ['print', 'excel', 'pdf']
+    };
 
   }
 
