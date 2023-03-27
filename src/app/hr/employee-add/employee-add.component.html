@@ -167,13 +167,13 @@
                       </mat-form-field>
 
                       <mat-form-field class="mb-3 col-md-6">
-                        <mat-label>Bank ID</mat-label>
+                        <mat-label>Bank iban</mat-label>
                         <input type="number" matInput formControlName="bankinfoid" placeholder="12345">
                         <mat-error *ngIf="empInfoForm.controls.bankinfoid.hasError('bankinfoid') && !empInfoForm.controls.lname.hasError('required')">
-                          Please enter a Bank ID
+                          Please enter a Bank iban
                         </mat-error>
                         <mat-error *ngIf="empInfoForm.controls.bankinfoid.hasError('required')">
-                          Bank ID is <strong>required</strong>
+                          Bank iban is <strong>required</strong>
                         </mat-error>
                       </mat-form-field>
                   
