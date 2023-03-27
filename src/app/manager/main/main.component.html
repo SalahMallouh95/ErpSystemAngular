@@ -10,11 +10,289 @@
             </app-dash-header>
 
 
-
-            <p>main works!</p>
-
+            <div class="container">
+                <div class="row">
+                  <!-- flex-container -->
+                  <div class="col-md-12 flex-container">
+                    <!-- flex-item -->
+                    <div class="flex-item">
+                      <div class="flex-item-inner">
+                        <!-- card -->
+                        <a href="#">
+                          <div class="card-front bg-violet" style="border-radius: 10px;">
+                            <i class="fa fa-pie-chart fa-3x tile-icon icon-white"></i>
+                            <h2>NUMBER OF Employee</h2>
+                          </div>
+                          <div class="card-back bg-violet" style="border-radius: 10px;">
+                            <p style="font-size: 150px; color: #000000; margin-top: 60px; margin-left: 25px;" ><strong>{{empCount}}</strong></p>
+                          </div>
+                        </a>
+                        <!-- /card -->
+                      </div>
+                    </div>
+                    <!-- /flex-item -->
+              
+                    <!-- flex-item -->
+                    <div class="flex-item">
+                        <div class="flex-item-inner">
+                          <!-- card -->
+                          <a href="#">
+                            <div class="card-front bg-violet" style="border-radius: 10px;">
+                              <i class="fa fa-pie-chart fa-3x tile-icon icon-white"></i>
+                              <h2>NUMBER OF Online Employee</h2>
+                            </div>
+                            <div class="card-back bg-violet" style="border-radius: 10px;">
+                              <p style="font-size: 150px; color: #000000; margin-top: 60px; margin-left: 25px;" ><strong>{{empOnCount}}</strong></p>
+                            </div>
+                          </a>
+                          <!-- /card -->
+                        </div>
+                      </div>
+                    <!-- /flex-item -->
+              
+                    <!-- flex-item -->
+                    <div class="flex-item">
+                        <div class="flex-item-inner">
+                          <!-- card -->
+                          <a href="#">
+                            <div class="card-front bg-violet" style="border-radius: 10px;">
+                              <i class="fa fa-pie-chart fa-3x tile-icon icon-white"></i>
+                              <h2>NUMBER OF Offline Employee</h2>
+                            </div>
+                            <div class="card-back bg-violet" style="border-radius: 10px;">
+                              <p style="font-size: 150px; color: #000000; margin-top: 60px; margin-left: 25px;" ><strong>{{empOfCount}}</strong></p>
+                            </div>
+                          </a>
+                          <!-- /card -->
+                        </div>
+                      </div>
+                    <!-- /flex-item -->
+              
+                    <!-- flex-item -->
+                    <div class="flex-item">
+                        <div class="flex-item-inner">
+                          <!-- card -->
+                          <a href="#">
+                            <div class="card-front bg-violet" style="border-radius: 10px;">
+                              <i class="fa fa-pie-chart fa-3x tile-icon icon-white"></i>
+                              <h2>NUMBER OF Tasks</h2>
+                            </div>
+                            <div class="card-back bg-violet" style="border-radius: 10px;">
+                              <p style="font-size: 150px; color: #000000; margin-top: 60px; margin-left: 25px;" ><strong>{{tasks}}</strong></p>
+                            </div>
+                          </a>
+                          <!-- /card -->
+                        </div>
+                      </div>
+                      
+                    <!-- flex-item -->
+                  </div>
+                  <div class="col-md-12 flex-container">
+                    <!-- flex-item -->
+                    <div class="flex-item">
+                      <div class="flex-item-inner">
+                        <!-- card -->
+                        <a href="#">
+                          <div class="card-front bg-violet" style="border-radius: 10px;">
+                            <i class="fa fa-pie-chart fa-3x tile-icon icon-white"></i>
+                            <h2>NUMBER OF Leaves</h2>
+                          </div>
+                          <div class="card-back bg-violet" style="border-radius: 10px;">
+                            <p style="font-size: 150px; color: #000000; margin-top: 60px; margin-left: 25px;" ><strong>{{leaves}}</strong></p>
+                          </div>
+                        </a>
+                        <!-- /card -->
+                      </div>
+                    </div>
+                    <!-- /flex-item -->
+              
+                    <!-- flex-item -->
+                    <div class="flex-item">
+                        <div class="flex-item-inner">
+                          <!-- card -->
+                          <a href="#">
+                            <div class="card-front bg-violet" style="border-radius: 10px;">
+                              <i class="fa fa-pie-chart fa-3x tile-icon icon-white"></i>
+                              <h2>NUMBER OF Pending Leaves</h2>
+                            </div>
+                            <div class="card-back bg-violet" style="border-radius: 10px;">
+                              <p style="font-size: 150px; color: #000000; margin-top: 60px; margin-left: 25px;" ><strong>{{penleaves}}</strong></p>
+                            </div>
+                          </a>
+                          <!-- /card -->
+                        </div>
+                      </div>
+                    <!-- /flex-item -->
+              
+                    <!-- flex-item -->
+                    <div class="flex-item">
+                        <div class="flex-item-inner">
+                          <!-- card -->
+                          <a href="#">
+                            <div class="card-front bg-violet" style="border-radius: 10px;">
+                              <i class="fa fa-pie-chart fa-3x tile-icon icon-white"></i>
+                              <h2>NUMBER OF Workingon Tasks</h2>
+                            </div>
+                            <div class="card-back bg-violet" style="border-radius: 10px;">
+                              <p style="font-size: 150px; color: #000000; margin-top: 60px; margin-left: 25px;" ><strong>{{empOfCount}}</strong></p>
+                            </div>
+                          </a>
+                          <!-- /card -->
+                        </div>
+                      </div>
+                    <!-- /flex-item -->
+              
+                    <!-- flex-item -->
+                    
+                      
+                    <!-- flex-item -->
+                  </div>
+                  <!-- /flex-container -->
+                </div>
+              </div>
+             
 
 
         </div>
     </div>
 </div>
+
+
+
+
+
+
+<style>
+   /*-------- global --------*/
+body {
+  background-color: #242424;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 16px;
+}
+.container {
+  margin: 50px;
+}
+
+/*-------- flex container --------*/
+.flex-container {
+  display: flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: -webkit-flex;
+  justify-content: space-around;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+.flex-item {
+  color: #fff;
+  height: 210px;
+  margin: 10px 0;
+  padding: 0;
+  width: 225px;
+  position: relative;
+}
+.flex-item-inner {
+  display: flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: -webkit-flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 210px;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+.flex-item-inner a {
+  color: #fff;
+  cursor: pointer;
+}
+
+/*-------- cards --------*/
+.card-front,
+.card-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 185px;
+  height: 170px;
+  padding: 20px;
+  margin: 0;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transition: -webkit-transform 0.3s;
+  transition: transform 0.3s;
+  justify-content: flex-end;
+}
+.card-front i.tile-icon {
+  display: block;
+  margin: 10px auto 20px auto;
+  text-align: center;
+}
+.card-front h4 {
+  font-size: 18px;
+  font-weight: normal;
+  margin: 10px 0;
+}
+.card-front p.detail {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+}
+.card-front.bg-violet {
+  background-color: #000000;
+}
+.card-front.bg-magenta {
+  background-color: #c110a0;
+}
+.card-front.bg-blue {
+  background-color: #00a0d2;
+}
+.card-front.bg-green {
+  background-color: #00c389;
+}
+.card-back {
+  background-color: #1e1e1e;
+  -webkit-transform: rotateY(-180deg);
+  transform: rotateY(-180deg);
+}
+.card-back p.title {
+  color: #000;
+  margin-top: 0;
+  text-transform: uppercase;
+}
+.card-back p.desc {
+  color: #63666a;
+}
+.card-back p.link {
+  color: #702082;
+}
+.card-back.bg-violet {
+  background-color: #967cdd;
+}
+.card-back.bg-magenta {
+  background-color: #ddd0cf;
+}
+.card-back.bg-blue {
+  background-color: #c8d7df;
+}
+.card-back.bg-green {
+  background-color: #d9e6dc;
+}
+
+/*-------- cards / flip effect --------*/
+.flex-item:hover .card-front {
+  -webkit-transform: rotateY(-180deg);
+  transform: rotateY(-180deg);
+}
+.flex-item:hover .card-back {
+  -webkit-transform: rotateY(0);
+  transform: rotateY(0);
+}
+
+
+</style>
