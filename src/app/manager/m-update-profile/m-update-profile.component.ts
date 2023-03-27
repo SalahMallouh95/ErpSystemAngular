@@ -20,8 +20,8 @@ export class MUpdateProfileComponent {
   manInfo = new FormGroup({
 
     userid: new FormControl(),
-    fname: new FormControl({ value: '', disabled: true }, Validators.required),
-    lname: new FormControl({ value: '', disabled: true }, Validators.required),
+    fname: new FormControl('',Validators.required),
+    lname: new FormControl('',Validators.required),
     password: new FormControl(),
     phonenumber: new FormControl(),
     address: new FormControl(),
@@ -41,6 +41,7 @@ export class MUpdateProfileComponent {
   async ngOnInit() {
 
     this.man.spinner.show()
+    
     let data = JSON.parse(localStorage.getItem("fullUserInfo") + '')
     this.emp.userid = this.auth.systemUserInfo.userid
     await this.man.GetManagerPrifile(this.emp)
@@ -61,6 +62,9 @@ export class MUpdateProfileComponent {
     await this.man.Updateprofile(this.manInfo.value)
     console.log(this.manInfo.value);
     this.man.GetManagerPrifile(this.emp)
+
+    
+    
 
 
   }
