@@ -104,22 +104,22 @@
                         </mat-error>
                       </div>
 
-                      <div class="mb-3 col-md-6" [hidden]="hrservice.empInfo.roleid==1">
+                      <div class="mb-3 col-md-6" [hidden]="hrService.empInfo.roleid==1">
                         <label class="form-label" for="Role">Role</label>
                         <select  formControlName="roleid" id="Role" class="select2 form-select">
-                          <option  [disabled]="this.depcount!=null" *ngFor="let item of this.hrservice.allRole" [ngValue]="item.roleid">{{item.rolename}}
+                          <option  [disabled]="this.depcount!=null" *ngFor="let item of this.hrService.allRole" [ngValue]="item.roleid">{{item.rolename}}
                           </option>
                         </select>
                         <mat-error *ngIf="empInfoForm.controls['roleid'].hasError('required')">
                           Please select a role
                         </mat-error>
                       </div>
-                      <div class="mb-3 col-md-6" [hidden]="hrservice.empInfo.roleid==1">
+                      <div class="mb-3 col-md-6" [hidden]="hrService.empInfo.roleid==1">
                         <label for="language" class="form-label">Department</label>
                         <select id="language"   formControlName="departmentid"
                           class="select2 form-select">
                           <option  value="">No Department</option>
-                          <option  *ngFor="let item of this.hrservice.allDep" [ngValue]="item.departmentid">
+                          <option  *ngFor="let item of this.hrService.allDep" [ngValue]="item.departmentid">
                             {{item.departmentname}}</option>
                         </select>                    
                         <mat-error *ngIf="empInfoForm.controls['departmentid'].hasError('required')">
@@ -152,9 +152,9 @@
               </div>
             </div>
 
-            <h4 class="fw-bold py-3 mb-4"[hidden]="this.hrservice.empInfo.roleid==1">Attendance</h4>
+            <h4 class="fw-bold py-3 mb-4"[hidden]="this.hrService.empInfo.roleid==1">Attendance</h4>
             <div class="card">
-     <div class="table-responsive text-nowrap" [hidden]="this.hrservice.empInfo.roleid==1">
+     <div class="table-responsive text-nowrap" [hidden]="this.hrService.empInfo.roleid==1">
          <table class="table table-hover wow slideInUp m-1"
          style="visibility: visible; animation-delay: 0.3s; animation-name: slideInUp;">
              <thead >
@@ -179,7 +179,7 @@
 
 
          
-          <div class="card mt-2" [hidden]="this.hrservice.empInfo.roleid==1">
+          <div class="card mt-2" [hidden]="this.hrService.empInfo.roleid==1">
             <h5 class="card-header">Delete Account</h5>
             <div class="card-body">
               <div class="mb-3 col-12 mb-0">

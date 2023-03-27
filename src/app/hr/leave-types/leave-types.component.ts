@@ -17,7 +17,12 @@ export class LeaveTypesComponent {
   }
 
   ngOnInit(){
+    this.hrService.spinner.show()
+
     this.hrService.GetAllLeaveTypes();
+    
+    this.hrService.spinner.hide()
+
   }
  
   CreateType(){

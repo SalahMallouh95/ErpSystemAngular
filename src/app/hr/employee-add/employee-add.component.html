@@ -136,7 +136,7 @@
                         <mat-label>Role</mat-label>
 
                         <mat-select formControlName="roleid" id="Role">
-                          <mat-option *ngFor="let item of this.hrservice.allRole" [value]="item.roleid">{{item.rolename}}
+                          <mat-option *ngFor="let item of this.hrService.allRole" [value]="item.roleid">{{item.rolename}}
                            
                           </mat-option>
                         </mat-select>
@@ -153,7 +153,7 @@
                         <mat-label>Department</mat-label>
 
                         <mat-select formControlName="departmentid" id="Role">
-                          <mat-option *ngFor="let item of this.hrservice.allDep" [value]="item.departmentid">{{item.departmentname}}
+                          <mat-option *ngFor="let item of this.hrService.allDep" [value]="item.departmentid">{{item.departmentname}}
                            
                           </mat-option>
                         </mat-select>

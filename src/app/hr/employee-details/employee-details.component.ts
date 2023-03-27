@@ -13,9 +13,9 @@ import { ManagerService } from 'src/app/manager.service';
 export class EmployeeDetailsComponent implements OnInit {
 
   @ViewChild('DeleteDio') Deletedia: any
-  depcount:any
+  depcount: any
 
-  constructor(public hrservice: HrService, public dialog: MatDialog,public managerService:ManagerService) {
+  constructor(public hrService: HrService, public dialog: MatDialog, public managerService: ManagerService) {
 
   }
 
@@ -38,32 +38,42 @@ export class EmployeeDetailsComponent implements OnInit {
   })
   async ngOnInit() {
 
-  
+    this.hrService.spinner.show()
+
     await this.empInfoForm.reset()
-    this.empInfoForm.patchValue(this.hrservice.empInfo);
-    this.managerService.GetAttendance(this.hrservice.empInfo)
+    this.empInfoForm.patchValue(this.hrService.empInfo);
+    this.managerService.GetAttendance(this.hrService.empInfo)
     this.empInfoForm.markAsTouched();
-    this.hrservice.documentName={}
-    this.hrservice.documentName.imagefilename=null
-    this.hrservice.GetAllDepartment()    
-    this.depcount=this.hrservice.allDep.find((e:any)=>e.userid==this.empInfoForm.value.userid)
-    
+    this.hrService.documentName = {}
+    this.hrService.documentName.imagefilename = null
+    this.hrService.GetAllDepartment()
+    this.depcount = this.hrService.allDep.find((e: any) => e.userid == this.empInfoForm.value.userid)
+    this.hrService.spinner.hide()
+
 
   }
 
   async UploadPhoto(file: any) {
+    this.hrService.spinner.show()
+
     let formData = new FormData();
     formData.append('file', file.files[0])
-    await this.hrservice.UploadDocument(formData)
+    await this.hrService.UploadDocument(formData)
+    this.hrService.spinner.hide()
+
   }
 
   async UpdateProfile() {
-    if(this.hrservice.documentName.imagefilename!=null && this.hrservice.documentName.imagefilename!=undefined && this.hrservice.documentName.imagefilename!='')
-    this.empInfoForm.value.imagefilename = this.hrservice.documentName.imagefilename
-    
-    await this.hrservice.UpdateEmpProfile(this.empInfoForm.value)
-    this.hrservice.documentName.imagefilename
-     this.hrservice.GetEmpInfo(this.hrservice.empInfo)
+    this.hrService.spinner.show()
+
+    if (this.hrService.documentName.imagefilename != null && this.hrService.documentName.imagefilename != undefined && this.hrService.documentName.imagefilename != '')
+      this.empInfoForm.value.imagefilename = this.hrService.documentName.imagefilename
+
+    await this.hrService.UpdateEmpProfile(this.empInfoForm.value)
+    this.hrService.documentName.imagefilename
+    this.hrService.GetEmpInfo(this.hrService.empInfo)
+    this.hrService.spinner.hide()
+
   }
 
   OpenDeleteDialog() {
@@ -74,7 +84,12 @@ export class EmployeeDetailsComponent implements OnInit {
 
   async DeleteEmpProfile() {
 
-    await this.hrservice.DeleteEmpProfile(this.empInfoForm.value.userid)
+    this.hrService.spinner.show()
+
+    await this.hrService.DeleteEmpProfile(this.empInfoForm.value.userid)
+
+    this.hrService.spinner.hide()
+
     history.back()
 
   }

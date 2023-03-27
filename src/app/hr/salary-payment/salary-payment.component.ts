@@ -16,8 +16,12 @@ export class SalaryPaymentComponent {
   totalSalary:number=0
 
   async ngOnInit(){
+    this.hrService.spinner.show()
+
     await this.hrService.GetAllEmployee()
     this.totalSalary=this.GetTotalSalary()
+    this.hrService.spinner.hide()
+
   }
 
   GetTotalSalary(){

@@ -21,10 +21,14 @@ export class EmployeeListComponent implements OnInit {
   emplist:any
 
   async ngOnInit() {
+    this.hrService.spinner.show()
+
      let data=JSON.parse(localStorage.getItem("userInfo")+'')
      data.userid= parseInt(data.userid)   
      await this.hrService.GetAllEmployee();
-     this.emplist = this.hrService.allEmp.filter((e: any) => e.userid != data.userid)      
+     this.emplist = this.hrService.allEmp.filter((e: any) => e.userid != data.userid)   
+     this.hrService.spinner.hide()
+   
 
   }
 
@@ -41,17 +45,24 @@ export class EmployeeListComponent implements OnInit {
   }
 
   async GetValues(id: any) {
+    this.hrService.spinner.show()
+
     this.user.userid = id
     this.hrService.GetAllDepartment()
     this.hrService.GetAllRole()
     await this.hrService.GetEmpInfo(this.user);
+    this.hrService.spinner.hide()
     this.router.navigate(['Hr/EmpDetails']);
   }
 
   AddEmp() {
+    this.hrService.spinner.show()
+
     this.hrService.GetAllDepartment()
     this.hrService.GetAllRole()
     this.router.navigate(['Hr/AddEmp']);
+    this.hrService.spinner.hide()
+
   }
 
 }
