@@ -800,8 +800,6 @@ export class HrService {
         {
           next: (res) => {
             this.allPayout = res
-            this.dtTrigger.next(0);
-
             resolve()
           },
           error: (ee) => {
@@ -813,19 +811,6 @@ export class HrService {
 
     })
 
-  }
-
-  @ViewChild(DataTableDirective) dtElement!: DataTableDirective;
-  dtOptions: DataTables.Settings | any = {};
-  dtTrigger: Subject<any> = new Subject();
-  rerender(): void {
-    this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
-      dtInstance.clear()
-      // Destroy the table first     
-      dtInstance.destroy();
-      // Call the dtTrigger to rerender again     
-      this.dtTrigger.next(0);
-    });
   }
 
   async GetBlance(){    
@@ -864,7 +849,7 @@ export class HrService {
     })
   }
 
-
+ 
 
 
 

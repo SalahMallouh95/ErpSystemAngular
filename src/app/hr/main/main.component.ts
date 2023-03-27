@@ -34,9 +34,11 @@ export class MainComponent {
     userData.roleid = parseInt(userData.roleid)
     delete userData.exp
     localStorage.setItem('fullUserInfo', JSON.stringify(this.hrService.empInfo))
+
     await this.hrService.GetAllEmployee()
     await this.hrService.GetAllDepartment()
     await this.hrService.GetAllLeaves()
+
     this.empCount = this.hrService.allEmp.length
     this.empOnCount = this.hrService.allEmp.filter((e: any) => e.state == 1).length
     this.empOfCount = this.hrService.allEmp.filter((e: any) => e.state == 0).length
@@ -70,8 +72,6 @@ export class MainComponent {
       this.x.push({ x: new Date(new Date(this.hrService.allPayout[0].receiveddate).getFullYear(), i, 1), y: total });
     }
   }
-
-  chart: any;
 
   chartOptions = {
     theme: "light2",
