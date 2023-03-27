@@ -12,23 +12,38 @@
       <h4 class="fw-bold py-3 mb-4">Attendance</h4>
       <input style="background-color: #04e104f0;color: white; position: absolute; top: 10px; right:125px;" class="btn m-1" type="button" value="CheckIn"  [disabled]="this.man.ManagerProfile.state==1" (click)="checkin()">
       <input style="background-color: #e30404f0;color: white; position: absolute; top: 15px; right:15px;" class="btn" type="button" value="CheckOut"  [disabled]="this.man.ManagerProfile.state==0" (click)="checkOut()">
-         <table class="table table-hover wow slideInUp m-1"
-         style="visibility: visible; animation-delay: 0.3s; animation-name: slideInUp;">
-             <thead >
-                 <tr style="background-color: #696cff66;">
-                     <th>Check in</th>
-                     <th>Check out</th>
-                     <th>Working hour</th>                          
-                 </tr>
-             </thead>
-             <tbody class="table-border-bottom-0">
-                 <tr *ngFor="let emp of this.man.attendance">
-                     <td>{{emp.checkin}}</td>
-                     <td>{{emp.checkout}}</td>
-                     <td>{{emp.workinghour}}</td>                       
-                </tr>
-             </tbody>
-         </table>
+         
+      <div class="mat-elevation-z8 ">
+        <table class="table-hover wow slideInUp m-1 col-10"
+        style="visibility: visible; animation-delay: 0.3s; animation-name: slideInUp;" mat-table [dataSource]="dataSource">
+      
+          <!-- Position Column -->
+          <ng-container matColumnDef="Checkin">
+            <th mat-header-cell *matHeaderCellDef> Check in </th>
+            <td mat-cell *matCellDef="let element"> {{element.checkin}} </td>
+          </ng-container>
+      
+          <!-- Name Column -->
+          <ng-container matColumnDef="Checkout">
+            <th mat-header-cell *matHeaderCellDef> Check out </th>
+            <td mat-cell *matCellDef="let element"> {{element.checkout}} </td>
+          </ng-container>
+      
+          <!-- Weight Column -->
+          <ng-container matColumnDef="Workinghour">
+            <th mat-header-cell *matHeaderCellDef> Working hour </th>
+            <td mat-cell *matCellDef="let element"> {{element.workinghour}} </td>
+          </ng-container>
+      
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                       showFirstLastButtons
+                       aria-label="Select page of periodic elements">
+        </mat-paginator>
+      </div> 
      </div>
     </div>
     </div>

@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormControl,  FormGroup, Validators } from '@angular/forms';
 import { HrService } from 'src/app/hr.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ManagerService } from 'src/app/manager.service';
@@ -53,8 +53,10 @@ export class EmployeeDetailsComponent implements OnInit {
     this.hrService.documentName.imagefilename = null
     this.hrService.GetAllDepartment()
     this.depcount = this.hrService.allDep.find((e: any) => e.userid == this.empInfoForm.value.userid)
+
     this.dataSource= new MatTableDataSource(this.managerService.attendance);
     this.dataSource.paginator = this.paginator;
+    
     this.hrService.spinner.hide()
 
 
