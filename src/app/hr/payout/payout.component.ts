@@ -62,12 +62,12 @@ export class PayoutComponent {
 }
 
 // ngAfterViewInit(){
-//   this.dtTrigger.next(0)
+//   this.hrService.dtTrigger.next(0)
 // }
 
-// ngOnDestroy(){
-//   this.dtTrigger.unsubscribe()
-// }
+ngOnDestroy(){
+  this.hrService.dtTrigger.unsubscribe()
+}
 
   async Search() {
     this.hrService.spinner.show()

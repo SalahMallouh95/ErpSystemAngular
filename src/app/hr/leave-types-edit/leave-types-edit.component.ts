@@ -22,14 +22,22 @@ export class LeaveTypesEditComponent {
 
  async CreateLeaveType(){
 
+  this.hrService.spinner.show()
+
   await this.hrService.CreateLeaveType(this.levType.value)
   this.hrService.GetAllLeaveTypes()
+  this.hrService.spinner.hide()
+
 
  }
 
  async SaveLeaveType(){
-  
+  this.hrService.spinner.show()
+
   await this.hrService.UpdateLeaveType(this.levType.value)
   this.hrService.GetAllLeaveTypes()
+
+  this.hrService.spinner.hide()
+
  }
 }

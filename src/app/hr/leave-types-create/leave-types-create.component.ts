@@ -17,9 +17,12 @@ export class LeaveTypesCreateComponent {
 
 
   async CreateLeaveType(){
+    this.hrService.spinner.show()
 
    await this.hrService.CreateLeaveType(this.levType.value)
    this.hrService.GetAllLeaveTypes()
+   this.hrService.spinner.hide()
+
 
   }
   
