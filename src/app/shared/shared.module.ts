@@ -20,7 +20,8 @@ import { MatSelectModule } from '@angular/material/select';
 import {MatCardModule} from '@angular/material/card';
 import { AttendanceComponent } from './attendance/attendance.component';
 import { DataTablesModule } from 'angular-datatables';
-
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 
@@ -47,7 +48,9 @@ import { DataTablesModule } from 'angular-datatables';
     MatDialogModule,
     MatSelectModule,
     MatCardModule,
-    DataTablesModule
+    DataTablesModule,
+    MatTableModule,
+    MatPaginatorModule
   ],
   exports:[
     HomeFooterComponent,
@@ -69,7 +72,9 @@ import { DataTablesModule } from 'angular-datatables';
     MatDialogModule,
     MatSelectModule,
     MatCardModule,
-    DataTablesModule
+    DataTablesModule,
+    MatTableModule,
+    MatPaginatorModule
   ]
 })
 export class SharedModule { }

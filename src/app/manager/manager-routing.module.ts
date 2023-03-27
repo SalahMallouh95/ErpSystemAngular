@@ -19,6 +19,7 @@ import { MUpdateProfileComponent } from './m-update-profile/m-update-profile.com
 import { MainComponent } from './main/main.component';
 import { TasksDetailesComponent } from './tasks-detailes/tasks-detailes.component';
 import { TasksComponent } from './tasks/tasks.component';
+import { TestComponent } from './test/test.component';
 
 const routes: Routes = [
   {
@@ -84,6 +85,10 @@ const routes: Routes = [
   {
     path: 'CreateLeave',
     component: CreateLeaveComponent
+  },
+  {
+    path: 'test',
+    component: TestComponent
   }
  ];
 
