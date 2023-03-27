@@ -21,15 +21,22 @@ export class DepartmentEmpListComponent implements OnInit{
   {
 
   }
-  ngOnInit(): void {
+   ngOnInit() {
+
   this.allEmp=this.hrService.allEmp
   this.lengtharyy=this.hrService.allEmp.length
   
   }
   async GetValues(id:any){
+  this.hrService.spinner.show()
+
   this.user.userid=id
   await this.hrService.GetEmpInfo(this.user);
+  this.hrService.spinner.hide()
+
   this.route.navigate(['Hr/EmpDetails']);
+
+
   }
   
   

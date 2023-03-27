@@ -19,8 +19,12 @@ export class DepartmentComponent implements OnInit {
   constructor(public hrService:HrService,public router:Router,public dialog:MatDialog){}
   
   
-  ngOnInit(): void {
-    this.hrService.GetAllDepartment();
+  async ngOnInit() {
+    
+    this.hrService.spinner.show()
+    await this.hrService.GetAllDepartment();
+    this.hrService.spinner.hide()
+
   }
 
  async ViewEmp(id:any){

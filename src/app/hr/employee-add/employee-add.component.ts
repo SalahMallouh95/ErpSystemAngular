@@ -10,10 +10,6 @@ import { HrService } from 'src/app/hr.service';
   styleUrls: ['./employee-add.component.css']
 })
 export class EmployeeAddComponent {
-  ssnList: any = []
-
-
-
 
   empInfoForm = new FormGroup({
     fname: new FormControl(null, [Validators.required]),
@@ -23,7 +19,7 @@ export class EmployeeAddComponent {
     phonenumber: new FormControl(),
     address: new FormControl(),
     salary: new FormControl(),
-    ssn: new FormControl('', [Validators.required, notInListValidator(this.ssnList)]),
+    ssn: new FormControl('', [Validators.required]),
     roleid: new FormControl('', Validators.required),
     departmentid: new FormControl('', Validators.required),
     bankinfoid: new FormControl('', Validators.required),
@@ -31,49 +27,45 @@ export class EmployeeAddComponent {
 
   })
 
-  constructor(public hrservice: HrService) {
+  constructor(public hrService: HrService) {
 
   }
 
   async ngOnInit(): Promise<void> {
-    this.hrservice.GetAllRole()
-    this.hrservice.GetAllDepartment()
-    await this.hrservice.GetAllEmployee()
-    this.ssnList = this.hrservice.allEmp.map((s: { ssn: any; }) => s.ssn)
-    console.log(this.ssnList);
-    console.log(this.hrservice.allEmp);
+    this.hrService.spinner.show()
+
+    this.hrService.GetAllRole()
+    this.hrService.GetAllDepartment()
+    await this.hrService.GetAllEmployee()
+    this.hrService.spinner.hide()
 
   }
 
   async AddEmp() {
 
-    if (this.hrservice.documentName.imagefilename !== null && this.hrservice.documentName.imagefilename !== undefined && this.hrservice.documentName.imagefilename !== '') {
-      this.empInfoForm.value.imagefilename = this.hrservice.documentName.imagefilename
+    this.hrService.spinner.show()
+
+    if (this.hrService.documentName.imagefilename !== null && this.hrService.documentName.imagefilename !== undefined && this.hrService.documentName.imagefilename !== '') {
+      this.empInfoForm.value.imagefilename = this.hrService.documentName.imagefilename
     }
-    await this.hrservice.AddEmpProfile(this.empInfoForm.value)
+    await this.hrService.AddEmpProfile(this.empInfoForm.value)
     this.empInfoForm.reset()
     this.empInfoForm.markAsUntouched()
-    this.hrservice.documentName.imagefilename = undefined
+    this.hrService.documentName.imagefilename = undefined
+    this.hrService.spinner.hide()
+
     history.back()
-
-
   }
 
   async UploadPhoto(file: any) {
+    this.hrService.spinner.show()
+
     let formData = new FormData();
     formData.append('file', file.files[0])
-    await this.hrservice.UploadDocument(formData)
+    await this.hrService.UploadDocument(formData)
+    this.hrService.spinner.hide()
 
   }
 
 }
 
-function notInListValidator(list: any[]): ValidatorFn {
-  return (control: AbstractControl): { [key: string]: any } | null => {
-    const value = control.value;
-    if (list.includes(value)) {
-      return { notInList: true };
-    }
-    return null;
-  };
-}

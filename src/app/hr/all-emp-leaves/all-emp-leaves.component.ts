@@ -28,22 +28,32 @@ export class AllEmpLeavesComponent implements OnInit {
     ssn:new FormControl
   });
 
-  ngOnInit(): void {
-    this.hrService.GetAllLeaves();
+  async ngOnInit() {
+    this.hrService.spinner.show()
+
+    await this.hrService.GetAllLeaves();
+    this.hrService.spinner.hide()
+
     
   }
   async GetValues(id :any){
+    this.hrService.spinner.show()
 
     let leave :any={}
         leave.leaveid=id
     await this.hrService.GetLeaveDetails(leave)
+    this.hrService.spinner.hide()
+
     this.OpenMoreInfoDialog();
   }
   
 
   async Search(){
-    
+    this.hrService.spinner.show()
+
     await this.hrService.Search(this.range.value)
+    this.hrService.spinner.hide()
+
   }
 
   OpenMoreInfoDialog(){

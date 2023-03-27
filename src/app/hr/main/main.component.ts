@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { AuthService } from 'src/app/auth.service';
 import { HrService } from 'src/app/hr.service';
 
@@ -16,11 +17,12 @@ export class MainComponent {
   DepCount: any
   x: any = []
 
-  constructor(public hrService: HrService, private auth: AuthService) {
+  constructor(public hrService: HrService, private auth: AuthService,private spiner:NgxSpinnerService) {
 
   }
 
   async ngOnInit() {
+    this.spiner.show()
     let userData: any = JSON.parse(localStorage.getItem('userInfo') + '')
     userData.userid = parseInt(userData.userid)
     userData.roleid = parseInt(userData.roleid)
@@ -36,13 +38,17 @@ export class MainComponent {
     this.DepCount = this.hrService.allDep.length
 
     this.CreateChartData()
+    this.spiner.hide()
+
 
   }
 
   async CreateChartData() {
     let pay: any = {}
-    pay.startdate = '2023-01-01'
-    pay.enddate = '2023-12-31'
+    
+    pay.startdate = new Date().getFullYear()+'-01-01'
+    pay.enddate = new Date().getFullYear()+'-12-31'
+    
     await this.hrService.GetPayout(pay)
 
     for (let i = 0; i < 12; i++) {
