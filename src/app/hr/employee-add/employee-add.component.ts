@@ -33,7 +33,8 @@ export class EmployeeAddComponent {
 
   async ngOnInit(): Promise<void> {
     this.hrService.spinner.show()
-
+    this.hrService.documentName={}
+    this.hrService.documentName.imagefilename=null
     this.hrService.GetAllRole()
     this.hrService.GetAllDepartment()
     await this.hrService.GetAllEmployee()

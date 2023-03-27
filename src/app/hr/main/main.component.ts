@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component , ViewChild} from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { AuthService } from 'src/app/auth.service';
 import { HrService } from 'src/app/hr.service';
+import {MatPaginator} from '@angular/material/paginator';
+import {MatTableDataSource} from '@angular/material/table';
 
 @Component({
   selector: 'app-main',
@@ -16,6 +18,10 @@ export class MainComponent {
   manCount: any
   DepCount: any
   x: any = []
+
+  @ViewChild(MatPaginator) paginator: MatPaginator|any;
+  displayedColumns: string[] = ['ssn', 'name', 'receiveddate','salary'];
+  dataSource :any
 
   constructor(public hrService: HrService, private auth: AuthService,private spiner:NgxSpinnerService) {
 
@@ -50,6 +56,9 @@ export class MainComponent {
     pay.enddate = new Date().getFullYear()+'-12-31'
     
     await this.hrService.GetPayout(pay)
+
+    this.dataSource= new MatTableDataSource(this.hrService.allPayout);
+    this.dataSource.paginator = this.paginator;
 
     for (let i = 0; i < 12; i++) {
       let total = 0;

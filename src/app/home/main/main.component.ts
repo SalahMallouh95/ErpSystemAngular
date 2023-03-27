@@ -13,6 +13,7 @@ export class MainComponent implements OnInit{
   async ngOnInit(){
     this.spinner.show()
    await this.hrService.GetAllHome()
+   await 
    this.spinner.hide()
 
   }

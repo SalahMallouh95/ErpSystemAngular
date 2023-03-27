@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
-import { async } from 'rxjs';
+import { Component, ViewChild } from '@angular/core';
 import { AuthService } from 'src/app/auth.service';
 import { EmployeeService } from 'src/app/employee.service';
 import { HrService } from 'src/app/hr.service';
 import { ManagerService } from 'src/app/manager.service';
+import {MatPaginator} from '@angular/material/paginator';
+import {MatTableDataSource} from '@angular/material/table';
 
 @Component({
   selector: 'app-hr-my-attendance',
@@ -11,6 +12,13 @@ import { ManagerService } from 'src/app/manager.service';
   styleUrls: ['./hr-my-attendance.component.css']
 })
 export class HrMyAttendanceComponent {
+
+  @ViewChild(MatPaginator) paginator: MatPaginator|any;
+  displayedColumns: string[] = ['Checkin', 'Checkout', 'Workinghour'];
+  dataSource :any
+
+ 
+
   constructor(public man : ManagerService, public hrService : HrService,public employeeService:EmployeeService,public auth:AuthService){
   }
   async ngOnInit(){
@@ -20,8 +28,14 @@ export class HrMyAttendanceComponent {
     userData.userid=parseInt (userData.userid)   
     userData.roleid=parseInt (userData.roleid)       
     delete userData.exp       
-    await this.man.GetAttendance(userData)   
+    await this.man.GetAttendance(userData) 
+
+    this.dataSource= new MatTableDataSource(this.man.attendance);
+    this.dataSource.paginator = this.paginator;
+
     this.hrService.spinner.hide()
+   
+    
    
   }
   async checkin(){
@@ -48,3 +62,4 @@ export class HrMyAttendanceComponent {
 
   }
 }
+

@@ -1,15 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { HrService } from 'src/app/hr.service';
 import {FormGroup, FormControl} from '@angular/forms';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { MatDialog } from '@angular/material/dialog';
-import { LeaveDetailsComponent } from '../leave-details/leave-details.component';
-
-
-
-
-
+import {MatPaginator} from '@angular/material/paginator';
+import {MatTableDataSource} from '@angular/material/table';
 
 @Component({
   selector: 'app-all-emp-leaves',
@@ -17,7 +13,13 @@ import { LeaveDetailsComponent } from '../leave-details/leave-details.component'
   styleUrls: ['./all-emp-leaves.component.css']
 })
 export class AllEmpLeavesComponent implements OnInit {
-  
+  @ViewChild(MatPaginator) paginator: MatPaginator|any;
+  displayedColumns: string[] = ['ssn', 'fname', 'lname','start','end','state','Action'];
+  dataSource :any
+
+  @ViewChild('infoDio') Infodia:any
+
+
   constructor(public dialog:MatDialog,private router:Router,public hrService:HrService,private spinner: NgxSpinnerService)
   {
 
@@ -32,6 +34,8 @@ export class AllEmpLeavesComponent implements OnInit {
     this.hrService.spinner.show()
 
     await this.hrService.GetAllLeaves();
+    this.dataSource= new MatTableDataSource(this.hrService.allLeaves);
+    this.dataSource.paginator = this.paginator;
     this.hrService.spinner.hide()
 
     
@@ -52,11 +56,48 @@ export class AllEmpLeavesComponent implements OnInit {
     this.hrService.spinner.show()
 
     await this.hrService.Search(this.range.value)
+    this.dataSource= new MatTableDataSource(this.hrService.allLeaves);
+    this.dataSource.paginator = this.paginator;
+    
     this.hrService.spinner.hide()
 
   }
 
   OpenMoreInfoDialog(){
-    this.dialog.open(LeaveDetailsComponent)
+    this.dialog.open(this.Infodia)
+  }
+
+
+  async AcceptLeave() {
+    this.hrService.spinner.show()
+
+    let leave: any = {}
+    leave.leaveid = this.hrService.leaveInfo.leaveid
+    leave.state = 1
+    await this.hrService.UpdateLeaveDetails(leave)
+    this.hrService.GetLeaveDetails(leave)
+    await this.hrService.GetAllLeaves()
+    this.dataSource= new MatTableDataSource(this.hrService.allLeaves);
+    this.dataSource.paginator = this.paginator;
+    this.hrService.spinner.hide()
+
+
+  }
+
+  async RejectLeave() {
+    this.hrService.spinner.show()
+
+    let leave: any = {}
+    leave.leaveid = this.hrService.leaveInfo.leaveid
+    leave.state = 0
+    await this.hrService.UpdateLeaveDetails(leave)
+    this.hrService.GetLeaveDetails(leave)
+    await this.hrService.GetAllLeaves()
+
+    this.dataSource= new MatTableDataSource(this.hrService.allLeaves);
+    this.dataSource.paginator = this.paginator;
+
+    this.hrService.spinner.hide()
+
   }
 }

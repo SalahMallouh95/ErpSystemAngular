@@ -1,8 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormControl,  FormGroup, Validators } from '@angular/forms';
 import { HrService } from 'src/app/hr.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ManagerService } from 'src/app/manager.service';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 
 
 @Component({
@@ -14,6 +16,9 @@ export class EmployeeDetailsComponent implements OnInit {
 
   @ViewChild('DeleteDio') Deletedia: any
   depcount: any
+  @ViewChild(MatPaginator) paginator: MatPaginator|any;
+  displayedColumns: string[] = ['Checkin', 'Checkout', 'Workinghour'];
+  dataSource :any
 
   constructor(public hrService: HrService, public dialog: MatDialog, public managerService: ManagerService) {
 
@@ -42,12 +47,16 @@ export class EmployeeDetailsComponent implements OnInit {
 
     await this.empInfoForm.reset()
     this.empInfoForm.patchValue(this.hrService.empInfo);
-    this.managerService.GetAttendance(this.hrService.empInfo)
+    await this.managerService.GetAttendance(this.hrService.empInfo)
     this.empInfoForm.markAsTouched();
     this.hrService.documentName = {}
     this.hrService.documentName.imagefilename = null
     this.hrService.GetAllDepartment()
     this.depcount = this.hrService.allDep.find((e: any) => e.userid == this.empInfoForm.value.userid)
+
+    this.dataSource= new MatTableDataSource(this.managerService.attendance);
+    this.dataSource.paginator = this.paginator;
+    
     this.hrService.spinner.hide()
 
 
