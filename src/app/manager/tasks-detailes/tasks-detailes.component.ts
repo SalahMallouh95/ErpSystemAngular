@@ -18,8 +18,10 @@ export class TasksDetailesComponent implements OnInit{
 
 
   ngOnInit(): void {
+    this.man.spinner.show()
     this.id = this.route.snapshot.params['id'] ;
     this.taskInfo = this.man.task.filter( t =>t.tid == this.id )
+    this.man.spinner.hide()
   }
 
   SendSelectorEditTaskId(id:any){

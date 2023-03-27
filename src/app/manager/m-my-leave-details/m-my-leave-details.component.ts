@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { AuthService } from 'src/app/auth.service';
 import { ManagerService } from 'src/app/manager.service';
 
@@ -11,7 +12,7 @@ import { ManagerService } from 'src/app/manager.service';
 export class MMyLeaveDetailsComponent implements OnInit {
 
 
-  constructor( public managerService : ManagerService,private route :ActivatedRoute,private auth : AuthService ){
+  constructor(private spinner: NgxSpinnerService, public managerService : ManagerService,private route :ActivatedRoute,private auth : AuthService ){
 
   }
 
@@ -19,9 +20,10 @@ export class MMyLeaveDetailsComponent implements OnInit {
   leaveInfo : any | {}
 
   ngOnInit(): void {
-    
+    this.spinner.show()
     this.id = this.auth.systemUserInfo.userid
     this.leaveInfo = this.managerService.myLeaves.filter( l => l.leaveid == this.id )
+    this.spinner.hide()
   }
 
 }

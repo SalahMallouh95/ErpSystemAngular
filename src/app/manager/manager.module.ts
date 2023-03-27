@@ -19,6 +19,7 @@ import { MUpdateProfileComponent } from './m-update-profile/m-update-profile.com
 import { MSolutionDetailsComponent } from './m-solution-details/m-solution-details.component';
 import { CheckinCheckoutComponent } from './checkin-checkout/checkin-checkout.component';
 import { CreateLeaveComponent } from './create-leave/create-leave.component';
+import { TestComponent } from './test/test.component';
 
 
 
@@ -41,7 +42,8 @@ import { CreateLeaveComponent } from './create-leave/create-leave.component';
     MUpdateProfileComponent,
     MSolutionDetailsComponent,
     CheckinCheckoutComponent,
-    CreateLeaveComponent
+    CreateLeaveComponent,
+    TestComponent
   ],
   imports: [
     CommonModule,
