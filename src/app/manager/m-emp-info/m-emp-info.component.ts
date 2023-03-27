@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { ManagerService } from 'src/app/manager.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { ManagerService } from 'src/app/manager.service';
 })
 export class MEmpInfoComponent implements OnInit {
 
-    constructor(private route: ActivatedRoute ,public man: ManagerService){
+    constructor(private spinner: NgxSpinnerService,private route: ActivatedRoute ,public man: ManagerService){
 
     }
 
@@ -22,11 +23,11 @@ export class MEmpInfoComponent implements OnInit {
 
 
   ngOnInit(): void {
-   
+   this.spinner.show()
     this.id = this.route.snapshot.params['id'];
     this.emp = this.man.empInfo.filter(  (ex) => ex.userid == this.id )
     this.info.patchValue(this.man.empInformation)    
-    
+    this.spinner.hide()
   }
 
   info = new FormGroup({

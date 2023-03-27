@@ -40,12 +40,12 @@ export class MUpdateProfileComponent {
 
   async ngOnInit() {
 
-    
+    this.man.spinner.show()
     let data = JSON.parse(localStorage.getItem("fullUserInfo") + '')
     this.emp.userid = this.auth.systemUserInfo.userid
     await this.man.GetManagerPrifile(this.emp)
     await this.manInfo.patchValue(this.man.ManagerProfile)
-
+    this.man.spinner.hide()
   }
 
 

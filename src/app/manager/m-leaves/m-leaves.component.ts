@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MMyLeaveDetailsComponent } from '../m-my-leave-details/m-my-leave-details.component';
 import { AuthService } from 'src/app/auth.service';
 import { EmployeeService } from 'src/app/employee.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 
 @Component({
@@ -13,51 +14,53 @@ import { EmployeeService } from 'src/app/employee.service';
   styleUrls: ['./m-leaves.component.css']
 })
 export class MLeavesComponent {
-  
-  @ViewChild('DeleteDio') Deletedia:any
-  constructor(public employeeService: EmployeeService,public managerserv : ManagerService , private route : Router,public dialog : MatDialog,private auth : AuthService){
+
+  @ViewChild('DeleteDio') Deletedia: any
+  constructor(private spinner: NgxSpinnerService, public employeeService: EmployeeService, public managerserv: ManagerService, private route: Router, public dialog: MatDialog, private auth: AuthService) {
 
   }
 
-  managerLeaves : any = {}
-  id : number =this.auth.systemUserInfo.userid
-  
-  async ngOnInit()  {
-    let userData:any = JSON.parse( localStorage.getItem('userInfo')+'')   
-    userData.userid=parseInt (userData.userid)   
-    userData.roleid=parseInt (userData.roleid)        
-    delete userData.exp          
-   await this.managerserv.GetMyLeaves(userData)
+  managerLeaves: any = {}
+  id: number = this.auth.systemUserInfo.userid
+
+  async ngOnInit() {
+    this.spinner.show()
+    let userData: any = JSON.parse(localStorage.getItem('userInfo') + '')
+    userData.userid = parseInt(userData.userid)
+    userData.roleid = parseInt(userData.roleid)
+    delete userData.exp
+    await this.managerserv.GetMyLeaves(userData)
+    this.spinner.hide()
   }
 
-  leave : any = {}
-  async SendSelectorMyLeaveId(id : any){
+  leave: any = {}
+  async SendSelectorMyLeaveId(id: any) {
 
- 
+
     this.leave.leaveid = id
     await this.managerserv.GetLeaveDetails(this.leave)
     this.OpenMoreInfoDialog()
 
   }
 
-  OpenMoreInfoDialog(){
+  OpenMoreInfoDialog() {
     this.dialog.open(MMyLeaveDetailsComponent)
   }
 
 
-  
 
-  async DeleteLeave( ) {
-    
+
+  async DeleteLeave() {
+
     await this.employeeService.DeleteLeave(this.managerserv.leaveInfo.leaveid)
     await this.managerserv.GetMyLeaves(this.managerLeaves)
   }
 
-  OpenDeleteDialog(id:any){
+  OpenDeleteDialog(id: any) {
     this.leave.leaveid = id
     this.managerserv.GetLeaveDetails(this.leave)
     this.dialog.open(this.Deletedia);
-  
-   }
+
+  }
 
 }

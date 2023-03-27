@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Route, Router } from '@angular/router';
 import { AuthService } from 'src/app/auth.service';
 import { ManagerService } from 'src/app/manager.service';
+import { NgxSpinnerService } from 'ngx-spinner';
+
 
 @Component({
   selector: 'app-all-employees',
@@ -10,7 +12,7 @@ import { ManagerService } from 'src/app/manager.service';
 })
 export class AllEmployeesComponent {
 
-  constructor(private route :Router ,public managerService : ManagerService,private auth : AuthService ){
+  constructor(private spinner: NgxSpinnerService,private route :Router ,public managerService : ManagerService,private auth : AuthService ){
   }
  userData:any = JSON.parse( localStorage.getItem('userInfo')+'')   
   async GetValues(ide:any){
@@ -24,11 +26,13 @@ export class AllEmployeesComponent {
 
 
  async ngOnInit(){
+  this.spinner.show()
   this.userData.userid=parseInt (this.userData.userid) 
   this.userData.roleid=parseInt (this.userData.roleid)  
   delete this.userData.exp 
   await this.managerService.GetAllEmp(this.userData)
   this.emplist = this.managerService.AllEmp
+  this.spinner.hide()
  }
 
 

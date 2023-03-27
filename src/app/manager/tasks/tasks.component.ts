@@ -37,21 +37,24 @@ id : number =  this.auth.systemUserInfo.userid
 
 
 async GetValues(id :any){
+  this.man.spinner.show()
 let task : any = {}
 task.taskid = id
 await this.man.GetTaskDetails(task)
 await this.man.GetAllSolutions(task)
 this.route.navigate(['Manager/TaskSolution']);
+this.man.spinner.hide()
 }
 
 async GetEditValues(id :any){
+  this.man.spinner.show()
   let task : any = {}
   task.taskid = id
   await this.man.GetTaskDetails(task)
   await this.man.GetAllSolutions(task)
     
   this.route.navigate(['/Manager/EditTask',id])
-
+  this.man.spinner.hide()
   }
 
   task : any = {}
@@ -69,9 +72,10 @@ async deletetask(id:any){
 }
 
 OpenDeleteDialog(id:any){
+  this.man.spinner.show()
   this.task.taskid=id
   this.dialog.open(this.Deletedia);
-
+  this.man.spinner.hide()
  }
 
 }

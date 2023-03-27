@@ -5,6 +5,7 @@ import { ManagerService } from 'src/app/manager.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MLeaveDetailsComponent } from '../m-leave-details/m-leave-details.component';
 import { AuthService } from 'src/app/auth.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 
 @Component({
@@ -14,7 +15,7 @@ import { AuthService } from 'src/app/auth.service';
 })
 export class MAllEmpLeavesComponent implements OnInit {
 
-  constructor( private router:Router, public managerService : ManagerService , public dialog : MatDialog,private auth : AuthService){
+  constructor( private spinner: NgxSpinnerService,private router:Router, public managerService : ManagerService , public dialog : MatDialog,private auth : AuthService){
 
 
 
@@ -25,13 +26,14 @@ export class MAllEmpLeavesComponent implements OnInit {
 
   ngOnInit(){
 
+this.spinner.show()
     let userData:any = JSON.parse( localStorage.getItem('userInfo')+'')   
     userData.userid=parseInt (userData.userid)   
     userData.roleid=parseInt (userData.roleid)        
     delete userData.exp          
     this.managerService.GetAllLeaves(userData)
     
-    
+    this.spinner.hide()
   }
 
   range = new FormGroup({
