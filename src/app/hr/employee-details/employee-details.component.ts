@@ -1,10 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormControl,  FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HrService } from 'src/app/hr.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ManagerService } from 'src/app/manager.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -16,11 +17,11 @@ export class EmployeeDetailsComponent implements OnInit {
 
   @ViewChild('DeleteDio') Deletedia: any
   depcount: any
-  @ViewChild(MatPaginator) paginator: MatPaginator|any;
+  @ViewChild(MatPaginator) paginator: MatPaginator | any;
   displayedColumns: string[] = ['Checkin', 'Checkout', 'Workinghour'];
-  dataSource :any
+  dataSource: any
 
-  constructor(public hrService: HrService, public dialog: MatDialog, public managerService: ManagerService) {
+  constructor(private tostar: ToastrService, public hrService: HrService, public dialog: MatDialog, public managerService: ManagerService) {
 
   }
 
@@ -54,9 +55,9 @@ export class EmployeeDetailsComponent implements OnInit {
     this.hrService.GetAllDepartment()
     this.depcount = this.hrService.allDep.find((e: any) => e.userid == this.empInfoForm.value.userid)
 
-    this.dataSource= new MatTableDataSource(this.managerService.attendance);
+    this.dataSource = new MatTableDataSource(this.managerService.attendance);
     this.dataSource.paginator = this.paginator;
-    
+
     this.hrService.spinner.hide()
 
 
@@ -84,15 +85,50 @@ export class EmployeeDetailsComponent implements OnInit {
     this.hrService.spinner.hide()
 
   }
+  async EditEmp() {
 
-  OpenDeleteDialog() {
+    this.hrService.spinner.show()
 
-    this.dialog.open(this.Deletedia);
+    if (await this.CheckIban() && await this.CheckSSN()) {
+      this.UpdateProfile()
+    }
+    else if (await this.CheckIban() == false) {
+      this.tostar.error("The iban dose not exist in the Bank Make sure to enter the right IBAN")
+    } else if (await this.CheckSSN() == false) {
+      this.tostar.error("The SSN number Must be Uniqe Make sure to enter the right ssn number")
+    }
+    this.hrService.spinner.hide()
 
   }
 
-  async DeleteEmpProfile() {
 
+
+  async CheckIban() {
+    await this.hrService.GetAllIban()
+
+    let iban = this.hrService.allIban.find((b: any) => b.iban == this.empInfoForm.value.bankinfoid)
+    if (iban == null)
+      return false
+    else
+      return true
+  }
+
+  async CheckSSN() {
+    await this.hrService.GetAllEmployee()
+    let user = this.hrService.allEmp.find((b: any) => b.ssn == this.empInfoForm.value.ssn)
+    if (user == null)
+      return true
+    else if (user.userid == this.empInfoForm.value.userid)
+      return true
+    else
+      return false
+  }
+
+  OpenDeleteDialog() {
+    this.dialog.open(this.Deletedia);
+  }
+
+  async DeleteEmpProfile() {
     this.hrService.spinner.show()
 
     await this.hrService.DeleteEmpProfile(this.empInfoForm.value.userid)

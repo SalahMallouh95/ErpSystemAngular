@@ -47,12 +47,15 @@ export class EmployeeAddComponent {
 
     this.hrService.spinner.show()
 
-    if(await this.CheckIban()){
+    if(await this.CheckIban() && await this.CheckSSN()){
       this.CreateUser()
     }
-    else
+    else if(await this.CheckIban()==false)
     {
       this.tostar.error("The iban dose not exist in the Bank Make sure to enter the right IBAN")
+    }else if(await this.CheckSSN()==false)
+    {
+      this.tostar.error("The SSN number Must be Uniqe Make sure to enter the right ssn number")
     }
     this.hrService.spinner.hide()
 
@@ -72,11 +75,21 @@ export class EmployeeAddComponent {
 
   async CheckIban(){
    await this.hrService.GetAllIban()
+   
     let iban=this.hrService.allIban.find((b:any)=>b.iban==this.empInfoForm.value.bankinfoid)
     if(iban==null)
     return false
     else
     return true
+  }
+
+  async CheckSSN(){
+    await this.hrService.GetAllEmployee()
+    let user=this.hrService.allEmp.find((b:any)=>b.ssn==this.empInfoForm.value.ssn)
+    if(user==null)
+    return true
+    else
+    return false
   }
 
   async UploadPhoto(file: any) {
