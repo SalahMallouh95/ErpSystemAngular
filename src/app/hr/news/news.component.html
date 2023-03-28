@@ -23,12 +23,12 @@
                             <div class="table-responsive text-nowrap">
 
                                 <table class="table table-hover wow slideInUp"
-                                    style="visibility: visible; animation-delay: 0.3s; animation-name: slideInUp; width: auto;">
+                                    style="visibility: visible; animation-delay: 0.3s; animation-name: slideInUp; ">
                                     <thead>
                                         <tr style="background-color: #696cff66;">
                                             <th>Message</th>
                                         <th></th>
-                                         
+                                        <th></th> 
                                           
                                         </tr>
                                     </thead>
@@ -41,11 +41,10 @@
                                                                                 
                                             <td>
                                                 <button type="button" class="btn rounded-pill btn-success"
-                                                   (click)=" openUpdateDialog(this.news.annid)" >Edit</button>
-                                            
-                                                <a  class="btn btn-outline-info">Show
-                                                    Solution</a>
-                                            
+                                                   (click)=" openUpdateDialog(item.annid)" >Edit</button>
+                                                </td>
+                                           
+                                                <td>
                                                 <button type="button" class="btn rounded-pill btn-danger"
                                                    >Delete</button>
 
@@ -67,6 +66,8 @@
     </div>
 </div>
 
+
+
 <ng-template #UpdateNews>
     <mat-dialog-content>
 
@@ -74,8 +75,9 @@
     </mat-dialog-content>
 
       <mat-dialog-actions >
-            
-        <textarea placeholder="msg" [(ngModel)]="message"></textarea>
+         <form [formGroup]="NewsForm"> 
+        <textarea formControlName="msg" placeholder="msg"  ></textarea>
+    </form>  
         <div class="demo-inline-spacing">
             <button type="button" (click)="Updaten()" class="btn rounded-pill btn-success"  mat-dialog-close>Yes</button>
             <button type="button" class="btn rounded-pill btn-danger"  mat-dialog-close>No</button>                    
