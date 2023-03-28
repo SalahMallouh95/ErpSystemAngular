@@ -58,8 +58,8 @@ export class EmployeeAddComponent {
     history.back()
   }
 
-  CheckIban(){
-    this.hrService.GetAllIban()
+  async CheckIban(){
+   await this.hrService.GetAllIban()
     let iban=this.hrService.allIban.find((b:any)=>b.iban==this.empInfoForm.value.bankinfoid)
     if(iban==null)
     return false
