@@ -1,0 +1,84 @@
+<div class="layout-wrapper layout-content-navbar">
+    <div class="layout-container">
+
+        <app-hr-sidebar></app-hr-sidebar>
+
+
+        <div class="layout-page">
+
+            <app-dash-header>
+            </app-dash-header>
+            <div class="container-xxl flex-grow-1 container-p-y">
+
+
+
+
+                <div class="content-wrapper">
+                    <!-- Content -->
+                    <div class="container-xxl flex-grow-1 container-p-y">
+                        <!-- Basic Bootstrap Table -->
+                        <div class="card wow fadeInUp"
+                            style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+                            <h3 class="card-header">Table Of News</h3>
+                            <div class="table-responsive text-nowrap">
+
+                                <table class="table table-hover wow slideInUp"
+                                    style="visibility: visible; animation-delay: 0.3s; animation-name: slideInUp; width: auto;">
+                                    <thead>
+                                        <tr style="background-color: #696cff66;">
+                                            <th>Message</th>
+                                        <th></th>
+                                         
+                                          
+                                        </tr>
+                                    </thead>
+                                    <tbody class="table-border-bottom-0">
+                                        <tr *ngFor="let item of this.hrService.AllNews ">
+
+                                            <td>
+                                               {{item.msg}}
+                                            </td>
+                                                                                
+                                            <td>
+                                                <button type="button" class="btn rounded-pill btn-success"
+                                                   (click)=" openUpdateDialog(this.news.annid)" >Edit</button>
+                                            
+                                                <a  class="btn btn-outline-info">Show
+                                                    Solution</a>
+                                            
+                                                <button type="button" class="btn rounded-pill btn-danger"
+                                                   >Delete</button>
+
+                                            </td>
+
+                                        </tr>
+
+                                    </tbody>
+                                    
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="content-backdrop fade"></div>
+                </div>
+                </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #UpdateNews>
+    <mat-dialog-content>
+
+    
+    </mat-dialog-content>
+
+      <mat-dialog-actions >
+            
+        <textarea placeholder="msg" [(ngModel)]="message"></textarea>
+        <div class="demo-inline-spacing">
+            <button type="button" (click)="Updaten()" class="btn rounded-pill btn-success"  mat-dialog-close>Yes</button>
+            <button type="button" class="btn rounded-pill btn-danger"  mat-dialog-close>No</button>                    
+        </div>
+    </mat-dialog-actions>
+    </ng-template>

@@ -25,6 +25,7 @@ export class HrService {
   contactMessages: any
   allService: any
   allPayout: any
+  AllNews: any = []
 
 
   //object's
@@ -839,4 +840,41 @@ export class HrService {
 
     })
   }
+
+
+  // ---------------------------News-----------------------
+
+  async GetAllNews(){
+    return new Promise<void>((resolve, reject) => {
+      this.http.get(" https://localhost:44388/api/Hr/GetAnn").subscribe({
+        next: res => {
+          this.AllNews = res
+          resolve()
+        },
+        error: err =>{
+          console.log(err);
+          reject()          
+        }
+      })
+    })
+  }
+
+  async UpdateNews(news : any){
+    return new Promise<void>((resolve, reject) => {
+      this.http.put(" https://localhost:44388/api/Hr/UpdateAnn",news).subscribe({
+        next: res => {
+          resolve()
+        },
+        error: err =>{
+          console.log(err);
+          reject()          
+        }
+      })
+    })
+  }
+
+
 }
+
+
+

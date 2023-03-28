@@ -26,6 +26,7 @@ import { HrMyAttendanceComponent } from './hr-my-attendance/hr-my-attendance.com
 import { SalaryPaymentComponent } from './salary-payment/salary-payment.component';
 import * as CanvasJSAngularChart from '../../assets/canvasjs.angular.component';
 import { HrTreeComponent } from './hr-tree/hr-tree.component';
+import { NewsComponent } from './news/news.component';
 var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
 
 
@@ -54,7 +55,8 @@ var CanvasJSChart = CanvasJSAngularChart.CanvasJSChart;
     HrMyAttendanceComponent,
     SalaryPaymentComponent,
     CanvasJSChart,
-    HrTreeComponent
+    HrTreeComponent,
+    NewsComponent
   ],
   imports: [
     CommonModule,
