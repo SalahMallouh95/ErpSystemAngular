@@ -17,6 +17,7 @@ export class MainComponent {
   empOfCount: any
   manCount: any
   DepCount: any
+  totalSalary=0
   x: any = []
 
   @ViewChild(MatPaginator) paginator: MatPaginator|any;

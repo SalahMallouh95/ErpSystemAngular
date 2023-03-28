@@ -19,6 +19,10 @@ export class PayoutComponent {
     enddate: new FormControl<Date | null>(null)
   });
 
+  x: any = []
+  chartOptions = {}
+  overallTotal :number|undefined
+
   constructor(public hrService: HrService,public http: HttpClient) {
 
   }
@@ -31,7 +35,6 @@ export class PayoutComponent {
         this.hrService.allPayout = res
         this.ReinitializeTable()
         this.CreateChartData()
-
       },
       error: (ee) => {
         console.log(ee)
@@ -43,17 +46,18 @@ export class PayoutComponent {
 }
 
   async Search() {
-    this.hrService.spinner.show()
-    $('#datatableexample').DataTable().clear().destroy();
-  await this.hrService.GetPayout(this.range.value)
-  this.ReinitializeTable()
+  this.hrService.spinner.show()  
 
+  await this.hrService.GetPayout(this.range.value)
+
+  this.ReinitializeTable()
   this.CreateChartData()
 
   this.hrService.spinner.hide()
 }
 
 ReinitializeTable(){
+  $('#datatableexample').DataTable().clear().destroy();
   setTimeout(()=>{   
     $('#datatableexample').DataTable( {
       pagingType: 'full_numbers',
@@ -65,48 +69,70 @@ ReinitializeTable(){
 }
 
 async CreateChartData() {
- this.x.splice(0)
-  for (let i = 1; i <= 12; i++) {
-    let total = 0;
-    for (let j = 0; j < this.hrService.allPayout.length; j++) {
-      if (new Date(this.hrService.allPayout[j].receiveddate).getMonth() == i) {
-        total = total + this.hrService.allPayout[j].salary
-      }
+  
+  this.x.splice(0);
+  this.overallTotal=0
+  let payoutsByYearAndMonth :any= {};
+  this.chartOptions = {}
+
+  // Accumulate total salary for each month in each year
+  this.hrService.allPayout.forEach((payout: { receiveddate: string | number | Date; salary: any; }) => {
+    const payoutDate = new Date(payout.receiveddate);
+    const year = payoutDate.getFullYear();
+    const month = payoutDate.getMonth() + 1;
+
+    if (!payoutsByYearAndMonth[year]) {
+      payoutsByYearAndMonth[year] = {};
     }
-    this.x.push({ x: new Date(new Date(this.hrService.allPayout[i].receiveddate).getFullYear(), i, 1), y: total });
+    if (!payoutsByYearAndMonth[year][month]) {
+      payoutsByYearAndMonth[year][month] = 0;
+    }
+    payoutsByYearAndMonth[year][month] += payout.salary;
+    this.overallTotal += payout.salary;
+  });
+
+  // Push the accumulated salary to the chart data
+  Object.keys(payoutsByYearAndMonth).forEach(year => {
+    Object.keys(payoutsByYearAndMonth[year]).forEach(month => {
+      const total = payoutsByYearAndMonth[year][month];
+      this.x.push({ x: new Date(parseInt(year)  , parseInt(month) - 1, 1), y: total });
+    });
+  });
+  this.CreateChartOptions()
+
+}
+
+CreateChartOptions(){
+  this.chartOptions = {
+    theme: "light2",
+    animationEnabled: true,
+    zoomEnabled: true,
+    willReadFrequently: true,
+    title: {
+      text: "Total Paid Salary $"+this.overallTotal
+    },
+    axisY: {
+      labelFormatter: (e: any) => {
+        var suffixes = ["", "K", "M", "B", "T"];
+  
+        var order = Math.max(Math.floor(Math.log(e.value) / Math.log(1000)), 0);
+        if (order > suffixes.length - 1)
+          order = suffixes.length - 1;
+  
+        var suffix = suffixes[order];
+        return "$" + (e.value / Math.pow(1000, order)) + suffix;
+      }
+    },
+    data: [{
+      type: "line",
+      xValueFormatString: "YYYY MMM",
+      yValueFormatString: "$#,###.##",
+      dataPoints: this.x
+    }]
   }
 }
 
 
-
-x: any = []
-chartOptions = {
-  theme: "light2",
-  animationEnabled: true,
-  zoomEnabled: true,
-  willReadFrequently: true,
-  title: {
-    text: "Paid Salary for this year"
-  },
-  axisY: {
-    labelFormatter: (e: any) => {
-      var suffixes = ["", "K", "M", "B", "T"];
-
-      var order = Math.max(Math.floor(Math.log(e.value) / Math.log(1000)), 0);
-      if (order > suffixes.length - 1)
-        order = suffixes.length - 1;
-
-      var suffix = suffixes[order];
-      return "$" + (e.value / Math.pow(1000, order)) + suffix;
-    }
-  },
-  data: [{
-    type: "line",
-    xValueFormatString: "YYYY MMM",
-    yValueFormatString: "$#,###.##",
-    dataPoints: this.x
-  }]
-}
 
 }
 
