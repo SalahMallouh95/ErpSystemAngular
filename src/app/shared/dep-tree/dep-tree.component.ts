@@ -7,17 +7,14 @@ import { HrService } from 'src/app/hr.service';
   styleUrls: ['./dep-tree.component.css']
 })
 export class DepTreeComponent {
-  allEmp :any[]|undefined   
-  @Input() depId:any
-  manager:any
-  constructor(public hrService:HrService){
+  @Input() allEmp: any[] = []
+  @Input() depId: any
+  @Input() manager: any
+  constructor(public hrService: HrService) {
 
   }
 
-  async ngOnInit(){
-    await this.hrService.GetAllEmployee()
-    this.manager=this.hrService.allEmp?.find((e:any)=>e.roleid==2 && e.departmentid==this.depId)
-    this.allEmp=this.hrService.allEmp.filter((e:any)=>e.departmentid=this.depId&& e.roleid==3)
+  async ngOnInit() {
   }
 
 }
