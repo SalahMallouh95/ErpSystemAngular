@@ -24,7 +24,7 @@ export class CheckinCheckoutComponent {
 
   emp: any = {}
 
-  ngOnInit() {
+  async ngOnInit() {
     this.spinner.show()
 
     let userData: any = JSON.parse(localStorage.getItem('userInfo') + '')
@@ -32,8 +32,8 @@ export class CheckinCheckoutComponent {
     userData.roleid = parseInt(userData.roleid)
     delete userData.exp
     this.emp = userData
-    this.man.GetManagerPrifile(userData)
-    this.man.GetAttendance(userData)
+    await this.man.GetManagerPrifile(userData)
+    await this.man.GetAttendance(userData)
 
     this.dataSource = new MatTableDataSource(this.man.attendance);
     this.dataSource.paginator = this.paginator;
@@ -48,6 +48,10 @@ export class CheckinCheckoutComponent {
     this.man.GetManagerPrifile(this.emp)
     await this.man.GetAttendance(this.emp)
     this.emp.state = 1
+
+    this.dataSource = new MatTableDataSource(this.man.attendance);
+    this.dataSource.paginator = this.paginator;
+    
     this.spinner.hide()
   }
   async checkOut() {
@@ -57,6 +61,10 @@ export class CheckinCheckoutComponent {
     this.man.GetManagerPrifile(this.emp)
     await this.man.GetAttendance(this.emp)
     this.emp.state = 0
+
+    this.dataSource = new MatTableDataSource(this.man.attendance);
+    this.dataSource.paginator = this.paginator;
+
     this.spinner.hide()
   }
 
