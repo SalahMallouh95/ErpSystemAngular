@@ -26,6 +26,7 @@ export class HrService {
   allService: any
   allPayout: any
   AllNews: any = []
+  allIban:any
 
 
   //object's
@@ -829,6 +830,24 @@ export class HrService {
       this.http.get("https://localhost:44388/api/Hr/TransferSalary").subscribe(
         {
           next: () => {
+            resolve()
+          },
+          error: (ee) => {
+            console.log(ee)
+            reject()
+          }
+        }
+      )
+
+    })
+  }
+
+  async GetAllIban(){
+    return new Promise<void>((resolve, reject) => {
+      this.http.get("https://localhost:44388/api/Hr/GetIban").subscribe(
+        {
+          next: (res) => {
+            this.allIban = res
             resolve()
           },
           error: (ee) => {
