@@ -56,13 +56,13 @@ export class NewsComponent {
 
   async deleteNews(){
 
-    // this.hrService.spinner.show()
-     
+    this.hrService.spinner.show()
+    
     await this.hrService.DeleteNews(this.news.annid)
     await this.hrService.GetAllNews()
     
     
-    // this.hrService.spinner.hide()
+    this.hrService.spinner.hide()
   }
 
   OpenDeleteDialog(id:any){
