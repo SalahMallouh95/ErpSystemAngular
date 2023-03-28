@@ -58,6 +58,15 @@ export class EmployeeAddComponent {
     history.back()
   }
 
+  CheckIban(){
+    this.hrService.GetAllIban()
+    let iban=this.hrService.allIban.find((b:any)=>b.iban==this.empInfoForm.value.bankinfoid)
+    if(iban==null)
+    return false
+    else
+    return true
+  }
+
   async UploadPhoto(file: any) {
     this.hrService.spinner.show()
 
