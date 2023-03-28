@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AbstractControl, ValidatorFn } from '@angular/forms';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { HrService } from 'src/app/hr.service';
 
 
@@ -27,7 +28,7 @@ export class EmployeeAddComponent {
 
   })
 
-  constructor(public hrService: HrService) {
+  constructor(public hrService: HrService,private tostar:ToastrService) {
 
   }
 
@@ -46,6 +47,18 @@ export class EmployeeAddComponent {
 
     this.hrService.spinner.show()
 
+    if(await this.CheckIban()){
+      this.CreateUser()
+    }
+    else
+    {
+      this.tostar.error("The iban dose not exist in the Bank Make sure to enter the right IBAN")
+    }
+    this.hrService.spinner.hide()
+
+  }
+
+  async CreateUser(){
     if (this.hrService.documentName.imagefilename !== null && this.hrService.documentName.imagefilename !== undefined && this.hrService.documentName.imagefilename !== '') {
       this.empInfoForm.value.imagefilename = this.hrService.documentName.imagefilename
     }
@@ -53,9 +66,8 @@ export class EmployeeAddComponent {
     this.empInfoForm.reset()
     this.empInfoForm.markAsUntouched()
     this.hrService.documentName.imagefilename = undefined
-    this.hrService.spinner.hide()
-
     history.back()
+
   }
 
   async CheckIban(){
