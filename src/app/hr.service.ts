@@ -892,6 +892,32 @@ export class HrService {
     })
   }
 
+  async DeleteNews(userid: any) {
+
+    console.log(userid);
+    return new Promise<void>((resolve, reject) => {
+      this.http.delete(" https://localhost:44388/api/Hr/DeleteAnn?id=" + userid).subscribe(
+        {
+          
+          
+          next: () => {
+            this.toastr.success("News deleted successfully")
+            resolve();
+          }
+          ,
+          error: (ee) => {
+            console.log(ee)
+            this.toastr.error("something want wrong")
+            reject();
+          }
+
+        }
+      )
+
+
+    })
+  }
+
 
 }
 

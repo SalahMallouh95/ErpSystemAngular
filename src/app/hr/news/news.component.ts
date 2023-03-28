@@ -11,6 +11,8 @@ import { HrService } from 'src/app/hr.service';
 export class NewsComponent {
 
   @ViewChild('UpdateNews') Update:any
+  @ViewChild('DeleteDio') Deletedia:any
+
   NewsForm=new FormGroup({
     annid:new FormControl(),
     msg:new FormControl()
@@ -51,5 +53,23 @@ export class NewsComponent {
     this.dialog.open(this.Update);
     this.hrService.spinner.hide()
   }
+
+  async deleteNews(){
+
+    // this.hrService.spinner.show()
+     
+    await this.hrService.DeleteNews(this.news.annid)
+    await this.hrService.GetAllNews()
+    
+    
+    // this.hrService.spinner.hide()
+  }
+
+  OpenDeleteDialog(id:any){
+    this.hrService.spinner.show()
+    this.news.annid = id 
+    this.dialog.open(this.Deletedia);
+    this.hrService.spinner.hide()
+   }
 
 }
