@@ -23,7 +23,7 @@ export class EmployeeListComponent implements OnInit {
   emplist: any
   viewOption = 1
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
-  displayedColumns: string[] = ['name', 'ssn', 'email', 'role', 'state','action'];
+  displayedColumns: string[] = ['name', 'ssn', 'email','department', 'role', 'state','action'];
   dataSource: any
 
   async ngOnInit() {
