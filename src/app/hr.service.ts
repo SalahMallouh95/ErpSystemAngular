@@ -26,6 +26,7 @@ export class HrService {
   allService: any
   allPayout: any
   AllNews: any = []
+  
 
 
   //object's

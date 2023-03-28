@@ -12,7 +12,7 @@ export class NewsComponent {
 
   @ViewChild('UpdateNews') Update:any
   NewsForm=new FormGroup({
-    id:new FormControl(),
+    annid:new FormControl(),
     msg:new FormControl()
   })
   
@@ -20,15 +20,14 @@ export class NewsComponent {
   constructor(public hrService:HrService,public dialog:MatDialog){}
 
   news: any= {}
+
   message : any | undefined
 
   async ngOnInit(){
     
     this.hrService.spinner.show()
     await this.hrService.GetAllNews()
-    this.NewsForm.patchValue(this.hrService.AllNews[0])
     this.message = this.hrService.AllNews.msg
-    console.log(this.hrService.AllNews.msg);
     
     this.hrService.spinner.hide()
 
@@ -45,7 +44,10 @@ export class NewsComponent {
   openUpdateDialog(id:any)
   {
     this.hrService.spinner.show()
-    this.news.annid=id
+    this.news = this.hrService.AllNews.find((n:any)=> n.annid == id)
+    console.log(this.news);
+    
+    this.NewsForm.patchValue(this.news)
     this.dialog.open(this.Update);
     this.hrService.spinner.hide()
   }
