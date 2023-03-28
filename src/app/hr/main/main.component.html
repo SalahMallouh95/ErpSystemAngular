@@ -75,10 +75,13 @@
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col">
-              <div *ngIf="this.x[0]!=null">
-                <canvasjs-chart [options]="chartOptions" [styles]="{width: '100%', height:'360px'}"></canvasjs-chart>
+          <div class="card wow fadeInUp" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+            <h5 class="card-header">Table Basic</h5>
+            <div class="row">
+              <div class="col">
+                <div *ngIf="this.x[0]!=null">
+                  <canvasjs-chart [options]="chartOptions" [styles]="{width: '100%', height:'360px'}"></canvasjs-chart>
+                </div>
               </div>
             </div>
           </div>
@@ -91,7 +94,7 @@
               
                   <!-- Position Column -->
                   <ng-container matColumnDef="ssn">
-                    <th mat-header-cell *matHeaderCellDef> Check in </th>
+                    <th mat-header-cell *matHeaderCellDef> Snn </th>
                     <td mat-cell *matCellDef="let element"> {{element.ssn}} </td>
                   </ng-container>
               
@@ -109,7 +112,7 @@
 
                   <ng-container matColumnDef="salary">
                     <th mat-header-cell *matHeaderCellDef> Salary </th>
-                    <td mat-cell *matCellDef="let element"> {{element.salary}} </td>
+                    <td mat-cell *matCellDef="let element"> ${{element.salary}} </td>
                   </ng-container>
               
                   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

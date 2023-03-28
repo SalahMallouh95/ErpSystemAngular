@@ -22,6 +22,7 @@ import { AttendanceComponent } from './attendance/attendance.component';
 import { DataTablesModule } from 'angular-datatables';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { DepTreeComponent } from './dep-tree/dep-tree.component';
 
 
 
@@ -38,7 +39,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     RawAllEmpLeaveComponent,
     PersonCardComponent,
     EmployeeSidbarComponent,
-    AttendanceComponent
+    AttendanceComponent,
+    DepTreeComponent
       ],
   imports: [
     CommonModule,
@@ -74,7 +76,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatCardModule,
     DataTablesModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    DepTreeComponent
   ]
 })
 export class SharedModule { }

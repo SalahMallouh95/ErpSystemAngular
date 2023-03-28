@@ -37,7 +37,7 @@ export class HrService {
   homeAbout: any = { "email": null, "phonenumber": null, "address": null }
   contactMessageInfo: any
   serviceInfo: any | undefined
-  bankBalance:any
+  bankBalance: any
 
   // ---------------------- Employee --------------------------
 
@@ -86,7 +86,7 @@ export class HrService {
 
   async UpdateEmpProfile(user: any) {
 
-      return new Promise<void>((resolve, reject) => {
+    return new Promise<void>((resolve, reject) => {
       this.http.put("https://localhost:44388/api/Hr/updateuser", user).subscribe(
         {
           next: () => {
@@ -165,7 +165,7 @@ export class HrService {
 
     return new Promise<void>((resolve, reject) => {
       this.http.get("https://localhost:44388/api/Hr/getleave").subscribe(
-        {
+                {
           next: (res) => {
             this.allLeaves = res
             resolve();
@@ -176,14 +176,10 @@ export class HrService {
           }
         }
       )
-
     })
-
   }
 
   async GetAllLeaveTypes() {
-
-
     return new Promise<void>((resolve, reject) => {
       this.http.get("https://localhost:44388/api/Hr/getleavetype").subscribe(
         {
@@ -197,13 +193,12 @@ export class HrService {
           }
         }
       )
-
     })
   }
 
   async CreateLeaveType(lev: any) {
     return new Promise<void>((resolve, reject) => {
-  
+
       this.http.post("https://localhost:44388/api/Hr/createleavetype", lev).subscribe(
         {
           next: () => {
@@ -217,17 +212,14 @@ export class HrService {
 
             reject();
           }
-
         }
       )
-
-
-    })
+        })
   }
 
   async UpdateLeaveType(lev: any) {
     return new Promise<void>((resolve, reject) => {
-  
+
       this.http.put("https://localhost:44388/api/Hr/updateleavetype", lev).subscribe(
         {
           next: () => {
@@ -251,7 +243,7 @@ export class HrService {
 
   async DeleteLeaveType(levid: any) {
     return new Promise<void>((resolve, reject) => {
-  
+
       this.http.delete("https://localhost:44388/api/Hr/deleteleavetype?id=" + levid).subscribe(
         {
           next: () => {
@@ -324,7 +316,7 @@ export class HrService {
 
   async Search(data: any) {
     return new Promise<void>((resolve, reject) => {
-  
+
       this.http.post("https://localhost:44388/api/Hr/searchleave", data).subscribe(
         {
           next: (res) => {
@@ -374,7 +366,7 @@ export class HrService {
 
   async CreateDep(dep: any) {
     return new Promise<void>((resolve, reject) => {
-  
+
       this.http.post("https://localhost:44388/api/Hr/createdept", dep).subscribe(
         {
           next: () => {
@@ -397,7 +389,7 @@ export class HrService {
   }
   async DeleteDep(id: any) {
     return new Promise<void>((resolve, reject) => {
-  
+
       this.http.delete("https://localhost:44388/api/Hr/deletedept?id=" + id).subscribe(
         {
           next: () => {
@@ -422,7 +414,7 @@ export class HrService {
     console.log(dep);
 
     return new Promise<void>((resolve, reject) => {
-  
+
       this.http.put("https://localhost:44388/api/Hr/updatedept", dep).subscribe(
         {
           next: () => {
@@ -446,7 +438,7 @@ export class HrService {
 
   async UploadDocument(file: any) {
     return new Promise<void>((resolve, reject) => {
-  
+
       this.http.post("https://localhost:44388/api/User/uploadFile", file).subscribe(
         {
           next: (res) => {
@@ -515,7 +507,7 @@ export class HrService {
 
   async CreateHome(home: any) {
     return new Promise<void>((resolve, reject) => {
-  
+
       this.http.post("https://localhost:44388/api/Hr/createhome", home).subscribe(
         {
           next: () => {
@@ -538,7 +530,7 @@ export class HrService {
   }
   async UpdateHome(home: any) {
     return new Promise<void>((resolve, reject) => {
-  
+
       this.http.put("https://localhost:44388/api/Hr/updatehome", home).subscribe(
         {
           next: () => {
@@ -561,7 +553,7 @@ export class HrService {
   }
   async DeleteHome(id: number) {
     return new Promise<void>((resolve, reject) => {
-  
+
       this.http.delete("https://localhost:44388/api/Hr/deletehome?id=" + id).subscribe(
         {
           next: () => {
@@ -607,7 +599,7 @@ export class HrService {
 
   async UpdateAbout(about: any) {
     return new Promise<void>((resolve, reject) => {
-  
+
       this.http.put("https://localhost:44388/api/Hr/updateabout", about).subscribe(
         {
           next: () => {
@@ -631,7 +623,7 @@ export class HrService {
 
   SendMessageContactUs(message: any) {
     return new Promise<void>((resolve, reject) => {
-  
+
       this.http.post("https://localhost:44388/api/User/sendMessage", message).subscribe(
         {
           next: () => {
@@ -677,7 +669,7 @@ export class HrService {
   DeleteConatctMessage(id: number) {
 
     return new Promise<void>((resolve, reject) => {
-  
+
       this.http.delete("https://localhost:44388/api/User/DeleteMessage?id=" + id).subscribe(
         {
           next: () => {
@@ -725,7 +717,7 @@ export class HrService {
 
   async CreateService(Service: any) {
     return new Promise<void>((resolve, reject) => {
-  
+
       this.http.post("https://localhost:44388/api/Hr/CreateService", Service).subscribe(
         {
           next: () => {
@@ -748,7 +740,7 @@ export class HrService {
   }
   async UpdateService(Service: any) {
     return new Promise<void>((resolve, reject) => {
-  
+
       this.http.put("https://localhost:44388/api/Hr/UpdateService", Service).subscribe(
         {
           next: () => {
@@ -771,7 +763,7 @@ export class HrService {
   }
   async DeleteService(id: number) {
     return new Promise<void>((resolve, reject) => {
-  
+
       this.http.delete("https://localhost:44388/api/Hr/DeleteService?id=" + id).subscribe(
         {
           next: () => {
@@ -800,8 +792,6 @@ export class HrService {
         {
           next: (res) => {
             this.allPayout = res
-            this.dtTrigger.next(0);
-
             resolve()
           },
           error: (ee) => {
@@ -815,20 +805,7 @@ export class HrService {
 
   }
 
-  @ViewChild(DataTableDirective) dtElement!: DataTableDirective;
-  dtOptions: DataTables.Settings | any = {};
-  dtTrigger: Subject<any> = new Subject();
-  rerender(): void {
-    this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
-      dtInstance.clear()
-      // Destroy the table first     
-      dtInstance.destroy();
-      // Call the dtTrigger to rerender again     
-      this.dtTrigger.next(0);
-    });
-  }
-
-  async GetBlance(){    
+  async GetBlance() {
 
     return new Promise<void>((resolve, reject) => {
       this.http.get("https://localhost:44388/api/Hr/GetBalance").subscribe(
@@ -846,8 +823,7 @@ export class HrService {
 
     })
   }
-  async TransferSalary(){    
-
+  async TransferSalary() {
     return new Promise<void>((resolve, reject) => {
       this.http.get("https://localhost:44388/api/Hr/TransferSalary").subscribe(
         {
@@ -863,9 +839,4 @@ export class HrService {
 
     })
   }
-
-
-
-
-
 }
