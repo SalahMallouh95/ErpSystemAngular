@@ -27,8 +27,8 @@
         <div *ngIf="this.hrService.OneNews.msg == null " class="ticker__item">Welcom To Startup</div>
       </div> -->
       <section class="section">
-        <div *ngFor="let item of this.hrService.AllNews">
-        <p class="marquee text-styling">{{item.msg}}</p>
+        <div class="marquee text-styling">
+        <div class="d-inline-flex justify-content-around" *ngFor="let item of this.hrService.AllNews"><p>&emsp;{{item.msg}}&emsp;</p></div>
       </div>
       </section>
     
@@ -110,6 +110,8 @@
   }
 }
 @keyframes marquee {
+
+  
   0% {
     margin-left: 100%;
     transform: translateX(0%);
