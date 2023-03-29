@@ -6,6 +6,7 @@ import { ManagerService } from 'src/app/manager.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ToastrService } from 'ngx-toastr';
+import { AuthService } from 'src/app/auth.service';
 
 
 @Component({
@@ -21,7 +22,7 @@ export class EmployeeDetailsComponent implements OnInit {
   displayedColumns: string[] = ['Checkin', 'Checkout', 'Workinghour'];
   dataSource: any
 
-  constructor(private tostar: ToastrService, public hrService: HrService, public dialog: MatDialog, public managerService: ManagerService) {
+  constructor(private tostar: ToastrService, public hrService: HrService, public dialog: MatDialog, public managerService: ManagerService,public auth:AuthService) {
 
   }
 
@@ -145,6 +146,28 @@ export class EmployeeDetailsComponent implements OnInit {
 
     history.back()
 
+  }
+
+  async ChangePassword(){
+    let user:any={}
+    user.useridnumber=this.empInfoForm.value.userid
+    await this.auth.CreatePassString(user)
+    await this.SendEmail()
+    this.auth.toastr.success("Email for reset your password was sent yo your email")
+
+  }
+
+  async SendEmail(){    
+    let mail:any={}
+      mail.to=this.empInfoForm.value.email;
+      mail.subject="Account Created"
+      mail.message="Dear Mr/Mis "
+      +this.empInfoForm.value.fname+" "+this.empInfoForm.value.lname+"\nI hope this find you well \n you can reset Your password using the link below "+
+    
+      "http://localhost:4200/Auth/passwordReset/"+this.auth.userResetPasswordInfo.passwordparam
+      +" \n please don't share the link with anyone\n"+
+      +" \n best wishes \n StartUp";      
+      this.auth.SendMail(mail)  
   }
 
 

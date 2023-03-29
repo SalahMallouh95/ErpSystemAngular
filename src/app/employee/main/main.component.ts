@@ -27,8 +27,6 @@ export class MainComponent {
     this.emp.userid = this.auth.systemUserInfo.userid
     this.man.GetManagerPrifile(this.emp)
     await this.man.GetAttendance(this.emp) 
-    await this.hr.GetAllNews()
-    this.hr.OneNews = await this.hr.AllNews[0]
     
   }
   

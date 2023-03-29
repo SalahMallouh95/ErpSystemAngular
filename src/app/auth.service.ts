@@ -12,9 +12,10 @@ import { HrService } from './hr.service';
 export class AuthService {
   
   systemUserInfo:any={"state":null}
+  userResetPasswordInfo:any
 
 
-  constructor(public http: HttpClient, private spinner: NgxSpinnerService, private toastr: ToastrService,private route:Router,public hrService:HrService) { }
+  constructor(public http: HttpClient, private spinner: NgxSpinnerService, public toastr: ToastrService,private route:Router,public hrService:HrService) { }
 
   async Login(login:any) {
     this.spinner.show();
@@ -93,6 +94,69 @@ export class AuthService {
     })
   }
 
+
+  async GetPassString(pass: any) {
+        this.spinner.show()
+    return new Promise<void>((resolve, reject) => {
+
+      this.http.post("https://localhost:44388/api/User/getPassParam",pass).subscribe(
+        {
+          next: (res) => {
+            this.userResetPasswordInfo=res           
+            resolve();
+          },
+          error: (err) => {
+            console.log(err);
+            this.toastr.success('Error')
+            reject();
+          }
+        }
+      )
+      this.spinner.hide()
+    })
+  }
+
+  async DeletePassString(pass: any) {
+    this.spinner.show()
+return new Promise<void>((resolve, reject) => {
+
+  this.http.post("https://localhost:44388/api/User/deletePassParam",pass).subscribe(
+    {
+      next: () => {
+        resolve();
+      },
+      error: (err) => {
+        console.log(err);
+        this.toastr.success('Error')
+        reject();
+      }
+    }
+  )
+  this.spinner.hide()
+})
+}
+
+
+async CreatePassString(pass: any) {
+  this.spinner.show()
+return new Promise<void>((resolve, reject) => {
+
+this.http.post("https://localhost:44388/api/User/createPassParam",pass).subscribe(
+  {
+    next: (res) => {
+      this.userResetPasswordInfo=res
+      resolve();
+    },
+    error: (err) => {
+      console.log(err);
+      this.toastr.success('Error')
+      reject();
+    }
+  }
+)
+this.spinner.hide()
+})
+}
   
 }
 
