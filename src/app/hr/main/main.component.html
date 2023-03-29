@@ -75,6 +75,19 @@
               </div>
             </div>
           </div>
+
+          <br>
+          <div  class="row mt-2">
+            <div  class="col ">
+            <div class="ticker-wrap">
+              <div class="ticker">
+                <div *ngIf="this.hrService.OneNews.msg != null " class="ticker__item">{{this.hrService.OneNews.msg}}</div>
+                
+              </div>
+            </div>
+          </div>
+          </div>
+          <br>
           <div class="card wow fadeInUp" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
             <h5 class="card-header">Table Basic</h5>
             <div class="row">
@@ -85,18 +98,7 @@
               </div>
             </div>
           </div>
-<br>
-          <div  class="row mt-2">
-            <div  class="col ">
-            <div class="ticker-wrap">
-              <div class="ticker">
-                <div class="ticker__item">{{this.hrService.OneNews.msg}}</div>
-                
-              </div>
-            </div>
-          </div>
-          </div>
-          <br>
+
           <div class="row mt-2">
             <div class="col ">
               <div class="mat-elevation-z8 ">
@@ -214,7 +216,7 @@
     -webkit-animation-name: ticker;
     animation-name: ticker;
     -webkit-animation-duration: 30s;
-    animation-duration: 30s;
+    animation-duration: 20s;
     
   }
 

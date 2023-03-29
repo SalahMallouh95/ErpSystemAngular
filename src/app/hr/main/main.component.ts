@@ -48,7 +48,7 @@ export class MainComponent {
     this.DepCount = this.hrService.allDep.length
 
     await this.hrService.GetAllNews()
-    this.hrService.OneNews = this.hrService.AllNews[0]
+    this.hrService.OneNews = await this.hrService.AllNews[0]
 
     this.CreateChartData()
     this.spiner.hide()

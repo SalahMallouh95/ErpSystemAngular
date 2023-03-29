@@ -17,6 +17,7 @@ import { MSolutionDetailsComponent } from './m-solution-details/m-solution-detai
 import { MSolutionComponent } from './m-solution/m-solution.component';
 import { MUpdateProfileComponent } from './m-update-profile/m-update-profile.component';
 import { MainComponent } from './main/main.component';
+import { MtreeComponent } from './mtree/mtree.component';
 import { TasksDetailesComponent } from './tasks-detailes/tasks-detailes.component';
 import { TasksComponent } from './tasks/tasks.component';
 import { TestComponent } from './test/test.component';
@@ -89,6 +90,10 @@ const routes: Routes = [
   {
     path: 'test',
     component: TestComponent
+  },
+  {
+    path: 'Tree',
+    component: MtreeComponent
   }
  ];
 

@@ -20,6 +20,7 @@ import { MSolutionDetailsComponent } from './m-solution-details/m-solution-detai
 import { CheckinCheckoutComponent } from './checkin-checkout/checkin-checkout.component';
 import { CreateLeaveComponent } from './create-leave/create-leave.component';
 import { TestComponent } from './test/test.component';
+import { MtreeComponent } from './mtree/mtree.component';
 
 
 
@@ -43,7 +44,8 @@ import { TestComponent } from './test/test.component';
     MSolutionDetailsComponent,
     CheckinCheckoutComponent,
     CreateLeaveComponent,
-    TestComponent
+    TestComponent,
+    MtreeComponent
   ],
   imports: [
     CommonModule,
