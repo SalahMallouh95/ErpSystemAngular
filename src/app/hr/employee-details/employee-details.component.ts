@@ -162,7 +162,7 @@ export class EmployeeDetailsComponent implements OnInit {
       mail.to=this.empInfoForm.value.email;
       mail.subject="Account password reset"
       mail.message="Dear Mr/Mis "
-      +this.empInfoForm.value.fname+" "+this.empInfoForm.value.lname+"\nI hope this find you well \n you can reset Your password using the link below "+
+      +this.empInfoForm.value.fname+" "+this.empInfoForm.value.lname+"\nI hope this find you well \n you can reset Your password using the link below: \n "+
     
       "http://localhost:4200/Auth/passwordReset/"+this.auth.userResetPasswordInfo.passwordparam
       +" \n please don't share the link with anyone\n"+
