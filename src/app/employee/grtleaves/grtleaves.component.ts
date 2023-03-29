@@ -6,6 +6,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { LeavedetailComponent } from '../leavedetail/leavedetail.component';
 import { HrService } from 'src/app/hr.service';
 import { AuthService } from 'src/app/auth.service';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-grtleaves',
@@ -21,14 +23,18 @@ export class GrtleavesComponent implements OnInit {
 
   }
    userdata:any
-  ngOnInit(): void {
+   @ViewChild(MatPaginator) paginator: MatPaginator|any;
+   displayedColumns: string[] = ['leavetype', 'startdate', 'enddate','state','Action'];
+   dataSource :any 
+  async ngOnInit() {
     this.userdata=this.auth.getdata()
     this.leaves.userid = this.userdata.userid;
-    this.employeeService.GetAllleave(this.leaves);
-    this.hrService.GetAllLeaveTypes();
+    await this.employeeService.GetAllleave(this.leaves);
+    await this.hrService.GetAllLeaveTypes();
     this.hrService.documentName = {}
     this.hrService.documentName.imagefilename = null
-
+    this.dataSource= new MatTableDataSource(this.employeeService.allleaves);
+    this.dataSource.paginator = this.paginator
   }
   leaves: any = {}
   async GetValue(id: any) {
@@ -55,6 +61,8 @@ export class GrtleavesComponent implements OnInit {
     this.range.value.userid = this.userdata.userid
     await this.employeeService.Search(this.range.value)
     console.log(this.employeeService.allleaves)
+    this.dataSource= new MatTableDataSource(this.employeeService.allleaves);
+    this.dataSource.paginator = this.paginator
   }
 
   CreateLeaveForm = new FormGroup(
@@ -72,8 +80,10 @@ export class GrtleavesComponent implements OnInit {
     this.CreateLeaveForm.value.userid = this.userdata.userid
     console.log(this.CreateLeaveForm.value)
     await this.employeeService.CreateLeave(this.CreateLeaveForm.value)
-    this.employeeService.GetAllleave(this.leaves)
+    await this.employeeService.GetAllleave(this.leaves)
     this.hrService.documentName.imagefilename=null
+    this.dataSource= new MatTableDataSource(this.employeeService.allleaves);
+    this.dataSource.paginator = this.paginator
   }
 
   OpenDialog() {
@@ -101,8 +111,10 @@ export class GrtleavesComponent implements OnInit {
     if (this.hrService.documentName.imagefilename != null && this.hrService.documentName.imagefilename != undefined && this.hrService.documentName.imagefilename != '')
     this.CreateLeaveForm.value.documentfilename = this.hrService.documentName.imagefilename
     await this.employeeService.UpdateLeave(this.CreateLeaveForm.value)
-    this.employeeService.GetAllleave(this.leaves)
+    await this.employeeService.GetAllleave(this.leaves)
     this.hrService.documentName.imagefilename=null
+    this.dataSource= new MatTableDataSource(this.employeeService.allleaves);
+    this.dataSource.paginator = this.paginator
   }
 
   async OpenDeleteDialog(id: number) {
