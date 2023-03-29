@@ -10,7 +10,7 @@ import { HrService } from 'src/app/hr.service';
   styleUrls: ['./reset-password.component.css']
 })
 export class ResetPasswordComponent {
-  passString:any
+  passString:any=this.route.snapshot.params['passwordparam'];
 
   loginForm= new FormGroup(
     {
@@ -24,15 +24,47 @@ export class ResetPasswordComponent {
 constructor(private route:ActivatedRoute,private auth:AuthService,private hrService:HrService,private router:Router){}
 
 async ngOnInit(){
-this.passString=this.route.snapshot.params['passwordparam'];
+  localStorage.clear()
 let pass:any={}
+let user:any={}
 pass.passwordparam=this.passString
+
 await this.auth.GetPassString(pass)
 if(this.auth.userResetPasswordInfo==null)
 {
+  this.auth.toastr.error("Link Expierd")
+  this.router.navigate([""])
+}
+else 
+{
+  user.userid=this.auth.userResetPasswordInfo.useridnumber  
+  await this.hrService.GetEmpInfo(user)
+  console.log(this.hrService.empInfo);
 
 }
 
+}
+
+async ChangePassword(){
+
+  if(await this.ChackPassword()){
+    this.hrService.empInfo.password=this.loginForm.value.password
+    await this.hrService.UpdateEmpProfile(this.hrService.empInfo)    
+    
+    this.auth.toastr.success("Password Updated !!")
+  }  
+  else
+  {
+    this.auth.toastr.error("The password not matched with the coniform password!!")
+  }
+
+}
+
+async ChackPassword(){
+  if(this.loginForm.value.password===this.loginForm.value.copassword)
+  return true
+  else
+  return false
 }
 
 }

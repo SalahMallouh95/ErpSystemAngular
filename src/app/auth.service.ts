@@ -15,7 +15,7 @@ export class AuthService {
   userResetPasswordInfo:any
 
 
-  constructor(public http: HttpClient, private spinner: NgxSpinnerService, private toastr: ToastrService,private route:Router,public hrService:HrService) { }
+  constructor(public http: HttpClient, private spinner: NgxSpinnerService, public toastr: ToastrService,private route:Router,public hrService:HrService) { }
 
   async Login(login:any) {
     this.spinner.show();
@@ -93,11 +93,13 @@ export class AuthService {
       this.spinner.hide()
     })
   }
+
+
   async GetPassString(pass: any) {
-    this.spinner.show()
+        this.spinner.show()
     return new Promise<void>((resolve, reject) => {
 
-      this.http.post("https://localhost:44388/api/User/getPassParam", pass).subscribe(
+      this.http.post("https://localhost:44388/api/User/getPassParam",pass).subscribe(
         {
           next: (res) => {
             this.userResetPasswordInfo=res           
