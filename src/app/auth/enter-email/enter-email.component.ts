@@ -29,6 +29,10 @@ export class EnterEmailComponent {
     await this.SendEmail()
     this.auth.toastr.success("Email for reset your password was sent yo your email")
   }
+  else{
+    this.auth.toastr.error("Email Not registered in any account contact Hr for more info")
+
+  }
   }
 
   async GetUser(){
