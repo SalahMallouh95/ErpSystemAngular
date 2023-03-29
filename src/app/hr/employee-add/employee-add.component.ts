@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AbstractControl, ValidatorFn } from '@angular/forms';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { AuthService } from 'src/app/auth.service';
 import { HrService } from 'src/app/hr.service';
 
 
@@ -27,7 +28,7 @@ export class EmployeeAddComponent {
 
   })
 
-  constructor(public hrService: HrService,private tostar:ToastrService) {
+  constructor(public hrService: HrService,private tostar:ToastrService,private auth:AuthService) {
 
   }
 
@@ -47,7 +48,10 @@ export class EmployeeAddComponent {
     this.hrService.spinner.show()
 
     if(await this.CheckIban() && await this.CheckSSN()&& await this.CheckEmail()){
-      this.CreateUser()
+      await this.CreateUser()
+      await this. SendEmail()
+      this.empInfoForm.reset()
+      this.empInfoForm.markAsUntouched()
     }
     else if(await this.CheckIban()==false)
     {
@@ -67,10 +71,26 @@ export class EmployeeAddComponent {
       this.empInfoForm.value.imagefilename = this.hrService.documentName.imagefilename
     }
     await this.hrService.AddEmpProfile(this.empInfoForm.value)
-    this.empInfoForm.reset()
-    this.empInfoForm.markAsUntouched()
+   
     this.hrService.documentName.imagefilename = undefined
     history.back()
+  }
+
+  async SendEmail(){
+    console.log(this.empInfoForm.value);
+    
+    let mail:any={}
+      mail.to=this.empInfoForm.value.email;
+      mail.subject="Account Created"
+      mail.message="Dear Mr/Mis "
+      +this.empInfoForm.value.fname+" "+this.empInfoForm.value.lname+"\nI hope this find you well \n We happy to conform that your account was created succssasfully and "+
+      "you need to setup your password on this link \n"+
+      "http://localhost:4200/Auth/passwordReset/"+this.hrService.newUserId.passwordparam
+      +
+      " \n best wishes\n"+this.auth.systemUserInfo.rolename+"."+this.auth.systemUserInfo.fname+" "+this.auth.systemUserInfo.lname;
+      
+      this.auth.SendMail(mail)
+  
   }
 
   async CheckEmail(){

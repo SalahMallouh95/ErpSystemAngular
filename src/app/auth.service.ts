@@ -12,6 +12,7 @@ import { HrService } from './hr.service';
 export class AuthService {
   
   systemUserInfo:any={"state":null}
+  userResetPasswordInfo:any
 
 
   constructor(public http: HttpClient, private spinner: NgxSpinnerService, private toastr: ToastrService,private route:Router,public hrService:HrService) { }
@@ -92,6 +93,27 @@ export class AuthService {
       this.spinner.hide()
     })
   }
+  async GetPassString(pass: any) {
+    this.spinner.show()
+    return new Promise<void>((resolve, reject) => {
+
+      this.http.post("https://localhost:44388/api/User/getPassParam", pass).subscribe(
+        {
+          next: (res) => {
+            this.userResetPasswordInfo=res           
+            resolve();
+          },
+          error: (err) => {
+            console.log(err);
+            this.toastr.success('Error')
+            reject();
+          }
+        }
+      )
+      this.spinner.hide()
+    })
+  }
+
 
   
 }
