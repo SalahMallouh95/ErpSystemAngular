@@ -7,18 +7,6 @@
 
       <app-dash-header></app-dash-header>
 
-      <br>
-      <div class="row mt-2">
-        <div class="col " style="padding-left: 25px;padding-right: 25px;">
-          <div class="ticker-wrap">
-            <div class="ticker">
-              <div *ngIf="this.hr.OneNews.msg != null " class="ticker__item">{{this.hr.OneNews.msg}}</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <br>
-
 
       <app-checkin> </app-checkin>
 
@@ -32,79 +20,3 @@
   <div class="layout-overlay layout-menu-toggle"></div>
 
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    @-webkit-keyframes ticker {
-      0% {
-        -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0);
-        visibility: visible;
-      }
-
-      100% {
-        -webkit-transform: translate3d(-100%, 0, 0);
-        transform: translate3d(-100%, 0, 0);
-      }
-    }
-
-    @keyframes ticker {
-      0% {
-        -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0);
-        visibility: visible;
-      }
-
-      100% {
-        -webkit-transform: translate3d(-100%, 0, 0);
-        transform: translate3d(-100%, 0, 0);
-      }
-    }
-
-    .ticker-wrap {
-      border-radius: 10px;
-      width: auto;
-      overflow: hidden;
-      height: 4rem;
-      background-color: #a7a8f8c0;
-      padding-left: 100%;
-      box-sizing: content-box;
-    }
-
-    .ticker-wrap .ticker {
-      display: inline-block;
-      height: 4rem;
-      line-height: 4rem;
-      white-space: nowrap;
-      padding-right: 100%;
-      box-sizing: content-box;
-      -webkit-animation-iteration-count: infinite;
-      animation-iteration-count: infinite;
-      -webkit-animation-timing-function: linear;
-      animation-timing-function: linear;
-      -webkit-animation-name: ticker;
-      animation-name: ticker;
-      -webkit-animation-duration: 30s;
-      animation-duration: 20s;
-
-    }
-
-    .ticker-wrap .ticker__item {
-      display: inline-block;
-      padding: 0 2rem;
-      font-size: 2rem;
-      color: white;
-    }
-
-    body {
-      padding-bottom: 5rem;
-    }
-
-    h1,
-    h2,
-    p {
-      padding: 0 5%;
-    }
-  </style>
