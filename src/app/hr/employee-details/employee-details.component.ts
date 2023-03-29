@@ -160,7 +160,7 @@ export class EmployeeDetailsComponent implements OnInit {
   async SendEmail(){    
     let mail:any={}
       mail.to=this.empInfoForm.value.email;
-      mail.subject="Account Created"
+      mail.subject="Account password reset"
       mail.message="Dear Mr/Mis "
       +this.empInfoForm.value.fname+" "+this.empInfoForm.value.lname+"\nI hope this find you well \n you can reset Your password using the link below "+
     

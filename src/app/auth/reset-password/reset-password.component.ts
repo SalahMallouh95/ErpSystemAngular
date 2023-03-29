@@ -52,7 +52,6 @@ async ChangePassword(){
     await this.auth.DeletePassString(this.auth.userResetPasswordInfo) 
     this.auth.userResetPasswordInfo={}
     this.router.navigate(['Auth/'])
-
   }  
   else
   {
