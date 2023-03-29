@@ -36,7 +36,8 @@ export class NewsComponent {
 
   async Updaten() {
     this.hrService.spinner.show()
-    this.hrService.UpdateNews(this.NewsForm.value)
+    await this.hrService.UpdateNews(this.NewsForm.value)
+    this.NewsForm.reset()
     await this.hrService.GetAllNews()
     this.hrService.spinner.hide()
   }
@@ -45,8 +46,6 @@ export class NewsComponent {
   openUpdateDialog(id: any) {
     this.hrService.spinner.show()
     this.news = this.hrService.AllNews.find((n: any) => n.annid == id)
-    console.log(this.news);
-
     this.NewsForm.patchValue(this.news)
     this.dialog.open(this.Update);
     this.hrService.spinner.hide()
@@ -73,6 +72,7 @@ export class NewsComponent {
 
     this.hrService.spinner.show()
     await this.hrService.CreateNews(this.NewsForm.value)
+    this.NewsForm.reset()
     await this.hrService.GetAllNews()
     this.hrService.spinner.hide()
   }
