@@ -39,7 +39,6 @@ else
 {
   user.userid=this.auth.userResetPasswordInfo.useridnumber  
   await this.hrService.GetEmpInfo(user)
-  console.log(this.hrService.empInfo);
 
 }
 
@@ -49,9 +48,11 @@ async ChangePassword(){
 
   if(await this.ChackPassword()){
     this.hrService.empInfo.password=this.loginForm.value.password
-    await this.hrService.UpdateEmpProfile(this.hrService.empInfo)    
-    
-    this.auth.toastr.success("Password Updated !!")
+    await this.hrService.UpdateEmpProfile(this.hrService.empInfo)   
+    await this.auth.DeletePassString(this.auth.userResetPasswordInfo) 
+    this.auth.userResetPasswordInfo={}
+    this.router.navigate(['Auth/'])
+
   }  
   else
   {
