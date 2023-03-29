@@ -31,7 +31,6 @@ export class EmployeeDetailsComponent implements OnInit {
     fname: new FormControl(null, [Validators.required]),
     lname: new FormControl('', Validators.required),
     email: new FormControl('', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
-    password: new FormControl(''),
     phonenumber: new FormControl(),
     address: new FormControl(),
     salary: new FormControl(),
@@ -88,20 +87,18 @@ export class EmployeeDetailsComponent implements OnInit {
   async EditEmp() {
 
     this.hrService.spinner.show()
-
-    if (await this.CheckIban() && await this.CheckSSN()) {
+    if (await this.CheckIban() && await this.CheckSSN() && await this.CheckEmail()) {
       this.UpdateProfile()
     }
     else if (await this.CheckIban() == false) {
       this.tostar.error("The iban dose not exist in the Bank Make sure to enter the right IBAN")
     } else if (await this.CheckSSN() == false) {
       this.tostar.error("The SSN number Must be Uniqe Make sure to enter the right ssn number")
+    } else if (await this.CheckEmail() == false) {
+      this.tostar.error("The Email already in the system ")
     }
     this.hrService.spinner.hide()
-
   }
-
-
 
   async CheckIban() {
     await this.hrService.GetAllIban()
@@ -116,6 +113,17 @@ export class EmployeeDetailsComponent implements OnInit {
   async CheckSSN() {
     await this.hrService.GetAllEmployee()
     let user = this.hrService.allEmp.find((b: any) => b.ssn == this.empInfoForm.value.ssn)
+    if (user == null)
+      return true
+    else if (user.userid == this.empInfoForm.value.userid)
+      return true
+    else
+      return false
+  }
+
+  async CheckEmail() {
+    await this.hrService.GetAllEmployee()
+    let user = this.hrService.allEmp.find((b: any) => b.email == this.empInfoForm.value.email)
     if (user == null)
       return true
     else if (user.userid == this.empInfoForm.value.userid)
