@@ -10,7 +10,7 @@ import { ManagerService } from 'src/app/manager.service';
   styleUrls: ['./updateprofile.component.css']
 })
 export class UpdateprofileComponent {
-  constructor(public man : ManagerService, public hr : HrService,private auth:AuthService){
+  constructor(public man : ManagerService, public hr : HrService,public auth:AuthService){
 
 
   }
@@ -20,7 +20,6 @@ export class UpdateprofileComponent {
     userid : new FormControl(),
     fname : new FormControl({ value: '',disabled: true}, Validators.required),
     lname : new FormControl({value: '', disabled: true}, Validators.required),
-    password : new FormControl(),
     phonenumber : new FormControl(),
     address : new FormControl(),
     imagefilename : new FormControl(),
@@ -62,6 +61,26 @@ export class UpdateprofileComponent {
     this.man.GetManagerPrifile(this.emp)
     
     
+  }
+  async ChangePassword(){
+    let user:any={}
+    user.useridnumber=this.manInfo.value.userid
+    await this.auth.CreatePassString(user)
+    await this.SendEmail()
+    this.auth.toastr.success("Email for reset your password was sent yo your email")
+
+  }
+  async SendEmail(){    
+    let mail:any={}
+      mail.to=this.auth.systemUserInfo.email
+      mail.subject="Reset Password"
+      mail.message="Dear Mr/Mis "
+      +this.manInfo.value.fname+" "+this.manInfo.value.lname+"\nI hope this find you well \n you can reset Your password using the link below "+
+    
+      "http://localhost:4200/Auth/passwordReset/"+this.auth.userResetPasswordInfo.passwordparam
+      +" \n please don't share the link with anyone\n"+
+      +" \n best wishes \n StartUp";      
+      this.auth.SendMail(mail)  
   }
 
 }
