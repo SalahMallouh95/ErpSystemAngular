@@ -20,6 +20,7 @@ export class MainComponent {
   totalSalary=0
   x: any = []
 
+
   @ViewChild(MatPaginator) paginator: MatPaginator|any;
   displayedColumns: string[] = ['ssn', 'name', 'receiveddate','salary'];
   dataSource :any
@@ -45,6 +46,9 @@ export class MainComponent {
     this.empOfCount = this.hrService.allEmp.filter((e: any) => e.state == 0).length
     this.manCount = this.hrService.allEmp.filter((e: any) => e.roleid == 2).length
     this.DepCount = this.hrService.allDep.length
+
+    await this.hrService.GetAllNews()
+    this.hrService.OneNews = this.hrService.AllNews[0]
 
     this.CreateChartData()
     this.spiner.hide()
