@@ -40,6 +40,7 @@ export class HrService {
   contactMessageInfo: any
   serviceInfo: any | undefined
   bankBalance: any
+  newUserId:any
 
   // ---------------------- Employee --------------------------
 
@@ -116,7 +117,8 @@ export class HrService {
     return new Promise<void>((resolve, reject) => {
       this.http.post("https://localhost:44388/api/Hr/createuser", user).subscribe(
         {
-          next: () => {
+          next: (res) => {
+            this.newUserId=res
             this.toastr.success("Profile created successfully")
             resolve();
           }

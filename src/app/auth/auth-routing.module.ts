@@ -9,7 +9,7 @@ const routes: Routes = [
     component:LoginComponent
   },
   {
-    path:"passwordReset",
+    path:"passwordReset/:passwordparam",
     component:ResetPasswordComponent
   }
 ];
