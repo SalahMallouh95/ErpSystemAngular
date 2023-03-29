@@ -45,6 +45,8 @@ export class MainComponent {
     this.leaves = this.man.allLeaves.length
     this.penleaves = this.man.allLeaves.filter((l: any) => l.state == 2).length
     this.taskWorkingon = this.man.AllTasks.filter((t: any) => t.state == 2 || t.state == 0).length
+    await this.hrService.GetAllNews()
+    this.hrService.OneNews = await this.hrService.AllNews[0]
     this.man.spinner.hide()
   }
 

@@ -16,6 +16,7 @@ import { MatInputModule } from "@angular/material/input";
 import { MatSelectModule } from "@angular/material/select";
 import { UpdateprofileComponent } from './updateprofile/updateprofile.component';
 import { CheckinComponent } from './checkin/checkin.component';
+import { ETreeComponent } from './e-tree/e-tree.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { CheckinComponent } from './checkin/checkin.component';
     EditsolutionComponent,
     UpdateprofileComponent,
     CheckinComponent,
+    ETreeComponent,
     
   ],
   imports: [

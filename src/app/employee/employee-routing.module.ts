@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LeaveDetailsComponent } from '../hr/leave-details/leave-details.component';
 import { CreateleaveComponent } from './createleave/createleave.component';
 import { CreatesolutionComponent } from './createsolution/createsolution.component';
+import { ETreeComponent } from './e-tree/e-tree.component';
 import { EditsolutionComponent } from './editsolution/editsolution.component';
 import { GetsolutionComponent } from './getsolution/getsolution.component';
 import { GettaskComponent } from './gettask/gettask.component';
@@ -46,6 +47,9 @@ const routes: Routes = [
   ,{
     path:'updateprofile',
     component:UpdateprofileComponent
+  },{
+    path:'Tree',
+    component:ETreeComponent
   }
   
 ];

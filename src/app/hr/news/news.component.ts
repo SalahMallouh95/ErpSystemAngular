@@ -10,32 +10,31 @@ import { HrService } from 'src/app/hr.service';
 })
 export class NewsComponent {
 
-  @ViewChild('UpdateNews') Update:any
-  @ViewChild('DeleteDio') Deletedia:any
-
-  NewsForm=new FormGroup({
-    annid:new FormControl(),
-    msg:new FormControl()
+  @ViewChild('UpdateNews') Update: any
+  @ViewChild('DeleteDio') Deletedia: any
+  @ViewChild('CreateDio') Createdia: any
+  NewsForm = new FormGroup({
+    annid: new FormControl(),
+    msg: new FormControl()
   })
-  
 
-  constructor(public hrService:HrService,public dialog:MatDialog){}
 
-  news: any= {}
+  constructor(public hrService: HrService, public dialog: MatDialog) { }
 
-  message : any | undefined
+  news: any = {}
+  message: any | undefined
 
-  async ngOnInit(){
-    
+  async ngOnInit() {
+
     this.hrService.spinner.show()
     await this.hrService.GetAllNews()
     this.message = this.hrService.AllNews.msg
-    
+
     this.hrService.spinner.hide()
 
   }
 
-  async Updaten(){
+  async Updaten() {
     this.hrService.spinner.show()
     this.hrService.UpdateNews(this.NewsForm.value)
     await this.hrService.GetAllNews()
@@ -43,33 +42,45 @@ export class NewsComponent {
   }
 
 
-  openUpdateDialog(id:any)
-  {
+  openUpdateDialog(id: any) {
     this.hrService.spinner.show()
-    this.news = this.hrService.AllNews.find((n:any)=> n.annid == id)
+    this.news = this.hrService.AllNews.find((n: any) => n.annid == id)
     console.log(this.news);
-    
+
     this.NewsForm.patchValue(this.news)
     this.dialog.open(this.Update);
     this.hrService.spinner.hide()
   }
 
-  async deleteNews(){
+  async deleteNews() {
 
     this.hrService.spinner.show()
-    
+
     await this.hrService.DeleteNews(this.news.annid)
     await this.hrService.GetAllNews()
-    
-    
     this.hrService.spinner.hide()
   }
 
-  OpenDeleteDialog(id:any){
+  OpenDeleteDialog(id: any) {
     this.hrService.spinner.show()
-    this.news.annid = id 
+    this.news.annid = id
     this.dialog.open(this.Deletedia);
     this.hrService.spinner.hide()
-   }
+  }
 
+
+  async CreateN() {
+
+    this.hrService.spinner.show()
+    await this.hrService.CreateNews(this.NewsForm.value)
+    await this.hrService.GetAllNews()
+    this.hrService.spinner.hide()
+  }
+
+
+  OpenCreateDia() {
+    this.hrService.spinner.show()
+    this.dialog.open(this.Createdia)
+    this.hrService.spinner.hide()
+  }
 }

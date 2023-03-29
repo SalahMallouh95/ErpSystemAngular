@@ -27,6 +27,7 @@ export class HrService {
   allPayout: any
   AllNews: any = []
   allIban:any
+  OneNews : any={}
 
 
   //object's
@@ -910,6 +911,31 @@ export class HrService {
           error: (ee) => {
             console.log(ee)
             this.toastr.error("something want wrong")
+            reject();
+          }
+
+        }
+      )
+
+
+    })
+  }
+
+
+  async CreateNews(news: any) {
+    return new Promise<void>((resolve, reject) => {
+
+      this.http.post(" https://localhost:44388/api/Hr/CreateAnn", news).subscribe(
+        {
+          next: () => {
+            resolve();
+            this.toastr.success('Annoicment Added successfully!');
+          }
+          ,
+          error: (ee) => {
+            console.log(ee)
+            this.toastr.error('Somthing went wrong!');
+
             reject();
           }
 
