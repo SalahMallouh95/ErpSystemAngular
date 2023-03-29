@@ -71,13 +71,7 @@
                     <mat-form-field class="mb-3 col-md-6">
                       <label for="email" class="form-label">E-mail</label>
                       <input type="email" matInput formControlName="email" placeholder="john.doe@example.com">
-                    </mat-form-field>                   
-                  
-                    <mat-form-field class="mb-3 col-md-6">
-                      <label for="password" class="form-label">Password</label>
-                      <input type="password" matInput formControlName="password" >
-                    </mat-form-field>                        
-                
+                    </mat-form-field>                                     
 
                     <mat-form-field class="mb-3 col-md-6">
                       <label class="form-label" for="phoneNumber">Phone Number</label>
@@ -113,12 +107,25 @@
                     <mat-form-field class="mb-3 col-md-6">
                       <label for="zipCode" class="form-label">Bank IBAN</label>
                       <input type="number" matInput formControlName="bankinfoid" placeholder="12345">
-                    </mat-form-field>
-                
-                                     
+                    </mat-form-field>           
                   </div>
-                  <div class="mt-2">
-                    <button type="submit" class="btn btn-primary me-2" (click)="UpdateProf()" [disabled]="manInfo.invalid"  >Save Changes</button>                     
+
+                  
+                  
+                  <div>
+                    <div class="row">
+                      <div class="mt-2 col-2">
+                    <button type="submit" class="btn btn-primary me-2" (click)="UpdateProf()"
+                      [disabled]="manInfo.invalid">Save changes</button>
+                  </div>
+                  <div class="mt-2 col-8">
+                    
+                  </div>
+                  <div class="mt-2 col-2" *ngIf="this.man.ManagerProfile.userid==this.auth.systemUserInfo.userid">
+                    <button type="submit" class="btn btn-primary me-2" (click)="ChangePassword()"
+                      [disabled]="manInfo.invalid">Change Password</button>
+                  </div>
+                    </div>
                   </div>
                   <div class="demo-inline-spacing">                        
                       <button style="position: absolute; top: 0px; right:0px;" type="button" onclick="history.back(-1)"
