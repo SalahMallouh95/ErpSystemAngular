@@ -89,6 +89,8 @@ export class HrService {
   }
 
   async UpdateEmpProfile(user: any) {
+    console.log(user);
+    
 
     return new Promise<void>((resolve, reject) => {
       this.http.put("https://localhost:44388/api/Hr/updateuser", user).subscribe(
