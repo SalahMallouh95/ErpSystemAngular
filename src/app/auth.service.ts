@@ -116,7 +116,47 @@ export class AuthService {
     })
   }
 
+  async DeletePassString(pass: any) {
+    this.spinner.show()
+return new Promise<void>((resolve, reject) => {
 
+  this.http.post("https://localhost:44388/api/User/deletePassParam",pass).subscribe(
+    {
+      next: () => {
+        resolve();
+      },
+      error: (err) => {
+        console.log(err);
+        this.toastr.success('Error')
+        reject();
+      }
+    }
+  )
+  this.spinner.hide()
+})
+}
+
+
+async CreatePassString(pass: any) {
+  this.spinner.show()
+return new Promise<void>((resolve, reject) => {
+
+this.http.post("https://localhost:44388/api/User/createPassParam",pass).subscribe(
+  {
+    next: (res) => {
+      this.userResetPasswordInfo=res
+      resolve();
+    },
+    error: (err) => {
+      console.log(err);
+      this.toastr.success('Error')
+      reject();
+    }
+  }
+)
+this.spinner.hide()
+})
+}
   
 }
 
