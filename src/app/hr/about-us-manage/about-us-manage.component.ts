@@ -21,13 +21,20 @@ export class AboutUsManageComponent {
   constructor(public hrService:HrService){}
 
   async ngOnInit(){
+    this.hrService.spinner.show()
     await this.hrService.GetAbout()    
     this.aboutForm.patchValue(this.hrService.homeAbout)
+    this.hrService.spinner.hide()
+
   }
 
   async UpdateAbout(){
+    this.hrService.spinner.show()
+
     this.hrService.UpdateAbout(this.aboutForm.value)
     await this.hrService.GetAbout()
+    this.hrService.spinner.hide()
+
 
   }
 

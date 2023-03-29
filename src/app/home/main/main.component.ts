@@ -11,7 +11,11 @@ import { HrService } from 'src/app/hr.service';
 export class MainComponent implements OnInit{
   constructor(private spinner: NgxSpinnerService,public hrService:HrService) {}
   async ngOnInit(){
+    this.spinner.show()
    await this.hrService.GetAllHome()
+   await 
+   this.spinner.hide()
+
   }
 
   }

@@ -11,7 +11,7 @@ import { Subject } from 'rxjs';
 })
 export class HrService {
 
-  constructor(public http: HttpClient, private spinner: NgxSpinnerService, private toastr: ToastrService) {
+  constructor(public http: HttpClient, public spinner: NgxSpinnerService, private toastr: ToastrService) {
 
   }
 
@@ -21,10 +21,13 @@ export class HrService {
   allRole: any = []
   allLeaves: any = []
   allLeaveTypes: any = []
-  allHome: any = [{"imagename":"","titile" :null,"description":null}]
+  allHome: any = [{ "imagename": "", "titile": null, "description": null }]
   contactMessages: any
   allService: any
   allPayout: any
+  AllNews: any = []
+  allIban:any
+  OneNews : any={}
 
 
   //object's
@@ -34,15 +37,15 @@ export class HrService {
   documentName: any
   leaveTypeInfo: any
   homeInfo: any
-  homeAbout: any={"email":null,"phonenumber":null,"address":null}
+  homeAbout: any = { "email": null, "phonenumber": null, "address": null }
   contactMessageInfo: any
   serviceInfo: any | undefined
+  bankBalance: any
 
   // ---------------------- Employee --------------------------
 
-
   async GetAllEmployee() {
-    this.spinner.show();
+
     return new Promise<void>((resolve, reject) => {
       this.http.get("https://localhost:44388/api/Hr/getuser").subscribe(
         {
@@ -56,13 +59,13 @@ export class HrService {
           }
         }
       )
-      this.spinner.hide();
+
     })
 
   }
 
   async GetEmpInfo(user: any) {
-    this.spinner.show()
+
 
     return new Promise<void>((resolve, reject) => {
       this.http.post("https://localhost:44388/api/User/GetProfile", user).subscribe(
@@ -79,14 +82,12 @@ export class HrService {
 
         }
       )
-      this.spinner.hide();
+
 
     })
   }
 
   async UpdateEmpProfile(user: any) {
-
-    this.spinner.show()
 
     return new Promise<void>((resolve, reject) => {
       this.http.put("https://localhost:44388/api/Hr/updateuser", user).subscribe(
@@ -103,7 +104,7 @@ export class HrService {
 
         }
       )
-      this.spinner.hide();
+
 
     })
   }
@@ -112,7 +113,6 @@ export class HrService {
 
     console.log(user);
 
-    this.spinner.show()
 
     return new Promise<void>((resolve, reject) => {
       this.http.post("https://localhost:44388/api/Hr/createuser", user).subscribe(
@@ -130,7 +130,7 @@ export class HrService {
 
         }
       )
-      this.spinner.hide();
+
 
     })
   }
@@ -139,7 +139,7 @@ export class HrService {
 
     console.log(userid);
 
-    this.spinner.show()
+
 
     return new Promise<void>((resolve, reject) => {
       this.http.delete("https://localhost:44388/api/Hr/deleteuser?id=" + userid).subscribe(
@@ -157,7 +157,7 @@ export class HrService {
 
         }
       )
-      this.spinner.hide();
+
 
     })
   }
@@ -165,10 +165,10 @@ export class HrService {
   // ---------------------- Leave --------------------------
 
   async GetAllLeaves() {
-    this.spinner.show();
+
     return new Promise<void>((resolve, reject) => {
       this.http.get("https://localhost:44388/api/Hr/getleave").subscribe(
-        {
+                {
           next: (res) => {
             this.allLeaves = res
             resolve();
@@ -179,14 +179,10 @@ export class HrService {
           }
         }
       )
-      this.spinner.hide();
     })
-
   }
 
   async GetAllLeaveTypes() {
-    this.spinner.show();
-
     return new Promise<void>((resolve, reject) => {
       this.http.get("https://localhost:44388/api/Hr/getleavetype").subscribe(
         {
@@ -200,13 +196,12 @@ export class HrService {
           }
         }
       )
-      this.spinner.hide();
     })
   }
 
   async CreateLeaveType(lev: any) {
     return new Promise<void>((resolve, reject) => {
-      this.spinner.show()
+
       this.http.post("https://localhost:44388/api/Hr/createleavetype", lev).subscribe(
         {
           next: () => {
@@ -220,17 +215,14 @@ export class HrService {
 
             reject();
           }
-
         }
       )
-      this.spinner.hide();
-
-    })
+        })
   }
 
   async UpdateLeaveType(lev: any) {
     return new Promise<void>((resolve, reject) => {
-      this.spinner.show()
+
       this.http.put("https://localhost:44388/api/Hr/updateleavetype", lev).subscribe(
         {
           next: () => {
@@ -247,14 +239,14 @@ export class HrService {
 
         }
       )
-      this.spinner.hide();
+
 
     })
   }
 
   async DeleteLeaveType(levid: any) {
     return new Promise<void>((resolve, reject) => {
-      this.spinner.show()
+
       this.http.delete("https://localhost:44388/api/Hr/deleteleavetype?id=" + levid).subscribe(
         {
           next: () => {
@@ -271,13 +263,13 @@ export class HrService {
 
         }
       )
-      this.spinner.hide();
+
 
     })
   }
 
   async GetLeaveDetails(leave: any) {
-    this.spinner.show()
+
     return new Promise<void>((resolve, reject) => {
       this.http.post("https://localhost:44388/api/Hr/getoneleave", leave).subscribe(
         {
@@ -293,7 +285,7 @@ export class HrService {
 
         }
       )
-      this.spinner.hide();
+
 
     })
 
@@ -319,7 +311,7 @@ export class HrService {
 
         }
       )
-      this.spinner.hide();
+
 
     })
 
@@ -327,13 +319,12 @@ export class HrService {
 
   async Search(data: any) {
     return new Promise<void>((resolve, reject) => {
-      this.spinner.show()
+
       this.http.post("https://localhost:44388/api/Hr/searchleave", data).subscribe(
         {
           next: (res) => {
             this.allLeaves = res
             resolve();
-            console.log(this.allLeaves)
           }
           ,
           error: (ee) => {
@@ -345,7 +336,7 @@ export class HrService {
 
         }
       )
-      this.spinner.hide();
+
 
     })
 
@@ -355,7 +346,7 @@ export class HrService {
   // ---------------------- Department --------------------------
 
   async GetAllDepartment() {
-    this.spinner.show();
+
 
     return new Promise<void>((resolve, reject) => {
       this.http.get("https://localhost:44388/api/HR/getdept").subscribe(
@@ -371,14 +362,14 @@ export class HrService {
           }
         }
       )
-      this.spinner.hide();
+
     })
 
   }
 
   async CreateDep(dep: any) {
     return new Promise<void>((resolve, reject) => {
-      this.spinner.show()
+
       this.http.post("https://localhost:44388/api/Hr/createdept", dep).subscribe(
         {
           next: () => {
@@ -395,13 +386,13 @@ export class HrService {
 
         }
       )
-      this.spinner.hide();
+
 
     })
   }
   async DeleteDep(id: any) {
     return new Promise<void>((resolve, reject) => {
-      this.spinner.show()
+
       this.http.delete("https://localhost:44388/api/Hr/deletedept?id=" + id).subscribe(
         {
           next: () => {
@@ -418,7 +409,7 @@ export class HrService {
 
         }
       )
-      this.spinner.hide();
+
 
     })
   }
@@ -426,7 +417,7 @@ export class HrService {
     console.log(dep);
 
     return new Promise<void>((resolve, reject) => {
-      this.spinner.show()
+
       this.http.put("https://localhost:44388/api/Hr/updatedept", dep).subscribe(
         {
           next: () => {
@@ -443,14 +434,14 @@ export class HrService {
 
         }
       )
-      this.spinner.hide();
+
 
     })
   }
 
   async UploadDocument(file: any) {
     return new Promise<void>((resolve, reject) => {
-      this.spinner.show()
+
       this.http.post("https://localhost:44388/api/User/uploadFile", file).subscribe(
         {
           next: (res) => {
@@ -467,13 +458,13 @@ export class HrService {
 
         }
       )
-      this.spinner.hide();
+
 
     })
   }
 
   async GetAllRole() {
-    this.spinner.show();
+
     return new Promise<void>((resolve, reject) => {
       this.http.get("https://localhost:44388/api/Hr/getRole").subscribe(
         {
@@ -489,14 +480,14 @@ export class HrService {
           }
         }
       )
-      this.spinner.hide();
+
     })
   }
   // ---------------------- Home Page --------------------------
 
   async GetAllHome() {
 
-    this.spinner.show();
+
     return new Promise<void>((resolve, reject) => {
       this.http.get("https://localhost:44388/api/Hr/gethome").subscribe(
         {
@@ -512,14 +503,14 @@ export class HrService {
           }
         }
       )
-      this.spinner.hide();
+
     })
 
   }
 
   async CreateHome(home: any) {
     return new Promise<void>((resolve, reject) => {
-      this.spinner.show()
+
       this.http.post("https://localhost:44388/api/Hr/createhome", home).subscribe(
         {
           next: () => {
@@ -536,13 +527,13 @@ export class HrService {
 
         }
       )
-      this.spinner.hide();
+
 
     })
   }
   async UpdateHome(home: any) {
     return new Promise<void>((resolve, reject) => {
-      this.spinner.show()
+
       this.http.put("https://localhost:44388/api/Hr/updatehome", home).subscribe(
         {
           next: () => {
@@ -559,13 +550,13 @@ export class HrService {
 
         }
       )
-      this.spinner.hide();
+
 
     })
   }
   async DeleteHome(id: number) {
     return new Promise<void>((resolve, reject) => {
-      this.spinner.show()
+
       this.http.delete("https://localhost:44388/api/Hr/deletehome?id=" + id).subscribe(
         {
           next: () => {
@@ -582,14 +573,14 @@ export class HrService {
 
         }
       )
-      this.spinner.hide();
+
 
     })
   }
 
   async GetAbout() {
 
-    this.spinner.show();
+
     return new Promise<void>((resolve, reject) => {
       this.http.get("https://localhost:44388/api/Hr/getabout").subscribe(
         {
@@ -605,13 +596,13 @@ export class HrService {
           }
         }
       )
-      this.spinner.hide();
+
     })
   }
 
   async UpdateAbout(about: any) {
     return new Promise<void>((resolve, reject) => {
-      this.spinner.show()
+
       this.http.put("https://localhost:44388/api/Hr/updateabout", about).subscribe(
         {
           next: () => {
@@ -628,14 +619,14 @@ export class HrService {
 
         }
       )
-      this.spinner.hide();
+
 
     })
   }
 
   SendMessageContactUs(message: any) {
     return new Promise<void>((resolve, reject) => {
-      this.spinner.show()
+
       this.http.post("https://localhost:44388/api/User/sendMessage", message).subscribe(
         {
           next: () => {
@@ -652,14 +643,14 @@ export class HrService {
 
         }
       )
-      this.spinner.hide();
+
 
     })
   }
 
   async GetContactMessages() {
 
-    this.spinner.show();
+
     return new Promise<void>((resolve, reject) => {
       this.http.get("https://localhost:44388/api/Hr/getcontact").subscribe(
         {
@@ -675,13 +666,13 @@ export class HrService {
           }
         }
       )
-      this.spinner.hide();
+
     })
   }
   DeleteConatctMessage(id: number) {
 
     return new Promise<void>((resolve, reject) => {
-      this.spinner.show()
+
       this.http.delete("https://localhost:44388/api/User/DeleteMessage?id=" + id).subscribe(
         {
           next: () => {
@@ -698,7 +689,7 @@ export class HrService {
 
         }
       )
-      this.spinner.hide();
+
 
     })
   }
@@ -706,7 +697,7 @@ export class HrService {
 
   async GetAllServices() {
 
-    this.spinner.show();
+
     return new Promise<void>((resolve, reject) => {
       this.http.get("https://localhost:44388/api/Hr/GetService").subscribe(
         {
@@ -722,14 +713,14 @@ export class HrService {
           }
         }
       )
-      this.spinner.hide();
+
     })
 
   }
 
   async CreateService(Service: any) {
     return new Promise<void>((resolve, reject) => {
-      this.spinner.show()
+
       this.http.post("https://localhost:44388/api/Hr/CreateService", Service).subscribe(
         {
           next: () => {
@@ -746,13 +737,13 @@ export class HrService {
 
         }
       )
-      this.spinner.hide();
+
 
     })
   }
   async UpdateService(Service: any) {
     return new Promise<void>((resolve, reject) => {
-      this.spinner.show()
+
       this.http.put("https://localhost:44388/api/Hr/UpdateService", Service).subscribe(
         {
           next: () => {
@@ -769,13 +760,13 @@ export class HrService {
 
         }
       )
-      this.spinner.hide();
+
 
     })
   }
   async DeleteService(id: number) {
     return new Promise<void>((resolve, reject) => {
-      this.spinner.show()
+
       this.http.delete("https://localhost:44388/api/Hr/DeleteService?id=" + id).subscribe(
         {
           next: () => {
@@ -791,21 +782,20 @@ export class HrService {
           }
         }
       )
-      this.spinner.hide();
+
 
     })
   }
 
   //-------------- Payment -----------------
   async GetPayout(payout: any) {
-    this.spinner.show();
+
     return new Promise<void>((resolve, reject) => {
       this.http.post("https://localhost:44388/api/Hr/getpayout", payout).subscribe(
         {
           next: (res) => {
-            this.allPayout = res                       
-            this.dtTrigger.next(0);            
-             resolve()
+            this.allPayout = res
+            resolve()
           },
           error: (ee) => {
             console.log(ee)
@@ -813,20 +803,149 @@ export class HrService {
           }
         }
       )
-      this.spinner.hide();
+
     })
 
   }
-  @ViewChild(DataTableDirective) dtElement!: DataTableDirective;
-  dtOptions: DataTables.Settings | any = {};
-  dtTrigger: Subject<any> = new Subject();
-   rerender(): void {
-    this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
-      // Destroy the table first     
-      dtInstance.destroy();
-      // Call the dtTrigger to rerender again     
-      this.dtTrigger.next(0);
-    });
+
+  async GetBlance() {
+
+    return new Promise<void>((resolve, reject) => {
+      this.http.get("https://localhost:44388/api/Hr/GetBalance").subscribe(
+        {
+          next: (res) => {
+            this.bankBalance = res
+            resolve()
+          },
+          error: (ee) => {
+            console.log(ee)
+            reject()
+          }
+        }
+      )
+
+    })
+  }
+  async TransferSalary() {
+    return new Promise<void>((resolve, reject) => {
+      this.http.get("https://localhost:44388/api/Hr/TransferSalary").subscribe(
+        {
+          next: () => {
+            resolve()
+          },
+          error: (ee) => {
+            console.log(ee)
+            reject()
+          }
+        }
+      )
+
+    })
   }
 
+  async GetAllIban(){
+    return new Promise<void>((resolve, reject) => {
+      this.http.get("https://localhost:44388/api/Hr/GetIban").subscribe(
+        {
+          next: (res) => {
+            this.allIban = res
+            resolve()
+          },
+          error: (ee) => {
+            console.log(ee)
+            reject()
+          }
+        }
+      )
+
+    })
+  }
+
+
+  // ---------------------------News-----------------------
+
+  async GetAllNews(){
+    return new Promise<void>((resolve, reject) => {
+      this.http.get(" https://localhost:44388/api/Hr/GetAnn").subscribe({
+        next: res => {
+          this.AllNews = res
+          resolve()
+        },
+        error: err =>{
+          console.log(err);
+          reject()          
+        }
+      })
+    })
+  }
+
+  async UpdateNews(news : any){
+    return new Promise<void>((resolve, reject) => {
+      this.http.put(" https://localhost:44388/api/Hr/UpdateAnn",news).subscribe({
+        next: res => {
+          resolve()
+        },
+        error: err =>{
+          console.log(err);
+          reject()          
+        }
+      })
+    })
+  }
+
+  async DeleteNews(userid: any) {
+
+    console.log(userid);
+    return new Promise<void>((resolve, reject) => {
+      this.http.delete(" https://localhost:44388/api/Hr/DeleteAnn?id=" + userid).subscribe(
+        {
+          
+          
+          next: () => {
+            this.toastr.success("News deleted successfully")
+            resolve();
+          }
+          ,
+          error: (ee) => {
+            console.log(ee)
+            this.toastr.error("something want wrong")
+            reject();
+          }
+
+        }
+      )
+
+
+    })
+  }
+
+
+  async CreateNews(news: any) {
+    return new Promise<void>((resolve, reject) => {
+
+      this.http.post(" https://localhost:44388/api/Hr/CreateAnn", news).subscribe(
+        {
+          next: () => {
+            resolve();
+            this.toastr.success('Annoicment Added successfully!');
+          }
+          ,
+          error: (ee) => {
+            console.log(ee)
+            this.toastr.error('Somthing went wrong!');
+
+            reject();
+          }
+
+        }
+      )
+
+
+    })
+  }
+
+
 }
+
+
+

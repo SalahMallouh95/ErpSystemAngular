@@ -14,11 +14,13 @@ import { EmployeeDetailsComponent } from './employee-details/employee-details.co
 import { EmployeeListComponent } from './employee-list/employee-list.component';
 import { HomeManageComponent } from './home-manage/home-manage.component';
 import { HrMyAttendanceComponent } from './hr-my-attendance/hr-my-attendance.component';
+import { HrTreeComponent } from './hr-tree/hr-tree.component';
 import { LeaveDetailsComponent } from './leave-details/leave-details.component';
 import { LeaveTypesCreateComponent } from './leave-types-create/leave-types-create.component';
 import { LeaveTypesEditComponent } from './leave-types-edit/leave-types-edit.component';
 import { LeaveTypesComponent } from './leave-types/leave-types.component';
 import { MainComponent } from './main/main.component';
+import { NewsComponent } from './news/news.component';
 import { OurServiceComponent } from './our-service/our-service.component';
 import { PayoutComponent } from './payout/payout.component';
 import { SalaryPaymentComponent } from './salary-payment/salary-payment.component';
@@ -110,6 +112,14 @@ const routes: Routes = [
   {
     path: 'attendance',
     component: HrMyAttendanceComponent
+  },
+  {
+    path: 'tree',
+    component: HrTreeComponent
+  },
+  {
+    path: 'News',
+    component: NewsComponent
   }
 ];
 

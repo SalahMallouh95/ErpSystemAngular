@@ -11,7 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ManagerService {
 
-  constructor(private http: HttpClient, private spinner: NgxSpinnerService, private toaster: ToastrService) { }
+  constructor(private http: HttpClient, public spinner: NgxSpinnerService, private toaster: ToastrService) { }
 
   solutioninfo: any
   taskid: number | undefined
@@ -32,7 +32,6 @@ export class ManagerService {
 
 
   async GetAllEmp(emp: any) {
-    this.spinner.show()
     return new Promise<void>((resolve, reject) => {
 
       this.http.post("https://localhost:44388/api/Manager/GetAllEmp", emp).subscribe(
@@ -48,7 +47,6 @@ export class ManagerService {
           }
         }
       )
-      this.spinner.hide()
     })
   }
 
@@ -58,7 +56,6 @@ export class ManagerService {
   async GetAllLeaves(lev: any) {
 
     return new Promise<void>((resolve, reject) => {
-      this.spinner.show()
       this.http.post("https://localhost:44388/api/Manager/getLeaves", lev).subscribe(
         {
           next: (res) => {
@@ -73,7 +70,6 @@ export class ManagerService {
           }
         }
       )
-      this.spinner.hide()
     })
 
   }
@@ -81,11 +77,9 @@ export class ManagerService {
 
   async GetMyLeaves(ml: any) {
     return new Promise<void>((resolve, reject) => {
-      this.spinner.show()
       this.http.post('https://localhost:44388/api/Employee/GetAllLeaves', ml).subscribe({
         next: (res) => {
           this.MyLeaves = res
-          this.spinner.hide()
           resolve()
         },
         error: (err) => {
@@ -93,7 +87,6 @@ export class ManagerService {
           this.toaster.success('Error')
         }
       })
-      this.spinner.hide()
     })
   }
 
@@ -101,7 +94,7 @@ export class ManagerService {
 
   async GetAllTasks(at: any) {
     return new Promise<void>((resolve, reject) => {
-      this.spinner.show()
+       
       this.http.post('https://localhost:44388/api/Manager/getAllTask', at).subscribe({
         next: res => {
           this.AllTasks = res
@@ -117,37 +110,40 @@ export class ManagerService {
 
   async GetManagerPrifile(mp: any) {
     return new Promise<void>((resolve, reject) => {
-      this.spinner.show()
       this.http.post('https://localhost:44388/api/User/GetProfile', mp).subscribe({
         next: res => {
           this.ManagerProfile = res
           resolve()
-          console.log(res);
+         
+        },
+        error: err =>{
+          console.log(err);
+          reject()
         }
       })
-      this.spinner.hide()
+      
     })
   }
 
 
   async Searchs(data: any) {
-    console.log(data);
+   
     data.managerid = 2
     return new Promise<void>((resolve, reject) => {
-      this.spinner.show()
+       
       this.http.post("https://localhost:44388/api/Manager/searchleave", data).subscribe(
         {
           next: res => {
             this.AllLeave = res
             resolve()
-            console.log(this.AllLeave);
+            
           },
           error: (err) => {
             console.log(err);
             this.toaster.error('Error')
           }
         })
-      this.spinner.show()
+       
     })
   }
 
@@ -157,21 +153,21 @@ export class ManagerService {
     let user: any = {}
     user.userid = ei
     return new Promise<void>((resolve, reject) => {
-      this.spinner.show()
+       
       this.http.post('https://localhost:44388/api/User/GetProfile', user).subscribe(
         {
           next: res => {
             this.empInformation = res
             resolve()
-            console.log(this.empInformation);
-            console.log(res);
+            
           },
           error: (err) => {
             console.log(err);
             this.toaster.error('Error')
+            reject()
           }
         })
-      this.spinner.show()
+       
     })
   }
 
@@ -180,7 +176,7 @@ export class ManagerService {
 
   async GetAttendance(at: any) {
     return new Promise<void>((resolve, reject) => {
-      this.spinner.show()
+       
       this.http.post('https://localhost:44388/api/User/GetAttendance', at).subscribe({
         next: res => {
           this.attendance = res
@@ -197,13 +193,13 @@ export class ManagerService {
 
 
   async GetLeaveDetails(leave: any) {
-    this.spinner.show()
+     
     return new Promise<void>((resolve, reject) => {
       this.http.post("https://localhost:44388/api/Manager/getLeaveByID", leave).subscribe(
         {
           next: (res) => {
             this.leaveInfo = res;
-            console.log(res);
+            
             resolve();
           }
           ,
@@ -213,13 +209,13 @@ export class ManagerService {
             reject();
           }
         })
-      this.spinner.hide();
-      console.log(this.leaveInfo);
+       
+     
     })
   }
 
   async UpdateLeaveDetails(leave: any) {
-    console.log(leave);
+   
     return new Promise<void>((resolve, reject) => {
       this.http.put("https://localhost:44388/api/Manager/updateleave", leave).subscribe(
         {
@@ -233,12 +229,12 @@ export class ManagerService {
             reject();
           }
         })
-      this.spinner.hide();
+       
     })
   }
 
   async GetTaskDetails(tas: any) {
-    this.spinner.show()
+     
     return new Promise<void>((resolve, reject) => {
       this.http.post("https://localhost:44388/api/Manager/GetTask", tas).subscribe({
         next: (res) => {
@@ -252,14 +248,14 @@ export class ManagerService {
           reject();
         }
       })
-      this.spinner.show()
+       
     })
   }
 
   async GetAllSolutions(as: any) {
-    this.spinner.show()
+     
     return new Promise<void>((resolve, reject) => {
-      this.spinner.show()
+       
       this.http.post('https://localhost:44388/api/Manager/getTaskSolution', as).subscribe({
         next: res => {
           this.allsln = res
@@ -285,7 +281,7 @@ export class ManagerService {
           reject()
         }
       })
-      this.spinner.hide();
+       
     })
   }
   async GetSolutionDetails(sln: any) {
@@ -324,7 +320,7 @@ export class ManagerService {
 
   async Updateprofile(up: any) {
     return new Promise<void>((resolve, reject) => {
-      this.spinner.show()
+       
       this.http.put('https://localhost:44388/api/User/UpdateProfile', up).subscribe({
         next: res => {
           this.toaster.success('Updated')
@@ -341,7 +337,7 @@ export class ManagerService {
 
   async DeleteTask(id: number) {
     return new Promise<void>((resolve, reject) => {
-      this.spinner.show()
+       
       this.http.delete('https://localhost:44388/api/Manager/DeleteTask?id=' + id).subscribe({
         next: res => {
           resolve()

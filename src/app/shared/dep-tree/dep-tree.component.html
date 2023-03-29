@@ -1,0 +1,78 @@
+<div data-wow-delay="0.1s" class="container-fluid wow fadeInUp"
+    style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+    <div class="container p-2">
+        <div class="row ">
+            <div class="divider divider-warning">
+                <div class="divider-text">Manager</div>
+            </div>
+        </div>
+        <div class="row justify-content-center " *ngIf="manager!=null">
+            <div class="col-3  ">
+
+                <div data-wow-delay="0.3s" class="wow slideInUp"
+                    style="visibility: visible; animation-delay: 0.3s; animation-name: slideInUp;">
+
+                    <div _ngcontent-fnq-c20="" class="team-item bg-light rounded overflow-hidden">
+                        <div _ngcontent-fnq-c20="" class="team-img position-relative overflow-hidden">
+                            <img *ngIf="manager.imagefilename==null" _ngcontent-fnq-c20=""
+                                src="/assets/Documents/UserDefaultImage.png" alt="" class="img-fluid w-100" width="500"
+                                height="500">
+                            <img *ngIf="manager.imagefilename!=null" _ngcontent-fnq-c20=""
+                                [src]="'/assets/Documents/'+manager.imagefilename" alt="" class="img-fluid w-100"
+                                width="500" height="500">
+                        </div>
+                        <div _ngcontent-fnq-c20="" class="text-center py-4">
+                            <h4 _ngcontent-fnq-c20="" class="text-primary">{{manager.fname}} {{manager.lname}}</h4>
+
+                            <p _ngcontent-fnq-c20="" class="text-uppercase m-0">{{manager.rolename}}</p>
+                            <p _ngcontent-fnq-c20="" class="text-uppercase m-0">{{manager.departmentname}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" *ngIf="manager==null">
+            <div class="col">
+                <p>
+                    No Manager in This Department
+                </p>
+            </div>
+        </div>
+        <div class="row ">
+            <div class="col divider divider-primary wow slideInUp"
+                style="visibility: visible; animation-delay: 0.3s; animation-name: slideInUp;">
+                <div class="divider-text">Employee</div>
+            </div>
+        </div>
+        <div class="row wow slideInUp justify-content-center" style="visibility: visible; animation-delay: 0.3s; animation-name: slideInUp;"
+            *ngIf="this.allEmp!=null">
+            <div class="col-2" *ngFor="let item of allEmp">
+                <div data-wow-delay="0.3s" class="wow slideInUp"
+                    style="visibility: visible; animation-delay: 0.3s; animation-name: slideInUp;">
+                    <div _ngcontent-fnq-c20="" class="team-item bg-light rounded overflow-hidden">
+                        <div _ngcontent-fnq-c20="" class="team-img position-relative overflow-hidden">
+                            <img *ngIf="item.imagefilename==null" _ngcontent-fnq-c20=""
+                                src="/assets/Documents/UserDefaultImage.png" alt="" class="img-fluid w-100" width="500"
+                                height="500">
+                            <img *ngIf="item.imagefilename!=null" _ngcontent-fnq-c20=""
+                                [src]="'/assets/Documents/'+item.imagefilename" alt="" class="img-fluid w-100"
+                                width="500" height="500">
+                        </div>
+                        <div _ngcontent-fnq-c20="" class="text-center py-4">
+                            <h4 _ngcontent-fnq-c20="" class="text-primary">{{item.fname}} {{item.lname}}</h4>
+
+                            <p _ngcontent-fnq-c20="" class="text-uppercase m-0">{{item.rolename}}</p>
+                            <p _ngcontent-fnq-c20="" class="text-uppercase m-0">{{item.departmentname}}</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        <div *ngIf="this.allEmp.length==0">
+            No Employee in this Department
+        </div>
+
+    </div>
+</div>

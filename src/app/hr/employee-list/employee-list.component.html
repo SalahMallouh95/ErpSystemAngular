@@ -1,41 +1,130 @@
 <div class="layout-wrapper layout-content-navbar">
-    <div class="layout-container">
+  <div class="layout-container">
 
-<app-hr-sidebar></app-hr-sidebar>
+    <app-hr-sidebar></app-hr-sidebar>
 
-<ngx-spinner type="ball-scale-multiple"></ngx-spinner>
-<div class="layout-page">
+    <ngx-spinner type="ball-scale-multiple"></ngx-spinner>
+    <div class="layout-page">
 
-       <app-dash-header>
-        </app-dash-header>
+      <app-dash-header>
+      </app-dash-header>
 
-        <div class="container-xxl flex-grow-1 container-p-y">
-         
+      <div class="container-xxl flex-grow-1 container-p-y">
+
         <div class="col-12 col-lg-12 order-2 order-md-3 order-lg-2 mb-4">
-          <button type="submit" class="btn btn-primary card wow fadeInUp mb-2"   style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;" (click)="AddEmp()">Add new Employee</button>
-            <div class="card wow fadeInUp"  style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;" >   
-              <div class="row mt-2 "> 
-                <div class="col-9">
-                </div>
-              <div class="col-2 mr-2">
-                <input type="number" [(ngModel)]="ssn" placeholder="ssn" (input)="FiliterByssn()" class="form-control" id="defaultFormControlInput"aria-describedby="defaultFormControlHelp">
+         
+          <div class="card wow fadeInUp" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+            <div class="row mt-2 ">
+              <div class="col-2 m-2">
+                <button type="submit" class="btn btn-primary card wow fadeInUp mb-2"
+                style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;" (click)="AddEmp()">Add new
+                Employee</button>
               </div>
-              <div class="col-1">
-                </div>
-            </div>
-             <div class="row"> 
-              <div class="col">
-              <app-person-card (SendValues)="GetValues($event)" app-person-card [allEmp]="emplist" [allDep]="this.hrService.allDep"></app-person-card> 
+              <div class="col-6">
               </div>
-            </div>  
-
-            </div>
-        </div>    
+              <div class="col-2 m-2">
+                <input type="number" [(ngModel)]="ssn" placeholder="ssn" (input)="FiliterByssn()" class="form-control"
+                  id="defaultFormControlInput" aria-describedby="defaultFormControlHelp">
+              </div>
+              <div class="col-1 d-flex m-2">
+                <a class="btn bx bx-card" (click)="ChangeView()"></a>
+                <a class="btn bx bx-table" (click)="ChangeView()"></a>
 
               </div>
             </div>
-          </div>
+                      </div>
+
+            <div class="row">
+              <div class="col" *ngIf="viewOption==0">
+                <app-person-card (SendValues)="GetValues($event)" app-person-card [allEmp]="emplist"
+                  [allDep]="this.hrService.allDep"></app-person-card>
+              </div>
+              <div class="col" *ngIf="viewOption==1">
+                <div class="mat-elevation-z8 m-1 wow slideInUp" style="visibility: visible; animation-delay: 0.1s; animation-name: slideInUp;">
+                  <table class="table-hover wow slideInUp col-10 "
+                    style="visibility: visible; animation-delay: 0.3s; animation-name: slideInUp;" mat-table
+                    [dataSource]="dataSource">
+
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="name">
+                      <th mat-header-cell *matHeaderCellDef> Name </th>
+                      <td class="d-flex" mat-cell *matCellDef="let element">
+                        <div class="m-1">
+                          <img *ngIf="element.imagefilename==null" _ngcontent-fnq-c20=""
+                            src="/assets/Documents/UserDefaultImage.png" alt="" class="img-fluid " width="50"
+                            height="50">
+                          <img *ngIf="element.imagefilename!=null" _ngcontent-fnq-c20=""
+                            [src]="'/assets/Documents/'+element.imagefilename" alt="" class="img-fluid " width="50"
+                            height="50">
+                          {{element.fname}} {{element.lname}}
+
+                        </div>
+                      </td>
+                    </ng-container>
+
+                    <!-- Weight Column -->
+                    <ng-container matColumnDef="ssn">
+                      <th mat-header-cell *matHeaderCellDef> Ssn </th>
+                      <td mat-cell *matCellDef="let element"> {{element.ssn}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="email">
+                      <th mat-header-cell *matHeaderCellDef> Email </th>
+                      <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+                    </ng-container>
+                    <ng-container matColumnDef="department">
+                      <th mat-header-cell *matHeaderCellDef> Department </th>
+                      <td mat-cell *matCellDef="let element"> {{element.departmentname}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="role">
+                      <th mat-header-cell *matHeaderCellDef> Role </th>
+                      <td mat-cell *matCellDef="let element"> {{element.rolename}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="state">
+                      <th mat-header-cell *matHeaderCellDef> State </th>
+                      <td mat-cell *matCellDef="let element">
+                        <div [ngSwitch]="element.state">
+                          <div *ngSwitchCase="2">
+                            <span class="badge bg-label-warning me-1">Pending</span>
+                          </div>
+                          <div *ngSwitchCase="1">
+                            <span class="badge bg-label-success me-1">Online</span>
+                          </div>
+                          <div *ngSwitchCase="0">
+                            <span class="badge bg-label-danger me-1">Offline</span>
+                          </div>
+                        </div>
+                      </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="action">
+                      <th mat-header-cell *matHeaderCellDef> </th>
+                      <td mat-cell *matCellDef="let element">                    
+
+                          <a (click)="GetValues(element.userid)"
+                              class="btn btn-outline-info rounded"> View </a>
+                      
+                      </td>
+                    </ng-container>
+
+                    
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                  </table>
+
+                  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+                    aria-label="Select page of periodic elements">
+                  </mat-paginator>
+                </div>
+              </div>
+            </div>
+
         </div>
 
-
-      
+      </div>
+    </div>
+  </div>
+</div>

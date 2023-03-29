@@ -14,8 +14,12 @@ export class ContactUsComponent {
   messageid:any|undefined
   constructor(public hrService:HrService,public dialog:MatDialog){}
 
-  ngOnInit(){
-    this.hrService.GetContactMessages()
+  async ngOnInit(){
+    this.hrService.spinner.show()
+
+    await this.hrService.GetContactMessages()
+    this.hrService.spinner.hide()
+
   }
 
   OpenDeleteDialog(id:number){

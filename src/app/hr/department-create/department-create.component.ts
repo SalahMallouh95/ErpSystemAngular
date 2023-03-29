@@ -22,17 +22,25 @@ export class DepartmentCreateComponent {
  constructor(public hrService: HrService, public router: Router) { }
 
   async ngOnInit() {
+    this.hrService.spinner.show()
 
     await this.hrService.GetAllEmployee()
     this.hrService.allEmp = this.hrService.allEmp.filter((e: { roleid: number; })=>e.roleid==2)
+
+    this.hrService.spinner.hide()
+
     
   }
 
   async CreateDep() {
+    this.hrService.spinner.show()
+
     this.departmentFormGroup.value.userid=parseInt(this.departmentFormGroup.value.userid)
     await this.hrService.CreateDep(this.departmentFormGroup.value)
     
-    this.hrService.GetAllDepartment()
+    await this.hrService.GetAllDepartment()
+    this.hrService.spinner.hide()
+
   }
  
 }

@@ -4,6 +4,7 @@ import { ManagerService } from 'src/app/manager.service';
 import { FormControl,FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HrService } from 'src/app/hr.service';
 import { AuthService } from 'src/app/auth.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 
 @Component({
@@ -13,7 +14,7 @@ import { AuthService } from 'src/app/auth.service';
 })
 export class CreateTaskComponent {
 
-  constructor( public man : ManagerService, private route: Router,public hr : HrService,private auth : AuthService ){
+  constructor(private spinner: NgxSpinnerService, public man : ManagerService, private route: Router,public hr : HrService,private auth : AuthService ){
 
   }
 
@@ -21,13 +22,14 @@ export class CreateTaskComponent {
 
   ngOnInit(){
    
-    
+    this.spinner.show()
     this.userData.userid=parseInt (this.userData.userid)   
     this.userData.roleid=parseInt (this.userData.roleid)        
     delete this.userData.exp   
     this.man.GetAllEmp(this.userData)
     this.hr.documentName = {}
     this.hr.documentName.imagefilename = null
+    this.spinner.hide()
   }
 
   taskform =  new FormGroup({
@@ -42,12 +44,7 @@ export class CreateTaskComponent {
   })
 
   async AddTask(){
-
     
-    
-    
-    // this.taskform.value.userid = parseInt(this.taskform.value.userid)
-
     this.taskform.value.managerid = this.userData.userid
     this.taskform.value.documentfilename = this.hr.documentName.imagefilename
     console.log(this.taskform.value);

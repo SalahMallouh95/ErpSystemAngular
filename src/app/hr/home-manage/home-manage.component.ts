@@ -27,10 +27,14 @@ export class HomeManageComponent {
   constructor(public hrService:HrService,public dialog:MatDialog){}
 
   async ngOnInit(){
+    this.hrService.spinner.show()
+
     await this.hrService.GetAllHome()
     this.hrService.documentName={}
     this.hrService.documentName.imagefilename=null
     this.count=this.hrService.allHome.length
+    this.hrService.spinner.hide()
+
     
   }
 
@@ -86,8 +90,13 @@ export class HomeManageComponent {
   }
 
   async GetHome(){
+    this.hrService.spinner.show()
+
     await this.hrService.GetAllHome()
     this.count=this.hrService.allHome.length
+
+    this.hrService.spinner.hide()
+
 
   }
 }

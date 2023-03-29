@@ -51,7 +51,7 @@ import { DataTablesModule } from "angular-datatables";
     MatTableModule,
     MatFormFieldModule,
     MatInputModule,
-    MatDialogModule,
+    MatDialogModule
     
   ],
   schemas:[

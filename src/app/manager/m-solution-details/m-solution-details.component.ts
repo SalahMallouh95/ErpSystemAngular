@@ -24,6 +24,7 @@ export class MSolutionDetailsComponent implements OnInit {
   }
 
   async AcceptSolution() {
+    this.man.spinner.show()
     let user : any ={}
     user.userid =  this.auth.systemUserInfo.userid
     let sln: any = {}
@@ -34,10 +35,12 @@ export class MSolutionDetailsComponent implements OnInit {
     await this.man.UpdateSolutionState(sln)
     this.man.GetSolutionDetails(sln)
     await this.man.GetAllSolutions(sln)
+    this.man.spinner.hide()
 
   }
 
   async RejectSolution() {
+    this.man.spinner.show()
     let user : any ={}
     user.userid =  this.auth.systemUserInfo.userid
     let sln: any = {}
@@ -48,6 +51,7 @@ export class MSolutionDetailsComponent implements OnInit {
     await this.man.UpdateSolutionState(sln)
     this.man.GetSolutionDetails(sln)
     await this.man.GetAllSolutions(sln)
+    this.man.spinner.hide()
   }
 
   

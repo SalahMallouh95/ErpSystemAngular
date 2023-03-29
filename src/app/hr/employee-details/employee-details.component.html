@@ -67,13 +67,7 @@
                         <mat-error *ngIf="empInfoForm.controls['email'].hasError('pattern')">Invalid Email
                           format</mat-error>
                       </div>
-
-                      <div class="mb-3 col-md-6">
-                        <label for="organization" class="form-label">Password</label>
-                        <input matInput type="password" class="form-control" id="Password" name="Password"
-                          formControlName="password">
-                      </div>
-
+                  
                       <div class="mb-3 col-md-6">
                         <label class="form-label" for="phoneNumber">Phone Number</label>
                         <div class="input-group input-group-merge">
@@ -91,7 +85,7 @@
 
                       <div class="mb-3 col-md-6">
                         <label for="state" class="form-label">Salary</label>
-                        <input matInput class="form-control" type="text" id="state" name="state"
+                        <input matInput class="form-control" type="number" id="state" name="state"
                           formControlName="salary" placeholder="California">
                       </div>
 
@@ -104,28 +98,23 @@
                         </mat-error>
                       </div>
 
-                      <div class="mb-3 col-md-6" [hidden]="hrservice.empInfo.roleid==1">
+                      <div class="mb-3 col-md-6" [hidden]="hrService.empInfo.roleid==1">
                         <label class="form-label" for="Role">Role</label>
-                        <select  formControlName="roleid" id="Role" class="select2 form-select">
-                          <option  [disabled]="this.depcount!=null" *ngFor="let item of this.hrservice.allRole" [ngValue]="item.roleid">{{item.rolename}}
+                        <select formControlName="roleid" id="Role" class="select2 form-select">
+                          <option [disabled]="this.depcount!=null" *ngFor="let item of this.hrService.allRole"
+                            [ngValue]="item.roleid">{{item.rolename}}
                           </option>
                         </select>
                         <mat-error *ngIf="empInfoForm.controls['roleid'].hasError('required')">
                           Please select a role
                         </mat-error>
                       </div>
-                      <div class="mb-3 col-md-6" [hidden]="hrservice.empInfo.roleid==1">
-                        <label for="language" *ngIf="this.hrservice.empInfo" class="form-label">Department</label>
-                        <select id="language"  *ngIf="this.hrservice.empInfo.roleid!=2" formControlName="departmentid"
-                          class="select2 form-select">
-                          <option  value="">No Department</option>
-                          <option  *ngFor="let item of this.hrservice.allDep" [ngValue]="item.departmentid">
+                      <div class="mb-3 col-md-6" [hidden]="hrService.empInfo.roleid==1">
+                        <label for="language" class="form-label">Department</label>
+                        <select id="language" formControlName="departmentid" class="select2 form-select">
+                          <option value="">No Department</option>
+                          <option *ngFor="let item of this.hrService.allDep" [ngValue]="item.departmentid">
                             {{item.departmentname}}</option>
-                        </select>
-                        <select id="language"  *ngIf="this.hrservice.empInfo.roleid==2" formControlName="departmentid"
-                          class="select2 form-select">
-                          <option [disabled]="true" *ngFor="let item of this.hrservice.allDep"
-                            [ngValue]="item.departmentid">{{item.departmentname}}</option>
                         </select>
                         <mat-error *ngIf="empInfoForm.controls['departmentid'].hasError('required')">
                           Please select a department
@@ -137,82 +126,96 @@
                         <input matInput type="number" class="form-control" formControlName="bankinfoid"
                           placeholder="231465" maxlength="6">
                         <mat-error *ngIf="empInfoForm.controls['bankinfoid'].hasError('required')">
-                          Please select a Enter the Bank id
+                          Please Enter the Bank iban
                         </mat-error>
                       </div>
 
                     </div>
                     <div class="mt-2">
-                      <button type="submit" class="btn btn-primary me-2" (click)="UpdateProfile()"
+                      <button type="submit" class="btn btn-primary me-2" (click)="EditEmp()"
                         [disabled]="empInfoForm.invalid">Save changes</button>
                     </div>
-                    <div  routerLink="/Hr/UpdateProfile" routerLinkActive="active" #rle="routerLinkActive" [routerLinkActiveOptions]="{exact: true}">
-                    <div *ngIf="!rle.isActive" class="demo-inline-spacing"  >
-                      <button style="position: absolute; top: 0px; right:0px;"  type="button" onclick="history.back(-1)"
-                        routerLinkActive="active" class="btn rounded-pill btn-info">Back</button>
-                    </div></div>
+                    <div routerLink="/Hr/UpdateProfile" routerLinkActive="active" #rle="routerLinkActive"
+                      [routerLinkActiveOptions]="{exact: true}">
+                      <div *ngIf="!rle.isActive" class="demo-inline-spacing">
+                        <button style="position: absolute; top: 0px; right:0px;" type="button"
+                          onclick="history.back(-1)" routerLinkActive="active"
+                          class="btn rounded-pill btn-info">Back</button>
+                      </div>
+                    </div>
                   </form>
                   <!-- /Account -->
                 </div>
               </div>
             </div>
 
-            <h4 class="fw-bold py-3 mb-4"[hidden]="this.hrservice.empInfo.roleid==1">Attendance</h4>
-            <div class="card">
-     <div class="table-responsive text-nowrap" [hidden]="this.hrservice.empInfo.roleid==1">
-         <table class="table table-hover wow slideInUp m-1"
-         style="visibility: visible; animation-delay: 0.3s; animation-name: slideInUp;">
-             <thead >
-                 <tr style="background-color: #696cff66;">
-                     <th>Check in</th>
-                     <th>Check out</th>
-                     <th>Working hour</th>                          
-                 </tr>
-             </thead>
-             <tbody class="table-border-bottom-0">
-                 <tr *ngFor="let emp of this.managerService.attendance">
-                     <td>{{emp.checkin}}</td>
-                     <td>{{emp.checkout}}</td>
-                     <td>{{emp.workinghour}}</td>                       
-                </tr>
-             </tbody>
-         </table>
-     </div>
- </div>
+            <h4 class="fw-bold py-3 mb-4" [hidden]="this.hrService.empInfo.roleid==1">Attendance</h4>
+              <div class="table-responsive text-nowrap" [hidden]="this.hrService.empInfo.roleid==1">
 
+                <div class="mat-elevation-z8 m-1 wow slideInUp" style="visibility: visible; animation-delay: 0.3s; animation-name: slideInUp;">                
+                  <table class="table-hover wow slideInUp  col-10"
+                    style="visibility: visible; animation-delay: 0.3s; animation-name: slideInUp;" mat-table
+                    [dataSource]="dataSource" *ngIf="dataSource!=null">
+                    
+                    <!-- Position Column -->
+                    <ng-container matColumnDef="Checkin">
+                      <th mat-header-cell *matHeaderCellDef> Check in </th>
+                      <td mat-cell *matCellDef="let element"> {{element.checkin}} </td>
+                    </ng-container>
 
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="Checkout">
+                      <th mat-header-cell *matHeaderCellDef> Check out </th>
+                      <td mat-cell *matCellDef="let element"> {{element.checkout}} </td>
+                    </ng-container>
 
+                    <!-- Weight Column -->
+                    <ng-container matColumnDef="Workinghour">
+                      <th mat-header-cell *matHeaderCellDef> Working hour </th>
+                      <td mat-cell *matCellDef="let element"> {{element.workinghour}} </td>
+                    </ng-container>
 
-         
-          <div class="card mt-2" [hidden]="this.hrservice.empInfo.roleid==1">
-            <h5 class="card-header">Delete Account</h5>
-            <div class="card-body">
-              <div class="mb-3 col-12 mb-0">
-                <div class="alert alert-warning">
-                  <h6 class="alert-heading fw-bold mb-1">Are you sure you want to delete the account?</h6>
-                  <p class="mb-0">Once you delete the account, there is no going back. Please be certain.</p>
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                  </table>
+
+                  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+                    aria-label="Select page of periodic elements">
+                  </mat-paginator>
                 </div>
               </div>
-              <form id="formAccountDeactivation" onsubmit="return false">
-                <div class="form-check mb-3">
-                  <input class="form-check-input" type="checkbox" name="accountActivation"
-                    onchange="document.getElementById('deactivateBtn').disabled = !this.checked;"
-                    id="accountActivation">
-                  <label class="form-check-label" for="accountActivation">I confirm my account deactivation</label>
+       
+
+
+
+
+
+            <div class="card mt-2" [hidden]="this.hrService.empInfo.roleid==1">
+              <h5 class="card-header">Delete Account</h5>
+              <div class="card-body">
+                <div class="mb-3 col-12 mb-0">
+                  <div class="alert alert-warning">
+                    <h6 class="alert-heading fw-bold mb-1">Are you sure you want to delete the account?</h6>
+                    <p class="mb-0">Once you delete the account, there is no going back. Please be certain.</p>
+                  </div>
                 </div>
-                <button id="deactivateBtn" disabled class="btn btn-danger deactivate-account"
-                  (click)="OpenDeleteDialog()">Deactivate Account</button>
-              </form>
+                <form id="formAccountDeactivation" onsubmit="return false">
+                  <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" name="accountActivation"
+                      onchange="document.getElementById('deactivateBtn').disabled = !this.checked;"
+                      id="accountActivation">
+                    <label class="form-check-label" for="accountActivation">I confirm my account deactivation</label>
+                  </div>
+                  <button id="deactivateBtn" disabled class="btn btn-danger deactivate-account"
+                    (click)="OpenDeleteDialog()">Deactivate Account</button>
+                </form>
+              </div>
             </div>
           </div>
         </div>
-
-
-
       </div>
     </div>
   </div>
-</div>
 </div>
 <ng-template #DeleteDio>
   <mat-dialog-content>

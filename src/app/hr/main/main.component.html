@@ -1,127 +1,239 @@
 <div class="layout-wrapper layout-content-navbar">
-    <div class="layout-container">
+  <div class="layout-container">
 
-        <app-hr-sidebar></app-hr-sidebar>
-
-
-        <div class="layout-page">
-
-            <app-dash-header>
-            </app-dash-header>
+    <app-hr-sidebar></app-hr-sidebar>
 
 
-            <div class="content-wrapper">
-            <div class="container-xxl flex-grow-1 container-p-y">
+    <div class="layout-page">
 
-                <div class="row">
-                  <div class="col-1">
+      <app-dash-header>
+      </app-dash-header>
 
-                  </div>
-                    <div class="col-2 col-md-2 col-sm-6 mb-4">
-                      <div class="card">
-                        <div class="card-body">
-                          <div class="card-title d-flex align-items-start justify-content-between">
-                           
-                          
-                          </div>
-                          <span class="fw-semibold d-block mb-1">Employee</span>
-                          <h3 class="card-title mb-2">{{empCount}}</h3>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-2 col-md-2 col-sm-6 mb-4">
-                      <div class="card">
-                        <div class="card-body">
-                          <div class="card-title d-flex align-items-start justify-content-between">                           
-                            
-                          </div>
-                          <span>Onilne Employee</span>
-                          <h3 class="card-title text-nowrap mb-1">{{empOnCount}}</h3>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-2 col-md-2 col-sm-6 mb-4">
-                        <div class="card">
-                          <div class="card-body">
-                            <div class="card-title d-flex align-items-start justify-content-between">                           
-                              
-                            </div>
-                            <span>Offline Employee</span>
-                            <h3 class="card-title text-nowrap mb-1">{{empOfCount}}</h3>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-2 col-md-2 col-sm-6 mb-4">
-                        <div class="card">
-                          <div class="card-body">
-                            <div class="card-title d-flex align-items-start justify-content-between">                           
-                              
-                            </div>
-                            <span>Manager</span>
-                            <h3 class="card-title text-nowrap mb-1">{{manCount}}</h3>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-2 col-md-2 col-sm-6 mb-4">
-                        <div class="card">
-                          <div class="card-body">
-                            <div class="card-title d-flex align-items-start justify-content-between">                           
-                              
-                            </div>
-                            <span>Department</span>
-                            <h3 class="card-title text-nowrap mb-1">{{DepCount}}</h3>
-                          </div>
-                        </div>
-                      </div>
-                  </div>
-                  <div class="row">
-                    <div class="col">
-                      <div *ngIf="this.x[0]!=null">
-                        <canvasjs-chart [options]="chartOptions" [styles]="{width: '100%', height:'360px'}"></canvasjs-chart>    
-                    </div>   
-                    </div>
-                  </div>
 
-                  <div class="row mt-2">
-                    <div class="col">
-                      <table class="table table-hover table-striped table-bordered">
-                      <thead>
-                        <tr style="background-color: #696cff66;">
-                          <th>ssn</th>
-                          <th>Name</th>
-                          <th>Received date</th>
-                          <th>Salary</th>
-        
-                        </tr>
-                      </thead>
-                      <tbody class="table-border-bottom-0">
-                        <tr *ngFor="let item of this.hrService.allPayout">
-                          <td>
-                            {{item.ssn}}
-                          </td>
-                          <td>
-                            {{item.fname}} {{item.lname}}
-                          </td>
-                          <td>
-                            {{item.receiveddate}}
-                          </td>
-                          <td>
-                            {{item.salary}}
-                          </td>
-        
-                        </tr>
-                      </tbody>
-                      <tfoot></tfoot>
-                    </table>
-                    </div>
-                  </div>
 
-</div>
+      <div class="content-wrapper">
+        <div class="container-xxl flex-grow-1 container-p-y">
+
+          <div class="row">
+            <div class="col-1">
 
             </div>
+            <div class="col-2 col-md-2 col-sm-6 mb-4 text-center">
+              <div class="card">
+                <div class="card-body">
+                  <div class="card-title d-flex align-items-start justify-content-between">
+
+
+                  </div>
+                  <span class="fw-semibold d-block mb-1 ">Employee</span>
+                  <h3 class="card-title mb-2">{{empCount}}</h3>
+                </div>
+              </div>
+            </div>
+            <div class="col-2 col-md-2 col-sm-6 mb-4 text-center">
+              <div class="card">
+                <div class="card-body">
+                  <div class="card-title d-flex align-items-start justify-content-between">
+
+                  </div>
+                  <span>Onilne Employee</span>
+                  <h3 class="card-title text-nowrap mb-1">{{empOnCount}}</h3>
+                </div>
+              </div>
+            </div>
+            <div class="col-2 col-md-2 col-sm-6 mb-4 text-center">
+              <div class="card">
+                <div class="card-body">
+                  <div class="card-title d-flex align-items-start justify-content-between">
+
+                  </div>
+                  <span>Offline Employee</span>
+                  <h3 class="card-title text-nowrap mb-1">{{empOfCount}}</h3>
+                </div>
+              </div>
+            </div>
+            <div class="col-2 col-md-2 col-sm-6 mb-4 text-center">
+              <div class="card">
+                <div class="card-body">
+                  <div class="card-title d-flex align-items-start justify-content-between">
+
+                  </div>
+                  <span>Manager</span>
+                  <h3 class="card-title text-nowrap mb-1">{{manCount}}</h3>
+                </div>
+              </div>
+            </div>
+            <div class="col-2 col-md-2 col-sm-6 mb-4 text-center">
+              <div class="card">
+                <div class="card-body">
+                  <div class="card-title d-flex align-items-start justify-content-between">
+
+                  </div>
+                  <span>Department</span>
+                  <h3 class="card-title text-nowrap mb-1">{{DepCount}}</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <br>
+          <div  class="row mt-2">
+            <div  class="col ">
+            <div class="ticker-wrap">
+              <div class="ticker">
+                <div *ngIf="this.hrService.OneNews.msg != null " class="ticker__item">{{this.hrService.OneNews.msg}}</div>
+                
+              </div>
+            </div>
+          </div>
+          </div>
+          <br>
+          <div class="card wow fadeInUp" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+            <h5 class="card-header">Table Basic</h5>
+            <div class="row">
+              <div class="col">
+                <div *ngIf="this.x[0]!=null">
+                  <canvasjs-chart [options]="chartOptions" [styles]="{width: '100%', height:'360px'}"></canvasjs-chart>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mt-2">
+            <div class="col ">
+              <div class="mat-elevation-z8 ">
+                <table class="table-hover wow slideInUp col-10"
+                  style="visibility: visible; animation-delay: 0.3s; animation-name: slideInUp;" mat-table
+                  [dataSource]="dataSource">
+
+
+
+                  <!-- Position Column -->
+                  <ng-container matColumnDef="ssn">
+                    <th mat-header-cell *matHeaderCellDef> Snn </th>
+                    <td mat-cell *matCellDef="let element"> {{element.ssn}} </td>
+                  </ng-container>
+
+                  <!-- Name Column -->
+                  <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef> Name </th>
+                    <td mat-cell *matCellDef="let element"> {{element.fname}} {{element.lname}}</td>
+                  </ng-container>
+
+                  <!-- Weight Column -->
+                  <ng-container matColumnDef="receiveddate">
+                    <th mat-header-cell *matHeaderCellDef> Received date </th>
+                    <td mat-cell *matCellDef="let element"> {{element.receiveddate}} </td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="salary">
+                    <th mat-header-cell *matHeaderCellDef> Salary </th>
+                    <td mat-cell *matCellDef="let element"> ${{element.salary}} </td>
+                  </ng-container>
+
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+
+                <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+                  aria-label="Select page of periodic elements">
+                </mat-paginator>
+              </div>
+
+            </div>
+          </div>
+
         </div>
+
+      </div>
     </div>
+  </div>
 </div>
 
 
 
+
+
+
+
+
+
+
+
+
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  @-webkit-keyframes ticker {
+    0% {
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+      visibility: visible;
+    }
+
+    100% {
+      -webkit-transform: translate3d(-100%, 0, 0);
+      transform: translate3d(-100%, 0, 0);
+    }
+  }
+
+  @keyframes ticker {
+    0% {
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+      visibility: visible;
+    }
+
+    100% {
+      -webkit-transform: translate3d(-100%, 0, 0);
+      transform: translate3d(-100%, 0, 0);
+    }
+  }
+
+  .ticker-wrap {
+    border-radius: 10px;
+    width: auto;
+    overflow: hidden;
+    height: 4rem;
+    background-color: rgba(115, 97, 214, 0.9);
+    padding-left: 100%;
+    box-sizing: content-box;
+  }
+
+  .ticker-wrap .ticker {
+    display: inline-block;
+    height: 4rem;
+    line-height: 4rem;
+    white-space: nowrap;
+    padding-right: 100%;
+    box-sizing: content-box;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+    -webkit-animation-name: ticker;
+    animation-name: ticker;
+    -webkit-animation-duration: 30s;
+    animation-duration: 20s;
+    
+  }
+
+  .ticker-wrap .ticker__item {
+    display: inline-block;
+    padding: 0 2rem;
+    font-size: 2rem;
+    color: white;
+  }
+
+  body {
+    padding-bottom: 5rem;
+  }
+
+  h1,
+  h2,
+  p {
+    padding: 0 5%;
+  }
+</style>

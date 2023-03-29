@@ -23,7 +23,12 @@ export class OurServiceComponent {
   constructor(public hrService:HrService,public dialog:MatDialog){}
 
   async ngOnInit(){
-    await this.hrService.GetAllServices();  
+    this.hrService.spinner.show()
+
+    await this.hrService.GetAllServices(); 
+
+    this.hrService.spinner.hide()
+
 
   }
 
@@ -42,12 +47,14 @@ export class OurServiceComponent {
     this.dialog.open(this.Deletedia)
   }
 
-  async CreateService(){
-    console.log(this.ServiceFormGroup.value);
-    
+  async CreateService(){    
+    this.hrService.spinner.show()
+
      await this.hrService.CreateService(this.ServiceFormGroup.value)
      this.ServiceFormGroup.reset()
      await this.hrService.GetAllServices();
+
+     this.hrService.spinner.hide()
   }
 
   async DeleteService(){

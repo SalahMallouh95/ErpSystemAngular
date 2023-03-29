@@ -20,19 +20,24 @@ export class DepartmentEditComponent {
   }
 
   async ngOnInit(){
+    this.hrService.spinner.show()
+
     await this.hrService.GetAllEmployee()
     this.hrService.allEmp = this.hrService.allEmp.filter((e: { roleid: number; })=>e.roleid==2)    
     this.dep.patchValue(this.hrService.depInfo[0]) 
-    
-    
+
+    this.hrService.spinner.hide()    
   }
 
   async UpdateDep()
   {
+    this.hrService.spinner.show()
+
     this.dep.value.userid=parseInt(this.dep.value.userid);
     await this.hrService.EditDep(this.dep.value)    
     this.hrService.GetAllDepartment()
 
+    this.hrService.spinner.hide()
   }
 
 }

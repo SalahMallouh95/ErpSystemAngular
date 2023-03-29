@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { AuthService } from 'src/app/auth.service';
 import { EmployeeService } from 'src/app/employee.service';
 import { HrService } from 'src/app/hr.service';
@@ -13,14 +14,16 @@ import { ManagerService } from 'src/app/manager.service';
 })
 export class CreateLeaveComponent {
 
-  constructor(public managerserv : ManagerService , public employeeService:EmployeeService,private router:Router,private auth:AuthService, public hrService: HrService){
+  constructor(private spinner: NgxSpinnerService,public managerserv : ManagerService , public employeeService:EmployeeService,private router:Router,private auth:AuthService, public hrService: HrService){
 
   }
 
   
   ngOnInit(): void {
+    this.spinner.show()
     let leave  : any = {}
     this.hrService.GetAllLeaveTypes()
+    this.spinner.hide()
 
   }
 
