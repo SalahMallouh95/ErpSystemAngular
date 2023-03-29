@@ -17,10 +17,19 @@
     <div data-i18n="Analytics">Home Page</div>
   </a>
    <!-- /Search -->
+  
+    <div class="col" style="padding-left: 25px;padding-right: 25px;">
+      <div class="ticker-wrap">
+        <div class="ticker">
+        <!--   <div *ngIf="this.hr.OneNews.msg != null " class="ticker__item">{{this.hr.OneNews.msg}}</div>-->
+        <div   class="ticker__item">sdvdfxgbdfbcf</div>
+        </div>
+      </div>
+    </div>
 
    <ul class="navbar-nav flex-row align-items-center ms-auto">
      <!-- Place this tag where you want the button to render. -->    
-
+   
      <!-- User -->
      <li class="nav-item navbar-dropdown dropdown-user dropdown">
        <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
@@ -74,3 +83,79 @@
 </nav>
 
   <!-- End Navbar -->
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    @-webkit-keyframes ticker {
+      0% {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+        visibility: visible;
+      }
+
+      100% {
+        -webkit-transform: translate3d(-100%, 0, 0);
+        transform: translate3d(-100%, 0, 0);
+      }
+    }
+
+    @keyframes ticker {
+      0% {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+        visibility: visible;
+      }
+
+      100% {
+        -webkit-transform: translate3d(-100%, 0, 0);
+        transform: translate3d(-100%, 0, 0);
+      }
+    }
+
+    .ticker-wrap {
+      border-radius: 10px;
+      width: auto;
+      overflow: hidden;
+      height: 3rem;
+      background-color: #a7a8f829;
+      padding-left: 100%;
+      box-sizing: content-box;
+    }
+
+    .ticker-wrap .ticker {
+      display: inline-block;
+      height: 4rem;
+      line-height: 3rem;
+      white-space: nowrap;
+      padding-right: 100%;
+      box-sizing: content-box;
+      -webkit-animation-iteration-count: infinite;
+      animation-iteration-count: infinite;
+      -webkit-animation-timing-function: linear;
+      animation-timing-function: linear;
+      -webkit-animation-name: ticker;
+      animation-name: ticker;
+      -webkit-animation-duration: 30s;
+      animation-duration: 20s;
+
+    }
+
+    .ticker-wrap .ticker__item {
+      display: inline-block;
+      padding: 0 2rem;
+      font-size: 2rem;
+      color: #4c6a84;
+    }
+
+    body {
+      padding-bottom: 3rem;
+    }
+
+    h1,
+    h2,
+    p {
+      padding: 0 5%;
+    }
+  </style>

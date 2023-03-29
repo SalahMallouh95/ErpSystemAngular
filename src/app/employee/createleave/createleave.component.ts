@@ -13,7 +13,6 @@ export class CreateleaveComponent implements OnInit{
   }
   leavetype1:any|{}
   ngOnInit(): void {
-    this.leavetype1=this.employeeService.leavetype1
   }
   
 }
