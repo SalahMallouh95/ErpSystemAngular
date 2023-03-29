@@ -28,7 +28,7 @@ export class EnterEmailComponent {
     userData.useridnumber=this.user.userid
     await this.auth.CreatePassString(userData)
     await this.SendEmail()
-    this.auth.toastr.success("Email to reset your password was sent yo your email")
+    this.auth.toastr.success("Email to reset your password was sent to your email")
     this.router.navigate([''])
   }
   else{
@@ -50,11 +50,11 @@ export class EnterEmailComponent {
       mail.to=this.user.email;
       mail.subject="Account password reset"
       mail.message="Dear Mr/Mis "
-      +this.user.fname+" "+this.user.lname+"\nI hope this find you well \n you can reset Your password using the link below "+
-    
+      +this.user.fname+" "+this.user.lname+"\n I hope this find you well \n you can reset Your password using the link below: \n "+    
       "http://localhost:4200/Auth/passwordReset/"+this.auth.userResetPasswordInfo.passwordparam
       +" \n please don't share the link with anyone\n"+
-      +" \n best wishes \n StartUp";      
+      +" \n best wishes"
+      +" \n StartUp";      
       this.auth.SendMail(mail)  
   }
 

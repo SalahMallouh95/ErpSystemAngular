@@ -87,7 +87,7 @@ export class EmployeeAddComponent {
       "you need to setup your password on this link \n"+
       "http://localhost:4200/Auth/passwordReset/"+this.hrService.newUserId.passwordparam
       +
-      " \n best wishes\n"+this.auth.systemUserInfo.rolename+"."+this.auth.systemUserInfo.fname+" "+this.auth.systemUserInfo.lname;
+      "\n please don't share the link with anyone \n best wishes\n"+this.auth.systemUserInfo.rolename+"."+this.auth.systemUserInfo.fname+" "+this.auth.systemUserInfo.lname;
       
       this.auth.SendMail(mail)
   
