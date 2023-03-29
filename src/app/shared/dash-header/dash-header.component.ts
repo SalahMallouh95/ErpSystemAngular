@@ -10,7 +10,7 @@ import { HrService } from 'src/app/hr.service';
 })
 export class DashHeaderComponent {
 
-  constructor(private route:Router,public auth:AuthService,private hrService:HrService){}
+  constructor(private route:Router,public auth:AuthService,public hrService:HrService){}
   user:any
 
   async ngOnInit(){
@@ -19,6 +19,8 @@ export class DashHeaderComponent {
     this.user.userid=parseInt(this.user.userid)
     delete this.user.exp
     await this.hrService.GetAllEmployee()
+    await this.hrService.GetAllNews()
+    this.hrService.OneNews = await this.hrService.AllNews[0]
     this.auth.systemUserInfo=await this.hrService.allEmp.find((e:any)=>e.userid==this.user.userid)  
   }
 
