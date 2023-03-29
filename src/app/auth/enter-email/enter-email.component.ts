@@ -21,18 +21,22 @@ export class EnterEmailComponent {
   constructor(private auth:AuthService,private hrService:HrService,private router:Router){}
 
  async SendResetEmail(){
+  this.hrService.spinner.show()
   await this.GetUser()
   if(this.user!=null){
     let userData:any={}
     userData.useridnumber=this.user.userid
     await this.auth.CreatePassString(userData)
     await this.SendEmail()
-    this.auth.toastr.success("Email for reset your password was sent yo your email")
+    this.auth.toastr.success("Email to reset your password was sent yo your email")
+    this.router.navigate([''])
   }
   else{
     this.auth.toastr.error("Email Not registered in any account contact Hr for more info")
 
   }
+  this.hrService.spinner.hide()
+
   }
 
   async GetUser(){
