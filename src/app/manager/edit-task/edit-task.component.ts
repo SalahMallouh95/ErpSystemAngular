@@ -37,12 +37,9 @@ export class EditTaskComponent {
     delete userData.exp          
     this.man.GetAllEmp(userData)
     this.editTaskform.patchValue(this.man.taskinfo)
-    
-    
     this.hr.documentName = {}
     this.hr.documentName.imagefilename = null
-
-   this.spinner.show()
+    this.spinner.hide()
    }
 
    async UpdateT(){

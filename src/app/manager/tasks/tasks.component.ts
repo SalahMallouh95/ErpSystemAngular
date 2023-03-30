@@ -49,8 +49,9 @@ export class TasksComponent {
     task.taskid = id
     await this.man.GetTaskDetails(task)
     await this.man.GetAllSolutions(task)
-    this.route.navigate(['/Manager/EditTask', id])
     this.man.spinner.hide()
+    this.route.navigate(['/Manager/EditTask'])
+    
   }
 
   task: any = {}
