@@ -1,4 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { HrService } from 'src/app/hr.service';
 import { ManagerService } from 'src/app/manager.service';
@@ -10,9 +11,9 @@ import { ManagerService } from 'src/app/manager.service';
 })
 export class MtreeComponent {
 
-  constructor(public man: ManagerService, public hrService: HrService, private spinner: NgxSpinnerService) { }
+  constructor(public man: ManagerService, public hrService: HrService, private spinner: NgxSpinnerService, public dialog: MatDialog) { }
 
-  @ViewChild('DeleteDio') details: any
+
   userData: any = JSON.parse(localStorage.getItem('userInfo') + '')
   emplist: any
   mans : any ={}
@@ -29,11 +30,5 @@ export class MtreeComponent {
     this.spinner.hide()
   }
 
-  async DepDetailes(){
-
-  }
-
-  OpenDepDetailes(){
-
-  }
+ 
 }
