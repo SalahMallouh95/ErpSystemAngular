@@ -21,6 +21,7 @@ import { CheckinCheckoutComponent } from './checkin-checkout/checkin-checkout.co
 import { CreateLeaveComponent } from './create-leave/create-leave.component';
 import { TestComponent } from './test/test.component';
 import { MtreeComponent } from './mtree/mtree.component';
+import { DepDetailesComponent } from './dep-detailes/dep-detailes.component';
 
 
 
@@ -45,7 +46,8 @@ import { MtreeComponent } from './mtree/mtree.component';
     CheckinCheckoutComponent,
     CreateLeaveComponent,
     TestComponent,
-    MtreeComponent
+    MtreeComponent,
+    DepDetailesComponent
   ],
   imports: [
     CommonModule,

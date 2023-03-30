@@ -1,0 +1,5 @@
+Scaffold-DbContext "User Id=JOR17_User45;PASSWORD=Mslm_2014;DATA SOURCE=94.56.229.181:3488/traindb" Oracle.EntityFrameworkCore -outputdir Data
+
+"ConnectionStrings": {
+"DefaultConnection": "Data Source=(DESCRIPTION =(ADDRESS = (PROTOCOL = TCP)(HOST = 94.56.229.181)(PORT = 3488))(CONNECT_DATA =(SERVER = DEDICATED)(SERVICE_NAME = traindb)));User Id=JOR17_User45;Password=Mslm_2014;Persist Security Info=True;"
+},

@@ -18,13 +18,12 @@ export class MLeaveDetailsComponent implements OnInit {
   }
 
   id: number | undefined
-  leaveInf: any | {}
+
 
   ngOnInit(): void {
 
     this.spinner.show()
-    this.id = this.route.snapshot.params['id'];
-    this.leaveInf = this.managerService.allLeaves.filter((lev) => lev.leaveid == this.id)
+    
     this.spinner.hide()
   }
 
@@ -60,7 +59,7 @@ export class MLeaveDetailsComponent implements OnInit {
   }
 
   async SendEmail(state: number) {
-
+    this.spinner.show()
     let mail: any = {}
     await this.managerService.GetEmpInfo(this.managerService.leaveInfo.userid)
     console.log(this.managerService.empInformation);
@@ -87,7 +86,7 @@ export class MLeaveDetailsComponent implements OnInit {
     }
     this.auth.SendMail(mail)
     this.toaster.success("Email Sended")
-
+    this.spinner.hide()
   }
 
 

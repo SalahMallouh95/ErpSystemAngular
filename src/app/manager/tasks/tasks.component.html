@@ -80,15 +80,16 @@
                                             </td>
 
                                             <td>
-                                                <button type="button" class="btn rounded-pill btn-success"
-                                                    (click)="GetEditValues(item.taskid)">Edit Task</button>
-                                            </td>
-                                            <td>
                                                 <a (click)="GetValues(item.taskid)" class="btn btn-outline-info">Show
                                                     Solution</a>
                                             </td>
                                             <td>
-                                                <button type="button" class="btn rounded-pill btn-danger"
+                                                <button type="button" *ngIf="item.state == 1" class="btn rounded-pill btn-success"
+                                                    (click)="GetEditValues(item.taskid)">Edit Task</button>
+                                            </td>
+                                           
+                                            <td>
+                                                <button *ngIf="item.state == 1" type="button" class="btn rounded-pill btn-danger"
                                                     (click)="OpenDeleteDialog(item.taskid)">Delete</button>
 
                                             </td>

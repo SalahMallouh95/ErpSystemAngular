@@ -25,10 +25,7 @@ export class TasksDetailesComponent implements OnInit{
   }
 
   SendSelectorEditTaskId(id:any){
-
     this.rou.navigate(['Manager/EditTask',id])
-
-
   }
 
 }

@@ -16,11 +16,13 @@ export class AllEmployeesComponent {
   }
  userData:any = JSON.parse( localStorage.getItem('userInfo')+'')   
   async GetValues(ide:any){
+    this.spinner.show()
     let att : any ={}
     att.userid = ide
     await this.managerService.GetEmpInfo(ide)
     await this.managerService.GetAttendance(att)
     this.route.navigate(['Manager/EmpInfo']);
+    this.spinner.hide()
   }
 
 
@@ -40,6 +42,7 @@ export class AllEmployeesComponent {
   emplist:any
 
  FiliterByssn(){
+  this.spinner.show()
   if(this.ssn==null)
   {
     this.emplist = this.managerService.AllEmp.filter((e: any) => e.userid != this.auth.systemUserInfo.userid && e.roleid==3) 
@@ -48,7 +51,7 @@ export class AllEmployeesComponent {
   {
     this.emplist = this.managerService.AllEmp.filter((e: any) => e.ssn == this.ssn && e.roleid==3) 
   }
-  
+  this.spinner.hide()
 }
 
 }

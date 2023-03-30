@@ -7,6 +7,7 @@ import { AllEmployeesComponent } from './all-employees/all-employees.component';
 import { CheckinCheckoutComponent } from './checkin-checkout/checkin-checkout.component';
 import { CreateLeaveComponent } from './create-leave/create-leave.component';
 import { CreateTaskComponent } from './create-task/create-task.component';
+import { DepDetailesComponent } from './dep-detailes/dep-detailes.component';
 import { EditTaskComponent } from './edit-task/edit-task.component';
 import { MAllEmpLeavesComponent } from './m-all-emp-leaves/m-all-emp-leaves.component';
 import { MEmpInfoComponent } from './m-emp-info/m-emp-info.component';
@@ -94,6 +95,10 @@ const routes: Routes = [
   {
     path: 'Tree',
     component: MtreeComponent
+  },
+  {
+    path: 'DepartmentDetailes',
+    component: DepDetailesComponent
   }
  ];
 
