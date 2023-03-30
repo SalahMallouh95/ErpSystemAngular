@@ -29,6 +29,7 @@ export class ManagerService {
   allsln: any = []
   updateManProf: any = {}
   updatetask: any = {}
+  oneDepartment: any ={}
 
 
   async GetAllEmp(emp: any) {

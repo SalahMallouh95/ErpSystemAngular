@@ -16,7 +16,8 @@ export class DepartmentCreateComponent {
  
    departmentFormGroup = new FormGroup({
     departmentname: new FormControl('', Validators.required),
-    userid:new FormControl()
+    userid:new FormControl(),
+    descrip:new FormControl()
   })
 
  constructor(public hrService: HrService, public router: Router) { }

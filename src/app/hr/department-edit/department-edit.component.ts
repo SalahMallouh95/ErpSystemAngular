@@ -12,7 +12,8 @@ export class DepartmentEditComponent {
     dep=new FormGroup({
     departmentname:new FormControl('',[Validators.required]),
     userid:new FormControl(),
-    departmentid:new FormControl()
+    departmentid:new FormControl(),
+    descrip:new FormControl()
   })
 
   constructor(public hrService:HrService){

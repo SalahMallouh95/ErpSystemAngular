@@ -23,6 +23,7 @@ export class DepartmentComponent implements OnInit {
     
     this.hrService.spinner.show()
     await this.hrService.GetAllDepartment();
+    
     this.hrService.spinner.hide()
 
   }
