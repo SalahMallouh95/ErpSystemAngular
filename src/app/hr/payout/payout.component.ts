@@ -10,7 +10,7 @@ import { HrService } from 'src/app/hr.service';
   styleUrls: ['./payout.component.css']
 })
 export class PayoutComponent {
-
+     totalSalary:number=0
   range = new FormGroup({
     startdate: new FormControl<Date | null>(null),
     enddate: new FormControl<Date | null>(null)
@@ -32,6 +32,7 @@ export class PayoutComponent {
         this.hrService.allPayout = res
         this.ReinitializeTable()
         this.CreateChartData()
+        this.SumSalary()
       },
       error: (ee) => {
         console.log(ee)
@@ -42,19 +43,12 @@ export class PayoutComponent {
   this.hrService.spinner.hide()
 }
 
-  async Search() {
-  this.hrService.spinner.show()  
+  async Search() { 
 
   await this.hrService.GetPayout(this.range.value)
 
-    this.ReinitializeTable()
- 
-      this.CreateChartData()
- 
-
-
-
-  this.hrService.spinner.hide()
+    this.ReinitializeTable() 
+    this.CreateChartData()
 }
 
 ReinitializeTable(){
@@ -70,6 +64,13 @@ ReinitializeTable(){
        
   } );
   }, 1);
+}
+
+SumSalary(){
+  this.totalSalary=0
+  this.hrService.allPayout.forEach((element: { salary: number; }) => {
+    this.totalSalary=this.totalSalary+element.salary
+  });
 }
 
 async CreateChartData() {
@@ -102,6 +103,7 @@ async CreateChartData() {
       this.x.push({ x: new Date(parseInt(year)  , parseInt(month) - 1, 1), y: total });
     });
   });
+  this.SumSalary()
   this.CreateChartOptions()
 
 }
