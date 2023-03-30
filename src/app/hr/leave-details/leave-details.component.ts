@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { AuthService } from 'src/app/auth.service';
 import { HrService } from 'src/app/hr.service';
 
 @Component({
@@ -12,7 +12,6 @@ export class LeaveDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-
 
   }
 
@@ -28,7 +27,6 @@ export class LeaveDetailsComponent implements OnInit {
     this.hrService.GetAllLeaves()
     this.hrService.spinner.hide()
 
-
   }
 
   async RejectLeave() {
@@ -40,7 +38,12 @@ export class LeaveDetailsComponent implements OnInit {
     await this.hrService.UpdateLeaveDetails(leave)
     this.hrService.GetLeaveDetails(leave)
     this.hrService.GetAllLeaves()
+   
+
     this.hrService.spinner.hide()
 
+
   }
+  
+ 
 }

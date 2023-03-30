@@ -76,7 +76,7 @@
               <a routerLink="/Hr/AllLeaves"  class="menu-link menu">
                 <i class="menu-icon tf-icons bx bx-layout bx-tada-hover" routerLinkActive="bx-tada"></i>
                 <div data-i18n="Layouts">Leaves requsts</div>
-                <span *ngIf="leaveCount==0" class="badge badge-center rounded-pill bg-label-secondary ms-2">{{TotalMessages}}</span>
+                <span *ngIf="leaveCount==0" class="badge badge-center rounded-pill bg-label-secondary ms-2">{{leaveCount}}</span>
                 <span *ngIf="leaveCount!=0" class="badge badge-center rounded-pill bg-label-danger ms-2">{{leaveCount}}</span>
 
               </a>   

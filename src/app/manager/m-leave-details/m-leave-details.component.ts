@@ -66,7 +66,7 @@ export class MLeaveDetailsComponent implements OnInit {
     console.log(this.managerService.empInformation);
 
     mail.to = this.managerService.empInformation.email;
-    mail.subject = "Upgate regards your leave"
+    mail.subject = "Update regards your leave"
     if (state == 0) {
       mail.message = "Dear Mr/Mis "
         + this.managerService.empInformation.fname + " " + this.managerService.empInformation.lname + "\nI hope this find you well \n regards your leave that taking place\n from: " +

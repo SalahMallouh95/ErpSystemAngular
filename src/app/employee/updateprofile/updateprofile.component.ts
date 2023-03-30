@@ -16,10 +16,9 @@ export class UpdateprofileComponent {
   }
 
   manInfo = new FormGroup({
-
     userid : new FormControl(),
-    fname : new FormControl({ value: '',disabled: true}, Validators.required),
-    lname : new FormControl({value: '', disabled: true}, Validators.required),
+    fname : new FormControl( '',Validators.required),
+    lname : new FormControl('', Validators.required),
     phonenumber : new FormControl(),
     address : new FormControl(),
     imagefilename : new FormControl(),

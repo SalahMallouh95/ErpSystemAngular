@@ -18,20 +18,24 @@
     <!-- /Search -->
 
     <div *ngIf="this.hrService.OneNews.msg != null " class="col" style="padding-left: 25px;padding-right: 25px;">
-     
-      <!-- <div class="ticker-wrap">
-        <div class="ticker" *ngIf="this.hrService.OneNews.msg != null ">
-          <div *ngFor="let item of this.hrService.AllNews" class="ticker__item"><i class="fa fa-university " aria-hidden="true"></i> {{item.msg}} </div>
-          
-        </div>
-        <div *ngIf="this.hrService.OneNews.msg == null " class="ticker__item">Welcom To Startup</div>
-      </div> -->
       <section class="section" style="width: 100%;">
         <div class="marquee text-styling">
-        <div class="d-inline-flex justify-content-around" *ngFor="let item of this.hrService.AllNews"><p>{{item.msg}}&emsp;</p></div>
-      </div>
+          <div class="d-inline-flex justify-content-around" *ngFor="let item of this.hrService.AllNews">
+            <p>{{item.msg}}&emsp;</p>
+          </div>
+        </div>
       </section>
-    
+    </div>
+
+    <div *ngIf="this.hrService.OneNews.msg == null " class="col" style="padding-left: 25px;padding-right: 25px;">
+      <section class="section" style="width: 100%;">
+        <div class="marquee text-styling">
+          <div class="d-inline-flex justify-content-around">
+            <p>Welcom To Startup</p>
+          </div>
+        </div>
+      </section>
+
     </div>
 
     <ul class="navbar-nav flex-row align-items-center ms-auto">
@@ -100,45 +104,52 @@
 <!-- End Navbar -->
 <style>
   @-webkit-keyframes marquee {
-  0% {
-    margin-left: 100%;
-    transform: translateX(0%);
-  }
-  100% {
-    margin-left: 0;
-    transform: translateX(-100%);
-  }
-}
-@keyframes marquee {
+    0% {
+      margin-left: 100%;
+      transform: translateX(0%);
+    }
 
-  
-  0% {
-    margin-left: 100%;
-    transform: translateX(0%);
+    100% {
+      margin-left: 0;
+      transform: translateX(-100%);
+    }
   }
-  100% {
-    margin-left: 0;
-    transform: translateX(-100%);
-  }
-}
-.section {
-  overflow: hidden;
-}
-.section .marquee {
-  -webkit-animation: marquee 7s linear infinite;
-          animation: marquee 7s linear infinite;
-  display: inline-block;
-  white-space: nowrap;
-}
-.section .marquee:hover {
-  -webkit-animation-play-state: paused;
-          animation-play-state: paused;
-}
 
-.text-styling {
-  
-  padding: 1em;
-}
+  @keyframes marquee {
+
+
+    0% {
+      margin-left: 100%;
+      transform: translateX(0%);
+    }
+
+    100% {
+      margin-left: 0;
+      transform: translateX(-100%);
+    }
+  }
+
+  .section {
+    overflow: hidden;
+  }
+
+  .section .marquee {
+    -webkit-animation: marquee 7s linear infinite;
+    animation: marquee 7s linear infinite;
+    display: inline-block;
+    white-space: nowrap;
+  }
+
+  .section .marquee:hover {
+    -webkit-animation-play-state: paused;
+    animation-play-state: paused;
+  }
+
+  .text-styling {
+
+    padding: 1em;
+  }
+
   /* * {
     box-sizing: border-box;
   }
