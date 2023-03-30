@@ -26,7 +26,7 @@
         </div>
         <div *ngIf="this.hrService.OneNews.msg == null " class="ticker__item">Welcom To Startup</div>
       </div> -->
-      <section class="section">
+      <section class="section" style="width: 100%;">
         <div class="marquee text-styling">
         <div class="d-inline-flex justify-content-around" *ngFor="let item of this.hrService.AllNews"><p>{{item.msg}}&emsp;</p></div>
       </div>
