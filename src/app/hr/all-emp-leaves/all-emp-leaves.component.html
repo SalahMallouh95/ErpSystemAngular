@@ -141,11 +141,11 @@
               </div>
             </div>
             <br>
-            <div class="demo-inline-spacing">
+            <div class="demo-inline-spacing" *ngIf="this.hrService.leaveInfo.state==2">
               <button type="button" class="btn rounded-pill btn-success" (click)="AcceptLeave()">Accept</button>
-              <button type="button" class="btn rounded-pill btn-danger" (click)="RejectLeave()">Reject</button>
-              <button style="position: absolute; top: 0px; right:0px;" mat-button mat-dialog-close  type="button" class="">X</button>
+              <button type="button" class="btn rounded-pill btn-danger" (click)="RejectLeave()">Reject</button>              
             </div>
+            <button style="position: absolute; top: 0px; right:0px;" mat-button mat-dialog-close  type="button" class="">X</button>
           </div>
         </div>
       </div>

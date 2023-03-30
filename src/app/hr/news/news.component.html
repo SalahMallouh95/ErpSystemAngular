@@ -16,7 +16,7 @@
                 <div class="content-wrapper">
                     <!-- Content -->
                     <div class="container-xxl flex-grow-1 container-p-y">
-                        <button type="submit" class="btn btn-primary"  (click)="OpenCreateDia()"  >Create</button>
+                     
                         <div class="card wow fadeInUp"
                             style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
                             <h3 class="card-header">Table Of News</h3>
@@ -27,7 +27,6 @@
                                     <thead>
                                         <tr style="background-color: #696cff66;">
                                             <th>Message</th>
-                                            <th></th>
                                             <th></th>
 
                                         </tr>
@@ -42,13 +41,7 @@
                                             <td>
                                                 <button type="button" class="btn rounded-pill btn-success"
                                                     (click)=" openUpdateDialog(item.annid)">Edit</button>
-                                            </td>
-
-                                            <td>
-                                                <button type="button" class="btn rounded-pill btn-danger"
-                                                    (click)="OpenDeleteDialog(item.annid)">Delete</button>
-
-                                            </td>
+                                            </td>                                           
 
                                         </tr>
 

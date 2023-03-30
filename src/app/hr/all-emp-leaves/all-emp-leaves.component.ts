@@ -6,6 +6,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { MatDialog } from '@angular/material/dialog';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
+import { AuthService } from 'src/app/auth.service';
 
 @Component({
   selector: 'app-all-emp-leaves',
@@ -20,7 +21,7 @@ export class AllEmpLeavesComponent implements OnInit {
   @ViewChild('infoDio') Infodia:any
 
 
-  constructor(public dialog:MatDialog,private router:Router,public hrService:HrService,private spinner: NgxSpinnerService)
+  constructor(private auth:AuthService,public dialog:MatDialog,private router:Router,public hrService:HrService,private spinner: NgxSpinnerService)
   {
 
   }  
@@ -79,6 +80,7 @@ export class AllEmpLeavesComponent implements OnInit {
     await this.hrService.GetAllLeaves()
     this.dataSource= new MatTableDataSource(this.hrService.allLeaves);
     this.dataSource.paginator = this.paginator;
+    this.SendEmail(1)
     this.hrService.spinner.hide()
 
 
@@ -93,11 +95,44 @@ export class AllEmpLeavesComponent implements OnInit {
     await this.hrService.UpdateLeaveDetails(leave)
     this.hrService.GetLeaveDetails(leave)
     await this.hrService.GetAllLeaves()
-
     this.dataSource= new MatTableDataSource(this.hrService.allLeaves);
     this.dataSource.paginator = this.paginator;
-
+    this.SendEmail(0)
     this.hrService.spinner.hide()
+
+  }
+
+   async SendEmail(state: number) {
+    let mail: any = {}
+    let user: any={}
+    user.userid=this.hrService.leaveInfo.userid   
+    console.log(this.hrService.leaveInfo);
+ 
+    await this.hrService.GetEmpInfo(user)    
+    
+    mail.to = this.hrService.empInfo.email;
+    mail.subject = "Update regards your leave"
+    if (state == 0) {
+      mail.message = "Dear Mr/Mis "
+        + this.hrService.empInfo.fname + " " + this.hrService.empInfo.lname + "\nI hope this find you well \n regards your leave that taking place\n from: " +
+        this.hrService.leaveInfo.startdate + "\n to: " + this.hrService.leaveInfo.enddate +
+        "\nleave type: " + this.hrService.leaveInfo.leavetype.leavetype +
+        "\n we regret to inform you that we rejected your leave request" +
+        ".\n best wishes\n" + this.auth.systemUserInfo.rolename + " : " + this.auth.systemUserInfo.fname + " " + this.auth.systemUserInfo.lname;
+    }
+
+    else {
+      mail.message = "Dear Mr/Mis "
+        + this.hrService.empInfo.fname + " " + this.hrService.empInfo.lname + "\nI hope this find you well \n regards your leave that taking place\n from: " +
+        this.hrService.leaveInfo.startdate + "\n to: " + this.hrService.leaveInfo.enddate +
+        "\n leave type: " + this.hrService.leaveInfo.leavetype.leavetype +
+        "\n we happy to inform you that we accepted your leave request" +
+        ".\n best wishes\n" + this.auth.systemUserInfo.rolename + " : " + this.auth.systemUserInfo.fname + " " + this.auth.systemUserInfo.lname;
+
+    }
+
+    this.auth.SendMail(mail)
+    this.auth.toastr.success("Email Sended")
 
   }
 }

@@ -52,15 +52,20 @@
 
                     <div class="row">
 
-                      <mat-form-field class="mb-3 col-md-6">
+                      <div class="mb-3 col-md-6">
                         <label for="firstName" class="form-label">First Name</label>
-                        <input type="text" matInput formControlName="fname" placeholder="Ahmed">
-                      </mat-form-field>
+                        <input matInput formControlName="fname" class="form-control" type="text">
+                        <mat-error *ngIf="manInfo.controls['fname'].hasError('required')">Please enter a First
+                          Name</mat-error>
+                      </div>
 
-                      <mat-form-field class="mb-3 col-md-6">
+                      <div class="mb-3 col-md-6">
                         <label for="lastName" class="form-label">Last Name</label>
-                        <input type="text" matInput formControlName="lname" placeholder="Ahmed">
-                      </mat-form-field>
+                        <input matInput class="form-control" type="text" name="lastName" id="lastName"
+                          formControlName="lname">
+                        <mat-error *ngIf="manInfo.controls['lname'].hasError('required')">Please enter a Last
+                          Name</mat-error>
+                      </div>
 
                       <mat-form-field class="mb-3 col-md-6">
                         <label for="email" class="form-label">E-mail</label>
