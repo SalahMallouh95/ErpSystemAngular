@@ -3,30 +3,23 @@
 
     <app-hr-sidebar></app-hr-sidebar>
 
-
     <div class="layout-page">
 
       <app-dash-header>
       </app-dash-header>
 
-
-
       <div class="content-wrapper">
         <div class="container-xxl flex-grow-1 container-p-y">
-
           <div class="row">
             <div class="col-1">
-
             </div>
             <div class="col-2 col-md-2 col-sm-6 mb-4 text-center">
               <div class="card">
                 <div class="card-body">
                   <div class="card-title d-flex align-items-start justify-content-between">
-
-
                   </div>
-                  <span class="fw-semibold d-block mb-1 ">Employee</span>
-                  <h3 class="card-title mb-2">{{empCount}}</h3>
+                  <span class="fw-semibold d-block mb-1 "><h2>Employee</h2></span>
+                  <h2 class="card-title mb-2">{{empCount}}</h2>
                 </div>
               </div>
             </div>
@@ -36,8 +29,8 @@
                   <div class="card-title d-flex align-items-start justify-content-between">
 
                   </div>
-                  <span>Onilne Employee</span>
-                  <h3 class="card-title text-nowrap mb-1">{{empOnCount}}</h3>
+                  <span class="fw-semi d-block mb-1 "><h2>Onilne Employee</h2></span>
+                  <h2 class="card-title text-nowrap mb-1"><h2>{{empOnCount}}</h2></h2>
                 </div>
               </div>
             </div>
@@ -47,8 +40,8 @@
                   <div class="card-title d-flex align-items-start justify-content-between">
 
                   </div>
-                  <span>Offline Employee</span>
-                  <h3 class="card-title text-nowrap mb-1">{{empOfCount}}</h3>
+                  <span><h2>Offline Employee</h2></span>
+                  <h2 class="card-title text-nowrap mb-1"><h2>{{empOfCount}}</h2></h2>
                 </div>
               </div>
             </div>
@@ -58,8 +51,8 @@
                   <div class="card-title d-flex align-items-start justify-content-between">
 
                   </div>
-                  <span>Manager</span>
-                  <h3 class="card-title text-nowrap mb-1">{{manCount}}</h3>
+                  <span><h2>Manager</h2></span>
+                  <h2 class="card-title text-nowrap mb-1"><h2>{{manCount}}</h2></h2>
                 </div>
               </div>
             </div>
@@ -69,15 +62,15 @@
                   <div class="card-title d-flex align-items-start justify-content-between">
 
                   </div>
-                  <span>Department</span>
-                  <h3 class="card-title text-nowrap mb-1">{{DepCount}}</h3>
+                  <span><h2>Department</h2></span>
+                  <h2 class="card-title text-nowrap mb-1"><h2>{{DepCount}}</h2></h2>
                 </div>
               </div>
             </div>
           </div>
 
           <div class="card wow fadeInUp" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
-            <h5 class="card-header">Table Basic</h5>
+            <h5 class="card-header"></h5>
             <div class="row">
               <div class="col">
                 <div *ngIf="this.x[0]!=null">
@@ -94,7 +87,7 @@
                   style="visibility: visible; animation-delay: 0.3s; animation-name: slideInUp;" mat-table
                   [dataSource]="dataSource">
 
-
+                   
 
                   <!-- Position Column -->
                   <ng-container matColumnDef="ssn">

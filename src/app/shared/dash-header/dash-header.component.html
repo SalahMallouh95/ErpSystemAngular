@@ -17,21 +17,21 @@
     </a>
     <!-- /Search -->
 
-    <div *ngIf="this.hrService.OneNews.msg != null " class="col" style="padding-left: 25px;padding-right: 25px;">
+    <div *ngIf="this.hrService.OneNews.msg != null " class="col mt-3" style="padding-left: 25px;padding-right: 25px;">
       <section class="section" style="width: 100%;">
         <div class="marquee text-styling">
           <div class="d-inline-flex justify-content-around" *ngFor="let item of this.hrService.AllNews">
-            <p>{{item.msg}}&emsp;</p>
+            <h2>{{item.msg}}&emsp;</h2>
           </div>
         </div>
       </section>
     </div>
 
-    <div *ngIf="this.hrService.OneNews.msg == null " class="col" style="padding-left: 25px;padding-right: 25px;">
+    <div *ngIf="this.hrService.OneNews.msg == null " class="col mt-3" style="padding-left: 25px;padding-right: 25px; ">
       <section class="section" style="width: 100%;">
         <div class="marquee text-styling">
           <div class="d-inline-flex justify-content-around">
-            <p>Welcom To Startup</p>
+            <h2>Welcom To Startup</h2>
           </div>
         </div>
       </section>
