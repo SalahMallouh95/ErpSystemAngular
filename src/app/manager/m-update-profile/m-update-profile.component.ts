@@ -20,8 +20,8 @@ export class MUpdateProfileComponent {
   manInfo = new FormGroup({
 
     userid: new FormControl(),
-    fname: new FormControl('',Validators.required),
-    lname: new FormControl('',Validators.required),
+    fname: new FormControl(),
+    lname: new FormControl(),
     phonenumber: new FormControl(),
     address: new FormControl(),
     imagefilename: new FormControl(),
@@ -30,11 +30,10 @@ export class MUpdateProfileComponent {
     email: new FormControl({ value: '', disabled: true }, Validators.required),
     ssn: new FormControl({ value: '', disabled: true }, Validators.required),
     rolename: new FormControl({ value: '', disabled: true }, Validators.required)
-
   })
 
 
-
+flag = true
   emp: any = { "userid": null }
 
   async ngOnInit() {
@@ -45,6 +44,8 @@ export class MUpdateProfileComponent {
     this.emp.userid = this.auth.systemUserInfo.userid
     await this.man.GetManagerPrifile(this.emp)
     this.manInfo.patchValue(this.man.ManagerProfile)
+    console.log(this.manInfo.value);
+    
     this.man.spinner.hide()
   }
 
@@ -69,7 +70,6 @@ export class MUpdateProfileComponent {
     await this.auth.CreatePassString(user)
     await this.SendEmail()
     this.auth.toastr.success("Email for reset your password was sent yo your email")
-
   }
 
   async SendEmail(){    
