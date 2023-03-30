@@ -41,7 +41,6 @@ export class AuthService {
             if(data.roleid==1)
             {
               this.route.navigate(["Hr/"])
-
             }
             else if(data.roleid==2)
             {
