@@ -10,7 +10,6 @@
         <b>Message:</b> {{this.managerService.leaveInfo.message}} <br>
         <b>Document:</b> 
         <a *ngIf="this.managerService.leaveInfo.documentfilename!=='null'" class="card-link" target="_blank"  [href]="'../../../assets/Documents/'+this.managerService.leaveInfo.documentfilename">{{this.managerService.leaveInfo.documentfilename}}</a> <br>
-      
       </p>
       <b>States: </b>
       <div [ngSwitch]="this.managerService.leaveInfo.state" style="display: inline;">
@@ -26,8 +25,8 @@
       </div>
       <br>
       <div class="demo-inline-spacing">
-        <button type="button" class="btn rounded-pill btn-success" (click)="AcceptLeave()" >Accept</button>
-        <button type="button" class="btn rounded-pill btn-danger" (click)="RejectLeave()" >Reject</button>
+        <button *ngIf="this.managerService.leaveInfo.state ==2" type="button" class="btn rounded-pill btn-success" mat-button mat-dialog-close (click)="AcceptLeave()" >Accept</button>
+        <button *ngIf="this.managerService.leaveInfo.state == 2" type="button" class="btn rounded-pill btn-danger" mat-button mat-dialog-close (click)="RejectLeave()" >Reject</button>
         <button style="position: absolute; top: 0px; right:0px;" mat-button mat-dialog-close  type="button" class="">X</button>
       </div>
     </div>

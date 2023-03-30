@@ -15,50 +15,51 @@ import { NgxSpinnerService } from 'ngx-spinner';
 })
 export class MAllEmpLeavesComponent implements OnInit {
 
-  constructor( private spinner: NgxSpinnerService,private router:Router, public managerService : ManagerService , public dialog : MatDialog,private auth : AuthService){
+  constructor(private spinner: NgxSpinnerService, private router: Router, public managerService: ManagerService, public dialog: MatDialog, private auth: AuthService) {
 
 
 
   }
 
-  leaves : any ={}
-  id : number = this.auth.systemUserInfo.userid
 
-  ngOnInit(){
+  id: number = this.auth.systemUserInfo.userid
 
-this.spinner.show()
-    let userData:any = JSON.parse( localStorage.getItem('userInfo')+'')   
-    userData.userid=parseInt (userData.userid)   
-    userData.roleid=parseInt (userData.roleid)        
-    delete userData.exp          
+  ngOnInit() {
+
+    this.spinner.show()
+    let userData: any = JSON.parse(localStorage.getItem('userInfo') + '')
+    userData.userid = parseInt(userData.userid)
+    userData.roleid = parseInt(userData.roleid)
+    delete userData.exp
     this.managerService.GetAllLeaves(userData)
-    
     this.spinner.hide()
   }
 
   range = new FormGroup({
-   
     dateTo: new FormControl<Date | null>(null),
     dateFrom: new FormControl<Date | null>(null)
   });
 
-  async Search(){
-    
+  async Search() {
+    this.spinner.show()
     await this.managerService.Searchs(this.range.value)
+    this.spinner.hide()
   }
 
 
-  async GetValues(id :any){
-    let leave : any = {}
+  async GetValues(id: any) {
+    this.spinner.show()
+    let leave: any = {}
     leave.leaveid = id
-   await this.managerService.GetLeaveDetails(leave)
+    await this.managerService.GetLeaveDetails(leave)
     this.OpenMoreInfoDialog()
-   
-    
+    this.spinner.hide()
   }
 
-  OpenMoreInfoDialog(){
+  OpenMoreInfoDialog() {
+    this.spinner.show()
     this.dialog.open(MLeaveDetailsComponent)
+    this.spinner.hide()
   }
 
 

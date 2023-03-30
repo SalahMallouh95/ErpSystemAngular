@@ -20,23 +20,21 @@ export class MLeavesComponent {
 
   }
 
-  managerLeaves: any = {}
-  id: number = this.auth.systemUserInfo.userid
 
+  id: number = this.auth.systemUserInfo.userid
+  userData : any = {}
   async ngOnInit() {
     this.spinner.show()
-    let userData: any = JSON.parse(localStorage.getItem('userInfo') + '')
-    userData.userid = parseInt(userData.userid)
-    userData.roleid = parseInt(userData.roleid)
-    delete userData.exp
-    await this.managerserv.GetMyLeaves(userData)
+     this.userData = JSON.parse(localStorage.getItem('userInfo') + '')
+    this.userData.userid = parseInt(this.userData.userid)
+    this.userData.roleid = parseInt(this.userData.roleid)
+    delete this.userData.exp
+    await this.managerserv.GetMyLeaves(this.userData)
     this.spinner.hide()
   }
 
   leave: any = {}
   async SendSelectorMyLeaveId(id: any) {
-
-
     this.leave.leaveid = id
     await this.managerserv.GetLeaveDetails(this.leave)
     this.OpenMoreInfoDialog()
@@ -44,7 +42,9 @@ export class MLeavesComponent {
   }
 
   OpenMoreInfoDialog() {
+    this.spinner.show()
     this.dialog.open(MMyLeaveDetailsComponent)
+    this.spinner.hide()
   }
 
 
@@ -53,7 +53,7 @@ export class MLeavesComponent {
   async DeleteLeave() {
 
     await this.employeeService.DeleteLeave(this.managerserv.leaveInfo.leaveid)
-    await this.managerserv.GetMyLeaves(this.managerLeaves)
+    await this.managerserv.GetMyLeaves(this.userData)
   }
 
   OpenDeleteDialog(id: any) {

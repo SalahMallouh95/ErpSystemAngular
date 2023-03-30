@@ -58,10 +58,10 @@
                                         </div>
                                     </td>
                                     
-                                    <td>
-                                        <a  (click)="SendSelectorMyLeaveId(emp.leaveid)" class="btn btn-outline-info">More Info</a>
-                                        <a  (click)="OpenDeleteDialog(emp.leaveid)" class="btn rounded-pill btn-danger" style="color: white;">Delete</a>
-                                        
+                                    <td> <div class="demo-inline-spacing">
+                                        <a  (click)="SendSelectorMyLeaveId(emp.leaveid)" class="btn btn-outline-info pr-1">More Info</a>
+                                        <a *ngIf="emp.state == 2" (click)="OpenDeleteDialog(emp.leaveid)" class="btn rounded-pill btn-danger " style="color: white;">Delete</a>
+                                    </div>
                                     </td>
 
                                 </tr>

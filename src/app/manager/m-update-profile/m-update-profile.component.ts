@@ -19,8 +19,8 @@ export class MUpdateProfileComponent {
 
   manInfo = new FormGroup({
 
-    userid: new FormControl(),
-    fname: new FormControl(),
+    userid: new FormControl('',Validators.required),
+    fname: new FormControl('',Validators.required),
     lname: new FormControl(),
     phonenumber: new FormControl(),
     address: new FormControl(),
@@ -33,13 +33,13 @@ export class MUpdateProfileComponent {
   })
 
 
-flag = true
+
   emp: any = { "userid": null }
 
   async ngOnInit() {
 
     this.man.spinner.show()
-    
+
     let data = JSON.parse(localStorage.getItem("fullUserInfo") + '')
     this.emp.userid = this.auth.systemUserInfo.userid
     await this.man.GetManagerPrifile(this.emp)

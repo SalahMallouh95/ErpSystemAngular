@@ -38,7 +38,7 @@
 
                                         <div class="mb-3 col-md-6">
                                             <label class="form-label" for="basic-default-phon">Upload Task</label>
-                                            <input type="file"  #file (change)="UploadTaskFile(file)" id="basic-default-phone" class="form-control phone-mask"
+                                            <input type="file"  #file (change)="UploadTaskFile(file)" accept=".pdf, .doc" id="basic-default-phone" class="form-control phone-mask"
                                                 placeholder="10001"  />
                                         </div>
 
@@ -59,7 +59,7 @@
                                             <textarea id="basic-default-message" class="form-control"
                                                 placeholder="Hi, Do you have a moment to talk Joe?" formControlName="taskdescription"></textarea>
                                         </div>
-                                        <button [disabled]="this.taskform.invalid" type="submit" class="btn btn-primary" (click)="AddTask()"   >Create</button>
+                                        <button [disabled]="this.taskform.invalid" type="submit" class="btn btn-primary" onclick="history.back(-1)" (click)="AddTask()"   >Create</button>
 
                                         <div class="demo-inline-spacing">
 

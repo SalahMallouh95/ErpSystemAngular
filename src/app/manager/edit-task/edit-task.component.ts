@@ -59,10 +59,11 @@ export class EditTaskComponent {
   }
 
   async UploadTaskFile(file : any){
-
+    this.spinner.show()
     let formData = new FormData()
     formData.append('file', file.files[0])
     await this.hr.UploadDocument(formData)
+    this.spinner.hide()
   }
 
 

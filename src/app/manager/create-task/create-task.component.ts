@@ -44,21 +44,22 @@ export class CreateTaskComponent {
   })
 
   async AddTask(){
-    
+    this.spinner.show()
     this.taskform.value.managerid = this.userData.userid
     this.taskform.value.documentfilename = this.hr.documentName.imagefilename
     console.log(this.taskform.value);
     await this.man.CreateTask(this.taskform.value)
     this.taskform.reset()
     this.hr.documentName.imagefilename = undefined
-    
+    this.spinner.hide()
   }
 
   async UploadTaskFile(file : any){
-
+    this.spinner.show()
     let formData = new FormData()
     formData.append('file', file.files[0])
     await this.hr.UploadDocument(formData)
+    this.spinner.hide()
   }
   
 

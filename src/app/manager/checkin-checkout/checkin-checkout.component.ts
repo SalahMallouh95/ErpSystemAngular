@@ -48,10 +48,8 @@ export class CheckinCheckoutComponent {
     this.man.GetManagerPrifile(this.emp)
     await this.man.GetAttendance(this.emp)
     this.emp.state = 1
-
     this.dataSource = new MatTableDataSource(this.man.attendance);
     this.dataSource.paginator = this.paginator;
-    
     this.spinner.hide()
   }
   async checkOut() {
@@ -61,10 +59,8 @@ export class CheckinCheckoutComponent {
     this.man.GetManagerPrifile(this.emp)
     await this.man.GetAttendance(this.emp)
     this.emp.state = 0
-
     this.dataSource = new MatTableDataSource(this.man.attendance);
     this.dataSource.paginator = this.paginator;
-
     this.spinner.hide()
   }
 
