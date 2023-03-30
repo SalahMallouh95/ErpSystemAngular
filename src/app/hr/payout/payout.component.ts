@@ -1,9 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { MatTableDataSource } from '@angular/material/table';
-import { DataTableDirective } from 'angular-datatables';
-import { Subject } from 'rxjs';
 import { HrService } from 'src/app/hr.service';
 
 
@@ -50,20 +47,27 @@ export class PayoutComponent {
 
   await this.hrService.GetPayout(this.range.value)
 
-  this.ReinitializeTable()
-  this.CreateChartData()
+    this.ReinitializeTable()
+ 
+      this.CreateChartData()
+ 
+
+
 
   this.hrService.spinner.hide()
 }
 
 ReinitializeTable(){
   $('#datatableexample').DataTable().clear().destroy();
+
   setTimeout(()=>{   
     $('#datatableexample').DataTable( {
       pagingType: 'full_numbers',
       pageLength: 10,
       processing: true,
-      dom: 'Blfrtip',      
+      dom: 'Blfrtip' 
+     
+       
   } );
   }, 1);
 }
