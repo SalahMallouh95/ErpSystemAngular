@@ -20,9 +20,10 @@ export class UpdateProfileComponent {
        async ngOnInit(){
         this.hrService.spinner.show()
 
-        let data=JSON.parse(localStorage.getItem("userInfo")+'')
-        this.user.userid= parseInt(data.userid)             
-         await this.hrService.GetEmpInfo(this.user)        
+        let data=this.auth.getdata()   
+        delete data.roleid
+        this.user=data  
+         await this.hrService.GetEmpInfo(data)        
          this.hrService.GetAllDepartment()
          this.hrService.GetAllRole()    
          this.hrService.spinner.hide()

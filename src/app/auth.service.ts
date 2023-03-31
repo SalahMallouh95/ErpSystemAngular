@@ -38,6 +38,7 @@ export class AuthService {
             localStorage.setItem('token', res)
             localStorage.setItem('userInfo', JSON.stringify(data))
             this.spinner.hide();
+            if(data.isactivated==1){
             if (data.roleid == 1) {
               this.route.navigate(["Hr/"])
             }
@@ -46,6 +47,10 @@ export class AuthService {
             }
             else {
               this.route.navigate(["Employee/"])
+            }}
+            else{
+              this.toastr.error("This account is deactivated")
+              localStorage.clear()
             }
             resolve()
           },
@@ -65,6 +70,7 @@ export class AuthService {
     userData.userid = parseInt(userData.userid)
     userData.roleid = parseInt(userData.roleid)
     delete userData.exp
+    delete userData.isactivated
     return userData
   }
 
