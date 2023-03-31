@@ -12,19 +12,7 @@ export class EmployeeService {
 
   }
   myPayout : any 
-  // leavetype1 = [
-  //   { "leavetypeid": 1, "leavetype": "ergregerg" },
-  //   { "leaveid": 2, "leavetype": "wdewdwe" },
-  //   { "leaveid": 3, "leavetype": "edfwefwef" },
-  //   { "leaveid": 3, "leavetype": "sdsad" }
-  // ];
-  // alltask = [
-  //   { "taskid": 1, "userid": 1, "managerid": 1, "uploadDate": "32432", "State": 2, "documentFileName": "ssdvc", "taskname": "dfgdgdcdstr", "taskdesc": "legfbfv" },
-  //   { "taskid": 2, "userid": 2, "managerid": 1, "uploadDate": "32432", "State": 1, "documentFileName": "ssdvc", "taskname": "dfgdgdcdstr", "taskdesc": "legfbfv" },
-  //   { "taskid": 3, "userid": 1, "managerid": 1, "uploadDate": "32432", "State": 0, "documentFileName": "ssdvc", "taskname": "dfgdgdcdstr", "taskdesc": "legfbfv" },
-  //   { "taskid": 5, "userid": 1, "managerid": 1, "uploadDate": "32432", "State": 1, "documentFileName": "ssdvc", "taskname": "dfgdgdcdstr", "taskdesc": "legfbfv" },
-
-  // ];
+  
   allleaves: any = [];
   GetAllleave(allleave: any) {
     this.spinner.show();
@@ -142,7 +130,7 @@ export class EmployeeService {
     })
 
   }
-  CreateLeave(leave: any) // 
+  async CreateLeave(leave: any) // 
   {
     return new Promise<void>((resolve, reject) => {
       this.spinner.show()
@@ -161,7 +149,7 @@ export class EmployeeService {
       )
     })
   }
-  CreateSolution(solution: any) // 
+  async CreateSolution(solution: any) // 
   {
     return new Promise<void>((resolve, reject) => {
       this.spinner.show()
@@ -180,7 +168,7 @@ export class EmployeeService {
       )
     })
   }
-  checkout(user: any) // 
+  async checkout(user: any) // 
   {
     return new Promise<void>((resolve, reject) => {
       this.spinner.show()
@@ -199,7 +187,7 @@ export class EmployeeService {
       )
     })
   }
-  Checkin(user: any) // 
+  async Checkin(user: any) // 
   {
     return new Promise<void>((resolve, reject) => {
       this.spinner.show()

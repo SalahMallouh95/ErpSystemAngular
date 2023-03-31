@@ -23,22 +23,21 @@ export class CheckinComponent {
 
   async ngOnInit() { 
     this.userdata=this.auth.getdata()
-    await this.man.GetAttendance(this.userdata)
-    
+    await this.man.GetAttendance(this.userdata)    
     this.dataSource= new MatTableDataSource(this.man.attendance);
     this.dataSource.paginator = this.paginator; 
     
   }
   async checkin(){
-    await this.employeeService.Checkin(this.auth.systemUserInfo)
-    this.man.GetManagerPrifile(this.auth.systemUserInfo)
-    this.man.GetAttendance(this.auth.systemUserInfo)
+    await this.employeeService.Checkin(this.userdata)
+    await this.man.GetManagerPrifile(this.userdata)
+    await this.man.GetAttendance(this.userdata)
     this.auth.systemUserInfo.state=1
   }
   async checkOut(){
-    await this.employeeService.checkout(this.auth.systemUserInfo)
-    this.man.GetManagerPrifile(this.auth.systemUserInfo)
-    this.man.GetAttendance(this.auth.systemUserInfo)
+    await this.employeeService.checkout(this.userdata)
+    await this.man.GetManagerPrifile(this.userdata)
+    await this.man.GetAttendance(this.userdata)
     this.auth.systemUserInfo.state=0
     
   }
