@@ -22,6 +22,7 @@ import { CreateLeaveComponent } from './create-leave/create-leave.component';
 import { TestComponent } from './test/test.component';
 import { MtreeComponent } from './mtree/mtree.component';
 import { DepDetailesComponent } from './dep-detailes/dep-detailes.component';
+import { BillingComponent } from './billing/billing.component';
 
 
 
@@ -47,7 +48,8 @@ import { DepDetailesComponent } from './dep-detailes/dep-detailes.component';
     CreateLeaveComponent,
     TestComponent,
     MtreeComponent,
-    DepDetailesComponent
+    DepDetailesComponent,
+    BillingComponent
   ],
   imports: [
     CommonModule,

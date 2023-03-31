@@ -25,10 +25,7 @@ export class MLeavesComponent {
   userData : any = {}
   async ngOnInit() {
     this.spinner.show()
-     this.userData = JSON.parse(localStorage.getItem('userInfo') + '')
-    this.userData.userid = parseInt(this.userData.userid)
-    this.userData.roleid = parseInt(this.userData.roleid)
-    delete this.userData.exp
+     this.userData = this.auth.getdata()
     await this.managerserv.GetMyLeaves(this.userData)
     this.spinner.hide()
   }

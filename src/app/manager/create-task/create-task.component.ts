@@ -18,14 +18,11 @@ export class CreateTaskComponent {
 
   }
 
-  userData:any = JSON.parse( localStorage.getItem('userInfo')+'')   
+  userData:any = this.auth.getdata()
 
   ngOnInit(){
    
     this.spinner.show()
-    this.userData.userid=parseInt (this.userData.userid)   
-    this.userData.roleid=parseInt (this.userData.roleid)        
-    delete this.userData.exp   
     this.man.GetAllEmp(this.userData)
     this.hr.documentName = {}
     this.hr.documentName.imagefilename = null

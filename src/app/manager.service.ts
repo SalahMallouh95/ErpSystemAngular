@@ -30,6 +30,7 @@ export class ManagerService {
   updateManProf: any = {}
   updatetask: any = {}
   oneDepartment: any ={}
+  myPayout : any 
 
 
   async GetAllEmp(emp: any) {

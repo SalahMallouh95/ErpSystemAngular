@@ -31,10 +31,7 @@ export class EditTaskComponent {
   ngOnInit(): void {
 
     this.spinner.show()
-    let userData:any = JSON.parse( localStorage.getItem('userInfo')+'')   
-    userData.userid=parseInt (userData.userid)   
-    userData.roleid=parseInt (userData.roleid)        
-    delete userData.exp          
+    let userData:any = this.auth.getdata()          
     this.man.GetAllEmp(userData)
     this.editTaskform.patchValue(this.man.taskinfo)
     this.hr.documentName = {}

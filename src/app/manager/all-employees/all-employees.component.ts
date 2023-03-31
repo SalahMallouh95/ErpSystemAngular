@@ -14,7 +14,7 @@ export class AllEmployeesComponent {
 
   constructor(private spinner: NgxSpinnerService,private route :Router ,public managerService : ManagerService,private auth : AuthService ){
   }
- userData:any = JSON.parse( localStorage.getItem('userInfo')+'')   
+ userData:any = this.auth.getdata()  
   async GetValues(ide:any){
     this.spinner.show()
     let att : any ={}
@@ -29,9 +29,6 @@ export class AllEmployeesComponent {
 
  async ngOnInit(){
   this.spinner.show()
-  this.userData.userid=parseInt (this.userData.userid) 
-  this.userData.roleid=parseInt (this.userData.roleid)  
-  delete this.userData.exp 
   await this.managerService.GetAllEmp(this.userData)
   this.emplist = this.managerService.AllEmp
   this.spinner.hide()

@@ -22,10 +22,7 @@ export class MLeaveDetailsComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.spinner.show()
-    
-    this.spinner.hide()
-  }
+      }
 
 
   async AcceptLeave() {

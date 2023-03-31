@@ -12,6 +12,7 @@ import { LeavedetailComponent } from './leavedetail/leavedetail.component';
 import { MainComponent } from './main/main.component';
 import { SolutindetailComponent } from './solutindetail/solutindetail.component';
 import { UpdateprofileComponent } from './updateprofile/updateprofile.component';
+import { BillingComponent } from './billing/billing.component';
 
 const routes: Routes = [
 {
@@ -50,6 +51,9 @@ const routes: Routes = [
   },{
     path:'Tree',
     component:ETreeComponent
+  },{
+    path:'Billing',
+    component:BillingComponent
   }
   
 ];
