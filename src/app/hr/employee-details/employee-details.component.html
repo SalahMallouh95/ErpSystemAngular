@@ -198,7 +198,7 @@
               </div>
             </div>
             <div class="card mt-2" [hidden]="this.hrService.empInfo.roleid==1|| this.hrService.empInfo.isactivated==0">
-              <h5 class="card-header">Delete Account</h5>
+              <h5 class="card-header">Deactiva Account</h5>
               <div class="card-body">
                 <div class="mb-3 col-12 mb-0">
                   <div class="alert alert-warning">
@@ -218,12 +218,12 @@
                 </form>
               </div>
             </div>
-            <div class="card wow fadeInUp" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+            <div class="card wow fadeInUp" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;"  [hidden]="this.hrService.empInfo.roleid==1|| this.hrService.empInfo.isactivated==1">
               <div class="row mt-2 ">
                 <div class="col-2 m-2">
                   <button type="submit" class="btn btn-primary card wow fadeInUp mb-2"
-                  style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;" >
-                  Add new Employee
+                  style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;" (click)="ChangeProfileActive(1)">
+                  Reactivate account
                 </button>
                 </div>
                 <div class="col-6">
@@ -248,7 +248,7 @@
 
   <mat-dialog-actions>
     <div class="demo-inline-spacing">
-      <button type="button" class="btn rounded-pill btn-success" (click)="DeleteEmpProfile()"
+      <button type="button" class="btn rounded-pill btn-success" (click)="ChangeProfileActive(0)"
         mat-dialog-close>Yes</button>
       <button type="button" class="btn rounded-pill btn-danger" mat-dialog-close>No</button>
 

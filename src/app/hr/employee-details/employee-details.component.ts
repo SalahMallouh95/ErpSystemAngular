@@ -137,18 +137,26 @@ export class EmployeeDetailsComponent implements OnInit {
     this.dialog.open(this.Deletedia);
   }
 
-  async DeleteEmpProfile() {
+  async ChangeProfileActive(state:number) {
+    this.hrService.spinner.show()
+
     let user:any={}
     user.userid=this.empInfoForm.value.userid
-    this.hrService.spinner.show()
-    this.empInfoForm.value.isactivated=0;
+    this.empInfoForm.value.isactivated=state;
     this.UpdateProfile()
     await this.hrService.GetEmpInfo(user)
     this.empInfoForm.patchValue(this.hrService.empInfo);
+    
+    if(state==0)
     this.tostar.success("Account deactivated successfully")
+    else
+    this.tostar.success("Account activated successfully")
+
     this.hrService.spinner.hide()
 
   }
+
+  
 
   async ChangePassword(){
     let user:any={}
