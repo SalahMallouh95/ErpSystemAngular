@@ -11,7 +11,7 @@ export class EmployeeService {
   constructor(public http: HttpClient, private spinner: NgxSpinnerService, private toaster: ToastrService) {
 
   }
-
+  myPayout : any 
   // leavetype1 = [
   //   { "leavetypeid": 1, "leavetype": "ergregerg" },
   //   { "leaveid": 2, "leavetype": "wdewdwe" },

@@ -22,10 +22,7 @@ export class TasksComponent {
 
   async ngOnInit() {
     this.spinner.show()
-    this.userData = JSON.parse(localStorage.getItem('userInfo') + '')
-    this.userData.userid = parseInt(this.userData.userid)
-    this.userData.roleid = parseInt(this.userData.roleid)
-    delete this.userData.exp
+    this.userData = this.auth.getdata()
     await this.man.GetAllTasks(this.userData)
     this.userData = this.man.AllTasks.filter((l: { userid: number; }) => l.userid == 2)
     this.spinner.hide()

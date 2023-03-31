@@ -23,6 +23,8 @@ import { MtreeComponent } from './mtree/mtree.component';
 import { TasksDetailesComponent } from './tasks-detailes/tasks-detailes.component';
 import { TasksComponent } from './tasks/tasks.component';
 import { TestComponent } from './test/test.component';
+import { BillingComponent } from './billing/billing.component';
+
 
 const routes: Routes = [
   {
@@ -100,6 +102,10 @@ const routes: Routes = [
   {
     path: 'DepartmentDetailes',
     component: DepDetailesComponent
+  },
+  {
+    path: 'Billing',
+    component: BillingComponent
   }
  ];
 

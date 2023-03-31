@@ -27,10 +27,7 @@ export class MAllEmpLeavesComponent implements OnInit {
   ngOnInit() {
 
     this.spinner.show()
-    let userData: any = JSON.parse(localStorage.getItem('userInfo') + '')
-    userData.userid = parseInt(userData.userid)
-    userData.roleid = parseInt(userData.roleid)
-    delete userData.exp
+    let userData: any =this.auth.getdata()
     this.managerService.GetAllLeaves(userData)
     this.spinner.hide()
   }

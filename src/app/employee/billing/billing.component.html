@@ -1,0 +1,59 @@
+<div class="layout-wrapper layout-content-navbar">
+    <div class="layout-container">
+
+        <app-employee-sidbar></app-employee-sidbar>
+
+
+        <div class="layout-page">
+
+            <app-dash-header>
+            </app-dash-header>
+
+            <div class="container-xxl flex-grow-1 container-p-y">
+                <div class="col-12 col-lg-12 order-2 order-md-3 order-lg-2 mb-4">
+                    <div class="card">
+                        <div class="row m-2">
+                            <div class="col">
+                                <table table id="datatableexample"
+                                    class="table table-hover table-striped table-bordered">
+                                    <thead>
+                                        <tr style="background-color: #696cff66;">
+                                            
+                                            <th>Name</th>
+                                            <th>Received date</th>
+                                            <th>Salary</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="table-border-bottom-0">
+                                        <tr *ngFor="let item of this.man.myPayout">
+                                            
+                                            <td>
+                                                {{item.fname}} {{item.lname}}
+                                            </td>
+                                            <td>
+                                                {{item.receiveddate}}
+                                            </td>
+                                            <td>
+                                                {{item.salary}}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                           
+                                            <td></td>
+
+                                            <td></td>
+                                            <td><strong>Total: </strong>{{totalSalary}}</td>
+                                           
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

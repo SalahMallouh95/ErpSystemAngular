@@ -17,6 +17,7 @@ import { MatSelectModule } from "@angular/material/select";
 import { UpdateprofileComponent } from './updateprofile/updateprofile.component';
 import { CheckinComponent } from './checkin/checkin.component';
 import { ETreeComponent } from './e-tree/e-tree.component';
+import { BillingComponent } from './billing/billing.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { ETreeComponent } from './e-tree/e-tree.component';
     UpdateprofileComponent,
     CheckinComponent,
     ETreeComponent,
+    BillingComponent,
     
   ],
   imports: [
