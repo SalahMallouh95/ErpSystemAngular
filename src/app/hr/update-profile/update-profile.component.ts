@@ -19,14 +19,13 @@ export class UpdateProfileComponent {
 
        async ngOnInit(){
         this.hrService.spinner.show()
-
         let data=this.auth.getdata()   
         delete data.roleid
         this.user=data  
-         await this.hrService.GetEmpInfo(data)        
-         this.hrService.GetAllDepartment()
-         this.hrService.GetAllRole()    
-         this.hrService.spinner.hide()
+        await this.hrService.GetEmpInfo(data)        
+        this.hrService.GetAllDepartment()
+        this.hrService.GetAllRole()    
+        this.hrService.spinner.hide()
 
        }
 }

@@ -202,7 +202,7 @@
               <div class="card-body">
                 <div class="mb-3 col-12 mb-0">
                   <div class="alert alert-warning">
-                    <h6 class="alert-heading fw-bold mb-1">Are you sure you want to delete the account?</h6>
+                    <h6 class="alert-heading fw-bold mb-1">Are you sure you want to deactivate the account?</h6>
                     <p class="mb-0">Once you delete the account, there is no going back. Please be certain.</p>
                   </div>
                 </div>
@@ -211,13 +211,29 @@
                     <input class="form-check-input" type="checkbox" name="accountActivation"
                       onchange="document.getElementById('deactivateBtn').disabled = !this.checked;"
                       id="accountActivation">
-                    <label class="form-check-label" for="accountActivation">I confirm my account deactivation</label>
+                    <label class="form-check-label" for="accountActivation">I confirm of account deactivation</label>
                   </div>
                   <button id="deactivateBtn" disabled class="btn btn-danger deactivate-account"
                     (click)="OpenDeleteDialog()">Deactivate Account</button>
                 </form>
               </div>
             </div>
+            <div class="card wow fadeInUp" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+              <div class="row mt-2 ">
+                <div class="col-2 m-2">
+                  <button type="submit" class="btn btn-primary card wow fadeInUp mb-2"
+                  style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;" >
+                  Add new Employee
+                </button>
+                </div>
+                <div class="col-6">
+                </div>
+                <div class="col-2 m-2">                 
+                </div>
+                <div class="col-1 d-flex m-2">
+                  
+                </div>
+              </div>
           </div>
         </div>
       </div>
@@ -227,7 +243,7 @@
 <ng-template #DeleteDio>
   <mat-dialog-content>
 
-    <p>Are You Sure to Delete this item</p>
+    <p>Are You Sure to deactivate this account</p>
   </mat-dialog-content>
 
   <mat-dialog-actions>
