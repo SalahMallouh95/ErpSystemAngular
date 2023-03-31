@@ -24,10 +24,7 @@ export class HrMyAttendanceComponent {
   async ngOnInit(){
     this.hrService.spinner.show()
 
-    let userData:any = JSON.parse( localStorage.getItem('userInfo')+'')   
-    userData.userid=parseInt (userData.userid)   
-    userData.roleid=parseInt (userData.roleid)       
-    delete userData.exp       
+    let userData = this.auth.getdata()
     await this.man.GetAttendance(userData) 
 
     this.dataSource= new MatTableDataSource(this.man.attendance);

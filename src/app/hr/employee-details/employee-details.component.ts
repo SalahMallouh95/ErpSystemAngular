@@ -40,7 +40,7 @@ export class EmployeeDetailsComponent implements OnInit {
     departmentid: new FormControl('', Validators.required),
     bankinfoid: new FormControl('', Validators.required),
     imagefilename: new FormControl(),
-
+    isactivated:new FormControl()
   })
   async ngOnInit() {
 
@@ -138,13 +138,15 @@ export class EmployeeDetailsComponent implements OnInit {
   }
 
   async DeleteEmpProfile() {
+    let user:any={}
+    user.userid=this.empInfoForm.value.userid
     this.hrService.spinner.show()
-
-    await this.hrService.DeleteEmpProfile(this.empInfoForm.value.userid)
-
+    this.empInfoForm.value.isactivated=0;
+    this.UpdateProfile()
+    await this.hrService.GetEmpInfo(user)
+    this.empInfoForm.patchValue(this.hrService.empInfo);
+    this.tostar.success("Account deactivated successfully")
     this.hrService.spinner.hide()
-
-    history.back()
 
   }
 

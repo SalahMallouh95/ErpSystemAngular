@@ -197,7 +197,7 @@
                 </mat-paginator>
               </div>
             </div>
-            <div class="card mt-2" [hidden]="this.hrService.empInfo.roleid==1">
+            <div class="card mt-2" [hidden]="this.hrService.empInfo.roleid==1|| this.hrService.empInfo.isactivated==0">
               <h5 class="card-header">Delete Account</h5>
               <div class="card-body">
                 <div class="mb-3 col-12 mb-0">

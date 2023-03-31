@@ -14,10 +14,7 @@ export class DashHeaderComponent {
   user:any
 
   async ngOnInit(){
-    this.user=JSON.parse(localStorage.getItem('userInfo')+'') 
-    this.user.roleid=parseInt(this.user.roleid)
-    this.user.userid=parseInt(this.user.userid)
-    delete this.user.exp
+    this.user=this.auth.getdata()
     await this.hrService.GetAllEmployee()
     await this.hrService.GetAllNews()
     this.hrService.OneNews = await this.hrService.AllNews[0]
