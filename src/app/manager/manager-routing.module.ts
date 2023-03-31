@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { AllEmpLeavesComponent } from '../hr/all-emp-leaves/all-emp-leaves.component';
 import { PayoutComponent } from '../hr/payout/payout.component';
 import { ManagerSideBarComponent } from '../shared/manager-side-bar/manager-side-bar.component';
-import { AllEmployeesComponent } from './all-employees/all-employees.component';
 import { CheckinCheckoutComponent } from './checkin-checkout/checkin-checkout.component';
 import { CreateLeaveComponent } from './create-leave/create-leave.component';
 import { CreateTaskComponent } from './create-task/create-task.component';
@@ -30,10 +29,6 @@ const routes: Routes = [
   {
     path: '',
     component: MainComponent
-  },
-  {
-    path: 'AllEmp',
-    component: AllEmployeesComponent
   },
   {
     path: 'mAllEmpLeaves',
