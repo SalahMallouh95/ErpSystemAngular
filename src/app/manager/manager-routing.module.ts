@@ -8,6 +8,7 @@ import { CheckinCheckoutComponent } from './checkin-checkout/checkin-checkout.co
 import { CreateLeaveComponent } from './create-leave/create-leave.component';
 import { CreateTaskComponent } from './create-task/create-task.component';
 import { DepDetailesComponent } from './dep-detailes/dep-detailes.component';
+
 import { EditTaskComponent } from './edit-task/edit-task.component';
 import { MAllEmpLeavesComponent } from './m-all-emp-leaves/m-all-emp-leaves.component';
 import { MEmpInfoComponent } from './m-emp-info/m-emp-info.component';
