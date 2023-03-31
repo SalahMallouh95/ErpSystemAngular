@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth.service';
 import { HrService } from 'src/app/hr.service';
 import { ManagerService } from 'src/app/manager.service';
@@ -17,12 +18,12 @@ export class MainComponent {
   leaves: any
   penleaves: any
   taskWorkingon: any
+  emplist:any
+  ssn:number|undefined
 
 
 
-
-
-  constructor(public hrService: HrService, private auth: AuthService, public man: ManagerService) { }
+  constructor(public hrService: HrService, private auth: AuthService, public man: ManagerService,private route :Router) { }
 
   async ngOnInit() {
 
@@ -34,6 +35,8 @@ export class MainComponent {
     await this.man.GetAllEmp(userData)
     await this.man.GetAllLeaves(userData)
     await this.man.GetAllTasks(userData)
+
+    this.emplist = this.man.AllEmp
 
     this.empCount = this.man.AllEmp.length
     this.empOnCount = this.man.AllEmp.filter((e: any) => e.state == 1).length
@@ -47,7 +50,27 @@ export class MainComponent {
     this.man.spinner.hide()
   }
 
+  async GetValues(ide:any){
+    this.man.spinner.show()
+    let att : any ={}
+    att.userid = ide
+    await this.man.GetEmpInfo(ide)
+    await this.man.GetAttendance(att)
+    this.route.navigate(['Manager/EmpInfo']);
+    this.man.spinner.hide()
+  }
 
-
+  FiliterByssn(){
+    this.man.spinner.show()
+    if(this.ssn==null)
+    {
+      this.emplist = this.man.AllEmp.filter((e: any) => e.userid != this.auth.systemUserInfo.userid && e.roleid==3) 
+    }
+    else
+    {
+      this.emplist = this.man.AllEmp.filter((e: any) => e.ssn == this.ssn && e.roleid==3) 
+    }
+    this.man.spinner.hide()
+  }
 
 }

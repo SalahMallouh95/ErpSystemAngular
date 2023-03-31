@@ -77,27 +77,22 @@
           </a>
         </li>
 
-        <li class="menu-item" routerLinkActive="active">
-          <a [routerLink]="['/Manager/AllEmp']" routerLinkActive="active" class="menu-link">
-            <i class="menu-icon tf-icons bx bx-layout bx-tada-hover" routerLinkActive="bx-tada"></i>
-            <div data-i18n="Analytics">Employees</div>
-          </a>
-        </li>
-
         <li class="menu-header small text-uppercase">
           <span class="menu-header-text">Leaves</span>
         </li>
 
         <li class="menu-item" routerLinkActive="active">
           <a [routerLink]="['/Manager/mAllEmpLeaves']" routerLinkActive="active" class="menu-link">
-            <i class="menu-icon tf-icons bx bx-layout bx-tada-hover" routerLinkActive="bx-tada"></i>
+            <i class="menu-icon tf-icons bx bxs-left-top-arrow-circle" routerLinkActive="bx-tada"></i>
             <div data-i18n="Analytics">Employees Leaves</div>
+            <span *ngIf="leaveCount==0" class="badge badge-center rounded-pill bg-label-secondary ms-2">{{leaveCount}}</span>
+                <span *ngIf="leaveCount!=0" class="badge badge-center rounded-pill bg-label-danger ms-2">{{leaveCount}}</span>
           </a>
         </li>
 
         <li class="menu-item" routerLinkActive="active">
           <a [routerLink]="['/Manager/MyLeaves']" routerLinkActive="active" class="menu-link">
-            <i class="menu-icon tf-icons bx bx-layout bx bxs-left-top-arrow-circle" routerLinkActive="bx-tada"></i>
+            <i class="menu-icon tf-icons bx bxs-left-top-arrow-circle" routerLinkActive="bx-tada"></i>
             <div data-i18n="Analytics">My Leaves</div>
           </a>
         </li>
@@ -113,6 +108,8 @@
           <a [routerLink]="['/Manager/AllTasks']" routerLinkActive="active" class="menu-link">
             <i class="menu-icon tf-icons bx bx-layout bx bx-task" routerLinkActive="bx-tada"></i>
             <div data-i18n="Analytics">Tasks</div>
+            <span *ngIf="submitedTasks==0" class="badge badge-center rounded-pill bg-label-secondary ms-2">{{submitedTasks}}</span>
+            <span *ngIf="submitedTasks!=0" class="badge badge-center rounded-pill bg-label-danger ms-2">{{submitedTasks}}</span>
           </a>
         </li>
       
@@ -123,7 +120,7 @@
 
         <li class="menu-item" routerLinkActive="active">
           <a [routerLink]="['/Manager/UpdateProfile']" routerLinkActive="active" class="menu-link">
-            <i class="menu-icon tf-icons bx bx-layout bx-tada-hover" routerLinkActive="bx-tada" ></i>
+            <i class="menu-icon tf-icons bx bx-user" routerLinkActive="bx-tada" ></i>
             <div data-i18n="Analytics">Update Profile</div>
           </a>
         </li>
@@ -137,7 +134,7 @@
 
         <li class="menu-item" routerLinkActive="active">
           <a [routerLink]="['/Manager/Billing']" routerLinkActive="active" class="menu-link">
-            <i class="menu-icon tf-icons bx bx-layout bxs-left-top-arrow-circle" routerLinkActive="bx-tada"></i>
+            <i class="menu-icon tf-icons bx bx-chevron-left " routerLinkActive="bx-tada"></i>
             <div data-i18n="Analytics">Billing</div>
           </a>
         </li>

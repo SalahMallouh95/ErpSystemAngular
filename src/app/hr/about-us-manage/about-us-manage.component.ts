@@ -30,8 +30,7 @@ export class AboutUsManageComponent {
 
   async UpdateAbout(){
     this.hrService.spinner.show()
-
-    this.hrService.UpdateAbout(this.aboutForm.value)
+    await this.hrService.UpdateAbout(this.aboutForm.value)
     await this.hrService.GetAbout()
     this.hrService.spinner.hide()
 
