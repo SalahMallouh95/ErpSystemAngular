@@ -15,30 +15,49 @@ export class CheckinComponent {
   displayedColumns: string[] = ['Checkin', 'Checkout', 'Workinghour'];
   dataSource :any
 
-  constructor(public man : ManagerService, public hr : HrService,public employeeService:EmployeeService,private auth:AuthService){
+  constructor(public man : ManagerService, public hrService : HrService,public employeeService:EmployeeService,private auth:AuthService){
 
 
   }
   userdata:any
 
   async ngOnInit() { 
+    this.hrService.spinner.show()
+
     this.userdata=this.auth.getdata()
     await this.man.GetAttendance(this.userdata)    
     this.dataSource= new MatTableDataSource(this.man.attendance);
     this.dataSource.paginator = this.paginator; 
+    this.hrService.spinner.hide()
+
     
   }
   async checkin(){
+    this.hrService.spinner.show()
+
     await this.employeeService.Checkin(this.userdata)
     await this.man.GetManagerPrifile(this.userdata)
     await this.man.GetAttendance(this.userdata)
+    this.dataSource= new MatTableDataSource(this.man.attendance);
+    this.dataSource.paginator = this.paginator; 
+    
     this.auth.systemUserInfo.state=1
+    this.hrService.spinner.hide()
+
+
   }
   async checkOut(){
+    this.hrService.spinner.show()
+
     await this.employeeService.checkout(this.userdata)
     await this.man.GetManagerPrifile(this.userdata)
     await this.man.GetAttendance(this.userdata)
+    this.dataSource= new MatTableDataSource(this.man.attendance);
+    this.dataSource.paginator = this.paginator; 
+    
     this.auth.systemUserInfo.state=0
+    this.hrService.spinner.hide()
+
     
   }
 }

@@ -21,7 +21,7 @@ export class ETreeComponent {
     this.spinner.show()
     this.userdata=await this.auth.getdata()
     await this.hrService.GetAllEmployee()
-    this.emplist = this.hrService.allEmp.filter((l: { departmentid: any; roleid: number; })=>l.departmentid==this.auth.systemUserInfo.departmentid&&l.roleid==3)
+    this.emplist = this.hrService.allEmp.filter((l: any)=>l.departmentid==this.auth.systemUserInfo.departmentid&&l.roleid==3&& l.isactivated==1)
     this.mans = this.hrService.allEmp.find((l: { departmentid: any; roleid: number; })=>l.departmentid==this.auth.systemUserInfo.departmentid&&l.roleid==2)
     this.spinner.hide()
   }

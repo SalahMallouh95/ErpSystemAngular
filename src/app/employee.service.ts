@@ -86,7 +86,6 @@ export class EmployeeService {
           next: (res) => {
             this.task = res
             this.spinner.hide()
-            this.toaster.success("Success")
              resolve()
           },
 
@@ -112,7 +111,6 @@ export class EmployeeService {
           next: (res) => {
             this.allleaves = res
             resolve();
-            this.toaster.success('successfully!');
             console.log(this.allleaves)
           }
           ,
@@ -176,7 +174,7 @@ export class EmployeeService {
         {
           next: () => {
             this.spinner.hide()
-            this.toaster.success("Added Successfully")
+            this.toaster.success("Checkedout Successfully")
             resolve();
           },
           error: () => {
@@ -195,7 +193,7 @@ export class EmployeeService {
         {
           next: () => {
             this.spinner.hide()
-            this.toaster.success("Added Successfully")
+            this.toaster.success("Checkedin Successfully")
             resolve();
           },
           error: () => {

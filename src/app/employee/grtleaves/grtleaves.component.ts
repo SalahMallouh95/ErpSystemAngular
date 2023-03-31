@@ -27,6 +27,7 @@ export class GrtleavesComponent implements OnInit {
    displayedColumns: string[] = ['leavetype', 'startdate', 'enddate','state','Action'];
    dataSource :any 
   async ngOnInit() {
+    this.hrService.spinner.show()
     this.userdata=this.auth.getdata()
     this.leaves.userid = this.userdata.userid;
     await this.employeeService.GetAllleave(this.leaves);
@@ -35,6 +36,7 @@ export class GrtleavesComponent implements OnInit {
     this.hrService.documentName.imagefilename = null
     this.dataSource= new MatTableDataSource(this.employeeService.allleaves);
     this.dataSource.paginator = this.paginator
+    this.hrService.spinner.hide()
   }
   leaves: any = {}
   async GetValue(id: any) {
