@@ -118,7 +118,7 @@
               <form [formGroup]="SolutionForm" class="example-form">
                 <div>
                   <label for="html5-datetime-local-input" class="col-md-0 col-form-label">Document</label>
-                  <input #file class="form-control" type="file" id="formFile" (change)="UploadDoc(file) " />
+                  <input  accept=".pdf, .doc" #file class="form-control" type="file" id="formFile" (change)="UploadDoc(file) " />
                   <mat-error *ngIf="SolutionForm.controls['documentfilename'].hasError('required')">
                     Document is <strong>required</strong>
                   </mat-error>
@@ -165,7 +165,7 @@
               <form [formGroup]="SolutionForm" class="example-form">
                 <div>
                   <label for="html5-datetime-local-input" class="col-md-0 col-form-label">Document</label>
-                  <input #file class="form-control" type="file" id="formFile" (change)="UploadDoc(file) " />
+                  <input #file  accept=".pdf, .doc" class="form-control" type="file" id="formFile" (change)="UploadDoc(file) " />
                   <mat-error *ngIf="SolutionForm.controls['documentfilename'].hasError('required')">
                     Document is <strong>required</strong>
                   </mat-error>

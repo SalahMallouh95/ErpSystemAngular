@@ -19,7 +19,7 @@ export class GrtleavesComponent implements OnInit {
   @ViewChild('CreateForm') Create: any
   @ViewChild('UpdateForm') Update: any
   @ViewChild('DeleteForm') Delete: any
-  constructor(public employeeService: EmployeeService, private router: Router, public dialog: MatDialog, public hrService: HrService, private auth: AuthService) {
+  constructor(public employeeService: EmployeeService, public dialog: MatDialog, public hrService: HrService, private auth: AuthService) {
 
   }
    userdata:any
@@ -30,12 +30,14 @@ export class GrtleavesComponent implements OnInit {
     this.hrService.spinner.show()
     this.userdata=this.auth.getdata()
     this.leaves.userid = this.userdata.userid;
-    await this.employeeService.GetAllleave(this.leaves);
+    await this.employeeService.GetAllleave(this.userdata);
     await this.hrService.GetAllLeaveTypes();
     this.hrService.documentName = {}
     this.hrService.documentName.imagefilename = null
     this.dataSource= new MatTableDataSource(this.employeeService.allleaves);
     this.dataSource.paginator = this.paginator
+    console.log(this.employeeService.allleaves);
+    
     this.hrService.spinner.hide()
   }
   leaves: any = {}

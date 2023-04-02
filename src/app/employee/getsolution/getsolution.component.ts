@@ -36,9 +36,10 @@ export class GetsolutionComponent {
       documentfilename: new FormControl()
     })
     async CreateSolution() {
-      console.log(this.SolutionForm.value)
+      
       this.SolutionForm.value.documentfilename=this.hrService.documentName.imagefilename
       this.SolutionForm.value.taskid = this.employeeService.task.taskid
+      console.log(this.SolutionForm.value)
       if(this.SolutionForm.value.documentfilename!=null)
       await this.employeeService.CreateSolution(this.SolutionForm.value)
       else

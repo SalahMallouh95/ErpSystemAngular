@@ -14,15 +14,21 @@ export class EmployeeService {
   myPayout : any 
   
   allleaves: any = [];
-  GetAllleave(allleave: any) {
-    this.spinner.show();
+  async GetAllleave(allleave: any) {
+    return new Promise<void>((resolve, reject) => {
     this.http.post("https://localhost:44388/api/Employee/GetAllLeaves", allleave).subscribe(
       {
-        next: (res) => { this.allleaves = res },
-        error: (ee) => { console.log(ee) }
+        next: (res) => { this.allleaves = res
+          resolve()
+         }
+        
+        ,
+        error: (ee) => { console.log(ee)
+        reject()
+       }
       }
-    )
-    this.spinner.hide();
+          )
+        })
 
   }
   alltask1: any = [];
