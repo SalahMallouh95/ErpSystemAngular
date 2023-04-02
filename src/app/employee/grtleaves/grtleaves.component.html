@@ -246,7 +246,7 @@
                                 </div> 
                           <div>
                         <!-- <input type="file" #file (change)="UploadImage(file)"> -->
-                      <input type="button" class="btn btn-primary" [disabled]="CreateLeaveForm.invalid" mat-button value="Create" (click)="CreateLeave()">
+                      <input type="button" class="btn btn-primary" [disabled]="CreateLeaveForm.invalid" mat-button mat-dialog-close value="Create" (click)="CreateLeave()">
                       </div>
                       </form>
                        </div>
