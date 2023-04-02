@@ -78,6 +78,8 @@
       <a routerLink="/Employee/gettask" class="menu-link">
         <i class="menu-icon tf-icons bx bx-task"></i>
         <div data-i18n="Analytics">My Task</div>
+        <span *ngIf="taskCount==0" class="badge badge-center rounded-pill bg-label-secondary ms-2">{{taskCount}}</span>
+        <span *ngIf="taskCount!=0" class="badge badge-center rounded-pill bg-label-danger ms-2">{{taskCount}}</span>
       </a>
     </li>
     <li class="menu-header small text-uppercase">
