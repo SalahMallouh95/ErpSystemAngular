@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ManagerService } from 'src/app/manager.service';
@@ -11,8 +13,10 @@ import { ManagerService } from 'src/app/manager.service';
 })
 export class MEmpInfoComponent implements OnInit {
 
-    constructor(private spinner: NgxSpinnerService,private route: ActivatedRoute ,public man: ManagerService){
-
+    constructor(private spinner: NgxSpinnerService,private route: ActivatedRoute ,public man: ManagerService)
+    {
+ this.dataSource = new MatTableDataSource(this.man.attendance);
+    this.dataSource.paginator = this.paginator;
     }
 
     id : number| undefined
@@ -20,14 +24,17 @@ export class MEmpInfoComponent implements OnInit {
 
     idatt: number | undefined
     att : any = {}
+    @ViewChild(MatPaginator) paginator: MatPaginator | any;
+    displayedColumns: string[] = ['Checkin', 'Checkout', 'Workinghour'];
+    dataSource: any
 
-
-  ngOnInit(): void {
+  async ngOnInit() {
    this.spinner.show()
     this.id = this.route.snapshot.params['id'];
     this.emp = this.man.empInfo.filter(  (ex) => ex.userid == this.id )
     this.info.patchValue(this.man.empInformation)    
     this.spinner.hide()
+   
   }
 
   info = new FormGroup({
