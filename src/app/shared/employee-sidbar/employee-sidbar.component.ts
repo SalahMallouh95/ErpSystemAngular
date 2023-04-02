@@ -13,7 +13,7 @@ export class EmployeeSidbarComponent {
   constructor(public employeeService: EmployeeService,private auth:AuthService){
 
     this.employeeService.GetAlltask(this.auth.getdata());
-    this.taskCount=this.employeeService.alltask1.length
+    this.taskCount=this.employeeService.alltask1.filter((t:any)=>t.state==1).length
 
   }
 
