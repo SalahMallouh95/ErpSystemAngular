@@ -15,8 +15,7 @@ export class MEmpInfoComponent implements OnInit {
 
     constructor(private spinner: NgxSpinnerService,private route: ActivatedRoute ,public man: ManagerService)
     {
- this.dataSource = new MatTableDataSource(this.man.attendance);
-    this.dataSource.paginator = this.paginator;
+    
     }
 
     id : number| undefined
@@ -26,13 +25,17 @@ export class MEmpInfoComponent implements OnInit {
     att : any = {}
     @ViewChild(MatPaginator) paginator: MatPaginator | any;
     displayedColumns: string[] = ['Checkin', 'Checkout', 'Workinghour'];
-    dataSource: any
+    dataSource: any=null
 
   async ngOnInit() {
-   this.spinner.show()
+    this.spinner.show()
     this.id = this.route.snapshot.params['id'];
     this.emp = this.man.empInfo.filter(  (ex) => ex.userid == this.id )
     this.info.patchValue(this.man.empInformation)    
+    this.dataSource = new MatTableDataSource(this.man.attendance);
+    this.dataSource.paginator = this.paginator;
+    
+    
     this.spinner.hide()
    
   }
