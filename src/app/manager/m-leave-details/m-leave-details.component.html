@@ -9,7 +9,7 @@
         <b>Leave Type</b> {{this.managerService.leaveInfo.leavetype.leavetype}}<br>
         <b>Message:</b> {{this.managerService.leaveInfo.message}} <br>
         <b>Document:</b> 
-        <a *ngIf="this.managerService.leaveInfo.documentfilename!=='null'" class="card-link" target="_blank"  [href]="'../../../assets/Documents/'+this.managerService.leaveInfo.documentfilename">{{this.managerService.leaveInfo.documentfilename}}</a> <br>
+        <a *ngIf="this.managerService.leaveInfo.documentfilename!==null" class="card-link" target="_blank"  [href]="'../../../assets/Documents/'+this.managerService.leaveInfo.documentfilename">{{this.managerService.leaveInfo.documentfilename}}</a> <br>
       </p>
       <b>States: </b>
       <div [ngSwitch]="this.managerService.leaveInfo.state" style="display: inline;">
