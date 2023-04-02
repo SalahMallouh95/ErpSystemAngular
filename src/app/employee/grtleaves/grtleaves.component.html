@@ -88,9 +88,12 @@
                       <th style="background-color:#c3c4ff;" mat-header-cell *matHeaderCellDef> </th>
                       <td mat-cell *matCellDef="let element">
                         <div *ngIf="element.state==2">
-                          <a (click)="GetValues(element.leaveid)" class="btn btn-outline-info">More Info</a>
-                          <a (click)="OpenUpdateDialog(element.leaveid)" class="btn btn-outline-info">Edit Leave</a>
-                          <a (click)="OpenDeleteDialog(element.leaveid)" class="btn btn-outline-info">Delete</a>
+                          <div class="demo-inline-spacing">
+
+                            <a (click)="GetValues(element.leaveid)" class="btn btn-outline-info">More Info</a>
+                            <a (click)="OpenUpdateDialog(element.leaveid)" class="btn btn-outline-info">Edit Leave</a>
+                            <a (click)="OpenDeleteDialog(element.leaveid)" class="btn btn-outline-info">Delete</a>
+                          </div>
                         </div>
                         <div *ngIf="element.state!=2">
                           <a (click)="GetValues(element.leaveid)" class="btn btn-outline-info">More Info</a>
@@ -188,7 +191,8 @@
                       <!-- <input type="file" #file (change)="UploadImage(file)"> -->
                       <input type="button" class="btn btn-primary" [disabled]="CreateLeaveForm.invalid" mat-button
                         mat-dialog-close value="Create" (click)="CreateLeave()">
-                        <button style="position: absolute; top: 0px; right:0px;" mat-button mat-dialog-close   type="button" class="">X</button>
+                      <button style="position: absolute; top: 0px; right:0px;" mat-button mat-dialog-close type="button"
+                        class="">X</button>
                     </div>
                   </form>
                 </div>
@@ -235,7 +239,8 @@
                           <form [formGroup]="CreateLeaveForm">
                             <div class="mb-3 col-md-3">
                               <label for="language" class="form-label">Leave Type</label>
-                              <select *ngIf="CreateLeaveForm.value.leavetypeid!=null" id="language" class="select2 form-select" formControlName="leavetypeid">
+                              <select *ngIf="CreateLeaveForm.value.leavetypeid!=null" id="language"
+                                class="select2 form-select" formControlName="leavetypeid">
                                 <option *ngFor="let it of this.hrService.allLeaveTypes" [ngValue]="it.leavetypeid">
                                   {{it.leavetype}}</option>
                               </select>
@@ -268,8 +273,9 @@
                             </div>
                             <button type="submit" class="btn btn-primary" [disabled]="CreateLeaveForm.invalid"
                               mat-dialog-close (click)="UpdateLeave()">Send</button>
-                              <button style="position: absolute; top: 0px; right:0px;" mat-button mat-dialog-close   type="button" class="">X</button>   
-                            </form>
+                            <button style="position: absolute; top: 0px; right:0px;" mat-button mat-dialog-close
+                              type="button" class="">X</button>
+                          </form>
                         </div>
                       </div>
                     </div>
