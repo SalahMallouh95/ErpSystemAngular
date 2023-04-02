@@ -66,17 +66,27 @@
 <ng-template #UpdateNews>
     <mat-dialog-content>
 
-
+ <div class="row">
+            <div class="col">
+                <form [formGroup]="NewsForm">
+                    <textarea class="form-control" formControlName="msg" placeholder="msg"></textarea>
+                </form>
+            </div>
+        </div>
     </mat-dialog-content>
 
     <mat-dialog-actions>
-        <form [formGroup]="NewsForm">
-            <textarea formControlName="msg" placeholder="msg"></textarea>
-        </form>
-        <div class="demo-inline-spacing">
-            <button type="button" (click)="Updaten()" class="btn rounded-pill btn-success" mat-dialog-close>Yes</button>
-            <button type="button" class="btn rounded-pill btn-danger" mat-dialog-close>No</button>
+       
+        <div class="row">
+            <div class="col">
+                <div class="demo-inline-spacing">
+                    <button type="button" (click)="Updaten()" class="btn rounded-pill btn-success" mat-dialog-close>Update </button>
+                    <button type="button" class="btn rounded-pill btn-danger" mat-dialog-close>Cancel</button>
+                </div>
+            </div>
         </div>
+       
+        
     </mat-dialog-actions>
 </ng-template>
 
@@ -105,13 +115,13 @@
     <mat-dialog-actions>
         <div>
             <form [formGroup]="NewsForm">
-                <textarea formControlName="msg" placeholder="msg"></textarea>
+                <textarea class="form-control" formControlName="msg" placeholder="msg"></textarea>
             </form>
 
             <div class="demo-inline-spacing">
                 <button type="button" (click)="CreateN()" class="btn rounded-pill btn-success"
-                    mat-dialog-close>Yes</button>
-                <button type="button" class="btn rounded-pill btn-danger" mat-dialog-close>No</button>
+                    mat-dialog-close>Add</button>
+                <button type="button" class="btn rounded-pill btn-danger" mat-dialog-close>Cancel</button>
             </div>
         </div>
     </mat-dialog-actions>

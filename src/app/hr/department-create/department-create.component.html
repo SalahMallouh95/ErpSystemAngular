@@ -42,7 +42,7 @@
 
           <div class="mb-3">
             <label for="exampleFormControlSelect1" class="form-label">Description</label><br>
-            <textarea type="text" matInput formControlName="descrip" placeholder="Enter Description"></textarea>
+            <textarea class="form-control" type="text" matInput formControlName="descrip" placeholder="Enter Description"></textarea>
           </div>
           <button type="submit" class="btn btn-primary" [disabled]="departmentFormGroup.invalid" mat-dialog-close
             (click)="CreateDep()">Add</button>
