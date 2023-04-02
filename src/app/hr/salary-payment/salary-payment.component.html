@@ -25,7 +25,7 @@
                                     </tr>
                                 </thead>
                                 <tbody class="table-border-bottom-0">
-                                    <tr *ngFor="let item of this.hrService.allEmp">
+                                    <tr *ngFor="let item of empList">
                                         <td>
                                             {{item.ssn}}
                                         </td>
@@ -47,7 +47,7 @@
 
                                         </td>
                                         <td>
-                                            <strong> {{hrService.allEmp.length}} </strong>
+                                            <strong> {{empList.length}} </strong>
 
                                         </td>
                                         <td>

@@ -14,11 +14,15 @@ export class SalaryPaymentComponent {
 
   }
   totalSalary:number=0
+  empList:any
 
   async ngOnInit(){
     this.hrService.spinner.show()
 
     await this.hrService.GetAllEmployee()
+    this.empList=this.hrService.allEmp.filter((e:any)=>e.isactivated==1)
+    console.log(this.empList);
+    
     this.totalSalary=this.GetTotalSalary()
     this.hrService.spinner.hide()
 
@@ -26,7 +30,7 @@ export class SalaryPaymentComponent {
 
   GetTotalSalary(){
     let total=0;
-    this.hrService.allEmp.forEach((element: { salary: number; }) => {
+    this.empList.forEach((element: { salary: number; }) => {
       total=total+element.salary      
     });
     return total;
@@ -60,7 +64,7 @@ export class SalaryPaymentComponent {
 
   SendEmail(){
     let mail:any={}
-    this.hrService.allEmp.forEach((element:any) => {
+    this.empList.forEach((element:any) => {
       mail.to=element.email;
       mail.subject="Salary delivered"
       mail.message="Dear Mr/Mis "

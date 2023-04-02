@@ -25,19 +25,17 @@ export class EmployeeListComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
   displayedColumns: string[] = ['name', 'ssn', 'email','department', 'role', 'state','action'];
   dataSource: any
+  hideShow=1
+  data:any
 
   async ngOnInit() {
     this.hrService.spinner.show()
-
-    let data = JSON.parse(localStorage.getItem("userInfo") + '')
-    data.userid = parseInt(data.userid)
+    this.data = this.auth.getdata()    
     await this.hrService.GetAllEmployee();
-    this.emplist = this.hrService.allEmp.filter((e: any) => e.userid != data.userid)
+    this.emplist = this.hrService.allEmp.filter((e: any) => e.userid != this.data.userid && e.isactivated==1)
     this.hrService.spinner.hide()
     this.dataSource = new MatTableDataSource(this.emplist);
     this.dataSource.paginator = this.paginator;
-
-
   }
 
   FiliterByssn() {
@@ -78,6 +76,23 @@ export class EmployeeListComponent implements OnInit {
     }
     else {
       this.viewOption = 0
+    }
+    this.dataSource = new MatTableDataSource(this.emplist);
+    this.dataSource.paginator = this.paginator;
+  }
+
+  ShowHideActiveAccount(){
+
+    if(this.hideShow==1){
+      this.hideShow=0
+      this.emplist = this.hrService.allEmp.filter((e: any) => e.userid != this.data.userid && e.isactivated==0)
+      
+    }
+    else
+    {
+      this.hideShow=1
+      this.emplist = this.hrService.allEmp.filter((e: any) => e.userid != this.data.userid && e.isactivated==1)
+
     }
     this.dataSource = new MatTableDataSource(this.emplist);
     this.dataSource.paginator = this.paginator;
