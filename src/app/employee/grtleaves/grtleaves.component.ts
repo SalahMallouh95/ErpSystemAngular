@@ -82,7 +82,9 @@ export class GrtleavesComponent implements OnInit {
   async CreateLeave() {
     
     this.CreateLeaveForm.value.userid = this.userdata.userid
-    console.log(this.CreateLeaveForm.value)
+    if (this.hrService.documentName.imagefilename != null )
+    this.CreateLeaveForm.value.documentfilename = this.hrService.documentName.imagefilename
+
     await this.employeeService.CreateLeave(this.CreateLeaveForm.value)
     await this.employeeService.GetAllleave(this.leaves)
     this.hrService.documentName.imagefilename=null
@@ -112,8 +114,9 @@ export class GrtleavesComponent implements OnInit {
 
   async UpdateLeave() {
     this.CreateLeaveForm.value.userid = this.userdata.userid
-    if (this.hrService.documentName.imagefilename != null && this.hrService.documentName.imagefilename != undefined && this.hrService.documentName.imagefilename != '')
+    if (this.hrService.documentName.imagefilename != null )
     this.CreateLeaveForm.value.documentfilename = this.hrService.documentName.imagefilename
+    
     await this.employeeService.UpdateLeave(this.CreateLeaveForm.value)
     await this.employeeService.GetAllleave(this.leaves)
     this.hrService.documentName.imagefilename=null
