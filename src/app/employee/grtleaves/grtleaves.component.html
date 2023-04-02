@@ -188,6 +188,7 @@
                       <!-- <input type="file" #file (change)="UploadImage(file)"> -->
                       <input type="button" class="btn btn-primary" [disabled]="CreateLeaveForm.invalid" mat-button
                         mat-dialog-close value="Create" (click)="CreateLeave()">
+                        <button style="position: absolute; top: 0px; right:0px;" mat-button mat-dialog-close   type="button" class="">X</button>
                     </div>
                   </form>
                 </div>
@@ -267,8 +268,8 @@
                             </div>
                             <button type="submit" class="btn btn-primary" [disabled]="CreateLeaveForm.invalid"
                               mat-dialog-close (click)="UpdateLeave()">Send</button>
-                            <!-- <button type="submit" class="btn btn-primary" onclick="history.back(-1)">Back</button> -->
-                          </form>
+                              <button style="position: absolute; top: 0px; right:0px;" mat-button mat-dialog-close   type="button" class="">X</button>   
+                            </form>
                         </div>
                       </div>
                     </div>
