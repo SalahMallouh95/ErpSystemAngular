@@ -163,7 +163,7 @@ export class EmployeeDetailsComponent implements OnInit {
     user.useridnumber=this.empInfoForm.value.userid
     await this.auth.CreatePassString(user)
     await this.SendEmail()
-    this.auth.toastr.success("Email for reset your password was sent yo your email")
+    this.auth.toastr.success("Email for reset your password was sent to your email")
 
   }
 
