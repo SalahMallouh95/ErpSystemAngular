@@ -88,9 +88,12 @@
                       <th style="background-color:#c3c4ff;" mat-header-cell *matHeaderCellDef> </th>
                       <td mat-cell *matCellDef="let element">
                         <div *ngIf="element.state==2">
-                          <a (click)="GetValues(element.leaveid)" class="btn btn-outline-info">More Info</a>
-                          <a (click)="OpenUpdateDialog(element.leaveid)" class="btn btn-outline-info">Edit Leave</a>
-                          <a (click)="OpenDeleteDialog(element.leaveid)" class="btn btn-outline-info">Delete</a>
+                          <div class="demo-inline-spacing">
+
+                            <a (click)="GetValues(element.leaveid)" class="btn btn-outline-info">More Info</a>
+                            <a (click)="OpenUpdateDialog(element.leaveid)" class="btn btn-outline-info">Edit Leave</a>
+                            <a (click)="OpenDeleteDialog(element.leaveid)" class="btn btn-outline-info">Delete</a>
+                          </div>
                         </div>
                         <div *ngIf="element.state!=2">
                           <a (click)="GetValues(element.leaveid)" class="btn btn-outline-info">More Info</a>
