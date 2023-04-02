@@ -234,8 +234,7 @@
                           <form [formGroup]="CreateLeaveForm">
                             <div class="mb-3 col-md-3">
                               <label for="language" class="form-label">Leave Type</label>
-                              <select id="language" class="select2 form-select" formControlName="leavetypeid">
-                                <option value="">Select leave type</option>
+                              <select *ngIf="CreateLeaveForm.value.leavetypeid!=null" id="language" class="select2 form-select" formControlName="leavetypeid">
                                 <option *ngFor="let it of this.hrService.allLeaveTypes" [ngValue]="it.leavetypeid">
                                   {{it.leavetype}}</option>
                               </select>

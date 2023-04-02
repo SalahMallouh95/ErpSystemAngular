@@ -102,10 +102,11 @@ export class GrtleavesComponent implements OnInit {
   }
   async OpenUpdateDialog(id: number) {
     this.CreateLeaveForm.reset()
-
     let leave2: any = {}
     leave2.leaveid = id;
     await this.employeeService.GetleaveById(leave2)
+    console.log(this.employeeService.leave);
+    
     this.CreateLeaveForm.patchValue(this.employeeService.leave)
     this.dialog.open(this.Update, {
       height: '600px',
