@@ -1,4 +1,4 @@
-import { Component,EventEmitter,Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 
 @Component({
@@ -7,18 +7,17 @@ import { Component,EventEmitter,Input, Output } from '@angular/core';
   styleUrls: ['./raw-all-emp-leave.component.css']
 })
 export class RawAllEmpLeaveComponent {
-@Input() fName:string|undefined
-@Input() ssn:string|undefined
-@Input() LName:string|undefined
-@Input() startDate:string|undefined
-@Input() endDate:string|undefined
-@Input() State:number|undefined
-@Input() leaveid:number|undefined
+  @Input() fName: string | undefined
+  @Input() ssn: string | undefined
+  @Input() LName: string | undefined
+  @Input() startDate: string | undefined
+  @Input() endDate: string | undefined
+  @Input() State: number | undefined
+  @Input() leaveid: number | undefined
 
-@Output() SendValues = new EventEmitter()
+  @Output() SendValues = new EventEmitter()
 
-SendSelecterLevId()
-{
-  this.SendValues.emit(this.leaveid)
-}
+  SendSelecterLevId() {
+    this.SendValues.emit(this.leaveid)
+  }
 }

@@ -1,41 +1,45 @@
 <div class="content-wrapper">
     <!-- Content -->
     <div class="container-xxl flex-grow-1 container-p-y" style="padding-top: 1.625rem !important;">
-     
-       <div class="card-header d-flex justify-content-between align-items-center" style="padding: 0rem 1.5rem">
-        <!-- <div class="row mb-10">
+
+        <div class="card-header d-flex justify-content-between align-items-center" style="padding: 0rem 1.5rem">
+            <!-- <div class="row mb-10">
           <div class="col-md-6 col-xl-4"> -->
-       </div>      
-    <div class="row">
-    <div class="card">
-     <div class="table-responsive text-nowrap" >
-      <h4 class="fw-bold py-3 mb-4">Attendance</h4>
-      <input style="background-color: #04e104f0;color: white; position: absolute; top: 10px; right:125px;" class="btn m-1" type="button" value="CheckIn"  [disabled]="this.man.ManagerProfile.state==1" (click)="checkin()">
-      <input style="background-color: #e30404f0;color: white; position: absolute; top: 15px; right:15px;" class="btn" type="button" value="CheckOut"  [disabled]="this.man.ManagerProfile.state==0" (click)="checkOut()">
-         <table class="table table-hover wow slideInUp m-1"
-         style="visibility: visible; animation-delay: 0.3s; animation-name: slideInUp;">
-             <thead >
-                 <tr style="background-color: #696cff66;">
-                     <th>Check in</th>
-                     <th>Check out</th>
-                     <th>Working hour</th>                          
-                 </tr>
-             </thead>
-             <tbody class="table-border-bottom-0">
-                 <tr *ngFor="let emp of this.man.attendance">
-                     <td>{{emp.checkin}}</td>
-                     <td>{{emp.checkout}}</td>
-                     <td>{{emp.workinghour}}</td>                       
-                </tr>
-             </tbody>
-         </table>
-     </div>
+        </div>
+        <div class="row">
+            <div class="card">
+                <div class="table-responsive text-nowrap">
+                    <h4 class="fw-bold py-3 mb-4">Attendance</h4>
+                    <input style="background-color: #04e104f0;color: white; position: absolute; top: 10px; right:125px;"
+                        class="btn m-1" type="button" value="CheckIn" [disabled]="this.man.ManagerProfile.state==1"
+                        (click)="checkin()">
+                    <input style="background-color: #e30404f0;color: white; position: absolute; top: 15px; right:15px;"
+                        class="btn" type="button" value="CheckOut" [disabled]="this.man.ManagerProfile.state==0"
+                        (click)="checkOut()">
+                    <table class="table table-hover wow slideInUp m-1"
+                        style="visibility: visible; animation-delay: 0.3s; animation-name: slideInUp;">
+                        <thead>
+                            <tr style="background-color: #696cff66;">
+                                <th>Check in</th>
+                                <th>Check out</th>
+                                <th>Working hour</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-border-bottom-0">
+                            <tr *ngFor="let emp of this.man.attendance">
+                                <td>{{emp.checkin}}</td>
+                                <td>{{emp.checkout}}</td>
+                                <td>{{emp.workinghour}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
-    </div>
-    </div>
-       <!--/ Basic Bootstrap Table -->
+    <!--/ Basic Bootstrap Table -->
     <!-- / Content -->
     <!-- Footer -->
     <!-- / Footer -->
     <div class="content-backdrop fade"></div>
-  </div>
+</div>

@@ -8,15 +8,15 @@ import { ManagerService } from 'src/app/manager.service';
   styleUrls: ['./manager-side-bar.component.css']
 })
 export class ManagerSideBarComponent {
-  leaveCount:number = 0
+  leaveCount: number = 0
   submitedTasks: number = 0
-constructor( public man: ManagerService, private auth: AuthService){}
+  constructor(public man: ManagerService, private auth: AuthService) { }
 
-  async ngOnInit(){
-    let userData: any =this.auth.getdata()
+  async ngOnInit() {
+    let userData: any = this.auth.getdata()
     await this.man.GetAllLeaves(userData)
-    this.leaveCount = this.man.AllLeave.filter((e:any)=> e.state == 2 ).length
+    this.leaveCount = this.man.AllLeave.filter((e: any) => e.state == 2).length
     await this.man.GetAllTasks(userData)
-    this.submitedTasks = this.man.AllTasks.filter((e:any)=> e.state == 0).length
+    this.submitedTasks = this.man.AllTasks.filter((e: any) => e.state == 0).length
   }
 }

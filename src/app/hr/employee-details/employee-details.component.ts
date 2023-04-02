@@ -22,7 +22,7 @@ export class EmployeeDetailsComponent implements OnInit {
   displayedColumns: string[] = ['Checkin', 'Checkout', 'Workinghour'];
   dataSource: any
 
-  constructor(private tostar: ToastrService, public hrService: HrService, public dialog: MatDialog, public managerService: ManagerService,public auth:AuthService) {
+  constructor(private tostar: ToastrService, public hrService: HrService, public dialog: MatDialog, public managerService: ManagerService, public auth: AuthService) {
 
   }
 
@@ -40,7 +40,7 @@ export class EmployeeDetailsComponent implements OnInit {
     departmentid: new FormControl('', Validators.required),
     bankinfoid: new FormControl('', Validators.required),
     imagefilename: new FormControl(),
-    isactivated:new FormControl()
+    isactivated: new FormControl()
   })
   async ngOnInit() {
 
@@ -137,47 +137,47 @@ export class EmployeeDetailsComponent implements OnInit {
     this.dialog.open(this.Deletedia);
   }
 
-  async ChangeProfileActive(state:number) {
+  async ChangeProfileActive(state: number) {
     this.hrService.spinner.show()
 
-    let user:any={}
-    user.userid=this.empInfoForm.value.userid
-    this.empInfoForm.value.isactivated=state;
+    let user: any = {}
+    user.userid = this.empInfoForm.value.userid
+    this.empInfoForm.value.isactivated = state;
     this.UpdateProfile()
     await this.hrService.GetEmpInfo(user)
     this.empInfoForm.patchValue(this.hrService.empInfo);
-    
-    if(state==0)
-    this.tostar.success("Account deactivated successfully")
+
+    if (state == 0)
+      this.tostar.success("Account deactivated successfully")
     else
-    this.tostar.success("Account activated successfully")
+      this.tostar.success("Account activated successfully")
 
     this.hrService.spinner.hide()
 
   }
 
-  
 
-  async ChangePassword(){
-    let user:any={}
-    user.useridnumber=this.empInfoForm.value.userid
+
+  async ChangePassword() {
+    let user: any = {}
+    user.useridnumber = this.empInfoForm.value.userid
     await this.auth.CreatePassString(user)
     await this.SendEmail()
     this.auth.toastr.success("Email for reset your password was sent to your email")
 
   }
 
-  async SendEmail(){    
-    let mail:any={}
-      mail.to=this.empInfoForm.value.email;
-      mail.subject="Account password reset"
-      mail.message="Dear Mr/Mis "
-      +this.empInfoForm.value.fname+" "+this.empInfoForm.value.lname+"\nI hope this find you well \n you can reset Your password using the link below: \n "+
-    
-      "http://localhost:4200/Auth/passwordReset/"+this.auth.userResetPasswordInfo.passwordparam
-      +" \n please don't share the link with anyone\n"+
-      +" \n best wishes \n StartUp";      
-      this.auth.SendMail(mail)  
+  async SendEmail() {
+    let mail: any = {}
+    mail.to = this.empInfoForm.value.email;
+    mail.subject = "Account password reset"
+    mail.message = "Dear Mr/Mis "
+      + this.empInfoForm.value.fname + " " + this.empInfoForm.value.lname + "\nI hope this find you well \n you can reset Your password using the link below: \n " +
+
+      "http://localhost:4200/Auth/passwordReset/" + this.auth.userResetPasswordInfo.passwordparam
+      + " \n please don't share the link with anyone\n" +
+      +" \n best wishes \n StartUp";
+    this.auth.SendMail(mail)
   }
 
 

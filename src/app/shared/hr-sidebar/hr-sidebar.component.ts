@@ -7,15 +7,15 @@ import { HrService } from 'src/app/hr.service';
   styleUrls: ['./hr-sidebar.component.css']
 })
 export class HrSidebarComponent {
-  leaveCount:number=0
-  TotalMessages:number=0
+  leaveCount: number = 0
+  TotalMessages: number = 0
 
-  constructor(public hrService:HrService){}
-  async ngOnInit(){
+  constructor(public hrService: HrService) { }
+  async ngOnInit() {
     await this.hrService.GetAllLeaves()
     await this.hrService.GetContactMessages()
-    this.leaveCount=this.hrService.allLeaves.filter((e:any)=>e.state==2).length
-    this.TotalMessages=this.hrService.contactMessages.length
+    this.leaveCount = this.hrService.allLeaves.filter((e: any) => e.state == 2).length
+    this.TotalMessages = this.hrService.contactMessages.length
   }
 
 }

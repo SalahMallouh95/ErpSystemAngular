@@ -8,8 +8,8 @@ import { HrService } from 'src/app/hr.service';
 })
 export class ServiceComponent {
 
-  constructor(public hrService:HrService){}
-  async ngOnInit(){
+  constructor(public hrService: HrService) { }
+  async ngOnInit() {
     await this.hrService.GetAllServices()
 
   }

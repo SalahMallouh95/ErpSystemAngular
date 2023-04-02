@@ -9,91 +9,89 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./home-manage.component.css']
 })
 export class HomeManageComponent {
-  @ViewChild('DeleteDio') Deletedia:any
-  @ViewChild('CreateDio') Createdia:any
-  @ViewChild('EditDio') Editdia:any
+  @ViewChild('DeleteDio') Deletedia: any
+  @ViewChild('CreateDio') Createdia: any
+  @ViewChild('EditDio') Editdia: any
 
-  homeFormGroup= new FormGroup({
-    homeid:new FormControl(undefined),
-    titile:new FormControl(),
-    description:new FormControl(),
-    imagename:new FormControl('',Validators.required)
+  homeFormGroup = new FormGroup({
+    homeid: new FormControl(undefined),
+    titile: new FormControl(),
+    description: new FormControl(),
+    imagename: new FormControl('', Validators.required)
 
   })
-  
-  count :number =0
-  homeInfo:any
 
-  constructor(public hrService:HrService,public dialog:MatDialog){}
+  count: number = 0
+  homeInfo: any
 
-  async ngOnInit(){
+  constructor(public hrService: HrService, public dialog: MatDialog) { }
+
+  async ngOnInit() {
     this.hrService.spinner.show()
 
     await this.hrService.GetAllHome()
-    this.hrService.documentName={}
-    this.hrService.documentName.imagefilename=null
-    this.count=this.hrService.allHome.length
+    this.hrService.documentName = {}
+    this.hrService.documentName.imagefilename = null
+    this.count = this.hrService.allHome.length
     this.hrService.spinner.hide()
 
-    
+
   }
 
-  CreateHomeDialog(){
+  CreateHomeDialog() {
     this.homeFormGroup.reset();
-     this.dialog.open(this.Createdia)
+    this.dialog.open(this.Createdia)
   }
 
-  async CreateHome(){
+  async CreateHome() {
     if (this.hrService.documentName.imagefilename !== null && this.hrService.documentName.imagefilename !== undefined && this.hrService.documentName.imagefilename !== '') {
       this.homeFormGroup.value.imagename = this.hrService.documentName.imagefilename
     }
     await this.hrService.CreateHome(this.homeFormGroup.value)
-    this.hrService.documentName.imagefilename=null
+    this.hrService.documentName.imagefilename = null
     this.homeFormGroup.reset()
     this.GetHome()
 
   }
 
-  EdiDialog(id:number){
-    this.homeInfo=this.hrService.allHome.find((h:any)=>h.homeid==id)   
+  EdiDialog(id: number) {
+    this.homeInfo = this.hrService.allHome.find((h: any) => h.homeid == id)
     this.homeFormGroup.patchValue(this.homeInfo)
     this.dialog.open(this.Editdia)
   }
 
-  async UpdateHome()
-  {
+  async UpdateHome() {
     if (this.hrService.documentName.imagefilename !== null && this.hrService.documentName.imagefilename !== undefined && this.hrService.documentName.imagefilename !== '') {
       this.homeFormGroup.value.imagename = this.hrService.documentName.imagefilename
     }
-   await this.hrService.UpdateHome(this.homeFormGroup.value)
-   this.hrService.documentName.imagefilename=null
-   this.homeFormGroup.reset();
-   this.GetHome()
+    await this.hrService.UpdateHome(this.homeFormGroup.value)
+    this.hrService.documentName.imagefilename = null
+    this.homeFormGroup.reset();
+    this.GetHome()
   }
 
-  async UploadPhoto(file:any)
-  {
+  async UploadPhoto(file: any) {
     let formData = new FormData();
     formData.append('file', file.files[0])
     await this.hrService.UploadDocument(formData)
 
   }
 
-  OpenDeleteDialog(id:number){
-    this.homeInfo=this.hrService.allHome.find((h:any)=>h.homeid==id)
+  OpenDeleteDialog(id: number) {
+    this.homeInfo = this.hrService.allHome.find((h: any) => h.homeid == id)
     this.dialog.open(this.Deletedia)
   }
 
-  async DeleteHome(){
+  async DeleteHome() {
     await this.hrService.DeleteHome(this.homeInfo.homeid)
     this.GetHome()
   }
 
-  async GetHome(){
+  async GetHome() {
     this.hrService.spinner.show()
 
     await this.hrService.GetAllHome()
-    this.count=this.hrService.allHome.length
+    this.count = this.hrService.allHome.length
 
     this.hrService.spinner.hide()
 

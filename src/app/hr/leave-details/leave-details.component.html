@@ -1,36 +1,38 @@
-      <div class="container-xxl flex-grow-1 container-p-y">
-        <div class="card mb-4">
-          <div class="card-body">
-            <h3 class="card-title">{{this.hrService.leaveInfo.fname}}  {{this.hrService.leaveInfo.lname}}</h3>
-            <div class="card-subtitle text-muted mb-3">leave Requst</div>
-            <p class="card-text">
-              <b>Start Date:</b> {{this.hrService.leaveInfo.startdate}}<br>
-              <b>End Date:</b> {{this.hrService.leaveInfo.enddate}}<br>
-              <b>Leave Type</b> {{this.hrService.leaveInfo.leavetype}}<br>
-              <b>Message:</b> {{this.hrService.leaveInfo.message}} <br>
-              <b>Document:</b> 
-              <a *ngIf="this.hrService.leaveInfo.documentfilename!=='null'" download class="card-link" target="_blank"  [href]="'../../../assets/Documents/'+this.hrService.leaveInfo.documentfilename">{{this.hrService.leaveInfo.documentfilename}}</a> <br>
-            
-            </p>
-            <b>States: </b>
-            <div [ngSwitch]="this.hrService.leaveInfo.state" style="display: inline;">
-              <div *ngSwitchCase="2" style="display: inline;">
-                <span class="badge bg-label-warning me-1 ">Pending</span>
-              </div>
-              <div *ngSwitchCase="1" style="display: inline;">
-                <span class="badge bg-label-success me-1">Accepted</span>
-              </div>
-              <div *ngSwitchCase="0" style="display: inline;">
-                <span class="badge bg-label-danger me-1">Rejected</span>
-              </div>
-            </div>
-            <br>
-            <div class="demo-inline-spacing">
-              <button type="button" class="btn rounded-pill btn-success" (click)="AcceptLeave()">Accept</button>
-              <button type="button" class="btn rounded-pill btn-danger" (click)="RejectLeave()">Reject</button>
-              <button style="position: absolute; top: 0px; right:0px;" mat-button mat-dialog-close  type="button" class="">X</button>
-            </div>
-          </div>
+<div class="container-xxl flex-grow-1 container-p-y">
+  <div class="card mb-4">
+    <div class="card-body">
+      <h3 class="card-title">{{this.hrService.leaveInfo.fname}} {{this.hrService.leaveInfo.lname}}</h3>
+      <div class="card-subtitle text-muted mb-3">leave Requst</div>
+      <p class="card-text">
+        <b>Start Date:</b> {{this.hrService.leaveInfo.startdate}}<br>
+        <b>End Date:</b> {{this.hrService.leaveInfo.enddate}}<br>
+        <b>Leave Type</b> {{this.hrService.leaveInfo.leavetype}}<br>
+        <b>Message:</b> {{this.hrService.leaveInfo.message}} <br>
+        <b>Document:</b>
+        <a *ngIf="this.hrService.leaveInfo.documentfilename!=='null'" download class="card-link" target="_blank"
+          [href]="'../../../assets/Documents/'+this.hrService.leaveInfo.documentfilename">{{this.hrService.leaveInfo.documentfilename}}</a>
+        <br>
+
+      </p>
+      <b>States: </b>
+      <div [ngSwitch]="this.hrService.leaveInfo.state" style="display: inline;">
+        <div *ngSwitchCase="2" style="display: inline;">
+          <span class="badge bg-label-warning me-1 ">Pending</span>
+        </div>
+        <div *ngSwitchCase="1" style="display: inline;">
+          <span class="badge bg-label-success me-1">Accepted</span>
+        </div>
+        <div *ngSwitchCase="0" style="display: inline;">
+          <span class="badge bg-label-danger me-1">Rejected</span>
         </div>
       </div>
-
+      <br>
+      <div class="demo-inline-spacing">
+        <button type="button" class="btn rounded-pill btn-success" (click)="AcceptLeave()">Accept</button>
+        <button type="button" class="btn rounded-pill btn-danger" (click)="RejectLeave()">Reject</button>
+        <button style="position: absolute; top: 0px; right:0px;" mat-button mat-dialog-close type="button"
+          class="">X</button>
+      </div>
+    </div>
+  </div>
+</div>

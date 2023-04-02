@@ -8,36 +8,36 @@ import { HrService } from 'src/app/hr.service';
   styleUrls: ['./leave-types-edit.component.css']
 })
 export class LeaveTypesEditComponent {
-  constructor(public hrService:HrService){}
+  constructor(public hrService: HrService) { }
 
-  levType =new FormGroup({
-  leavetype:new FormControl('',Validators.required),
-  leavetypeid:new FormControl()
- })
+  levType = new FormGroup({
+    leavetype: new FormControl('', Validators.required),
+    leavetypeid: new FormControl()
+  })
 
- ngOnInit(){
+  ngOnInit() {
 
-  this.levType.patchValue(this.hrService.leaveTypeInfo)
- }
+    this.levType.patchValue(this.hrService.leaveTypeInfo)
+  }
 
- async CreateLeaveType(){
+  async CreateLeaveType() {
 
-  this.hrService.spinner.show()
+    this.hrService.spinner.show()
 
-  await this.hrService.CreateLeaveType(this.levType.value)
-  this.hrService.GetAllLeaveTypes()
-  this.hrService.spinner.hide()
+    await this.hrService.CreateLeaveType(this.levType.value)
+    this.hrService.GetAllLeaveTypes()
+    this.hrService.spinner.hide()
 
 
- }
+  }
 
- async SaveLeaveType(){
-  this.hrService.spinner.show()
+  async SaveLeaveType() {
+    this.hrService.spinner.show()
 
-  await this.hrService.UpdateLeaveType(this.levType.value)
-  this.hrService.GetAllLeaveTypes()
+    await this.hrService.UpdateLeaveType(this.levType.value)
+    this.hrService.GetAllLeaveTypes()
 
-  this.hrService.spinner.hide()
+    this.hrService.spinner.hide()
 
- }
+  }
 }

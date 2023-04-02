@@ -1,9 +1,9 @@
-import { Component , ViewChild} from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { AuthService } from 'src/app/auth.service';
 import { HrService } from 'src/app/hr.service';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatTableDataSource} from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-main',
@@ -17,15 +17,15 @@ export class MainComponent {
   empOfCount: any
   manCount: any
   DepCount: any
-  totalSalary=0
+  totalSalary = 0
   x: any = []
 
 
-  @ViewChild(MatPaginator) paginator: MatPaginator|any;
-  displayedColumns: string[] = ['ssn', 'name', 'receiveddate','salary'];
-  dataSource :any
+  @ViewChild(MatPaginator) paginator: MatPaginator | any;
+  displayedColumns: string[] = ['ssn', 'name', 'receiveddate', 'salary'];
+  dataSource: any
 
-  constructor(public hrService: HrService, private auth: AuthService,private spiner:NgxSpinnerService) {
+  constructor(public hrService: HrService, private auth: AuthService, private spiner: NgxSpinnerService) {
 
   }
 
@@ -58,13 +58,13 @@ export class MainComponent {
 
   async CreateChartData() {
     let pay: any = {}
-    
-    pay.startdate = new Date().getFullYear()+'-01-01'
-    pay.enddate = new Date().getFullYear()+'-12-31'
-    
+
+    pay.startdate = new Date().getFullYear() + '-01-01'
+    pay.enddate = new Date().getFullYear() + '-12-31'
+
     await this.hrService.GetPayout(pay)
 
-    this.dataSource= new MatTableDataSource(this.hrService.allPayout);
+    this.dataSource = new MatTableDataSource(this.hrService.allPayout);
     this.dataSource.paginator = this.paginator;
 
     for (let i = 0; i < 12; i++) {

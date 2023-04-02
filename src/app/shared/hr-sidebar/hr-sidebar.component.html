@@ -1,170 +1,162 @@
-      <!-- Menu -->      
-      <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
-        <div class="app-brand demo">
-          <a class="app-brand-link">
-            <span class="app-brand-logo demo">
-              <svg
-                width="25"
-                viewBox="0 0 25 42"
-                version="1.1"
-                xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink"
-              >
-                
-                <g id="g-app-brand" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                  <g id="Brand-Logo" transform="translate(-27.000000, -15.000000)">
-                    <g id="Icon" transform="translate(27.000000, 15.000000)">
-                      <g id="Mask" transform="translate(0.000000, 8.000000)">
-                        <mask id="mask-2" fill="white">
-                          <use xlink:href="#path-1"></use>
-                        </mask>
-                        <use fill="#696cff" xlink:href="#path-1"></use>
-                        <g id="Path-3" mask="url(#mask-2)">
-                          <use fill="#696cff" xlink:href="#path-3"></use>
-                          <use fill-opacity="0.2" fill="#FFFFFF" xlink:href="#path-3"></use>
-                        </g>
-                        <g id="Path-4" mask="url(#mask-2)">
-                          <use fill="#696cff" xlink:href="#path-4"></use>
-                          <use fill-opacity="0.2" fill="#FFFFFF" xlink:href="#path-4"></use>
-                        </g>
-                      </g>
-                      <g
-                        id="Triangle"
-                        transform="translate(19.000000, 11.000000) rotate(-300.000000) translate(-19.000000, -11.000000) "
-                      >
-                        <use fill="#696cff" xlink:href="#path-5"></use>
-                        <use fill-opacity="0.2" fill="#FFFFFF" xlink:href="#path-5"></use>
-                      </g>
-                    </g>
+<!-- Menu -->
+<aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+  <div class="app-brand demo">
+    <a class="app-brand-link">
+      <span class="app-brand-logo demo">
+        <svg width="25" viewBox="0 0 25 42" version="1.1" xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink">
+
+          <g id="g-app-brand" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g id="Brand-Logo" transform="translate(-27.000000, -15.000000)">
+              <g id="Icon" transform="translate(27.000000, 15.000000)">
+                <g id="Mask" transform="translate(0.000000, 8.000000)">
+                  <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                  </mask>
+                  <use fill="#696cff" xlink:href="#path-1"></use>
+                  <g id="Path-3" mask="url(#mask-2)">
+                    <use fill="#696cff" xlink:href="#path-3"></use>
+                    <use fill-opacity="0.2" fill="#FFFFFF" xlink:href="#path-3"></use>
+                  </g>
+                  <g id="Path-4" mask="url(#mask-2)">
+                    <use fill="#696cff" xlink:href="#path-4"></use>
+                    <use fill-opacity="0.2" fill="#FFFFFF" xlink:href="#path-4"></use>
                   </g>
                 </g>
-              </svg>
-            </span>
-            <span class="app-brand-text demo menu-text fw-bolder ms-2">Sneat</span>
-          </a>
+                <g id="Triangle"
+                  transform="translate(19.000000, 11.000000) rotate(-300.000000) translate(-19.000000, -11.000000) ">
+                  <use fill="#696cff" xlink:href="#path-5"></use>
+                  <use fill-opacity="0.2" fill="#FFFFFF" xlink:href="#path-5"></use>
+                </g>
+              </g>
+            </g>
+          </g>
+        </svg>
+      </span>
+      <span class="app-brand-text demo menu-text fw-bolder ms-2">Sneat</span>
+    </a>
 
-          <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
-            <i class="bx bx-chevron-left bx-sm align-middle"></i>
-          </a>
-        </div>
+    <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
+      <i class="bx bx-chevron-left bx-sm align-middle"></i>
+    </a>
+  </div>
 
-        <div class="menu-inner-shadow"></div>
+  <div class="menu-inner-shadow"></div>
 
-        <ul class="menu-inner py-1">
-          <!-- Dashboard -->
-          <li class="menu-item " routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-            <a routerLink="/Hr/" class="menu-link">
-              <i class="menu-icon tf-icons bx bx-home-circle"></i>
-              <div data-i18n="Analytics">Dashboard</div>
-            </a>
-          </li>
-
-        
-
-          <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">Pages</span>
-          </li>
-            <!-- Emp -->
-            <li class="menu-item" routerLinkActive="active">
-              <a routerLink="/Hr/EmpList"  class="menu-link menu">
-                <i class="menu-icon tf-icons bx bx-layout bx-tada-hover" routerLinkActive="bx-tada"></i>
-                <div data-i18n="Layouts">Employee list</div>
-              </a>        
-            </li>
-
-            <li class="menu-item" routerLinkActive="active">
-              <a routerLink="/Hr/AllLeaves"  class="menu-link menu">
-                <i class="menu-icon tf-icons bx bx-layout bx-tada-hover" routerLinkActive="bx-tada"></i>
-                <div data-i18n="Layouts">Leaves requsts</div>
-                <span *ngIf="leaveCount==0" class="badge badge-center rounded-pill bg-label-secondary ms-2">{{leaveCount}}</span>
-                <span *ngIf="leaveCount!=0" class="badge badge-center rounded-pill bg-label-danger ms-2">{{leaveCount}}</span>
-
-              </a>   
-     
-            </li>
-            
-            <li class="menu-item"  routerLinkActive="active">
-            <a  routerLink="/Hr/leaveType" class="menu-link menu">
-              <i class="menu-icon tf-icons bx bx-edit bx-tada-hover"  routerLinkActive="bx-tada"></i>
-              <div data-i18n="Account Settings">Manage Leaves Type</div>
-            </a>            
-          </li>
+  <ul class="menu-inner py-1">
+    <!-- Dashboard -->
+    <li class="menu-item " routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+      <a routerLink="/Hr/" class="menu-link">
+        <i class="menu-icon tf-icons bx bx-home-circle"></i>
+        <div data-i18n="Analytics">Dashboard</div>
+      </a>
+    </li>
 
 
-            <li class="menu-item"  routerLinkActive="active">
-              <a routerLink="/Hr/Department" class="menu-link menu">
-                <i class="menu-icon tf-icons bx bx-edit bx-tada-hover" routerLinkActive="bx-tada"></i>
-                <div data-i18n="Account Settings">Manage Departments</div>
-              </a>            
-            </li>
-            <li class="menu-item"  routerLinkActive="active">
-              <a routerLink="/Hr/tree" class="menu-link menu">
-                <i class="menu-icon tf-icons bx bxs-tree bx-tree-hover" routerLinkActive="bx-tada"></i>
-                <div data-i18n="Account Settings">Departments Tree</div>
-              </a>            
-            </li>
-          
-          <li class="menu-item" routerLinkActive="active">
-            <a routerLink="/Hr/Payout"  class="menu-link menu">
-              <i class="menu-icon tf-icons bx bx-layout bx-tada-hover" routerLinkActive="bx-tada"></i>
-              <div data-i18n="Layouts">Payout List</div>
-            </a>        
-          </li>
-          <li class="menu-item" routerLinkActive="active">
-            <a routerLink="/Hr/Payment"  class="menu-link menu">
-              <i class="menu-icon tf-icons bx bx-layout bx-tada-hover" routerLinkActive="bx-tada"></i>
-              <div data-i18n="Layouts">Salary Payment</div>
-            </a>        
-          </li>
-          
-           
-          <!-- Components -->
-          <li class="menu-header small text-uppercase"><span class="menu-header-text">WebSite Management</span></li>
-          <li class="menu-item" routerLinkActive="active">
-            <a routerLink="/Hr/HomeEdit"  class="menu-link menu">
-              <i class="menu-icon tf-icons bx bx-edit bx-tada-hover" routerLinkActive="bx-tada"></i>
-              <div data-i18n="Layouts">Manage Home</div>
-            </a>        
-          </li>          
-          <li class="menu-item"  routerLinkActive="active">
-            <a routerLink="/Hr/AboutUsManage" class="menu-link menu">
-              <i class="menu-icon tf-icons bx bx-edit bx-tada-hover" routerLinkActive="bx-tada"></i>
-              <div data-i18n="Account Settings">Manage About us</div>
-            </a>            
-          </li>
-          <li class="menu-item"  routerLinkActive="active">
-            <a routerLink="/Hr/Service" class="menu-link menu">
-              <i class="menu-icon tf-icons bx bx-edit bx-tada-hover" routerLinkActive="bx-tada"></i>
-              <div data-i18n="Account Settings">Manage Service</div>
-            </a>            
-          </li>
-          <li class="menu-item"  routerLinkActive="active">
-            <a routerLink="/Hr/News" class="menu-link menu">
-              <i class="menu-icon tf-icons bx bx-edit bx-tada-hover" routerLinkActive="bx-tada"></i>
-              <div data-i18n="Account Settings">Manage News</div>
-            </a>            
-          </li>
-          <li class="menu-header small text-uppercase"><span class="menu-header-text">Messages</span></li>
-          <li class="menu-item" routerLinkActive="active">
-            <a routerLink="/Hr/ContactUsMessages"  class="menu-link menu">
-              <i class="menu-icon tf-icons bx bx-message bx-tada-hover" routerLinkActive="bx-tada"></i>
-              <div data-i18n="Layouts">Contact Us</div>
-              <span class="badge badge-center rounded-pill bg-label-secondary ms-2">{{TotalMessages}}</span>
-            </a>        
-          </li>
-          <li class="menu-header small text-uppercase"><span class="menu-header-text">Account</span></li>
-          <li class="menu-item" routerLinkActive="active">
-            <a routerLink="/Hr/UpdateProfile"  class="menu-link menu">
-              <i class="menu-icon tf-icons bx bx-dock-top bx-tada-hover" routerLinkActive="bx-tada"></i>
-              <div data-i18n="Layouts">Update Profile</div>
-            </a>        
-          </li>
-         
-          <li class="menu-item" routerLinkActive="active">
-            <a routerLink="/Hr/attendance"  class="menu-link menu">
-              <i class="menu-icon tf-icons bx bx-dock-top bx-tada-hover" routerLinkActive="bx-tada"></i>
-              <div data-i18n="Layouts">Attendance</div>
-            </a>        
-          </li>
 
-    
+    <li class="menu-header small text-uppercase">
+      <span class="menu-header-text">Pages</span>
+    </li>
+    <!-- Emp -->
+    <li class="menu-item" routerLinkActive="active">
+      <a routerLink="/Hr/EmpList" class="menu-link menu">
+        <i class="menu-icon tf-icons bx bx-layout bx-tada-hover" routerLinkActive="bx-tada"></i>
+        <div data-i18n="Layouts">Employee list</div>
+      </a>
+    </li>
+
+    <li class="menu-item" routerLinkActive="active">
+      <a routerLink="/Hr/AllLeaves" class="menu-link menu">
+        <i class="menu-icon tf-icons bx bx-layout bx-tada-hover" routerLinkActive="bx-tada"></i>
+        <div data-i18n="Layouts">Leaves requsts</div>
+        <span *ngIf="leaveCount==0"
+          class="badge badge-center rounded-pill bg-label-secondary ms-2">{{leaveCount}}</span>
+        <span *ngIf="leaveCount!=0" class="badge badge-center rounded-pill bg-label-danger ms-2">{{leaveCount}}</span>
+
+      </a>
+
+    </li>
+
+    <li class="menu-item" routerLinkActive="active">
+      <a routerLink="/Hr/leaveType" class="menu-link menu">
+        <i class="menu-icon tf-icons bx bx-edit bx-tada-hover" routerLinkActive="bx-tada"></i>
+        <div data-i18n="Account Settings">Manage Leaves Type</div>
+      </a>
+    </li>
+
+
+    <li class="menu-item" routerLinkActive="active">
+      <a routerLink="/Hr/Department" class="menu-link menu">
+        <i class="menu-icon tf-icons bx bx-edit bx-tada-hover" routerLinkActive="bx-tada"></i>
+        <div data-i18n="Account Settings">Manage Departments</div>
+      </a>
+    </li>
+    <li class="menu-item" routerLinkActive="active">
+      <a routerLink="/Hr/tree" class="menu-link menu">
+        <i class="menu-icon tf-icons bx bxs-tree bx-tree-hover" routerLinkActive="bx-tada"></i>
+        <div data-i18n="Account Settings">Departments Tree</div>
+      </a>
+    </li>
+
+    <li class="menu-item" routerLinkActive="active">
+      <a routerLink="/Hr/Payout" class="menu-link menu">
+        <i class="menu-icon tf-icons bx bx-layout bx-tada-hover" routerLinkActive="bx-tada"></i>
+        <div data-i18n="Layouts">Payout List</div>
+      </a>
+    </li>
+    <li class="menu-item" routerLinkActive="active">
+      <a routerLink="/Hr/Payment" class="menu-link menu">
+        <i class="menu-icon tf-icons bx bx-layout bx-tada-hover" routerLinkActive="bx-tada"></i>
+        <div data-i18n="Layouts">Salary Payment</div>
+      </a>
+    </li>
+
+
+    <!-- Components -->
+    <li class="menu-header small text-uppercase"><span class="menu-header-text">WebSite Management</span></li>
+    <li class="menu-item" routerLinkActive="active">
+      <a routerLink="/Hr/HomeEdit" class="menu-link menu">
+        <i class="menu-icon tf-icons bx bx-edit bx-tada-hover" routerLinkActive="bx-tada"></i>
+        <div data-i18n="Layouts">Manage Home</div>
+      </a>
+    </li>
+    <li class="menu-item" routerLinkActive="active">
+      <a routerLink="/Hr/AboutUsManage" class="menu-link menu">
+        <i class="menu-icon tf-icons bx bx-edit bx-tada-hover" routerLinkActive="bx-tada"></i>
+        <div data-i18n="Account Settings">Manage About us</div>
+      </a>
+    </li>
+    <li class="menu-item" routerLinkActive="active">
+      <a routerLink="/Hr/Service" class="menu-link menu">
+        <i class="menu-icon tf-icons bx bx-edit bx-tada-hover" routerLinkActive="bx-tada"></i>
+        <div data-i18n="Account Settings">Manage Service</div>
+      </a>
+    </li>
+    <li class="menu-item" routerLinkActive="active">
+      <a routerLink="/Hr/News" class="menu-link menu">
+        <i class="menu-icon tf-icons bx bx-edit bx-tada-hover" routerLinkActive="bx-tada"></i>
+        <div data-i18n="Account Settings">Manage News</div>
+      </a>
+    </li>
+    <li class="menu-header small text-uppercase"><span class="menu-header-text">Messages</span></li>
+    <li class="menu-item" routerLinkActive="active">
+      <a routerLink="/Hr/ContactUsMessages" class="menu-link menu">
+        <i class="menu-icon tf-icons bx bx-message bx-tada-hover" routerLinkActive="bx-tada"></i>
+        <div data-i18n="Layouts">Contact Us</div>
+        <span class="badge badge-center rounded-pill bg-label-secondary ms-2">{{TotalMessages}}</span>
+      </a>
+    </li>
+    <li class="menu-header small text-uppercase"><span class="menu-header-text">Account</span></li>
+    <li class="menu-item" routerLinkActive="active">
+      <a routerLink="/Hr/UpdateProfile" class="menu-link menu">
+        <i class="menu-icon tf-icons bx bx-dock-top bx-tada-hover" routerLinkActive="bx-tada"></i>
+        <div data-i18n="Layouts">Update Profile</div>
+      </a>
+    </li>
+
+    <li class="menu-item" routerLinkActive="active">
+      <a routerLink="/Hr/attendance" class="menu-link menu">
+        <i class="menu-icon tf-icons bx bx-dock-top bx-tada-hover" routerLinkActive="bx-tada"></i>
+        <div data-i18n="Layouts">Attendance</div>
+      </a>
+    </li>

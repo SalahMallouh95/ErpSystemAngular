@@ -134,19 +134,19 @@
                     <div>
                       <div class="row">
                         <div class="mt-2 col-2">
-                      <button type="submit" class="btn btn-primary me-2" (click)="EditEmp()"
-                        [disabled]="empInfoForm.invalid">Save changes</button>
-                    </div>
-                    <div class="mt-2 col-8">
-                      
-                    </div>
-                    <div class="mt-2 col-2" *ngIf="this.hrService.empInfo.userid==this.auth.systemUserInfo.userid">
-                      <button type="submit" class="btn btn-primary me-2" (click)="ChangePassword()"
-                        [disabled]="empInfoForm.invalid">Change Password</button>
-                    </div>
+                          <button type="submit" class="btn btn-primary me-2" (click)="EditEmp()"
+                            [disabled]="empInfoForm.invalid">Save changes</button>
+                        </div>
+                        <div class="mt-2 col-8">
+
+                        </div>
+                        <div class="mt-2 col-2" *ngIf="this.hrService.empInfo.userid==this.auth.systemUserInfo.userid">
+                          <button type="submit" class="btn btn-primary me-2" (click)="ChangePassword()"
+                            [disabled]="empInfoForm.invalid">Change Password</button>
+                        </div>
                       </div>
                     </div>
-                    
+
                     <div routerLink="/Hr/UpdateProfile" routerLinkActive="active" #rle="routerLinkActive"
                       [routerLinkActiveOptions]="{exact: true}">
                       <div *ngIf="!rle.isActive" class="demo-inline-spacing">
@@ -218,40 +218,42 @@
                 </form>
               </div>
             </div>
-            <div class="card wow fadeInUp" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;"  [hidden]="this.hrService.empInfo.roleid==1|| this.hrService.empInfo.isactivated==1">
+            <div class="card wow fadeInUp" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;"
+              [hidden]="this.hrService.empInfo.roleid==1|| this.hrService.empInfo.isactivated==1">
               <div class="row mt-2 ">
                 <div class="col-2 m-2">
                   <button type="submit" class="btn btn-primary card wow fadeInUp mb-2"
-                  style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;" (click)="ChangeProfileActive(1)">
-                  Reactivate account
-                </button>
+                    style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;"
+                    (click)="ChangeProfileActive(1)">
+                    Reactivate account
+                  </button>
                 </div>
                 <div class="col-6">
                 </div>
-                <div class="col-2 m-2">                 
+                <div class="col-2 m-2">
                 </div>
                 <div class="col-1 d-flex m-2">
-                  
+
                 </div>
               </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-<ng-template #DeleteDio>
-  <mat-dialog-content>
+  <ng-template #DeleteDio>
+    <mat-dialog-content>
 
-    <p>Are You Sure to deactivate this account</p>
-  </mat-dialog-content>
+      <p>Are You Sure to deactivate this account</p>
+    </mat-dialog-content>
 
-  <mat-dialog-actions>
-    <div class="demo-inline-spacing">
-      <button type="button" class="btn rounded-pill btn-success" (click)="ChangeProfileActive(0)"
-        mat-dialog-close>Yes</button>
-      <button type="button" class="btn rounded-pill btn-danger" mat-dialog-close>No</button>
+    <mat-dialog-actions>
+      <div class="demo-inline-spacing">
+        <button type="button" class="btn rounded-pill btn-success" (click)="ChangeProfileActive(0)"
+          mat-dialog-close>Yes</button>
+        <button type="button" class="btn rounded-pill btn-danger" mat-dialog-close>No</button>
 
-    </div>
-  </mat-dialog-actions>
-</ng-template>
+      </div>
+    </mat-dialog-actions>
+  </ng-template>

@@ -9,59 +9,59 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./our-service.component.css']
 })
 export class OurServiceComponent {
-  @ViewChild('DeleteDio') Deletedia:any
-  @ViewChild('CreateDio') Createdia:any
-  @ViewChild('EditDio') Editdia:any
+  @ViewChild('DeleteDio') Deletedia: any
+  @ViewChild('CreateDio') Createdia: any
+  @ViewChild('EditDio') Editdia: any
 
 
   ServiceFormGroup = new FormGroup({
-    id:new FormControl(undefined),
-    name:new FormControl('',Validators.required),
-    description:new FormControl()
+    id: new FormControl(undefined),
+    name: new FormControl('', Validators.required),
+    description: new FormControl()
   })
 
-  constructor(public hrService:HrService,public dialog:MatDialog){}
+  constructor(public hrService: HrService, public dialog: MatDialog) { }
 
-  async ngOnInit(){
+  async ngOnInit() {
     this.hrService.spinner.show()
 
-    await this.hrService.GetAllServices(); 
+    await this.hrService.GetAllServices();
 
     this.hrService.spinner.hide()
 
 
   }
 
-  OpenCreateDialog(){
-   this.ServiceFormGroup.reset()
-   this.dialog.open(this.Createdia)
-   
+  OpenCreateDialog() {
+    this.ServiceFormGroup.reset()
+    this.dialog.open(this.Createdia)
+
   }
-  OpenEditDialog(id:number){
-    this.hrService.serviceInfo=this.hrService.allService.find((s:any)=>s.id==id)
+  OpenEditDialog(id: number) {
+    this.hrService.serviceInfo = this.hrService.allService.find((s: any) => s.id == id)
     this.ServiceFormGroup.patchValue(this.hrService.serviceInfo)
     this.dialog.open(this.Editdia)
   }
-  OpenDeleteDialog(id:number){
-    this.hrService.serviceInfo=this.hrService.allService.find((s:any)=>s.id==id)
+  OpenDeleteDialog(id: number) {
+    this.hrService.serviceInfo = this.hrService.allService.find((s: any) => s.id == id)
     this.dialog.open(this.Deletedia)
   }
 
-  async CreateService(){    
+  async CreateService() {
     this.hrService.spinner.show()
 
-     await this.hrService.CreateService(this.ServiceFormGroup.value)
-     this.ServiceFormGroup.reset()
-     await this.hrService.GetAllServices();
+    await this.hrService.CreateService(this.ServiceFormGroup.value)
+    this.ServiceFormGroup.reset()
+    await this.hrService.GetAllServices();
 
-     this.hrService.spinner.hide()
+    this.hrService.spinner.hide()
   }
 
-  async DeleteService(){
+  async DeleteService() {
     await this.hrService.DeleteService(this.hrService.serviceInfo.id)
     await this.hrService.GetAllServices();
   }
-  async EditService(){
+  async EditService() {
     await this.hrService.UpdateService(this.ServiceFormGroup.value)
     await this.hrService.GetAllServices();
     this.ServiceFormGroup.reset()

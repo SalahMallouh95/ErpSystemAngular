@@ -6,17 +6,17 @@ import { MainComponent } from './main/main.component';
 
 const routes: Routes = [
   {
-    path:'',
-    component:MainComponent
- 
+    path: '',
+    component: MainComponent
+
   },
   {
-    path:"ContactUs",
-    component:ContactComponent
+    path: "ContactUs",
+    component: ContactComponent
   },
   {
-    path:"AboutUs",
-    component:AboutComponent
+    path: "AboutUs",
+    component: AboutComponent
   }
 ];
 

@@ -10,19 +10,19 @@ import { HrService } from 'src/app/hr.service';
   styleUrls: ['./contact.component.css']
 })
 export class ContactComponent implements OnInit {
-  contactForm= new FormGroup({
-    name:new FormControl(),
-    email:new FormControl(),
-    message:new FormControl(),
-    phonenumber:new FormControl()
+  contactForm = new FormGroup({
+    name: new FormControl(),
+    email: new FormControl(),
+    message: new FormControl(),
+    phonenumber: new FormControl()
   })
 
 
-  constructor(private spinner: NgxSpinnerService,public hrService:HrService) {}
+  constructor(private spinner: NgxSpinnerService, public hrService: HrService) { }
   ngOnInit(): void {
-   
+
   }
-  SendMessage(){
+  SendMessage() {
     this.hrService.SendMessageContactUs(this.contactForm.value)
     this.contactForm.reset()
   }

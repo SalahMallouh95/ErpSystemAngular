@@ -23,16 +23,16 @@ export class EmployeeListComponent implements OnInit {
   emplist: any
   viewOption = 1
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
-  displayedColumns: string[] = ['name', 'ssn', 'email','department', 'role', 'state','action'];
+  displayedColumns: string[] = ['name', 'ssn', 'email', 'department', 'role', 'state', 'action'];
   dataSource: any
-  hideShow=1
-  data:any
+  hideShow = 1
+  data: any
 
   async ngOnInit() {
     this.hrService.spinner.show()
-    this.data = this.auth.getdata()    
+    this.data = this.auth.getdata()
     await this.hrService.GetAllEmployee();
-    this.emplist = this.hrService.allEmp.filter((e: any) => e.userid != this.data.userid && e.isactivated==1)
+    this.emplist = this.hrService.allEmp.filter((e: any) => e.userid != this.data.userid && e.isactivated == 1)
     this.hrService.spinner.hide()
     this.dataSource = new MatTableDataSource(this.emplist);
     this.dataSource.paginator = this.paginator;
@@ -81,17 +81,16 @@ export class EmployeeListComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
   }
 
-  ShowHideActiveAccount(){
+  ShowHideActiveAccount() {
 
-    if(this.hideShow==1){
-      this.hideShow=0
-      this.emplist = this.hrService.allEmp.filter((e: any) => e.userid != this.data.userid && e.isactivated==0)
-      
+    if (this.hideShow == 1) {
+      this.hideShow = 0
+      this.emplist = this.hrService.allEmp.filter((e: any) => e.userid != this.data.userid && e.isactivated == 0)
+
     }
-    else
-    {
-      this.hideShow=1
-      this.emplist = this.hrService.allEmp.filter((e: any) => e.userid != this.data.userid && e.isactivated==1)
+    else {
+      this.hideShow = 1
+      this.emplist = this.hrService.allEmp.filter((e: any) => e.userid != this.data.userid && e.isactivated == 1)
 
     }
     this.dataSource = new MatTableDataSource(this.emplist);

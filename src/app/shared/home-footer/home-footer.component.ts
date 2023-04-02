@@ -7,6 +7,6 @@ import { HrService } from 'src/app/hr.service';
   styleUrls: ['./home-footer.component.css']
 })
 export class HomeFooterComponent {
-  constructor(public hrService:HrService){}
+  constructor(public hrService: HrService) { }
 
 }

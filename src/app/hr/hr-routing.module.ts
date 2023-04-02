@@ -28,78 +28,78 @@ import { UpdateProfileComponent } from './update-profile/update-profile.componen
 
 const routes: Routes = [
   {
-    path:"",
-    component:MainComponent
+    path: "",
+    component: MainComponent
   },
   {
-    path:"AllLeaves",
-    component:AllEmpLeavesComponent
+    path: "AllLeaves",
+    component: AllEmpLeavesComponent
   },
   {
-    path:"LeaveDetails",
-    component:LeaveDetailsComponent
+    path: "LeaveDetails",
+    component: LeaveDetailsComponent
   },
   {
-    path:"EmpList",
-    component:EmployeeListComponent
+    path: "EmpList",
+    component: EmployeeListComponent
   },
   {
-    path:"EmpDetails",
-    component:EmployeeDetailsComponent
+    path: "EmpDetails",
+    component: EmployeeDetailsComponent
   },
   {
-    path:"leaveType",
-    component:LeaveTypesComponent
+    path: "leaveType",
+    component: LeaveTypesComponent
 
   },
   {
-    path:"leaveTypeCreate",
-    component:LeaveTypesCreateComponent
+    path: "leaveTypeCreate",
+    component: LeaveTypesCreateComponent
   },
   {
-    path:"leaveTypeEdit",
-    component:LeaveTypesEditComponent
+    path: "leaveTypeEdit",
+    component: LeaveTypesEditComponent
   },
   {
-    path:"Department",
-    component:DepartmentComponent
+    path: "Department",
+    component: DepartmentComponent
 
   },
   {
-    path:"DepartmentCreate",
-    component:DepartmentCreateComponent
+    path: "DepartmentCreate",
+    component: DepartmentCreateComponent
   },
   {
-    path:"DepartmentEdit",
-    component:DepartmentEditComponent
+    path: "DepartmentEdit",
+    component: DepartmentEditComponent
   },
   {
-    path:"DepartmentEmp",
-    component:DepartmentEmpListComponent
+    path: "DepartmentEmp",
+    component: DepartmentEmpListComponent
   },
   {
-    path:"HomeEdit",
-    component:HomeManageComponent
-  },
-   {
-    path:"AboutUsManage",
-    component:AboutUsManageComponent
+    path: "HomeEdit",
+    component: HomeManageComponent
   },
   {
-    path:"ContactUsMessages",
-    component:ContactUsComponent
+    path: "AboutUsManage",
+    component: AboutUsManageComponent
   },
   {
-    path:"AddEmp",
-    component:EmployeeAddComponent
+    path: "ContactUsMessages",
+    component: ContactUsComponent
   },
   {
-    path:"Service",
-    component:OurServiceComponent
+    path: "AddEmp",
+    component: EmployeeAddComponent
   },
   {
-    path:"UpdateProfile",
-    component:UpdateProfileComponent
+    path: "Service",
+    component: OurServiceComponent
+  },
+  {
+    path: "UpdateProfile",
+    component: UpdateProfileComponent
   },
   {
     path: 'Payout',

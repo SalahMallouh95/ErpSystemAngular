@@ -9,21 +9,21 @@ import { HrService } from 'src/app/hr.service';
 })
 export class LeaveTypesCreateComponent {
 
-  constructor(public hrService:HrService){}
+  constructor(public hrService: HrService) { }
 
-   levType =new FormGroup({
-   leavetype:new FormControl('',Validators.required)
+  levType = new FormGroup({
+    leavetype: new FormControl('', Validators.required)
   })
 
 
-  async CreateLeaveType(){
+  async CreateLeaveType() {
     this.hrService.spinner.show()
 
-   await this.hrService.CreateLeaveType(this.levType.value)
-   this.hrService.GetAllLeaveTypes()
-   this.hrService.spinner.hide()
+    await this.hrService.CreateLeaveType(this.levType.value)
+    this.hrService.GetAllLeaveTypes()
+    this.hrService.spinner.hide()
 
 
   }
-  
+
 }

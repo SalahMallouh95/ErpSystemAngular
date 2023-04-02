@@ -1,81 +1,79 @@
 <div class="layout-wrapper layout-content-navbar">
-    <div class="layout-container">
-      
-<app-hr-sidebar></app-hr-sidebar>
-<div class="layout-page">
-       <app-dash-header>
-        </app-dash-header>
-        
-        <ngx-spinner type="ball-scale-multiple"></ngx-spinner>
+  <div class="layout-container">
 
-        <div class="container-xxl flex-grow-1 container-p-y">
-         <!-- Basic Bootstrap Table -->
-         <div class="card wow fadeInUp"  style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
-            <div class="demo-inline-spacing">
-            <button style="position: absolute; top: 0px; right:100px;" type="button" class="btn rounded-pill btn-success"  (click)="OpenCreateDialog()">Add new Department</button>                      
-                         </div>
-            <h5 class="card-header">Department Table </h5>
-            <div class="table-responsive text-nowrap">
-              <table class="table table-hover wow slideInUp"
+    <app-hr-sidebar></app-hr-sidebar>
+    <div class="layout-page">
+      <app-dash-header>
+      </app-dash-header>
+
+      <ngx-spinner type="ball-scale-multiple"></ngx-spinner>
+
+      <div class="container-xxl flex-grow-1 container-p-y">
+        <!-- Basic Bootstrap Table -->
+        <div class="card wow fadeInUp" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">
+          <div class="demo-inline-spacing">
+            <button style="position: absolute; top: 0px; right:100px;" type="button"
+              class="btn rounded-pill btn-success" (click)="OpenCreateDialog()">Add new Department</button>
+          </div>
+          <h5 class="card-header">Department Table </h5>
+          <div class="table-responsive text-nowrap">
+            <table class="table table-hover wow slideInUp"
               style="visibility: visible; animation-delay: 0.3s; animation-name: slideInUp;">
-                <thead>
-                  <tr style="background-color: #696cff66;">
-                    <th>Department Name</th>
-                    <th>Department Manager</th>
-                    <th>Department Description</th>
+              <thead>
+                <tr style="background-color: #696cff66;">
+                  <th>Department Name</th>
+                  <th>Department Manager</th>
+                  <th>Department Description</th>
 
-                    <th>Action</th>
-                    
-                  </tr>
-                </thead>
-                <tbody class="table-border-bottom-0"> 
-               <tr *ngFor="let item of this.hrService.allDep">
-                <td>
-                  {{item.departmentname}}
-                </td>
-                <td>
-                  {{item.fname}} {{item.lname}}
+                  <th>Action</th>
 
-                </td>
-                <td style="white-space: normal;max-width: 300px;">
-                  {{item.descrip}}
-                </td>
-                <td>
+                </tr>
+              </thead>
+              <tbody class="table-border-bottom-0">
+                <tr *ngFor="let item of this.hrService.allDep">
+                  <td>
+                    {{item.departmentname}}
+                  </td>
+                  <td>
+                    {{item.fname}} {{item.lname}}
+
+                  </td>
+                  <td style="white-space: normal;max-width: 300px;">
+                    {{item.descrip}}
+                  </td>
+                  <td>
                     <div class="demo-inline-spacing">
-                        <button type="button" class="btn rounded-pill btn-info" (click)="ViewEmp(item.departmentid)">Employee List</button>
-                        <button type="button" class="btn rounded-pill btn-secondary" (click)="OpenEditDialog(item.departmentid)" >Edit/Add Manager</button>
-                        <button type="button" class="btn rounded-pill btn-danger" (click)="OpenDeleteDialog(item.departmentid)">Delete</button>                        
-                        
-                      </div>
-                </td>
-
-               </tr>
-               </tbody>
-              </table>
-            </div>
+                      <button type="button" class="btn rounded-pill btn-info"
+                        (click)="ViewEmp(item.departmentid)">Employee List</button>
+                      <button type="button" class="btn rounded-pill btn-secondary"
+                        (click)="OpenEditDialog(item.departmentid)">Edit/Add Manager</button>
+                      <button type="button" class="btn rounded-pill btn-danger"
+                        (click)="OpenDeleteDialog(item.departmentid)">Delete</button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
-
       </div>
-    </div>
-    </div>
 
-    
-  
+    </div>
+  </div>
+</div>
 
-    <ng-template #DeleteDio>
-    <mat-dialog-content>
+<ng-template #DeleteDio>
+  <mat-dialog-content>
 
     <p>Are You Sure to Delete this item</p>
-    </mat-dialog-content>
+  </mat-dialog-content>
 
-      <mat-dialog-actions >
-      <div class="demo-inline-spacing">
-      <button type="button" (click)="DeleteDep(this.rawDepid)" class="btn rounded-pill btn-success"  mat-dialog-close>Yes</button>
-      <button type="button" class="btn rounded-pill btn-danger"  mat-dialog-close>No</button>                      
-      
+  <mat-dialog-actions>
+    <div class="demo-inline-spacing">
+      <button type="button" (click)="DeleteDep(this.rawDepid)" class="btn rounded-pill btn-success"
+        mat-dialog-close>Yes</button>
+      <button type="button" class="btn rounded-pill btn-danger" mat-dialog-close>No</button>
+
     </div>
-    </mat-dialog-actions>
-    </ng-template>
-
-    
+  </mat-dialog-actions>
+</ng-template>

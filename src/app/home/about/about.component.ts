@@ -1,4 +1,4 @@
-import { Component , OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { HrService } from 'src/app/hr.service';
 
@@ -8,13 +8,13 @@ import { HrService } from 'src/app/hr.service';
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.css']
 })
-export class AboutComponent  implements OnInit {
+export class AboutComponent implements OnInit {
 
-  emplist :any
-  constructor(private spinner: NgxSpinnerService,public hrService:HrService) {}
-  
+  emplist: any
+  constructor(private spinner: NgxSpinnerService, public hrService: HrService) { }
+
   async ngOnInit() {
-   await this.hrService.GetAllEmployee()
-   this.emplist= this.hrService.allEmp.filter((emp:any) =>emp.roleid==2)   
+    await this.hrService.GetAllEmployee()
+    this.emplist = this.hrService.allEmp.filter((emp: any) => emp.roleid == 2)
   }
 }

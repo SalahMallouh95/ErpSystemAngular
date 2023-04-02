@@ -9,23 +9,23 @@ import { HrService } from 'src/app/hr.service';
   styleUrls: ['./update-profile.component.css']
 })
 export class UpdateProfileComponent {
-      
-   user:any={"userid":null}
-   
-  
-  constructor(public hrService:HrService,private auth:AuthService,private spiner:NgxSpinnerService){
 
-       }
+  user: any = { "userid": null }
 
-       async ngOnInit(){
-        this.hrService.spinner.show()
-        let data=this.auth.getdata()   
-        delete data.roleid
-        this.user=data  
-        await this.hrService.GetEmpInfo(data)        
-        this.hrService.GetAllDepartment()
-        this.hrService.GetAllRole()    
-        this.hrService.spinner.hide()
 
-       }
+  constructor(public hrService: HrService, private auth: AuthService, private spiner: NgxSpinnerService) {
+
+  }
+
+  async ngOnInit() {
+    this.hrService.spinner.show()
+    let data = this.auth.getdata()
+    delete data.roleid
+    this.user = data
+    await this.hrService.GetEmpInfo(data)
+    this.hrService.GetAllDepartment()
+    this.hrService.GetAllRole()
+    this.hrService.spinner.hide()
+
+  }
 }

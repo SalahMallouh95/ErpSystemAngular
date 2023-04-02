@@ -15,7 +15,7 @@ export class MainComponent implements OnInit {
   allemp: number = 0
   constructor(public man: ManagerService, private spinner: NgxSpinnerService, public hrService: HrService, private auth: AuthService) { }
   async ngOnInit() {
-   this.man.spinner.show()
+    this.man.spinner.show()
     await this.hrService.GetAllHome()
     await this.hrService.GetAllDepartment()
     this.Departments = this.hrService.allDep.length

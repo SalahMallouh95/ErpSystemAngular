@@ -8,19 +8,19 @@ import { HrService } from 'src/app/hr.service';
 })
 
 export class HomeHeaderComponent {
-constructor(public hrService:HrService){
+  constructor(public hrService: HrService) {
 
-}
-token:any
-user:any
+  }
+  token: any
+  user: any
 
-async ngOnInit(){
-this.hrService.GetAbout()
-this.token=localStorage.getItem('token')
-this.user=JSON.parse(localStorage.getItem('userInfo')+'') 
-if(this.user!=null)
-this.user.roleid=parseInt(this.user.roleid)
+  async ngOnInit() {
+    this.hrService.GetAbout()
+    this.token = localStorage.getItem('token')
+    this.user = JSON.parse(localStorage.getItem('userInfo') + '')
+    if (this.user != null)
+      this.user.roleid = parseInt(this.user.roleid)
 
-}
+  }
 
 }

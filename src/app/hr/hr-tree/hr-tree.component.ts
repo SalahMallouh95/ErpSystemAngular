@@ -15,7 +15,7 @@ export class HrTreeComponent {
 
 
 
-  constructor(public hrService: HrService,private spinner: NgxSpinnerService) {
+  constructor(public hrService: HrService, private spinner: NgxSpinnerService) {
 
   }
 

@@ -10,34 +10,31 @@ import { HrService } from 'src/app/hr.service';
 })
 export class DashHeaderComponent {
 
-  constructor(private route:Router,public auth:AuthService,public hrService:HrService){}
-  user:any
+  constructor(private route: Router, public auth: AuthService, public hrService: HrService) { }
+  user: any
 
-  async ngOnInit(){
-    this.user=this.auth.getdata()
+  async ngOnInit() {
+    this.user = this.auth.getdata()
     await this.hrService.GetAllEmployee()
     await this.hrService.GetAllNews()
     this.hrService.OneNews = await this.hrService.AllNews[0]
-    this.auth.systemUserInfo=await this.hrService.allEmp.find((e:any)=>e.userid==this.user.userid)  
+    this.auth.systemUserInfo = await this.hrService.allEmp.find((e: any) => e.userid == this.user.userid)
   }
 
-  Logout(){
+  Logout() {
     localStorage.clear();
     this.route.navigate(['']);
-    }
+  }
 
-    Profile(){
-      if(this.auth.systemUserInfo.roleid==1)
-      {
-        this.route.navigate(['Hr/UpdateProfile']);
-      }else 
-       if(this.auth.systemUserInfo.roleid==2)
-      {
+  Profile() {
+    if (this.auth.systemUserInfo.roleid == 1) {
+      this.route.navigate(['Hr/UpdateProfile']);
+    } else
+      if (this.auth.systemUserInfo.roleid == 2) {
         this.route.navigate(['Manager/UpdateProfile']);
-      }else
-      {
+      } else {
         this.route.navigate(['Employee/updateprofile']);
       }
-    }
+  }
 
 }

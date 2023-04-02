@@ -3,8 +3,8 @@ import { AuthService } from 'src/app/auth.service';
 import { EmployeeService } from 'src/app/employee.service';
 import { HrService } from 'src/app/hr.service';
 import { ManagerService } from 'src/app/manager.service';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatTableDataSource} from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-hr-my-attendance',
@@ -13,47 +13,47 @@ import {MatTableDataSource} from '@angular/material/table';
 })
 export class HrMyAttendanceComponent {
 
-  @ViewChild(MatPaginator) paginator: MatPaginator|any;
+  @ViewChild(MatPaginator) paginator: MatPaginator | any;
   displayedColumns: string[] = ['Checkin', 'Checkout', 'Workinghour'];
-  dataSource :any
+  dataSource: any
 
- 
 
-  constructor(public man : ManagerService, public hrService : HrService,public employeeService:EmployeeService,public auth:AuthService){
+
+  constructor(public man: ManagerService, public hrService: HrService, public employeeService: EmployeeService, public auth: AuthService) {
   }
-  async ngOnInit(){
+  async ngOnInit() {
     this.hrService.spinner.show()
 
     let userData = this.auth.getdata()
-    await this.man.GetAttendance(userData) 
+    await this.man.GetAttendance(userData)
 
-    this.dataSource= new MatTableDataSource(this.man.attendance);
+    this.dataSource = new MatTableDataSource(this.man.attendance);
     this.dataSource.paginator = this.paginator;
 
     this.hrService.spinner.hide()
-   
-    
-   
+
+
+
   }
-  async checkin(){
+  async checkin() {
     this.hrService.spinner.show()
 
     await this.employeeService.Checkin(this.auth.systemUserInfo)
     this.man.GetManagerPrifile(this.auth.systemUserInfo)
     this.man.GetAttendance(this.auth.systemUserInfo)
-    this.auth.systemUserInfo.state=1
-    
+    this.auth.systemUserInfo.state = 1
+
     this.hrService.spinner.hide()
 
   }
-  async checkOut(){
+  async checkOut() {
 
     this.hrService.spinner.show()
 
     await this.employeeService.checkout(this.auth.systemUserInfo)
     this.man.GetManagerPrifile(this.auth.systemUserInfo)
     this.man.GetAttendance(this.auth.systemUserInfo)
-    this.auth.systemUserInfo.state=0
+    this.auth.systemUserInfo.state = 0
 
     this.hrService.spinner.hide()
 

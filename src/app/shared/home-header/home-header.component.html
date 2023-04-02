@@ -3,18 +3,21 @@
     <div class="row gx-0">
         <div class="col-lg-8 text-center text-lg-start mb-2 mb-lg-0">
             <div class="d-inline-flex align-items-center" style="height: 45px;">
-                <small class="me-3 text-light"><i class="fa fa-map-marker-alt me-2"></i>{{this.hrService.homeAbout.address}}</small>
-                <small class="me-3 text-light"><i class="fa fa-phone-alt me-2"></i>{{this.hrService.homeAbout.phonenumber}}</small>
-                <small class="text-light"><i class="fa fa-envelope-open me-2"></i>{{this.hrService.homeAbout.email}}</small>
+                <small class="me-3 text-light"><i
+                        class="fa fa-map-marker-alt me-2"></i>{{this.hrService.homeAbout.address}}</small>
+                <small class="me-3 text-light"><i
+                        class="fa fa-phone-alt me-2"></i>{{this.hrService.homeAbout.phonenumber}}</small>
+                <small class="text-light"><i
+                        class="fa fa-envelope-open me-2"></i>{{this.hrService.homeAbout.email}}</small>
             </div>
-        </div>        
+        </div>
     </div>
 </div>
 
- <div class="container-fluid position-relative p-0">
+<div class="container-fluid position-relative p-0">
 
-<nav class="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0" style=" background-color: #3e577a !important; ">
-        <a [routerLink]="['']" class="navbar-brand p-0" >
+    <nav class="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0" style=" background-color: #3e577a !important; ">
+        <a [routerLink]="['']" class="navbar-brand p-0">
             <h1 class="m-0"><i class="fa fa-user-tie me-2"></i>Startup</h1>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -22,17 +25,21 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto py-0">
-                <a class="nav-item nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" >Home</a>
+                <a class="nav-item nav-link" routerLink="/" routerLinkActive="active"
+                    [routerLinkActiveOptions]="{exact: true}">Home</a>
                 <a class="nav-item nav-link" [routerLink]="['/AboutUs']" routerLinkActive="active">About</a>
-                <a class="nav-item nav-link" [routerLink]="['/ContactUs']" routerLinkActive="active" >Contact</a>
+                <a class="nav-item nav-link" [routerLink]="['/ContactUs']" routerLinkActive="active">Contact</a>
             </div>
             <a class="btn btn-primary py-2 px-4 ms-3" *ngIf="!this.token" [routerLink]="['/Auth']">Login</a>
-            <a class="btn btn-primary py-2 px-4 ms-3" *ngIf="this.token && this.user.roleid==1" [routerLink]="['/Hr']">Back To Dashbord</a>
-            <a class="btn btn-primary py-2 px-4 ms-3" *ngIf="this.token && this.user.roleid==2" [routerLink]="['/Manager']">Back To Dashbord</a>
-            <a class="btn btn-primary py-2 px-4 ms-3" *ngIf="this.token && this.user.roleid==3" [routerLink]="['/Employee']">Back To Dashbord</a>
+            <a class="btn btn-primary py-2 px-4 ms-3" *ngIf="this.token && this.user.roleid==1"
+                [routerLink]="['/Hr']">Back To Dashbord</a>
+            <a class="btn btn-primary py-2 px-4 ms-3" *ngIf="this.token && this.user.roleid==2"
+                [routerLink]="['/Manager']">Back To Dashbord</a>
+            <a class="btn btn-primary py-2 px-4 ms-3" *ngIf="this.token && this.user.roleid==3"
+                [routerLink]="['/Employee']">Back To Dashbord</a>
 
         </div>
     </nav>
 
-        </div>
+</div>
 <!-- Topbar End -->

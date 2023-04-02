@@ -10,21 +10,21 @@ import { ManagerService } from 'src/app/manager.service';
   styleUrls: ['./attendance.component.css']
 })
 export class AttendanceComponent {
-  constructor(public man : ManagerService, public hr : HrService,public employeeService:EmployeeService,private auth:AuthService){
+  constructor(public man: ManagerService, public hr: HrService, public employeeService: EmployeeService, private auth: AuthService) {
 
 
   }
-  async checkin(){
+  async checkin() {
     await this.employeeService.Checkin(this.auth.systemUserInfo)
     this.man.GetManagerPrifile(this.auth.systemUserInfo)
     this.man.GetAttendance(this.auth.systemUserInfo)
-    this.auth.systemUserInfo.state=1
+    this.auth.systemUserInfo.state = 1
   }
-  async checkOut(){
+  async checkOut() {
     await this.employeeService.checkout(this.auth.systemUserInfo)
     this.man.GetManagerPrifile(this.auth.systemUserInfo)
     this.man.GetAttendance(this.auth.systemUserInfo)
-    this.auth.systemUserInfo.state=0
-    
+    this.auth.systemUserInfo.state = 0
+
   }
 }

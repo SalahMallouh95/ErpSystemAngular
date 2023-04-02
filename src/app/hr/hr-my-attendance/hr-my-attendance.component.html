@@ -1,73 +1,75 @@
-
 <div class="layout-wrapper layout-content-navbar">
-    <div class="layout-container">
-      
-<app-hr-sidebar></app-hr-sidebar>
-<div class="layout-page">
-       <app-dash-header>
-        </app-dash-header>
+  <div class="layout-container">
 
-<div class="content-wrapper">
-    <!-- Content -->
-    <div class="container-xxl flex-grow-1 container-p-y" style="padding-top: 1.625rem !important;">
-     
-       <div class="card-header d-flex justify-content-between align-items-center" style="padding: 0rem 1.5rem">
-        <!-- <div class="row mb-10">
+    <app-hr-sidebar></app-hr-sidebar>
+    <div class="layout-page">
+      <app-dash-header>
+      </app-dash-header>
+
+      <div class="content-wrapper">
+        <!-- Content -->
+        <div class="container-xxl flex-grow-1 container-p-y" style="padding-top: 1.625rem !important;">
+
+          <div class="card-header d-flex justify-content-between align-items-center" style="padding: 0rem 1.5rem">
+            <!-- <div class="row mb-10">
           <div class="col-md-6 col-xl-4"> -->
-       </div>      
-    <div class="row">
-    <div class="card  wow slideInUp" style="visibility: visible; animation-delay: 0.1s; animation-name: slideInUp;">
-     <div class="table-responsive text-nowrap " >
-      <h4 class="fw-bold py-3 mb-4">Attendance</h4>
-      <input style=" position: absolute; top: 10px; right:125px;" class="btn btn-success m-1" type="button" value="CheckIn"  [disabled]="this.auth.systemUserInfo.state==1" (click)="checkin()">
-      <input style=" position: absolute; top: 15px; right:15px;" class="btn btn-danger" type="button" value="CheckOut"  [disabled]="this.auth.systemUserInfo.state==0" (click)="checkOut()">
-     
-      <div class="mat-elevation-z8 ">
-        <table class="table-hover wow slideInUp col-10"
-        style="visibility: visible; animation-delay: 0.3s; animation-name: slideInUp;" mat-table [dataSource]="dataSource">
-      
-          <!-- Position Column -->
-          <ng-container matColumnDef="Checkin">
-            <th mat-header-cell *matHeaderCellDef> Check in </th>
-            <td mat-cell *matCellDef="let element"> {{element.checkin}} </td>
-          </ng-container>
-      
-          <!-- Name Column -->
-          <ng-container matColumnDef="Checkout">
-            <th mat-header-cell *matHeaderCellDef> Check out </th>
-            <td mat-cell *matCellDef="let element"> {{element.checkout}} </td>
-          </ng-container>
-      
-          <!-- Weight Column -->
-          <ng-container matColumnDef="Workinghour">
-            <th mat-header-cell *matHeaderCellDef> Working hour </th>
-            <td mat-cell *matCellDef="let element"> {{element.workinghour}} </td>
-          </ng-container>
-      
-          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-        </table>
-      
-        <mat-paginator [pageSizeOptions]="[5, 10, 20]"
-                       showFirstLastButtons
-                       aria-label="Select page of periodic elements">
-        </mat-paginator>
-      </div>         
-     </div>
-    </div>
-    </div>
-    <div>
-        <div>
-           
+          </div>
+          <div class="row">
+            <div class="card  wow slideInUp"
+              style="visibility: visible; animation-delay: 0.1s; animation-name: slideInUp;">
+              <div class="table-responsive text-nowrap ">
+                <h4 class="fw-bold py-3 mb-4">Attendance</h4>
+                <input style=" position: absolute; top: 10px; right:125px;" class="btn btn-success m-1" type="button"
+                  value="CheckIn" [disabled]="this.auth.systemUserInfo.state==1" (click)="checkin()">
+                <input style=" position: absolute; top: 15px; right:15px;" class="btn btn-danger" type="button"
+                  value="CheckOut" [disabled]="this.auth.systemUserInfo.state==0" (click)="checkOut()">
+
+                <div class="mat-elevation-z8 ">
+                  <table class="table-hover wow slideInUp col-10"
+                    style="visibility: visible; animation-delay: 0.3s; animation-name: slideInUp;" mat-table
+                    [dataSource]="dataSource">
+
+                    <!-- Position Column -->
+                    <ng-container matColumnDef="Checkin">
+                      <th mat-header-cell *matHeaderCellDef> Check in </th>
+                      <td mat-cell *matCellDef="let element"> {{element.checkin}} </td>
+                    </ng-container>
+
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="Checkout">
+                      <th mat-header-cell *matHeaderCellDef> Check out </th>
+                      <td mat-cell *matCellDef="let element"> {{element.checkout}} </td>
+                    </ng-container>
+
+                    <!-- Weight Column -->
+                    <ng-container matColumnDef="Workinghour">
+                      <th mat-header-cell *matHeaderCellDef> Working hour </th>
+                      <td mat-cell *matCellDef="let element"> {{element.workinghour}} </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                  </table>
+
+                  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+                    aria-label="Select page of periodic elements">
+                  </mat-paginator>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div>
+
+            </div>
+          </div>
         </div>
+        <!--/ Basic Bootstrap Table -->
+        <!-- / Content -->
+        <!-- Footer -->
+        <!-- / Footer -->
+        <div class="content-backdrop fade"></div>
+      </div>
     </div>
-    </div>
-       <!--/ Basic Bootstrap Table -->
-    <!-- / Content -->
-    <!-- Footer -->
-    <!-- / Footer -->
-    <div class="content-backdrop fade"></div>
   </div>
-</div>
-</div>
 </div>

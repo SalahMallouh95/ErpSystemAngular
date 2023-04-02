@@ -9,26 +9,26 @@ import { HrService } from 'src/app/hr.service';
 })
 export class AboutUsManageComponent {
 
-   aboutForm=new FormGroup({
-    aboutid:new FormControl(),
-    description:new FormControl(),
-    message:new FormControl(),
-    phonenumber:new FormControl(),
-    email:new FormControl(),
-    address:new FormControl()
+  aboutForm = new FormGroup({
+    aboutid: new FormControl(),
+    description: new FormControl(),
+    message: new FormControl(),
+    phonenumber: new FormControl(),
+    email: new FormControl(),
+    address: new FormControl()
   })
 
-  constructor(public hrService:HrService){}
+  constructor(public hrService: HrService) { }
 
-  async ngOnInit(){
+  async ngOnInit() {
     this.hrService.spinner.show()
-    await this.hrService.GetAbout()    
+    await this.hrService.GetAbout()
     this.aboutForm.patchValue(this.hrService.homeAbout)
     this.hrService.spinner.hide()
 
   }
 
-  async UpdateAbout(){
+  async UpdateAbout() {
     this.hrService.spinner.show()
     await this.hrService.UpdateAbout(this.aboutForm.value)
     await this.hrService.GetAbout()
