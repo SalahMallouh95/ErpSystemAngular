@@ -5,6 +5,7 @@ import { FormControl,FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HrService } from 'src/app/hr.service';
 import { AuthService } from 'src/app/auth.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -14,7 +15,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 })
 export class CreateTaskComponent {
 
-  constructor(private spinner: NgxSpinnerService, public man : ManagerService, private route: Router,public hr : HrService,private auth : AuthService ){
+  constructor(private spinner: NgxSpinnerService, public man : ManagerService, private route: Router,public hr : HrService,private auth : AuthService, private toaster: ToastrService ){
 
   }
 
@@ -44,7 +45,7 @@ export class CreateTaskComponent {
     this.spinner.show()
     this.taskform.value.managerid = this.userData.userid
     this.taskform.value.documentfilename = this.hr.documentName.imagefilename
-    console.log(this.taskform.value);
+    
     await this.man.CreateTask(this.taskform.value)
     this.taskform.reset()
     this.hr.documentName.imagefilename = undefined
@@ -62,7 +63,26 @@ export class CreateTaskComponent {
 
 
 
+  async SendEmail() {
+    this.spinner.show()
+    let mail: any = {}
+    await this.man.GetEmpInfo(this.taskform.value.userid)
+    
+    
+    
+    
 
+    mail.to = this.man.empInformation.email;
+    mail.subject = "New Task"
+    
+      mail.message = "Dear Mr/Mis "
+        + this.man.empInformation.fname + " " + this.man.empInformation.lname + "\nI hope this find you well \n please check the company site: " +
+        ".\n best wishes\n" + this.auth.systemUserInfo.rolename + " : " + this.auth.systemUserInfo.fname + " " + this.auth.systemUserInfo.lname;
+   
+    this.auth.SendMail(mail)
+    this.toaster.success("Email Sended")
+    this.spinner.hide()
+  }
 
 
 

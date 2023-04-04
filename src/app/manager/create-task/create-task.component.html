@@ -59,7 +59,7 @@
                                             <textarea id="basic-default-message" class="form-control"
                                                 placeholder="Hi, Do you have a moment to talk Joe?" formControlName="taskdescription"></textarea>
                                         </div>
-                                        <button [disabled]="this.taskform.invalid" type="submit" class="btn btn-primary" onclick="history.back(-1)" (click)="AddTask()"   >Create</button>
+                                        <button [disabled]="this.taskform.invalid" type="submit" class="btn btn-primary" (click)="SendEmail()" onclick="history.back(-1)" (click)="AddTask()"   >Create</button>
 
                                         <div class="demo-inline-spacing">
 

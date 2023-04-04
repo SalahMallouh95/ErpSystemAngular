@@ -27,8 +27,8 @@ export class MtreeComponent {
     this.mans = this.man.ManagerProfile
     
     await this.hrService.GetAllDepartment();
-    this.man.oneDepartment = this.hrService.allDep.filter((e:any)=> e.userid == this.userData.userid)
-    console.log( this.man.oneDepartment[0].descrip);
+    this.man.oneDepartment = this.hrService.allDep.find((e:any)=> e.userid == this.userData.userid)
+    console.log( this.man.oneDepartment.descrip);
     
     
     this.spinner.hide()
