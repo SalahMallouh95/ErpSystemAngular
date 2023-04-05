@@ -15,14 +15,16 @@ export class ETreeComponent {
 
   userdata: any 
   emplist: any
-  mans : any ={}
+  mans : any 
 
   async ngOnInit() {
     this.spinner.show()
-    this.userdata=await this.auth.getdata()
+    this.userdata=this.auth.getdata()
     await this.hrService.GetAllEmployee()
-    this.emplist = this.hrService.allEmp.filter((l: any)=>l.departmentid==this.auth.systemUserInfo.departmentid&&l.roleid==3&& l.isactivated==1)
-    this.mans = this.hrService.allEmp.find((l: { departmentid: any; roleid: number; })=>l.departmentid==this.auth.systemUserInfo.departmentid&&l.roleid==2)
+    await this.hrService.GetEmpInfo(this.userdata)
+    this.emplist = this.hrService.allEmp.filter((l: any)=>l.departmentid==this.hrService.empInfo.departmentid&&l.roleid==3&& l.isactivated==1)
+    this.mans = this.hrService.allEmp.find((l: { departmentid: any; roleid: number; })=>l.departmentid==this.hrService.empInfo.departmentid&&l.roleid==2)
+    
     this.spinner.hide()
   }
 

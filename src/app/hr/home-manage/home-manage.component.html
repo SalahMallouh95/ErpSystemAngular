@@ -15,7 +15,7 @@
           </div>
           <h5 class="card-header">Table Basic</h5>
           <div class="table-responsive text-nowrap">
-            <table class="table table-hover wow slideInUp"
+            <table *ngIf="hrService.allHome[0].imagename!=null" class="table table-hover wow slideInUp"
               style="visibility: visible; animation-delay: 0.3s; animation-name: slideInUp;">
               <thead>
                 <tr style="background-color: #696cff66;">
@@ -26,7 +26,7 @@
 
                 </tr>
               </thead>
-              <tbody class="table-border-bottom-0">
+              <tbody  class="table-border-bottom-0">
                 <tr *ngFor="let item of this.hrService.allHome">
                   <td>
                     <img [src]="'../../../assets/Documents/'+item.imagename" width="300px">

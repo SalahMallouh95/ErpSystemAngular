@@ -12,7 +12,7 @@
         <b>Uploud Date:</b> {{this.man.solutioninfo.startdate}}<br>
         
         <b>Document:</b> 
-        <a *ngIf="this.man.solutioninfo.documentfilename!=='null'" class="card-link" target="_blank"  [href]="'../../../assets/Documents/'+this.man.solutioninfo.documentfilename">{{this.man.solutioninfo.documentfilename}}</a> <br>
+        <a *ngIf="this.man.solutioninfo.documentfilename!=='null'" class="card-link" download  [href]="'../../../assets/Documents/'+this.man.solutioninfo.documentfilename">{{this.man.solutioninfo.documentfilename}}</a> <br>
         <br>
         <b>Feedback:</b> <textarea class="form-control"  placeholder="msg" [(ngModel)]="feed"></textarea>
          <br><br><br>

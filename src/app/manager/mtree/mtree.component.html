@@ -1,7 +1,7 @@
 <div class="layout-wrapper layout-content-navbar">
   <div class="layout-container">
 
-    <<app-manager-side-bar></app-manager-side-bar>>
+    <app-manager-side-bar></app-manager-side-bar>
 
     <ngx-spinner type="ball-scale-multiple"></ngx-spinner>
     <div class="layout-page">
@@ -9,7 +9,7 @@
       <app-dash-header>
       </app-dash-header>
 
-      <div class="container-xxl flex-grow-1 container-p-y">
+      <div *ngIf="man.oneDepartment!=null" class="container-xxl flex-grow-1 container-p-y">
         <div class="row">
           <div class="col-12 col-lg-12 order-2 order-md-3 order-lg-2 mb-4">
             <div class="card wow fadeInUp"style="visibility: visible; animation-delay: 0.1s; animation-name: fadeInUp;">

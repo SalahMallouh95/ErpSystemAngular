@@ -3,7 +3,6 @@ import { Injectable, ViewChild } from '@angular/core';
 import { DataTableDirective } from 'angular-datatables';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
-import { Subject } from 'rxjs';
 
 
 @Injectable({
@@ -31,7 +30,7 @@ export class HrService {
 
 
   //object's
-  empInfo: any
+  empInfo: any = { "userid": null }
   leaveInfo: any
   depInfo: any
   documentName: any

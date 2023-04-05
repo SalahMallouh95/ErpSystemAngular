@@ -7,14 +7,14 @@ import { HrService } from 'src/app/hr.service';
   styleUrls: ['./dep-tree.component.css']
 })
 export class DepTreeComponent {
-  @Input() allEmp: any[] = []
+  @Input() allEmp: any
   @Input() depId: any
   @Input() manager: any
   constructor(public hrService: HrService) {
 
   }
 
-  async ngOnInit() {
+  async ngOnInit() {   
   }
 
 }

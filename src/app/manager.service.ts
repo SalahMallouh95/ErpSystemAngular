@@ -15,21 +15,21 @@ export class ManagerService {
 
   solutioninfo: any
   taskid: number | undefined
-  AllEmp: any = []
+  AllEmp: any 
   documentName: any
-  createTask: any = {}
-  AllLeave: any = []
-  MyLeaves: any = []
-  AllTasks: any = []
-  ManagerProfile: any = []
-  empInformation: any = {}
-  attendance: any = []
+  createTask: any 
+  AllLeave: any
+  MyLeaves: any 
+  AllTasks: any 
+  ManagerProfile: any 
+  empInformation: any 
+  attendance: any 
   leaveInfo: any
-  taskinfo: any = {}
-  allsln: any = []
-  updateManProf: any = {}
-  updatetask: any = {}
-  oneDepartment: any ={}
+  taskinfo: any 
+  allsln: any 
+  updateManProf: any 
+  updatetask: any 
+  oneDepartment: any 
   myPayout : any 
 
 
