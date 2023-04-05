@@ -108,7 +108,6 @@ export class EmployeeService {
 }
 
   async Search(data: any) {
-    console.log(data);
 
     return new Promise<void>((resolve, reject) => {
       this.spinner.show()
@@ -214,7 +213,6 @@ export class EmployeeService {
   {
     return new Promise<void>((resolve, reject) => {
       this.spinner.show()
-      console.log(this.leave)
       this.http.put("https://localhost:44388/api/Employee/UpdateLeave", leave).subscribe(
         {
           next: () => {
@@ -235,7 +233,6 @@ export class EmployeeService {
   {
     return new Promise<void>((resolve, reject) => {
       this.spinner.show()
-      console.log(this.leave)
       this.http.put("https://localhost:44388/api/Employee/UpdateSolution", solution).subscribe(
         {
           next: () => {

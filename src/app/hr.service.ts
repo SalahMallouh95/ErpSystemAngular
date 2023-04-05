@@ -21,7 +21,7 @@ export class HrService {
   allRole: any = []
   allLeaves: any = []
   allLeaveTypes: any = []
-  allHome: any = [{ "imagename": "", "titile": null, "description": null }]
+  allHome: any = [{ "imagename": null, "titile": null, "description": null }]
   contactMessages: any
   allService: any
   allPayout: any
@@ -88,9 +88,7 @@ export class HrService {
     })
   }
 
-  async UpdateEmpProfile(user: any) {
-    console.log(user);
-    
+  async UpdateEmpProfile(user: any) {  
 
     return new Promise<void>((resolve, reject) => {
       this.http.put("https://localhost:44388/api/Hr/updateuser", user).subscribe(
@@ -113,8 +111,6 @@ export class HrService {
   }
 
   async AddEmpProfile(user: any) {
-
-    console.log(user);
 
 
     return new Promise<void>((resolve, reject) => {
@@ -140,9 +136,6 @@ export class HrService {
   }
 
   async DeleteEmpProfile(userid: any) {
-
-    console.log(userid);
-
 
 
     return new Promise<void>((resolve, reject) => {
@@ -296,7 +289,6 @@ export class HrService {
   }
 
   async UpdateLeaveDetails(leave: any) {
-    console.log(leave);
 
     return new Promise<void>((resolve, reject) => {
       this.http.put("https://localhost:44388/api/Hr/updateleave", leave).subscribe(
@@ -418,7 +410,6 @@ export class HrService {
     })
   }
   async EditDep(dep: any) {
-    console.log(dep);
 
     return new Promise<void>((resolve, reject) => {
 
@@ -899,7 +890,6 @@ export class HrService {
 
   async DeleteNews(userid: any) {
 
-    console.log(userid);
     return new Promise<void>((resolve, reject) => {
       this.http.delete(" https://localhost:44388/api/Hr/DeleteAnn?id=" + userid).subscribe(
         {
