@@ -22,9 +22,7 @@ export class GetsolutionComponent {
 
   }
   ngOnInit(): void {
-    console.log(this.employeeService.task);
     this.employeeService.GetSolution(this.employeeService.task)
-    console.log(this.employeeService.allSol);
     this.hrService.documentName = {}
     this.hrService.documentName.imagefilename = null
     
@@ -39,7 +37,6 @@ export class GetsolutionComponent {
       
       this.SolutionForm.value.documentfilename=this.hrService.documentName.imagefilename
       this.SolutionForm.value.taskid = this.employeeService.task.taskid
-      console.log(this.SolutionForm.value)
       if(this.SolutionForm.value.documentfilename!=null)
       await this.employeeService.CreateSolution(this.SolutionForm.value)
       else
@@ -52,7 +49,6 @@ export class GetsolutionComponent {
       let formData = new FormData();
       formData.append('file', file.files[0])
       await this.hrService.UploadDocument(formData)
-      console.log(this.SolutionForm.value.documentfilename);
   
     }
     OpenDialog() {
@@ -64,7 +60,6 @@ export class GetsolutionComponent {
     }
     async OpenUpdateDialog(id: number) {
       this.employeeService.onesol=this.employeeService.allSol.find((l:any)=>l.solutionid==id)
-      console.log(this.employeeService.onesol);
       this.SolutionForm.patchValue(this.employeeService.onesol)
       this.dialog.open(this.Update, {
         height: '300px',

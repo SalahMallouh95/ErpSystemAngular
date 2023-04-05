@@ -106,7 +106,6 @@ export class AllEmpLeavesComponent implements OnInit {
     let mail: any = {}
     let user: any={}
     user.userid=this.hrService.leaveInfo.userid   
-    console.log(this.hrService.leaveInfo);
  
     await this.hrService.GetEmpInfo(user)    
     

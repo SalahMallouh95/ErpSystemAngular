@@ -18,7 +18,6 @@ import { MUpdateProfileComponent } from './m-update-profile/m-update-profile.com
 import { MSolutionDetailsComponent } from './m-solution-details/m-solution-details.component';
 import { CheckinCheckoutComponent } from './checkin-checkout/checkin-checkout.component';
 import { CreateLeaveComponent } from './create-leave/create-leave.component';
-import { TestComponent } from './test/test.component';
 import { MtreeComponent } from './mtree/mtree.component';
 import { DepDetailesComponent } from './dep-detailes/dep-detailes.component';
 import { BillingComponent } from './billing/billing.component';
@@ -44,7 +43,6 @@ import { BillingComponent } from './billing/billing.component';
     MSolutionDetailsComponent,
     CheckinCheckoutComponent,
     CreateLeaveComponent,
-    TestComponent,
     MtreeComponent,
     DepDetailesComponent,
     BillingComponent

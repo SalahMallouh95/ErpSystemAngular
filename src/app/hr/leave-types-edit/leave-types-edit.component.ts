@@ -33,10 +33,8 @@ export class LeaveTypesEditComponent {
 
   async SaveLeaveType() {
     this.hrService.spinner.show()
-
     await this.hrService.UpdateLeaveType(this.levType.value)
     this.hrService.GetAllLeaveTypes()
-
     this.hrService.spinner.hide()
 
   }

@@ -20,8 +20,6 @@ export class SalaryPaymentComponent {
 
     await this.hrService.GetAllEmployee()
     this.empList = this.hrService.allEmp.filter((e: any) => e.isactivated == 1)
-    console.log(this.empList);
-
     this.totalSalary = this.GetTotalSalary()
     this.hrService.spinner.hide()
 

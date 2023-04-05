@@ -42,15 +42,12 @@ export class CreateLeaveComponent {
     this.leaveform.value.userid =this.auth.systemUserInfo.userid
     await this.employeeService.CreateLeave(this.leaveform.value)
     this.managerserv.GetMyLeaves(this.leaveform.value)
-    console.log(this.leaveform.value)
   }
 
   async UploadDoc(file: any) {
     let formData = new FormData();
     formData.append('file', file.files[0])
     await this.hrService.UploadDocument(formData)
-    console.log(this.leaveform.value.documentfilename);
-
   }
 
 }

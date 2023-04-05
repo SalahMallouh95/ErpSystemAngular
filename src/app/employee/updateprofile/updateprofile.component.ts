@@ -47,7 +47,6 @@ export class UpdateprofileComponent {
 
   async UploadPhoto(file : any){
     let formData = new FormData()
-    console.log(file);
     formData.append('file', file.files[0])
     await this.hr.UploadDocument(formData)
   }
@@ -56,7 +55,6 @@ export class UpdateprofileComponent {
     if(this.hr.documentName.imagefilename!=null && this.hr.documentName.imagefilename!=undefined && this.hr.documentName.imagefilename!='')
     this.manInfo.value.imagefilename = this.hr.documentName.imagefilename
     await this.man.Updateprofile(this.manInfo.value)
-    console.log(this.manInfo.value);
     this.man.GetManagerPrifile(this.emp)
     
     

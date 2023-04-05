@@ -75,7 +75,6 @@ export class EmployeeAddComponent {
   }
 
   async SendEmail() {
-    console.log(this.empInfoForm.value);
 
     let mail: any = {}
     mail.to = this.empInfoForm.value.email;

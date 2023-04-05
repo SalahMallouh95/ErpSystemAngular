@@ -14,9 +14,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./create-task.component.css']
 })
 export class CreateTaskComponent {
-
   constructor(private spinner: NgxSpinnerService, public man : ManagerService, private route: Router,public hr : HrService,private auth : AuthService, private toaster: ToastrService ){
-
   }
 
   userData:any = this.auth.getdata()

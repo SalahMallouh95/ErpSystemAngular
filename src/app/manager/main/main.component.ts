@@ -31,13 +31,10 @@ export class MainComponent {
     let userData: any =this.auth.getdata()
     await this.hrService.GetEmpInfo(userData)
     this.auth.systemUserInfo = this.hrService.empInfo
-
     await this.man.GetAllEmp(userData)
     await this.man.GetAllLeaves(userData)
     await this.man.GetAllTasks(userData)
-
     this.emplist = this.man.AllEmp
-
     this.empCount = this.man.AllEmp.length
     this.empOnCount = this.man.AllEmp.filter((e: any) => e.state == 1).length
     this.empOfCount = this.man.AllEmp.filter((e: any) => e.state == 0).length

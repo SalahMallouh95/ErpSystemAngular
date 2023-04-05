@@ -36,7 +36,6 @@ export class GrtleavesComponent implements OnInit {
     this.hrService.documentName.imagefilename = null
     this.dataSource= new MatTableDataSource(this.employeeService.allleaves);
     this.dataSource.paginator = this.paginator
-    console.log(this.employeeService.allleaves);
     
     this.hrService.spinner.hide()
   }
@@ -64,7 +63,6 @@ export class GrtleavesComponent implements OnInit {
   async Search() {
     this.range.value.userid = this.userdata.userid
     await this.employeeService.Search(this.range.value)
-    console.log(this.employeeService.allleaves)
     this.dataSource= new MatTableDataSource(this.employeeService.allleaves);
     this.dataSource.paginator = this.paginator
   }
@@ -104,9 +102,7 @@ export class GrtleavesComponent implements OnInit {
     this.CreateLeaveForm.reset()
     let leave2: any = {}
     leave2.leaveid = id;
-    await this.employeeService.GetleaveById(leave2)
-    console.log(this.employeeService.leave);
-    
+    await this.employeeService.GetleaveById(leave2)    
     this.CreateLeaveForm.patchValue(this.employeeService.leave)
     this.dialog.open(this.Update, {
       height: '600px',

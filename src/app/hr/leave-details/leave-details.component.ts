@@ -31,15 +31,12 @@ export class LeaveDetailsComponent implements OnInit {
 
   async RejectLeave() {
     this.hrService.spinner.show()
-
     let leave: any = {}
     leave.leaveid = this.hrService.leaveInfo.leaveid
     leave.state = 0
     await this.hrService.UpdateLeaveDetails(leave)
     this.hrService.GetLeaveDetails(leave)
     this.hrService.GetAllLeaves()
-
-
     this.hrService.spinner.hide()
 
 

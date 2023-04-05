@@ -59,8 +59,6 @@ export class MLeaveDetailsComponent implements OnInit {
     this.spinner.show()
     let mail: any = {}
     await this.managerService.GetEmpInfo(this.managerService.leaveInfo.userid)
-    console.log(this.managerService.empInformation);
-
     mail.to = this.managerService.empInformation.email;
     mail.subject = "Update regards your leave"
     if (state == 0) {
