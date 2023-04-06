@@ -16,7 +16,6 @@ export class AuthGuard implements CanActivate {
       let user:any = localStorage.getItem('userInfo')
       user=JSON.parse(user)
       
-
       if(token)
       {
         if(state.url.includes('Hr'))
